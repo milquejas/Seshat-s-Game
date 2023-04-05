@@ -4,12 +4,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float runSpeedMultiplier = 1.9f;
 
     private Vector2 movement;
     private Animator anim;
     private Rigidbody2D rb;
 
-    private List<GameObject> cubes;
+    public List<GameObject> cubes;
 
     void Start()
     {
@@ -31,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movement *= runSpeedMultiplier;
+        }
+
         if (movement != Vector2.zero)
         {
             //anim.SetFloat("horizontal", movement.x);
@@ -50,10 +56,16 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Collision");
         if (cubes.Contains(other.gameObject))
         {
             Destroy(other.gameObject);
             cubes.Remove(other.gameObject);
+            Debug.Log("Tuho");
+
         }
     }
 }
+/* T‰m‰ sripti toimii niin ett‰ kun pelaaja kosketaa objektia objekti tuhoutuu.
+ *  Samassa skriptiss‰ listataan objekteja. Olisi hyv‰ ett‰ Objektien listaus tapahtuisi omassa skriptiss‰‰n. 
+ */

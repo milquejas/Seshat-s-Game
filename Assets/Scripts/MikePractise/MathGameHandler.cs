@@ -79,3 +79,7 @@ public class MathGameHandler : MonoBehaviour
         currentValue = op;
     }
 }
+
+/* Tämä skripti on hiirellä valitsemista varten. Tarkoitus olisi että, pelaajan tulisi valita hiirellä eri arvoja sisältäviä
+ * objekteja sekä, suorittaa matemaattisia tehtäviä. Olisi hyvä että pelaaja voisi siirrellä objekteja hiirellä.
+ */
