@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-/* T‰m‰ sripti toimii niin ett‰ kun pelaaja kosketaa objektia objekti tuhoutuu.
+/* 
+ * T‰m‰ sripti toimii niin ett‰ kun pelaaja kosketaa objektia objekti tuhoutuu.
  *  Samassa skriptiss‰ listataan objekteja. Olisi hyv‰ ett‰ Objektien listaus tapahtuisi omassa skriptiss‰‰n. 
  */
