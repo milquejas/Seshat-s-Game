@@ -53,17 +53,15 @@ public class TouchMovementJoystick : MonoBehaviour
         {
             case TouchPhase.Began:
                 touchStartPosition = touchPosition;
+                movedPosition = Vector2.zero;
                 break;
 
             case TouchPhase.Moved:
-
                 movedPosition = new Vector2(touchPosition.x, touchPosition.y);
                 movementDirection = movedPosition - touchStartPosition;
-                
 
                 if(Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
                 {
-                    Debug.Log(movementDirection);
                     rbody.velocity = Vector2.ClampMagnitude(movementDirection, maxMoveLength) * moveSpeed;
                 }
                 
@@ -73,15 +71,14 @@ public class TouchMovementJoystick : MonoBehaviour
 
                 if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
                 {
-                    Debug.Log(movementDirection);
                     rbody.velocity = Vector2.ClampMagnitude(movementDirection, maxMoveLength) * moveSpeed;
                 }
 
                 break;
 
             case TouchPhase.Ended:
-                movementDirection = Vector2.zero;
-                Debug.Log("ended");
+                
+
                 break;
         }
     }
