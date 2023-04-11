@@ -2,38 +2,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* 
+ * 
  * For trying to interact with objects in level
 */
 
 public static class InteractSystem
 {
-    public static bool CanInteract;
+    private static LayerMask interactableLayer = LayerMask.GetMask("Interactable");
+    private static ContactFilter2D interactableContactFilter;
 
-    private static LayerMask grabbableLayer = LayerMask.GetMask("GrabbableObject");
-    private static ContactFilter2D grabbableContactFilter;
+    private static List<Collider2D> interactables = new List<Collider2D>();
+    private static Collider2D closestCollider;
 
-    private static List<Collider2D> Interactables = new List<Collider2D>();
-
+    // called in movement/interact script
     public static void InitContactFilters()
     {
-        grabbableContactFilter.SetLayerMask(grabbableLayer);
+        interactableContactFilter.SetLayerMask(interactableLayer);
     }
 
-    public static GrabbableObject TryToInteract(Vector2 position, float size)
+    public static bool TryToInteract(Vector2 touchPosition, float size)
     {
-        int colliderAmountFound = Physics2D.OverlapCircle(position, size, grabbableContactFilter, Interactables);
-
+        int colliderAmountFound = Physics2D.OverlapCircle(touchPosition, size, interactableContactFilter, interactables);
+        
+        
         if (colliderAmountFound > 0)
         {
-            if (Interactables[0].gameObject.TryGetComponent(out GrabbableObject grabbable))
-            {
-                if (grabbable.HasBeenGrabbed) return null;
+            closestCollider = interactables[0];
 
-                grabbable.HasBeenGrabbed = true;
-                
-                return grabbable;
+            // closest in list to position should be picked
+            // OverlapCircle doesn't give position of collision so now just picking closest transform.position
+            if (colliderAmountFound > 1)
+            {
+                for(int i = 1; i < interactables.Count; i++)
+                {
+                    if (Vector2.Distance(interactables[i].transform.position, touchPosition) < Vector2.Distance(closestCollider.transform.position, touchPosition))
+                    {
+                        closestCollider = interactables[i];
+                    }
+                }
             }
+
+            if (closestCollider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
+            {
+                interactableScript.Interact();
+            }
+            else
+            {
+                Debug.LogWarning($"Missing IInteractable script from {closestCollider.gameObject.name}?");
+            }
+
+            return true;
         }
-        return null;
+        return false;
     }
 }

@@ -18,11 +18,8 @@ public class TouchMovementBow : MonoBehaviour
 
     private Rigidbody2D playerRigidbody;
 
-    private GrabbableObject grabbedObject;
-
     public bool CantMove;
-    private bool IsMovingGrabbable;
-    private bool HasSelectedInteractable;
+
 
 
     void Start()
@@ -66,16 +63,7 @@ public class TouchMovementBow : MonoBehaviour
         {
             case TouchPhase.Began:
                 // if hit grabbable, stop moving
-                if (!IsMovingGrabbable)
-                {
-                    grabbedObject = InteractSystem.TryToInteract(touchPosition, tapInteractCircleSize);
-                }
 
-                if (grabbedObject != null && !IsMovingGrabbable)
-                {
-                    HasSelectedInteractable = true;
-                    return;
-                }
 
                 // spawn something here to show origin
                 bowGuideLine.SetPosition(0, touchPosition);
@@ -89,10 +77,7 @@ public class TouchMovementBow : MonoBehaviour
 
             case TouchPhase.Moved:
 
-                if (HasSelectedInteractable)
-                {
-                    break;
-                }
+
 
                 bowGuideLine.SetPosition(1, touchPosition);
 
@@ -105,21 +90,8 @@ public class TouchMovementBow : MonoBehaviour
             case TouchPhase.Ended:
 
                 Rigidbody2D rb = playerRigidbody;
-                if (IsMovingGrabbable)
-                {
-                    rb = grabbedObject.GrabbableRigidbody;
-                    grabbedObject.HasBeenGrabbed = false;
 
-                    IsMovingGrabbable = false;
-                }
 
-                // first click disabled movement, enable grab
-                if (HasSelectedInteractable)
-                {
-                    IsMovingGrabbable = true;
-                    HasSelectedInteractable = false;
-                    break;
-                }
 
                 movementDirection = touchStartPosition - touchPosition;
 
