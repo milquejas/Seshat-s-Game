@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /* 
- * Click -> check if interactable triggered -> check if in range -> interact -> no movement 
+ * check if interactable triggered -> check if in player range -> interact -> no movement 
  * Otherwise movement
  * Mouse and touch based joystick movement. 
  * 
@@ -11,7 +11,7 @@ public class TouchMovementAndInteraction : MonoBehaviour
 {
     private Vector2 touchStartPosition, movedPosition, movementDirection;
 
-    [SerializeField] private float minimumMove, moveSpeed, maxMoveLength, interactionCircleSize;
+    [SerializeField] private float minimumMove, moveSpeed, maxMoveLength, interactionCircleSize, playerInteractionDistance;
 
     [SerializeField] private LineRenderer bowGuideLine;
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* 
- * 
+ * check if interactable near touch location -> check if in player range -> interact
  * For trying to interact with objects in level
 */
 
@@ -24,7 +24,6 @@ public static class InteractSystem
     {
         int colliderAmountFound = Physics2D.OverlapCircle(touchPosition, size, interactableContactFilter, interactables);
         
-        
         if (colliderAmountFound > 0)
         {
             closestCollider = interactables[0];
@@ -44,14 +43,23 @@ public static class InteractSystem
 
             if (closestCollider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
             {
-                interactableScript.Interact();
+                if (interactableScript.inRange) 
+                { 
+                    interactableScript.Interact();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
+
             else
             {
                 Debug.LogWarning($"Missing IInteractable script from {closestCollider.gameObject.name}?");
+                return false;
             }
-
-            return true;
         }
         return false;
     }

@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae3bf46b4031884086d5dfbd738ad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <inRange>k__BackingField: 0
 --- !u!1 &216789969
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae3bf46b4031884086d5dfbd738ad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <inRange>k__BackingField: 0
 --- !u!1 &1611305592
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae3bf46b4031884086d5dfbd738ad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <inRange>k__BackingField: 0
 --- !u!1001 &2087862142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -819,10 +822,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5336134804595159496, guid: 5886ecb6224fc034c8894032fcc0d9e6, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5336134804595159499, guid: 5886ecb6224fc034c8894032fcc0d9e6, type: 3}
       propertyPath: m_Name
       value: PlayerCharacterTouchJoystick
