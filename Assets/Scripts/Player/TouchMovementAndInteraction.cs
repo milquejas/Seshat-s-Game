@@ -11,21 +11,24 @@ public class TouchMovementAndInteraction : MonoBehaviour
 {
     private Vector2 touchStartPosition, movedPosition, movementDirection;
 
-    [SerializeField] private float minimumMove, moveSpeed, maxMoveLength, interactionCircleSize, playerInteractionDistance;
+    [SerializeField] private float minimumMove, moveSpeedMultiplier, interactionCircleSize, playerInteractionDistance;
+    [field: SerializeField] public float MaxMoveSpeed { get; private set; }
 
     [SerializeField] private LineRenderer bowGuideLine;
 
-    public bool disableTouch;
+    public bool disableTouch { private get; set; }
 
     private bool thisTouchInteracting;
 
-    private Rigidbody2D rbody;
+    public Rigidbody2D PlayerRigidbody { get; private set; }
+
+  
 
     void Start()
     {
         InteractSystem.InitContactFilters();
 
-        rbody = GetComponent<Rigidbody2D>();
+        PlayerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -56,7 +59,12 @@ public class TouchMovementAndInteraction : MonoBehaviour
 
     private void HandleTouch(int touchFingerId, Vector2 touchPosition, TouchPhase touchPhase)
     {
-        if (disableTouch) return;
+        if (disableTouch)
+        {
+            bowGuideLine.enabled = false;
+            return;
+        }
+        
 
         switch (touchPhase)
         {
@@ -64,7 +72,7 @@ public class TouchMovementAndInteraction : MonoBehaviour
                 if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize))
                 {
                     thisTouchInteracting = true;
-                    rbody.velocity = Vector2.zero;
+                    PlayerRigidbody.velocity = Vector2.zero;
                     return;
                 }
 
@@ -138,12 +146,7 @@ public class TouchMovementAndInteraction : MonoBehaviour
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            rbody.velocity = Vector2.ClampMagnitude(movementDirection, maxMoveLength) * moveSpeed;
+            PlayerRigidbody.velocity = Vector2.ClampMagnitude(movementDirection * moveSpeedMultiplier, MaxMoveSpeed);
         }
-    }
-
-    void CheckIfInteracting(Vector2 touchPosition)
-    {
-
     }
 }
