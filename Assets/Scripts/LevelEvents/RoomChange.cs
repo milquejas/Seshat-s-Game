@@ -10,6 +10,7 @@ using UnityEngine;
  * Call destination RoomChange class method to travel
  *
 */
+
 [RequireComponent(typeof(Collider2D))]
 public class RoomChange : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class RoomChange : MonoBehaviour
         fixedUpdateCoroutine = AutoMovePlayer(exitDirection);
         StartCoroutine(fixedUpdateCoroutine);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         StopCoroutine(fixedUpdateCoroutine);
         trigger.enabled = true;
@@ -69,7 +70,7 @@ public class RoomChange : MonoBehaviour
         StartCoroutine(fixedUpdateCoroutine);
         
         // fadeout?
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         StopCoroutine(fixedUpdateCoroutine);
 
         StartCoroutine(Destination.StartExit(player));
