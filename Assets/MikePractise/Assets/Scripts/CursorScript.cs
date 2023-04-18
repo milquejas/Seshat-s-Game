@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 public class CursorScript : MonoBehaviour
@@ -13,7 +9,7 @@ public class CursorScript : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         controls = new CursorControl();
         ChangeCursor(cursor);
         Cursor.lockState = CursorLockMode.Confined;

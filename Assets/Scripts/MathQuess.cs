@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class MathProblem : MonoBehaviour
+public class MathQuess : MonoBehaviour
 {
 
-    public Text firstNumber;
-    public Text secondNumber;
-    public Text answer1;
-    public Text answer2;
-    public Text operatorSign;
-    public Text rightOrWrong_Text;
-    public List<int> easyMathList = new List<int>();
+    [SerializeField]
+    private TMP_Text firstNumber;
+    [SerializeField]
+    private TMP_Text secondNumber;
+    [SerializeField]
+    private TMP_Text answer1;
+    [SerializeField]
+    private TMP_Text answer2;
+    [SerializeField]
+    private TMP_Text operatorSign;
+    [SerializeField]
+    private TMP_Text rightOrWrong_Text;
+    [SerializeField]
+    private List<int> easyMathList = new List<int>();
 
-    public int randomFirstNumber;
-    public int randomSecondNumber;
+    [SerializeField] 
+    private int randomFirstNumber;
+    [SerializeField]
+    private int randomSecondNumber;
 
     private int firstNumberInProblem;
     private int secondNumberInProblem;
@@ -23,13 +32,13 @@ public class MathProblem : MonoBehaviour
     private int answerOne;
     private int answerTwo;
     private int displayRandomAnswer;
-    
+
     private int randomAnswerPlacement;
     private int currentAnswer;
-    
+
     private string currentOperator;
 
-    
+
 
     private void Start()
     {
@@ -41,7 +50,7 @@ public class MathProblem : MonoBehaviour
         // Generate a random number as the first and second numbers
         randomFirstNumber = Random.Range(0, easyMathList.Count + 1);
         randomSecondNumber = Random.Range(0, easyMathList.Count + 1);
-        
+
         // Assing your first and second number
         firstNumberInProblem = randomFirstNumber;
         secondNumberInProblem = randomSecondNumber;
@@ -68,16 +77,16 @@ public class MathProblem : MonoBehaviour
                 answerOne = firstNumberInProblem * secondNumberInProblem;
                 break;
             case "/":
-                if(firstNumberInProblem == 0)
+                if (firstNumberInProblem == 0)
                 {
                     firstNumberInProblem++;
                 }
-                if(secondNumberInProblem == 0)
+                if (secondNumberInProblem == 0)
                 {
                     secondNumberInProblem++;
                 }
                 operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem / secondNumberInProblem;                
+                answerOne = firstNumberInProblem / secondNumberInProblem;
                 break;
         }
 
@@ -86,7 +95,7 @@ public class MathProblem : MonoBehaviour
 
         // T‰ss‰ luodaan v‰‰r‰ vastaus ja annetaan sille arvoksi 1-4 enemm‰n tai v‰hemm‰n,
         // mit‰ oikea vastaus olisi
-        if ( displayRandomAnswer == 0)
+        if (displayRandomAnswer == 0)
         {
             answerTwo = answerOne + Random.Range(1, 5);
         }
@@ -115,7 +124,7 @@ public class MathProblem : MonoBehaviour
     }
     public void ButtonAnswer1()
     {
-        if ( currentAnswer == 0)
+        if (currentAnswer == 0)
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.green;
@@ -150,10 +159,10 @@ public class MathProblem : MonoBehaviour
     // T‰m‰ void asettaa aina seuraavan teht‰v‰n pelaajan valinnan j‰lkeen 
     public void TurnOffText()
     {
-        if(rightOrWrong_Text != null)
+        if (rightOrWrong_Text != null)
         {
             rightOrWrong_Text.enabled = false;
             DisplayMathProblem(currentOperator);
         }
-    }   
+    }
 }
