@@ -16,6 +16,7 @@ TagManager:
   - Object9
   - Object10
   - Object
+  - Scale
   layers:
   - Default
   - TransparentFX
