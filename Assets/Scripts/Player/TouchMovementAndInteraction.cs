@@ -26,8 +26,6 @@ public class TouchMovementAndInteraction : MonoBehaviour
 
     void Start()
     {
-        InteractSystem.InitContactFilters();
-
         PlayerRigidbody = GetComponent<Rigidbody2D>();
     }
 

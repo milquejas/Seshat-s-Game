@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /*
  * What characters speak, 
@@ -16,7 +17,16 @@ public struct Line
 
     [TextArea(2, 5)]
     public string dialogueText;
-    public string[] answerText;
+    public Answer[] LineAnswer;
+}
+
+[System.Serializable]
+public struct Answer
+{
+    [TextArea(1, 3)]
+    public string AnswerText;
+    [TextArea(1, 1)]
+    public string AnswerSwitchCase;
 }
 
 public enum CharacterPosition
@@ -37,5 +47,6 @@ public enum DialogLineType
 [CreateAssetMenu(fileName = "New conversation", menuName = "Conversation")]
 public class Conversation : ScriptableObject
 {
+    public string ConversationName;
     public Line[] Lines;
 }

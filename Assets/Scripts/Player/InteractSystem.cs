@@ -14,8 +14,8 @@ public static class InteractSystem
     private static List<Collider2D> interactables = new List<Collider2D>();
     private static Collider2D closestCollider;
 
-    // called in movement/interact script
-    public static void InitContactFilters()
+    // constructor called once automatically
+    static InteractSystem()
     {
         interactableContactFilter.SetLayerMask(interactableLayer);
     }
