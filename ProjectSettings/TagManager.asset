@@ -17,6 +17,9 @@ TagManager:
   - Object10
   - Object
   - Scale
+  - Porkkana
+  - Banaani
+  - Omena
   layers:
   - Default
   - TransparentFX
