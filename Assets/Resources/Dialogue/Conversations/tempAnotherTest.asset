@@ -29,3 +29,17 @@ MonoBehaviour:
       suscipit velit ut laboriosam. Eos rem temporibus repellat omnis explicabo optio.
       Sunt fuga aliquam sapiente velit sapiente earum.
     LineAnswer: []
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
+    Position: 0
+    LineType: 1
+    dialogueText: Will you continue this conversation?
+    LineAnswer:
+    - AnswerText: Yes!
+      AnswerSwitchCase: Continue
+    - AnswerText: No way!
+      AnswerSwitchCase: ExitCase
+  - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
+    Position: 1
+    LineType: 0
+    dialogueText: Congrats you continued the conversation!
+    LineAnswer: []

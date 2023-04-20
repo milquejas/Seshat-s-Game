@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Events;
 using System.Collections.Generic;
-using System;
 /*
-* ref:
-* https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
-* Could add emotions to characters
-* 
+ * light starting reference:
+ * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
+ * Could add emotions to characters
+ * Questions and dialog branching is badly implemented. 
+ * Didn't think much how to make transitions for any dialog changes...
+ *  
 */
 
 public class Dialog : MonoBehaviour
@@ -20,18 +20,19 @@ public class Dialog : MonoBehaviour
     public GameObject AnswerButton;
 
     private List<GameObject> answerButtons = new List<GameObject>();
-    [SerializeField] private ConversationList allConversations;
 
     [SerializeField] private TouchMovementAndInteraction playerControls;
 
-    private int lineNumber;
+    public int lineNumber { get; set; }
     private bool answering;
 
-    private Character speaker;
     public Conversation CurrentConversation;
+    private DialogAnswers dialogAnswers;
+
+    private Character speaker;
     public Character Speaker
     {
-        get { return speaker; }
+        get => speaker;
         set
         {
             speaker = value;
@@ -42,7 +43,7 @@ public class Dialog : MonoBehaviour
 
     private void Start()
     {
-
+        dialogAnswers = GetComponent<DialogAnswers>();
     }
 
     public void StartConversation(Conversation _conversation)
@@ -57,16 +58,13 @@ public class Dialog : MonoBehaviour
         ShowDialog();
     }
 
-    public void DialogClicked()
+    public void ExitDialog()
     {
-        if (answering) return;
-
-        lineNumber++;
-
-        ShowDialog();
+        playerControls.disableTouch = false;
+        gameObject.SetActive(false);
     }
 
-    private void ShowDialog()
+    public void ShowDialog()
     {
         if (lineNumber >= CurrentConversation.Lines.Length)
         {
@@ -79,68 +77,17 @@ public class Dialog : MonoBehaviour
             StartQuestion();
         }
 
-
         AdjustUIPositions();
         Speaker = CurrentConversation.Lines[lineNumber].character;
         dialog.text = CurrentConversation.Lines[lineNumber].dialogueText;
     }
 
-    private void StartQuestion()
+    public void DialogClicked()
     {
-        answering = true;
-        // creates all answer buttons and sets their 
-        AnswerButtonPanel.gameObject.SetActive(true);
-        foreach (Answer answer in CurrentConversation.Lines[lineNumber].LineAnswer) 
-        {
-            
-            GameObject newButton = Instantiate(AnswerButton, AnswerButtonPanel.transform);
-            answerButtons.Add(newButton);
+        if (answering) return;
 
-            newButton.transform.GetComponentInChildren<TMP_Text>().text = answer.AnswerText;
-            newButton.GetComponent<Button>().onClick.AddListener(() => GiveAnswer(answer.AnswerSwitchCase));
-        }
-        
-    }
-
-    public void GiveAnswer(string answerCase)
-    {
-        DestroyUsedButtons();
-        answering = false;
-
-        AnswerButtonPanel.gameObject.SetActive(false);
-        switch (answerCase)
-        {
-            case "ExitCase":
-
-                
-                ExitDialog();
-                break;
-
-            case "TestCase":
-                StartConversation(allConversations.ConversationSO.Find(x => x.ConversationName == "KakkaConversation"));
-                break;
-
-            default:
-                Debug.LogWarning("GiveAnswer hit default, typo in switch/conversation answer?");
-                break;
-        }
-    }
-
-    // destroy buttons and empty list, remove listeners just in case too
-    private void DestroyUsedButtons()
-    {
-        foreach (GameObject oldButton in answerButtons)
-        {
-            oldButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            Destroy(oldButton);
-        }
-        answerButtons.Clear();
-    }
-
-    private void ExitDialog()
-    {
-        playerControls.disableTouch = false;
-        gameObject.SetActive(false);
+        lineNumber++;
+        ShowDialog();
     }
 
     private void AdjustUIPositions()
@@ -167,8 +114,46 @@ public class Dialog : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning("current conversation switch hit default, oh no panic?!");
+                Debug.LogWarning("current conversation position switch hit default, oh no panic?!");
                 break;
         }
     }
+
+    // question behaviour starts here
+    private void StartQuestion()
+    {
+        answering = true;
+        // creates all answer buttons and sets their 
+        AnswerButtonPanel.gameObject.SetActive(true);
+        foreach (Answer answer in CurrentConversation.Lines[lineNumber].LineAnswer)
+        {
+            GameObject newButton = Instantiate(AnswerButton, AnswerButtonPanel.transform);
+            answerButtons.Add(newButton);
+
+            newButton.transform.GetComponentInChildren<TMP_Text>().text = answer.AnswerText;
+            newButton.GetComponent<Button>().onClick.AddListener(() => GiveAnswer(answer.AnswerSwitchCase));
+        }
+    }
+
+    public void GiveAnswer(string answerCase)
+    {
+        DestroyUsedButtons();
+        answering = false;
+
+        AnswerButtonPanel.gameObject.SetActive(false);
+
+        dialogAnswers.AnswerReactions(answerCase);
+    }
+
+    // destroy buttons and empty list, remove listeners just in case to clean memory leaks
+    private void DestroyUsedButtons()
+    {
+        foreach (GameObject oldButton in answerButtons)
+        {
+            oldButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            Destroy(oldButton);
+        }
+        answerButtons.Clear();
+    }
 }
+    
