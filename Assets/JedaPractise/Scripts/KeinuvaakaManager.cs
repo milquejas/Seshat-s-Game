@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class KeinuvaakaManager : MonoBehaviour
 {
-    public GameObject kuppi1, kuppi2;
-    public int porkkanaPaino = 250;
-    public int omenaPaino = 150;
-    public int banaaniPaino = 50;
+    public GameObject vasenkuppi, oikeakuppi;
 
     private float painoEro;
 
@@ -18,9 +15,9 @@ public class KeinuvaakaManager : MonoBehaviour
     // Check if the balance is in equilibrium and log the result
     void TarkistaTasapaino()
     {
-        float kuppi1Paino = LaskePaino(kuppi1);
-        float kuppi2Paino = LaskePaino(kuppi2);
-        painoEro = Mathf.Abs(kuppi1Paino - kuppi2Paino);
+        float vasenkuppiPaino = LaskePaino(vasenkuppi);
+        float oikeakuppiPaino = LaskePaino(oikeakuppi);
+        painoEro = Mathf.Abs(vasenkuppiPaino - oikeakuppiPaino);
 
         if (painoEro < 10)
         {
@@ -28,7 +25,8 @@ public class KeinuvaakaManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Vaaka ei ole tasapainossa. Painoero on {painoEro}g.");
+            string painavampiKuppi = vasenkuppiPaino > oikeakuppiPaino ? "Vasen kuppi" : "Oikea kuppi";
+            Debug.Log($"Vaaka on epätasapainossa. {painavampiKuppi} on painavampi.");
         }
     }
 
@@ -41,17 +39,10 @@ public class KeinuvaakaManager : MonoBehaviour
         // Add the weight of each object found in the cup
         foreach (Collider2D col in colliders)
         {
-            if (col.CompareTag("Porkkana"))
+            WeightedObject weightedObject = col.GetComponent<WeightedObject>();
+            if (weightedObject != null)
             {
-                paino += porkkanaPaino;
-            }
-            else if (col.CompareTag("Omena"))
-            {
-                paino += omenaPaino;
-            }
-            else if (col.CompareTag("Banaani"))
-            {
-                paino += banaaniPaino;
+                paino += weightedObject.Weight;
             }
         }
         return paino;
