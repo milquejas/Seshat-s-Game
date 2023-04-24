@@ -4902,6 +4902,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7867645477331351076, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7867645477331351076, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7867645477556721717, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5045,6 +5053,14 @@ PrefabInstance:
     - target: {fileID: 7867645478398394514, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867645479100574817, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 7867645479100574817, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
