@@ -15,7 +15,7 @@ public struct Line
     public CharacterPosition Position;
     public DialogLineType LineType;
 
-    [TextArea(2, 5)]
+    [TextArea(3, 5)]
     public string dialogueText;
     public Answer[] LineAnswer;
 }

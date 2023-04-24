@@ -7,6 +7,7 @@ using UnityEngine;
  * 
 */
 
+[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class TouchMovementAndInteraction : MonoBehaviour
 {
     private Vector2 touchStartPosition, movedPosition, movementDirection;
@@ -21,8 +22,6 @@ public class TouchMovementAndInteraction : MonoBehaviour
     private bool thisTouchInteracting;
 
     public Rigidbody2D PlayerRigidbody { get; private set; }
-
-  
 
     void Start()
     {
@@ -75,22 +74,18 @@ public class TouchMovementAndInteraction : MonoBehaviour
                 }
 
                 TouchBegin(touchPosition);
-
                 break;
-
 
             case TouchPhase.Moved:
                 if (thisTouchInteracting) return;
 
                 TouchMoving(touchPosition);
-
                 break;
 
             case TouchPhase.Stationary:
                 if (thisTouchInteracting) return;
 
                 TouchStationary(touchPosition);
-
                 break;
 
             case TouchPhase.Ended:
@@ -99,9 +94,7 @@ public class TouchMovementAndInteraction : MonoBehaviour
                     thisTouchInteracting = false;
                     return;
                 }
-
                 TouchEnd(touchPosition);
-
                 break;
         }
     }
@@ -137,7 +130,6 @@ public class TouchMovementAndInteraction : MonoBehaviour
     {
         // disable line
         bowGuideLine.enabled = false;
-
     }
 
     private void MovePlayer()
