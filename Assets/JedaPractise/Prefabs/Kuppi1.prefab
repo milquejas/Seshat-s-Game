@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7798704937484056379}
   m_Layer: 0
   m_Name: Kuppi1
-  m_TagString: Untagged
+  m_TagString: LeftCup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1016497702, guid: 42f4c3322ce920141a6ebb6498a2d5a6, type: 3}
+  m_Sprite: {fileID: 1334013939, guid: fbdf353cd60c1784f871e39020a50165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,19 +95,19 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.020842433, y: -1.2598554}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.94818, y: 2.7519999}
+    pivot: {x: 0.49717528, y: 0.95561576}
+    oldSize: {x: 1.89, y: 1.91}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 2.8126595, y: 2.7197106}
   m_EdgeRadius: 0

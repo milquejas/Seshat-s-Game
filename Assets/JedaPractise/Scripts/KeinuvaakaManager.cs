@@ -3,6 +3,7 @@ using UnityEngine;
 public class KeinuvaakaManager : MonoBehaviour
 {
     public GameObject vasenkuppi, oikeakuppi;
+    public Animator vaakaAnimator;
 
     private float painoEro;
 
@@ -18,6 +19,9 @@ public class KeinuvaakaManager : MonoBehaviour
         float vasenkuppiPaino = LaskePaino(vasenkuppi);
         float oikeakuppiPaino = LaskePaino(oikeakuppi);
         painoEro = Mathf.Abs(vasenkuppiPaino - oikeakuppiPaino);
+
+        vaakaAnimator.SetFloat("kallistus", vasenkuppiPaino - oikeakuppiPaino);
+        vaakaAnimator.SetBool("palautaTasapainoon", painoEro < 10);
 
         if (painoEro < 10)
         {

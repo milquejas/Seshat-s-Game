@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229026964576920979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 2.21, z: 1.7599407}
+  m_LocalPosition: {x: 0.04, y: 1.73, z: 1.759941}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -834876045, guid: 42f4c3322ce920141a6ebb6498a2d5a6, type: 3}
+  m_Sprite: {fileID: 860107213, guid: fbdf353cd60c1784f871e39020a50165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1635889317018647183}
   - component: {fileID: 1635889317018647176}
   - component: {fileID: 1635889317018647177}
+  - component: {fileID: 5224295245235132820}
   m_Layer: 0
   m_Name: Keinuvaaka
   m_TagString: Untagged
@@ -141,7 +142,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &1635889317018647177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +155,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168cadae0d451ba438fb851286b3426d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vasenkuppi: {fileID: 0}
-  oikeakuppi: {fileID: 0}
+  vasenkuppi: {fileID: 6343386091873842825}
+  oikeakuppi: {fileID: 6059080107908932365}
+  vaakaAnimator: {fileID: 5224295245235132820}
+--- !u!95 &5224295245235132820
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635889317018647178}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9827ecd870aceb4b8a7008f9a888950, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6032720624249860824
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +252,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1564770624, guid: 42f4c3322ce920141a6ebb6498a2d5a6, type: 3}
+  m_Sprite: {fileID: 493349391, guid: fbdf353cd60c1784f871e39020a50165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -251,29 +274,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kuppi_Oikea
       objectReference: {fileID: 0}
-    - target: {fileID: 6003271381037878419, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003271381037878419, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.9281788
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003271381037878419, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.744
-      objectReference: {fileID: 0}
     - target: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4659998
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4920001
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -314,6 +325,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
   m_PrefabInstance: {fileID: 529677369330642845}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6059080107908932365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6003271381037878416, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
+  m_PrefabInstance: {fileID: 529677369330642845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3761258686641160627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,11 +343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7798704937484056377, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5000002
+      value: -2.267
       objectReference: {fileID: 0}
     - target: {fileID: 7798704937484056377, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -0.284
       objectReference: {fileID: 0}
     - target: {fileID: 7798704937484056377, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -369,20 +385,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kuppi_Vasen
       objectReference: {fileID: 0}
-    - target: {fileID: 7798704937484056379, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7798704937484056379, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.94818
-      objectReference: {fileID: 0}
-    - target: {fileID: 7798704937484056379, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.7519999
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
+--- !u!1 &6343386091873842825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798704937484056378, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
+  m_PrefabInstance: {fileID: 3761258686641160627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6343386091873842826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798704937484056377, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
