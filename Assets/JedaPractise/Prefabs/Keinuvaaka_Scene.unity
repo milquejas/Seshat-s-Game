@@ -400,6 +400,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1930732504411003164, guid: 3dd75c945a1c1e24482567c029a47eae, type: 3}
+      propertyPath: itemType
+      value: Porkkana
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dd75c945a1c1e24482567c029a47eae, type: 3}
 --- !u!1001 &1635889317966961123
@@ -566,6 +570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banaani
       objectReference: {fileID: 0}
+    - target: {fileID: 8283435873831702479, guid: 633468d214dc15541b81ff4466be49ba, type: 3}
+      propertyPath: itemType
+      value: Banaani
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 633468d214dc15541b81ff4466be49ba, type: 3}
 --- !u!1001 &5603390793833470854
@@ -626,6 +634,10 @@ PrefabInstance:
     - target: {fileID: 5603390793358495158, guid: d37cba391d3760044b30c0bcd4d1b25f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6808434386296242009, guid: d37cba391d3760044b30c0bcd4d1b25f, type: 3}
+      propertyPath: itemType
+      value: Omena
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d37cba391d3760044b30c0bcd4d1b25f, type: 3}

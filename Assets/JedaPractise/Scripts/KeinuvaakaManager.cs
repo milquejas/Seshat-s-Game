@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class KeinuvaakaManager : MonoBehaviour
@@ -32,7 +33,51 @@ public class KeinuvaakaManager : MonoBehaviour
             string painavampiKuppi = vasenkuppiPaino > oikeakuppiPaino ? "Vasen kuppi" : "Oikea kuppi";
             Debug.Log($"Vaaka on epätasapainossa. {painavampiKuppi} on painavampi.");
         }
+
+        PrintItemTypesOnScale();
     }
+
+    // Calculate the total weight of a specific item type on the scale.
+    public float CalculateSpecificWeight(string itemType)
+    {
+        float totalWeight = 0;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(vasenkuppi.transform.position, vasenkuppi.GetComponent<BoxCollider2D>().size, 0);
+        colliders = colliders.Concat(Physics2D.OverlapBoxAll(oikeakuppi.transform.position, oikeakuppi.GetComponent<BoxCollider2D>().size, 0)).ToArray();
+
+        foreach (Collider2D col in colliders)
+        {
+            WeightedObject weightedObject = col.GetComponent<WeightedObject>();
+            if (weightedObject != null && weightedObject.ItemType == itemType)
+            {
+                totalWeight += weightedObject.Weight;
+            }
+        }
+        return totalWeight;
+    }
+    public void PrintItemTypesOnScale()
+    {
+        Collider2D[] leftCupColliders = Physics2D.OverlapBoxAll(vasenkuppi.transform.position, vasenkuppi.GetComponent<BoxCollider2D>().size, 0);
+        Collider2D[] rightCupColliders = Physics2D.OverlapBoxAll(oikeakuppi.transform.position, oikeakuppi.GetComponent<BoxCollider2D>().size, 0);
+
+        foreach (Collider2D col in leftCupColliders)
+        {
+            WeightedObject weightedObject = col.GetComponent<WeightedObject>();
+            if (weightedObject != null)
+            {
+                Debug.Log($"Item Type: {weightedObject.ItemType}, Weight: {weightedObject.Weight}, Cup: Left Cup");
+            }
+        }
+
+        foreach (Collider2D col in rightCupColliders)
+        {
+            WeightedObject weightedObject = col.GetComponent<WeightedObject>();
+            if (weightedObject != null)
+            {
+                Debug.Log($"Item Type: {weightedObject.ItemType}, Weight: {weightedObject.Weight}, Cup: Right Cup");
+            }
+        }
+    }
+
 
     // Calculate the weight of objects in the specified cup
     float LaskePaino(GameObject kuppi)
