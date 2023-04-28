@@ -45,16 +45,16 @@ Material:
     m_Floats:
     - _Ambient: 1
     - _Bevel: 1
-    - _BevelClamp: 0.402
-    - _BevelOffset: -0.155
-    - _BevelRoundness: 0.134
-    - _BevelWidth: 0.351
+    - _BevelClamp: 0.208
+    - _BevelOffset: -0.132
+    - _BevelRoundness: 0.357
+    - _BevelWidth: 0.284
     - _BumpFace: 0
     - _BumpOutline: 0
     - _ColorMask: 15
     - _CullMode: 0
-    - _Diffuse: 0.795
-    - _FaceDilate: 0.09
+    - _Diffuse: 0.665
+    - _FaceDilate: 0.08
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -62,7 +62,7 @@ Material:
     - _GlowOuter: 0.05
     - _GlowPower: 0.75
     - _GradientScale: 26
-    - _LightAngle: 3.38
+    - _LightAngle: 3.61
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _OutlineSoftness: 0
@@ -71,9 +71,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 5
-    - _ScaleRatioA: 0.9285714
-    - _ScaleRatioB: 0.67089283
-    - _ScaleRatioC: 0.67089283
+    - _ScaleRatioA: 0.96153843
+    - _ScaleRatioB: 0.7043269
+    - _ScaleRatioC: 0.7043269
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 1
