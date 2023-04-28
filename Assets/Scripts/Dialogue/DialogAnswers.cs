@@ -4,6 +4,7 @@
  * Set case names in Conversation scriptable object and set what happens in this class
  * Names are case sensitive...
  * Painful way to make branching dialogs, but its possible. Needs heavy rethinking to make better. 
+ * TODO optimization
  * 
 */
 

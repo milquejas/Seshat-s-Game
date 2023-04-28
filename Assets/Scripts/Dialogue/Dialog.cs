@@ -8,7 +8,8 @@ using System.Collections.Generic;
  * Could add emotions to characters
  * Questions and dialog branching is badly implemented. 
  * Didn't think much how to make transitions for any dialog changes...
- *  
+ * People often pool UI objects by reparenting and then disabling them, which causes unnecessary dirtying.
+ * Solution: Disable the object first, then reparent it into the pool.
 */
 
 public class Dialog : MonoBehaviour
@@ -123,7 +124,8 @@ public class Dialog : MonoBehaviour
     private void StartQuestion()
     {
         answering = true;
-        // creates all answer buttons and sets their 
+        // creates all answer buttons and sets their listeners
+        // TODO optimize by pooling 4 buttons and adjusting text and listeners...
         AnswerButtonPanel.gameObject.SetActive(true);
         foreach (Answer answer in CurrentConversation.Lines[lineNumber].LineAnswer)
         {
