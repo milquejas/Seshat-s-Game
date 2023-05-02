@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5655001819631801879}
   - component: {fileID: 5655001819631801876}
   - component: {fileID: 5655001819631801877}
+  - component: {fileID: 8585231922478018507}
   m_Layer: 0
   m_Name: BoxDestoyer
   m_TagString: Untagged
@@ -161,3 +162,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8585231922478018507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655001819631801962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7101c96cc6c60064cab270491d34c2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  inventorySize: 10
