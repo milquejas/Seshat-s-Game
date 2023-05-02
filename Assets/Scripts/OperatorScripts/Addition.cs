@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MathQuess : MonoBehaviour
+public class Addition : MonoBehaviour
 {
 
     [SerializeField]
@@ -21,7 +21,7 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private List<int> easyMathList = new();
 
-    [SerializeField] 
+    [SerializeField]
     private int randomFirstNumber;
     [SerializeField]
     private int randomSecondNumber;
@@ -39,6 +39,16 @@ public class MathQuess : MonoBehaviour
     private string currentOperator;
 
 
+    //void Awake()
+    //{
+    //    // Get references to the TMP_Text components
+    //    firstNumber = FindObjectOfType<TMP_Text>();
+    //    secondNumber = FindObjectOfType<TMP_Text>();
+    //    answer1 = FindObjectOfType<TMP_Text>();
+    //    answer2 = FindObjectOfType<TMP_Text>();
+    //    operatorSign = FindObjectOfType<TMP_Text>();
+    //    rightOrWrong_Text = FindObjectOfType<TMP_Text>();
+    //}
 
     private void Start()
     {
@@ -47,7 +57,6 @@ public class MathQuess : MonoBehaviour
             easyMathList.Add(i);
         }
         DisplayMathProblem("+");
-        
     }
 
     public void DisplayMathProblem(string Buttontype)
@@ -72,30 +81,7 @@ public class MathQuess : MonoBehaviour
             case "+":
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem + secondNumberInProblem;
-                break;
-            case "-":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem - secondNumberInProblem;
-                break;
-            case "*":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem * secondNumberInProblem;
-                break;
-            case "/":
-                if (secondNumberInProblem == 0)
-                {
-                    secondNumberInProblem = 1;
-                }
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem / secondNumberInProblem;
-                // Tarkista jakolaskun jäännös
-                if (firstNumberInProblem % secondNumberInProblem != 0)
-                {
-                    // Jos jäännös ei ole 0, kutsu metodia uudestaan
-                    DisplayMathProblem(currentOperator);
-                    return;
-                }
-                break;
+                break;           
         }
 
         //answerOne = firstNumberInProblem - secondNumberInProblem;
