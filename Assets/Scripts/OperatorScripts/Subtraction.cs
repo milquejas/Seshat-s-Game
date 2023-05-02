@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class MathProblem : MonoBehaviour
+public class Subtraction : MonoBehaviour
 {
 
-    public Text firstNumber;
-    public Text secondNumber;
-    public Text answer1;
-    public Text answer2;
-    public Text operatorSign;
-    public Text rightOrWrong_Text;
-    public List<int> easyMathList = new List<int>();
+    [SerializeField]
+    private TMP_Text firstNumber;
+    [SerializeField]
+    private TMP_Text secondNumber;
+    [SerializeField]
+    private TMP_Text answer1;
+    [SerializeField]
+    private TMP_Text answer2;
+    [SerializeField]
+    private TMP_Text operatorSign;
+    [SerializeField]
+    private TMP_Text rightOrWrong_Text;
+    [SerializeField]
+    private List<int> easyMathList = new();
 
-    public int randomFirstNumber;
-    public int randomSecondNumber;
+    [SerializeField]
+    private int randomFirstNumber;
+    [SerializeField]
+    private int randomSecondNumber;
 
     private int firstNumberInProblem;
     private int secondNumberInProblem;
@@ -23,17 +32,21 @@ public class MathProblem : MonoBehaviour
     private int answerOne;
     private int answerTwo;
     private int displayRandomAnswer;
-    
+
     private int randomAnswerPlacement;
     private int currentAnswer;
-    
+
     private string currentOperator;
 
-    
+
 
     private void Start()
     {
-        DisplayMathProblem("+");
+        for (int i = 1; i <= 100; i++)
+        {
+            easyMathList.Add(i);
+        }
+        DisplayMathProblem("-");
     }
 
     public void DisplayMathProblem(string Buttontype)
@@ -41,7 +54,7 @@ public class MathProblem : MonoBehaviour
         // Generate a random number as the first and second numbers
         randomFirstNumber = Random.Range(0, easyMathList.Count + 1);
         randomSecondNumber = Random.Range(0, easyMathList.Count + 1);
-        
+
         // Assing your first and second number
         firstNumberInProblem = randomFirstNumber;
         secondNumberInProblem = randomSecondNumber;
@@ -54,31 +67,11 @@ public class MathProblem : MonoBehaviour
 
         // Calculate the correct answer based on the current operator
         switch (currentOperator)
-        {
-            case "+":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem + secondNumberInProblem;
-                break;
+        {           
             case "-":
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem - secondNumberInProblem;
-                break;
-            case "*":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem * secondNumberInProblem;
-                break;
-            case "/":
-                if(firstNumberInProblem == 0)
-                {
-                    firstNumberInProblem++;
-                }
-                if(secondNumberInProblem == 0)
-                {
-                    secondNumberInProblem++;
-                }
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem / secondNumberInProblem;                
-                break;
+                break;                                       
         }
 
         //answerOne = firstNumberInProblem - secondNumberInProblem;
@@ -86,13 +79,13 @@ public class MathProblem : MonoBehaviour
 
         // Tässä luodaan väärä vastaus ja annetaan sille arvoksi 1-4 enemmän tai vähemmän,
         // mitä oikea vastaus olisi
-        if ( displayRandomAnswer == 0)
+        if (displayRandomAnswer == 0)
         {
-            answerTwo = answerOne + Random.Range(1, 5);
+            answerTwo = answerOne + Random.Range(1, 4);
         }
         else
         {
-            answerTwo = answerOne - Random.Range(1, 5);
+            answerTwo = answerOne - Random.Range(1, 4);
         }
 
         firstNumber.text = "" + firstNumberInProblem;
@@ -115,7 +108,7 @@ public class MathProblem : MonoBehaviour
     }
     public void ButtonAnswer1()
     {
-        if ( currentAnswer == 0)
+        if (currentAnswer == 0)
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.green;
@@ -150,10 +143,11 @@ public class MathProblem : MonoBehaviour
     // Tämä void asettaa aina seuraavan tehtävän pelaajan valinnan jälkeen 
     public void TurnOffText()
     {
-        if(rightOrWrong_Text != null)
+        if (rightOrWrong_Text != null)
         {
             rightOrWrong_Text.enabled = false;
             DisplayMathProblem(currentOperator);
         }
-    }   
+    }
 }
+
