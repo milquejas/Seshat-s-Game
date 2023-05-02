@@ -19,7 +19,7 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private TMP_Text rightOrWrong_Text;
     [SerializeField]
-    private List<int> easyMathList = new List<int>();
+    private List<int> easyMathList = new();
 
     [SerializeField] 
     private int randomFirstNumber;
@@ -42,6 +42,10 @@ public class MathQuess : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 1; i <= 100; i++)
+        {
+            easyMathList.Add(i);
+        }
         DisplayMathProblem("+");
     }
 
@@ -77,17 +81,54 @@ public class MathQuess : MonoBehaviour
                 answerOne = firstNumberInProblem * secondNumberInProblem;
                 break;
             case "/":
-                if (firstNumberInProblem == 0)
-                {
-                    firstNumberInProblem++;
-                }
                 if (secondNumberInProblem == 0)
                 {
-                    secondNumberInProblem++;
+                    secondNumberInProblem = 1;
                 }
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem / secondNumberInProblem;
+                // Tarkista jakolaskun jäännös
+                if (firstNumberInProblem % secondNumberInProblem != 0)
+                {
+                    // Jos jäännös ei ole 0, kutsu metodia uudestaan
+                    DisplayMathProblem(currentOperator);
+                    return;
+                }
                 break;
+
+                // alla oleva mahdollistaa vaikeammat tehtävät.
+                // ei kuitenkaan toimi vielä halutusti.
+                //case "/":
+                //if (secondNumberInProblem == 0)
+                //{
+                //    secondNumberInProblem = 1;
+                //}
+                //operatorSign.text = currentOperator;
+
+                //// Tarkista, että jaettava luku on välillä 1-10 jaettavissa
+                //while (firstNumberInProblem % 10 != 0 && firstNumberInProblem <= 10)
+                //{
+                //    firstNumberInProblem++;
+                //}
+
+                //// Tarkista, että jakaja on välillä 1-10
+                //while (secondNumberInProblem % 10 != 0 && secondNumberInProblem <= 10)
+                //{
+                //    secondNumberInProblem++;
+                //}
+
+                //answerOne = firstNumberInProblem / secondNumberInProblem;
+                //// Tarkista jakolaskun jäännös
+                //if (firstNumberInProblem % secondNumberInProblem != 0) 
+                //{
+                //    // Jos jäännös ei ole 0, kutsu metodia uudestaan
+                //    DisplayMathProblem(currentOperator); 
+                //    return;
+                //}
+                //break;
+                //Alla oleva ehto varmentaa että jako jäännös on 0
+
+
         }
 
         //answerOne = firstNumberInProblem - secondNumberInProblem;
@@ -97,11 +138,11 @@ public class MathQuess : MonoBehaviour
         // mitä oikea vastaus olisi
         if (displayRandomAnswer == 0)
         {
-            answerTwo = answerOne + Random.Range(1, 5);
+            answerTwo = answerOne + Random.Range(1, 4);
         }
         else
         {
-            answerTwo = answerOne - Random.Range(1, 5);
+            answerTwo = answerOne - Random.Range(1, 4);
         }
 
         firstNumber.text = "" + firstNumberInProblem;
