@@ -2049,6 +2049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxDestoyer
       objectReference: {fileID: 0}
+    - target: {fileID: 8585231922478018507, guid: 2bc48af6d7fb188499015d06645dfe9a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bc48af6d7fb188499015d06645dfe9a, type: 3}
 --- !u!1 &1813544620
