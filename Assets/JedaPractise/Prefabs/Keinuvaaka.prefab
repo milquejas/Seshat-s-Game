@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 860107213, guid: fbdf353cd60c1784f871e39020a50165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168cadae0d451ba438fb851286b3426d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vasenkuppi: {fileID: 6343386091873842825}
-  oikeakuppi: {fileID: 6059080107908932365}
-  vaakaAnimator: {fileID: 5224295245235132820}
+  leftCup: {fileID: 6343386091873842825}
+  rightCup: {fileID: 6059080107908932365}
+  scaleAnimator: {fileID: 5224295245235132820}
 --- !u!95 &5224295245235132820
 Animator:
   serializedVersion: 5
@@ -251,7 +251,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 493349391, guid: fbdf353cd60c1784f871e39020a50165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

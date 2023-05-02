@@ -129,3 +129,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 50
+  itemType: Banaani
