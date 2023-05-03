@@ -159,6 +159,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &16915378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 16915380}
+  - component: {fileID: 16915379}
+  m_Layer: 0
+  m_Name: TaskManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &16915379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16915378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08064be0b4c591e4286941235fa7fd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleManager: {fileID: 1998899710}
+  tasks:
+  - description: Aseta vasempaan kuppiin 150 g Banaaneja
+    itemType: Banaani
+    targetWeight: 150
+    cupTarget: 0
+  currentTaskIndex: 0
+--- !u!4 &16915380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16915378}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.97672, y: 7.15664, z: -0.30440873}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &776471397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,6 +566,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d37cba391d3760044b30c0bcd4d1b25f, type: 3}
+--- !u!114 &1998899710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1635889317018647177, guid: bcad77e2f9ff7064aace6f516d8a7f94, type: 3}
+  m_PrefabInstance: {fileID: 1635889317966961123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168cadae0d451ba438fb851286b3426d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2012816896 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6343386091873842825, guid: bcad77e2f9ff7064aace6f516d8a7f94, type: 3}
@@ -604,6 +666,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 5646367}
+    - target: {fileID: 1635889317018647177, guid: bcad77e2f9ff7064aace6f516d8a7f94, type: 3}
+      propertyPath: taskManager
+      value: 
+      objectReference: {fileID: 16915379}
     - target: {fileID: 1635889317018647178, guid: bcad77e2f9ff7064aace6f516d8a7f94, type: 3}
       propertyPath: m_Name
       value: Keinuvaaka
