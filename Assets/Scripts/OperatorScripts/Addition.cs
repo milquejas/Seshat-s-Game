@@ -38,18 +38,6 @@ public class Addition : MonoBehaviour
 
     private string currentOperator;
 
-
-    //void Awake()
-    //{
-    //    // Get references to the TMP_Text components
-    //    firstNumber = FindObjectOfType<TMP_Text>();
-    //    secondNumber = FindObjectOfType<TMP_Text>();
-    //    answer1 = FindObjectOfType<TMP_Text>();
-    //    answer2 = FindObjectOfType<TMP_Text>();
-    //    operatorSign = FindObjectOfType<TMP_Text>();
-    //    rightOrWrong_Text = FindObjectOfType<TMP_Text>();
-    //}
-
     private void Start()
     {
         for (int i = 1; i <= 100; i++)

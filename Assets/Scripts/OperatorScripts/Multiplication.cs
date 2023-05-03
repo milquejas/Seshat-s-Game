@@ -38,8 +38,6 @@ public class Multiplication : MonoBehaviour
 
     private string currentOperator;
 
-
-
     private void Start()
     {
         for (int i = 1; i <= 10; i++)
