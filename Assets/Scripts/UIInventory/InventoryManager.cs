@@ -99,10 +99,10 @@ public class InventoryManager : MonoBehaviour
     //{
     //    InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
 
-    //    for (int i = 0; i < Items.Count; i++)
+    //    for (int i = 0; i < Items.Count -1; i++)
     //    {
     //        InventoryItems[i].AddItem(Items[i]);
     //    }
     //}
-        
+
 }
