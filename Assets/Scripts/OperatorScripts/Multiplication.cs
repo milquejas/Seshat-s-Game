@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MathQuess : MonoBehaviour
+public class Multiplication : MonoBehaviour
 {
 
     [SerializeField]
@@ -21,7 +21,7 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private List<int> easyMathList = new();
 
-    [SerializeField] 
+    [SerializeField]
     private int randomFirstNumber;
     [SerializeField]
     private int randomSecondNumber;
@@ -38,16 +38,13 @@ public class MathQuess : MonoBehaviour
 
     private string currentOperator;
 
-
-
     private void Start()
     {
-        for (int i = 1; i <= 100; i++)
+        for (int i = 1; i <= 10; i++)
         {
             easyMathList.Add(i);
         }
-        DisplayMathProblem("+");
-        
+        DisplayMathProblem("*");
     }
 
     public void DisplayMathProblem(string Buttontype)
@@ -68,34 +65,11 @@ public class MathQuess : MonoBehaviour
 
         // Calculate the correct answer based on the current operator
         switch (currentOperator)
-        {
-            case "+":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem + secondNumberInProblem;
-                break;
-            case "-":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem - secondNumberInProblem;
-                break;
+        {            
             case "*":
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem * secondNumberInProblem;
-                break;
-            case "/":
-                if (secondNumberInProblem == 0)
-                {
-                    secondNumberInProblem = 1;
-                }
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem / secondNumberInProblem;
-                // Tarkista jakolaskun jäännös
-                if (firstNumberInProblem % secondNumberInProblem != 0)
-                {
-                    // Jos jäännös ei ole 0, kutsu metodia uudestaan
-                    DisplayMathProblem(currentOperator);
-                    return;
-                }
-                break;
+                break;           
         }
 
         //answerOne = firstNumberInProblem - secondNumberInProblem;
@@ -174,3 +148,4 @@ public class MathQuess : MonoBehaviour
         }
     }
 }
+
