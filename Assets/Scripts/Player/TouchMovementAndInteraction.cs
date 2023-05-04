@@ -17,7 +17,7 @@ public class TouchMovementAndInteraction : MonoBehaviour
 
     [SerializeField] private LineRenderer bowGuideLine;
 
-    public bool disableTouch { private get; set; }
+    public bool ControlDisabled { get; set; }
 
     private bool thisTouchInteracting;
 
@@ -56,17 +56,16 @@ public class TouchMovementAndInteraction : MonoBehaviour
 
     private void HandleTouch(int touchFingerId, Vector2 touchPosition, TouchPhase touchPhase)
     {
-        if (disableTouch)
+        if (ControlDisabled)
         {
             bowGuideLine.enabled = false;
             return;
         }
-        
 
         switch (touchPhase)
         {
             case TouchPhase.Began:
-                if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize))
+                if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize) != null)
                 {
                     thisTouchInteracting = true;
                     PlayerRigidbody.velocity = Vector2.zero;

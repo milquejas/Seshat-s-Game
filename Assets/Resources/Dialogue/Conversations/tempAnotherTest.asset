@@ -22,7 +22,7 @@ MonoBehaviour:
       id sequi explicabo.
     LineAnswer: []
   - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
-    Position: 1
+    Position: 2
     LineType: 0
     dialogueText: Maiores omnis porro fugit. Quaerat aspernatur earum iure officia
       molestiae praesentium molestias reiciendis. Explicabo aliquid et odit dicta
@@ -30,7 +30,7 @@ MonoBehaviour:
       Sunt fuga aliquam sapiente velit sapiente earum.
     LineAnswer: []
   - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
-    Position: 0
+    Position: 1
     LineType: 1
     dialogueText: Will you continue this conversation?
     LineAnswer:

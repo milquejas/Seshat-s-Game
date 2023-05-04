@@ -11,7 +11,7 @@
 public class DialogAnswers : MonoBehaviour
 {
     private Dialog dialog;
-    [SerializeField] private ConversationList allConversations;
+    [SerializeField] private ConversationListSO allConversations;
 
     private void Start()
     {

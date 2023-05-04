@@ -8,7 +8,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+/*
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -165,3 +165,4 @@ public partial class @CursorControl: IInputActionCollection2, IDisposable
         void OnClick(InputAction.CallbackContext context);
     }
 }
+*/

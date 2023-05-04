@@ -1,14 +1,30 @@
-using Mono.Cecil.Cil;
-using System;
+/*
+ * When stuff stays in a cup for 2sec, sticky them and add them to the weight pool? 
+ * Every time something is added, update weights and animation? 
+ * Every time something is removed, update weights and animation? 
+ * If scale is even && one side has only weights -> enable accept trade button? 
+ * Accepting trade gives you what trade ui says. 
+ * Inventory update sends event to quest manager. 
+ * QuestManager compares items you got to quest target. 
+ * Start from beginning/reset inventory if wrong. 
+ * 
+ * Tip button to show what is inside a cup and their weights?
+ * 
+*/
+/*
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static WeightedObject;
 
 public class KeinuvaakaManager : MonoBehaviour
 {
     public GameObject leftCup, rightCup;
     public Animator scaleAnimator;
     private float weightDifference;
+    public TaskManager taskManager;
+
+
 
     void Start()
     {
@@ -34,6 +50,10 @@ public class KeinuvaakaManager : MonoBehaviour
         if (weightDifference < 10)
         {
             Debug.Log("The scale is balanced!");
+            if (taskManager != null)
+            {
+                taskManager.CheckTaskCompletion();
+            }
         }
         else
         {
@@ -46,7 +66,7 @@ public class KeinuvaakaManager : MonoBehaviour
     }
 
     // Calculate the total weight of a specific item type on the scale.
-    public float CalculateSpecificWeight(string itemType)
+    public float CalculateSpecificWeight(ItemType itemType)
     {
         float totalWeight = 0;
         // Get all colliders in both cups
@@ -77,7 +97,7 @@ public class KeinuvaakaManager : MonoBehaviour
     {
         // Get all colliders in the specified cup
         Collider2D[] cupColliders = Physics2D.OverlapBoxAll(cup.transform.position, cup.GetComponent<BoxCollider2D>().size, 0);
-        Dictionary<string, ItemData> itemDataDict = new Dictionary<string, ItemData>();
+        Dictionary<ItemType, ItemData> itemDataDict = new Dictionary<ItemType, ItemData>();
         float totalCupWeight = 0;
 
         // Iterate through the colliders and group the items by type, counting and summing their weights
@@ -86,7 +106,7 @@ public class KeinuvaakaManager : MonoBehaviour
             WeightedObject weightedObject = col.GetComponent<WeightedObject>();
             if (weightedObject != null)
             {
-                string itemType = weightedObject.ItemType;
+                ItemType itemType = weightedObject.ItemType;
                 if (itemDataDict.ContainsKey(itemType))
                 {
                     itemDataDict[itemType].Count++;
@@ -104,7 +124,7 @@ public class KeinuvaakaManager : MonoBehaviour
         // Log the item types, their counts, and their total weights in the specified cup
         foreach (var item in itemDataDict)
         {
-            string itemType = item.Key;
+            ItemType itemType = item.Key;
             int count = item.Value.Count;
             float totalWeight = item.Value.TotalWeight;
             Debug.Log($"Item Type: {itemType}, Count: {count}, Total Weight: {totalWeight}, Cup: {cupName}");
@@ -137,3 +157,4 @@ public class KeinuvaakaManager : MonoBehaviour
         return weight;
     }
 }
+*/

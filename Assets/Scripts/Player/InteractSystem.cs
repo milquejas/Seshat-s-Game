@@ -20,7 +20,7 @@ public static class InteractSystem
         interactableContactFilter.SetLayerMask(interactableLayer);
     }
 
-    public static bool TryToInteract(Vector2 touchPosition, float size)
+    public static Transform TryToInteract(Vector2 touchPosition, float size)
     {
         int colliderAmountFound = Physics2D.OverlapCircle(touchPosition, size, interactableContactFilter, interactables);
         
@@ -43,14 +43,13 @@ public static class InteractSystem
 
             if (closestCollider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
             {
-                if (interactableScript.inRange) 
+                if (interactableScript.InRange) 
                 { 
-                    interactableScript.Interact();
-                    return true;
+                    return interactableScript.Interact();
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
                 
             }
@@ -58,9 +57,9 @@ public static class InteractSystem
             else
             {
                 Debug.LogWarning($"Missing IInteractable script from {closestCollider.gameObject.name}?");
-                return false;
+                return null;
             }
         }
-        return false;
+        return null;
     }
 }

@@ -59,12 +59,12 @@ public class RoomChange : MonoBehaviour
 
         StopCoroutine(fixedUpdateCoroutine);
         trigger.enabled = true;
-        player.disableTouch = false;
+        player.ControlDisabled = false;
     }
 
     private IEnumerator StartRoomTransition()
     {
-        player.disableTouch = true;
+        player.ControlDisabled = true;
 
         fixedUpdateCoroutine = AutoMovePlayer(-exitDirection);
         StartCoroutine(fixedUpdateCoroutine);

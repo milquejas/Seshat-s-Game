@@ -2,36 +2,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System;
 /*
- * light starting reference:
- * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
- * Could add emotions to characters
- * Questions and dialog branching is badly implemented. 
- * Didn't think much how to make transitions for any dialog changes...
- * People often pool UI objects by reparenting and then disabling them, which causes unnecessary dirtying.
- * Solution: Disable the object first, then reparent it into the pool.
+* light starting reference:
+* https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
+* Could add emotions to characters
+* Questions and dialog branching is badly implemented. 
+* Didn't think much how to make transitions for any dialog changes...
+* People often pool UI objects by reparenting and then disabling them, which causes unnecessary dirtying.
+* Solution: Disable the object first, then reparent it into the pool.
+* 
+* Event when dialog ends. 
 */
 
 public class Dialog : MonoBehaviour
 {
-    public Image Portrait;
-    public TMP_Text SpeakerName;
-    public TMP_Text dialog;
-    public Image AnswerButtonPanel;
-    public GameObject AnswerButton;
+    [SerializeField] private Image CharacterPlacement;
+    [SerializeField] private Image Portrait;
+    [SerializeField] private TMP_Text SpeakerName;
+    [SerializeField] private TMP_Text dialog;
+    [SerializeField] private Image AnswerButtonPanel;
+    [SerializeField] private GameObject AnswerButton;
 
     private List<GameObject> answerButtons = new List<GameObject>();
-
-    [SerializeField] private TouchMovementAndInteraction playerControls;
 
     public int lineNumber { get; set; }
     private bool answering;
 
-    public Conversation CurrentConversation;
+    public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
 
-    private Character speaker;
-    public Character Speaker
+    [SerializeField] private bool StartTestConversation;
+
+    [Header("hacked shitty solution, pick one the scene has")]
+    [SerializeField] private TouchMovementAndInteraction playerControls;
+    [SerializeField] private TouchAndMouseBehaviour playerControlsNoMovement;
+
+
+    // EVENT!!!
+    public event Action<ConversationSO> ConversationEnded;
+
+    private CharacterSO speaker;
+    public CharacterSO Speaker
     {
         get => speaker;
         set
@@ -44,25 +56,46 @@ public class Dialog : MonoBehaviour
 
     private void Start()
     {
+        if (StartTestConversation)
+            StartConversation(CurrentConversation);
+
         dialogAnswers = GetComponent<DialogAnswers>();
     }
 
-    public void StartConversation(Conversation _conversation)
+    // Invoke dialog exit action
+    public void ExitDialog()
+    {
+        ConversationEnded?.Invoke(CurrentConversation);
+
+        if (playerControls != null)
+        {
+            playerControls.ControlDisabled = false;
+        }
+        if (playerControlsNoMovement != null)
+        {
+            playerControlsNoMovement.ControlDisabled = false;
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    public void StartConversation(ConversationSO _conversation)
     {
         gameObject.SetActive(true);
-        playerControls.disableTouch = true;
+
+        if(playerControls!= null) 
+        {
+            playerControls.ControlDisabled = true;
+        }
+        if (playerControlsNoMovement != null)
+        {
+            playerControlsNoMovement.ControlDisabled = true;
+        }
 
         CurrentConversation = _conversation;
         lineNumber = 0;
-        // transform.gameObject.SetActive(true);
 
         ShowDialog();
-    }
-
-    public void ExitDialog()
-    {
-        playerControls.disableTouch = false;
-        gameObject.SetActive(false);
     }
 
     public void ShowDialog()
@@ -93,31 +126,40 @@ public class Dialog : MonoBehaviour
 
     private void AdjustUIPositions()
     {
+        /*
         switch (CurrentConversation.Lines[lineNumber].Position)
         {
             case CharacterPosition.Left:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(200f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                CharacterPlacement.gameObject.SetActive(true);
+                CharacterPlacement.rectTransform.position = new Vector3(176f, CharacterPlacement.rectTransform.rect.position.y, CharacterPlacement.rectTransform.rect.position.y);
+                CharacterPlacement.rectTransform.anchorMin = new Vector2(0, 1);
+                CharacterPlacement.rectTransform.anchorMax = new Vector2(0, 1);
                 break;
 
             case CharacterPosition.Right:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(1000f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                CharacterPlacement.gameObject.SetActive(true);
+                CharacterPlacement.rectTransform.position = new Vector3(0, CharacterPlacement.rectTransform.position.y, CharacterPlacement.rectTransform.position.z);
+                CharacterPlacement.rectTransform.anchorMin = new Vector2(1, 1);
+                CharacterPlacement.rectTransform.anchorMax = new Vector2(1, 1);
+                CharacterPlacement.rectTransform.pivot = new Vector2(0.5f, 0.5f);
                 break;
 
             case CharacterPosition.Middle:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(600f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                CharacterPlacement.gameObject.SetActive(true);
+                CharacterPlacement.rectTransform.position = new Vector3(0, CharacterPlacement.rectTransform.position.y, CharacterPlacement.rectTransform.position.z);
+                CharacterPlacement.rectTransform.anchorMin = new Vector2(0.5f, 1);
+                CharacterPlacement.rectTransform.anchorMax = new Vector2(0.5f, 1);
+                CharacterPlacement.rectTransform.pivot = new Vector2(0.5f, 0.5f);
                 break;
 
             case CharacterPosition.None:
-                Portrait.gameObject.SetActive(false);
+                CharacterPlacement.gameObject.SetActive(false);
                 break;
 
             default:
                 Debug.LogWarning("current conversation position switch hit default, oh no panic?!");
                 break;
-        }
+        }*/
     }
 
     // question behaviour starts here
