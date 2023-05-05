@@ -1,14 +1,14 @@
-using Mono.Cecil.Cil;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class KeinuvaakaManager : MonoBehaviour
 {
     public GameObject leftCup, rightCup;
     public Animator scaleAnimator;
     private float weightDifference;
+    public TaskManager taskManager;
 
     void Start()
     {
@@ -34,6 +34,10 @@ public class KeinuvaakaManager : MonoBehaviour
         if (weightDifference < 10)
         {
             Debug.Log("The scale is balanced!");
+            if (taskManager != null)
+            {
+                taskManager.CheckTaskCompletion();
+            }
         }
         else
         {
@@ -117,6 +121,23 @@ public class KeinuvaakaManager : MonoBehaviour
         public int Count { get; set; }
         public float TotalWeight { get; set; }
     }
+
+    public float CalculateSpecificWeightInCup(string itemType, GameObject cup)
+    {
+        float totalWeight = 0;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(cup.transform.position, cup.GetComponent<BoxCollider2D>().size, 0);
+
+        foreach (Collider2D col in colliders)
+        {
+            WeightedObject weightedObject = col.GetComponent<WeightedObject>();
+            if (weightedObject != null && weightedObject.ItemType == itemType)
+            {
+                totalWeight += weightedObject.Weight;
+            }
+        }
+        return totalWeight;
+    }
+
 
     // Calculate the weight of objects in the specified cup
     float CalculateWeight(GameObject cup)
