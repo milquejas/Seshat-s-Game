@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -72,37 +73,17 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
     public void SetInventoryItems()
     {
         InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
+        Debug.Log(InventoryItems.Length);
+        Debug.Log(Items.Count);
 
-        if (InventoryItems != null && InventoryItems.Length > 0)
+        for (int i = 0; i < Items.Count; i++)
         {
-            for (int i = 0; i < Items.Count && i < InventoryItems.Length; i++)
-            {
-                InventoryItems[i].AddItem(Items[i]);
-            }
+            InventoryItems[i].AddItem(Items[i]);
         }
     }
-
-    //public void SetInventoryItems()
-    //{
-    //    InventoryItems = new InventoryItemController[Items.Count];
-    //    for (int i = 0; i < Items.Count; i++)
-    //    {
-    //        InventoryItems[i] = ItemContent.GetChild(i).GetComponent<InventoryItemController>();
-    //        InventoryItems[i].AddItem(Items[i]);
-    //    }
-    //}
-
-    //public void SetInventoryItems()
-    //{
-    //    InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
-
-    //    for (int i = 0; i < Items.Count -1; i++)
-    //    {
-    //        InventoryItems[i].AddItem(Items[i]);
-    //    }
-    //}
 
 }
