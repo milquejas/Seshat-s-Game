@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class TouchAndMouseBehaviour : MonoBehaviour
 {
-    private Vector2 touchStartPosition, movedPosition, movementDirection;
     [SerializeField] private float interactionCircleSize;
+    [SerializeField] private float draggingSpeed;
     private bool thisTouchInteracting;
 
     private Transform InteractTarget;
+    private DraggableItem targetDragItem;
     [field: SerializeField] public bool ControlDisabled { get; set; }
 
     void Start()
@@ -53,19 +54,28 @@ public class TouchAndMouseBehaviour : MonoBehaviour
         switch (touchPhase)
         {
             case TouchPhase.Began:
-                InteractTarget = InteractSystem.TryToInteract(touchPosition, interactionCircleSize);
+                if (!thisTouchInteracting)
+                    InteractTarget = InteractSystem.TryToInteract(touchPosition, interactionCircleSize);
+
                 if (InteractTarget != null)
                 {
-                    Debug.Log("test");
                     thisTouchInteracting = true;
+                    if (InteractTarget.TryGetComponent<DraggableItem>(out DraggableItem target))
+                    {
+                        targetDragItem = target;
+                        targetDragItem.StartDragging(true);
+                    }
                 }
                 break;
 
             case TouchPhase.Moved:
                 if (thisTouchInteracting)
                 {
-                    Debug.Log("test");
-                    InteractTarget.transform.position = touchPosition;
+                    //InteractTarget.transform.position = touchPosition;
+
+                    //targetDragItem.transform
+                    Vector2 velocityDirection = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
+                    targetDragItem.weightedItem.RBody.velocity = velocityDirection * draggingSpeed;
                 }
                 break;
 
@@ -75,6 +85,13 @@ public class TouchAndMouseBehaviour : MonoBehaviour
 
             case TouchPhase.Ended:
                 thisTouchInteracting = false;
+
+                if (targetDragItem!= null)
+                {
+                    targetDragItem.StartDragging(false);
+                }
+                    
+
                 break;
         }
     }

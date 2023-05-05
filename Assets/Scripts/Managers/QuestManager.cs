@@ -19,7 +19,7 @@ public class QuestManager : MonoBehaviour
         switch (conversation.ConversationName)
         {
             case "TutorialEnter":
-                Debug.Log("test");
+                // Debug.Log("test");
                 break;
         }
     }

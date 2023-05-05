@@ -51,7 +51,20 @@ public static class InteractSystem
                 {
                     return null;
                 }
-                
+            }
+
+            else if (closestCollider.GetComponentInParent<IInteractable>() != null)
+            {
+                var interactable = closestCollider.GetComponentInParent<IInteractable>();
+
+                if (interactable.InRange)
+                {
+                    return interactable.Interact();
+                }
+                else
+                {
+                    return null;
+                }
             }
 
             else

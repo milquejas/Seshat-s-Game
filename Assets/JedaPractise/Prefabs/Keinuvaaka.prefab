@@ -96,7 +96,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1635889317018647183}
   - component: {fileID: 1635889317018647176}
-  - component: {fileID: 1635889317018647177}
   - component: {fileID: 5224295245235132820}
   m_Layer: 0
   m_Name: Keinuvaaka
@@ -143,21 +142,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &1635889317018647177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635889317018647178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168cadae0d451ba438fb851286b3426d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftCup: {fileID: 6343386091873842825}
-  rightCup: {fileID: 6059080107908932365}
-  scaleAnimator: {fileID: 5224295245235132820}
 --- !u!95 &5224295245235132820
 Animator:
   serializedVersion: 5
@@ -325,11 +309,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6003271381037878421, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
   m_PrefabInstance: {fileID: 529677369330642845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6059080107908932365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6003271381037878416, guid: 02b257f7448c70d47be28e8c66fa8cea, type: 3}
-  m_PrefabInstance: {fileID: 529677369330642845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3761258686641160627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,11 +366,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
---- !u!1 &6343386091873842825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7798704937484056378, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
-  m_PrefabInstance: {fileID: 3761258686641160627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6343386091873842826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7798704937484056377, guid: bc8b086caa1845946a261b7ff1b943fc, type: 3}
