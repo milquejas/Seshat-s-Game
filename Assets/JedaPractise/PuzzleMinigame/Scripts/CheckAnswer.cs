@@ -10,8 +10,13 @@ public class CheckAnswer : MonoBehaviour
     public TextMeshProUGUI optionBText;
     public TextMeshProUGUI optionCText;
 
+    public GameObject optionAButton;
+    public GameObject optionBButton;
+    public GameObject optionCButton;
+
     public DialogueManager dialogueManager;
 
+    private int playerScore;
     private int currentTaskIndex;
     private List<int> taskOrder;
 
@@ -23,10 +28,21 @@ public class CheckAnswer : MonoBehaviour
         public int correctOptionIndex;
     }
 
+    // Initialize the game
     void Start()
     {
         taskOrder = GenerateRandomTaskOrder();
         DisplayTask(taskOrder[currentTaskIndex]);
+        playerScore = 0;
+    }
+
+    // Set the visibility of the question and answer buttons
+    void SetQuestionAndButtonsVisibility(bool visible)
+    {
+        questionText.gameObject.SetActive(visible);
+        optionAButton.SetActive(visible);
+        optionBButton.SetActive(visible);
+        optionCButton.SetActive(visible);
     }
 
     // Generates a random order for tasks
@@ -84,31 +100,36 @@ public class CheckAnswer : MonoBehaviour
     {
         if (tasks[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
         {
-            dialogueManager.dialogueLines = new string[] { "Oikein! Siirrytään seuraavaan tehtävään." };
-            dialogueManager.StartDialogue(() =>
-            {
-                currentTaskIndex++;
-                if (currentTaskIndex < tasks.Length)
-                {
-                    DisplayTask(taskOrder[currentTaskIndex]);
-                }
-                else
-                {
-                    dialogueManager.dialogueLines = new string[] { "Onneksi olkoon! Olet suorittanut kaikki tehtävät!" };
-                    dialogueManager.StartDialogue(null);
-                }
-            });
+            playerScore = Mathf.Min(playerScore + 1, tasks.Length); // Add points for the correct answer, but do not exceed the total number of questions
+        }
+
+        currentTaskIndex++;
+
+        if (currentTaskIndex < tasks.Length)
+        {
+            DisplayTask(taskOrder[currentTaskIndex]);
         }
         else
         {
-            dialogueManager.dialogueLines = new string[] { "Väärin! Yritä uudelleen alusta." };
-            dialogueManager.StartDialogue(() =>
+            SetQuestionAndButtonsVisibility(false); // Hide the question and buttons
+
+            if (playerScore < 4)
             {
-                currentTaskIndex = 0; // Reset the task index
-                taskOrder = GenerateRandomTaskOrder(); // Generate a new random order
-                DisplayTask(taskOrder[currentTaskIndex]);
-            });
+                dialogueManager.dialogueLines = new string[] { $"You answered {playerScore}/5 correctly. Try again from the beginning." };
+                dialogueManager.StartDialogue(() =>
+                {
+                    currentTaskIndex = 0; // Reset the task index
+                    taskOrder = GenerateRandomTaskOrder(); // Generate a new random order
+                    DisplayTask(taskOrder[currentTaskIndex]);
+                    SetQuestionAndButtonsVisibility(true); // Show the question and buttons
+                });
+            }
+            else
+            {
+                dialogueManager.dialogueLines = new string[] { $"Congratulations! You answered {playerScore}/5 correctly!" };
+                dialogueManager.StartDialogue(null);
+                // At this point, you can add code to transition to the next event or scene
+            }
         }
     }
-
 }
