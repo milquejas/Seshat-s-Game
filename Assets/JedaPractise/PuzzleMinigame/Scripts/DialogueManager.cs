@@ -4,7 +4,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText;
     public GameObject dialogueBox;
 
     public string[] dialogueLines;
