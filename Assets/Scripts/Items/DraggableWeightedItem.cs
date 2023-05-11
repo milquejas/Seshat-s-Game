@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 /*
  * Setup item so it takes info from SO when enabled so it can be pooled
@@ -11,14 +12,19 @@ using UnityEngine;
 */
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public class WeightedItem : MonoBehaviour
+public class DraggableWeightedItem : MonoBehaviour, IInteractable
 {
+    [field: SerializeField] public bool InRange { get; set; }
     public ItemSO Item;
 
     [field: NonSerialized] public Rigidbody2D RBody;
 
-    private SpriteRenderer itemImage;
-    private List<GameObject> listOfColliderChildren = new List<GameObject>(); 
+    [field: NonSerialized] public SpriteRenderer itemImage;
+    public ScaleMinigameInventoryItem originInventoryItem;
+
+    private List<GameObject> listOfColliderChildren = new List<GameObject>();
+
+    public Vector2 originPoolPosition;
 
     // awake runs before OnEnable?
     private void Awake()
@@ -32,10 +38,9 @@ public class WeightedItem : MonoBehaviour
         }
     }
 
-    private void DisableItem()
+    public Transform Interact()
     {
-
-        // move item to out of screen
+        return transform;
     }
 
     private void OnEnable()
@@ -44,12 +49,16 @@ public class WeightedItem : MonoBehaviour
         itemImage.sprite = Item.ItemImage;
         RBody = GetComponent<Rigidbody2D>();
         RBody.mass = Item.ItemWeight;
+        itemImage.color = Color.white;
 
-        EnableItemCollider(true);
+        //EnableItemCollider(true);
     }
 
+    // also gravity disabled while collider disabled
     public void EnableItemCollider(bool toggle)
     {
+        RBody.gravityScale = Convert.ToInt32(toggle);
+
         switch (Item.ItemName)
         {
             case ItemType.Apple:

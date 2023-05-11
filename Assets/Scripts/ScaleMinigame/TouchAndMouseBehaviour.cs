@@ -11,7 +11,7 @@ public class TouchAndMouseBehaviour : MonoBehaviour
     private bool thisTouchInteracting;
 
     private Transform InteractTarget;
-    private DraggableItem targetDragItem;
+    private DraggableWeightedItem targetDragItem;
     [field: SerializeField] public bool ControlDisabled { get; set; }
 
     void Start()
@@ -60,10 +60,11 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                 if (InteractTarget != null)
                 {
                     thisTouchInteracting = true;
-                    if (InteractTarget.TryGetComponent<DraggableItem>(out DraggableItem target))
+                    if (InteractTarget.TryGetComponent<DraggableWeightedItem>(out DraggableWeightedItem target))
                     {
                         targetDragItem = target;
-                        targetDragItem.StartDragging(true);
+                        targetDragItem.EnableItemCollider(false);
+                        targetDragItem.transform.position = touchPosition;
                     }
                 }
                 break;
@@ -74,8 +75,10 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                     //InteractTarget.transform.position = touchPosition;
 
                     //targetDragItem.transform
+                    if (targetDragItem is null) return;
+
                     Vector2 velocityDirection = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
-                    targetDragItem.weightedItem.RBody.velocity = velocityDirection * draggingSpeed;
+                    targetDragItem.RBody.velocity = velocityDirection * draggingSpeed;
                 }
                 break;
 
@@ -86,12 +89,10 @@ public class TouchAndMouseBehaviour : MonoBehaviour
             case TouchPhase.Ended:
                 thisTouchInteracting = false;
 
-                if (targetDragItem!= null)
-                {
-                    targetDragItem.StartDragging(false);
-                }
-                    
-
+                if (targetDragItem is null) return;
+                
+                targetDragItem.EnableItemCollider(true);
+                
                 break;
         }
     }

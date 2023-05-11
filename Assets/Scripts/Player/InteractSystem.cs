@@ -44,7 +44,7 @@ public static class InteractSystem
             if (closestCollider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
             {
                 if (interactableScript.InRange) 
-                { 
+                {
                     return interactableScript.Interact();
                 }
                 else
@@ -56,7 +56,7 @@ public static class InteractSystem
             else if (closestCollider.GetComponentInParent<IInteractable>() != null)
             {
                 var interactable = closestCollider.GetComponentInParent<IInteractable>();
-
+                
                 if (interactable.InRange)
                 {
                     return interactable.Interact();

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -11,25 +10,35 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
 {
     [field: SerializeField]
     public bool InRange { get; set; }
+    public InventoryWeightedItem inventoryWeightedItem;
+    [SerializeField] private ScaleMinigamePooler inventoryPooler;
+    private DraggableWeightedItem selectedItem;
 
-    [SerializeField] private Transform containerForPooledItems;
-    public ItemSO inventoryProduce;
-    private List<WeightedItem> itemList2 = new List<WeightedItem>();
+    private SpriteRenderer itemImage;
 
-    private void Start()
+    public void InitializeInventoryItem()
     {
-        containerForPooledItems.GetComponentsInChildren(true, itemList2);
-        foreach (WeightedItem item in itemList2)
-        {
-
-        }
+        inventoryPooler = GetComponentInParent<ScaleMinigamePooler>();
+        itemImage = GetComponent<SpriteRenderer>();
+        itemImage.sprite = inventoryWeightedItem.ItemType.ItemImage;
     }
 
     public Transform Interact()
     {
-        Debug.Log($"interacted with{gameObject.name}");
-        
-        return transform;
+        selectedItem = inventoryPooler.GetPooledItem();
+        selectedItem.Item = inventoryWeightedItem.ItemType;
+        selectedItem.gameObject.SetActive(true);
+        selectedItem.originPoolPosition = transform.position;
+        selectedItem.originInventoryItem = this;
+
+        inventoryWeightedItem.ItemAmount -= 1;
+
+        if (inventoryWeightedItem.ItemAmount <= 0 )
+        {
+            transform.gameObject.SetActive(false);
+        }
+
+        return selectedItem.transform;
     }
 
     void OnMouseOver()

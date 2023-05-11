@@ -9,7 +9,7 @@ public class ProduceFromInventory : MonoBehaviour
 {
     private void Start()
     {
-        GetComponent<WeightedItem>();
+        GetComponent<DraggableWeightedItem>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
