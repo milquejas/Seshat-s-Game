@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6852849566834222536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6852849566834222537}
+  - component: {fileID: 6852849566834222539}
+  - component: {fileID: 6852849566834222538}
+  m_Layer: 0
+  m_Name: PuzzleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6852849566834222537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852849566834222536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 462.90167, y: 570.8048, z: -13.656547}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6852849566834222539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852849566834222536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdee3ae4754fe54b8caf70bc3b753d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 0}
+  dialogueBox: {fileID: 0}
+  dialogueLines: []
+--- !u!114 &6852849566834222538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852849566834222536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cb448a5e5f4084888f0c7740589b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks:
+  - question: "Muumio painaa 40 kilogrammaa ilman k\xE4\xE4reit\xE4. K\xE4\xE4reiden
+      kanssa muumion massa on 50 kilogrammaa. Kuinka paljon k\xE4\xE4reiden massa
+      on?"
+    options:
+    - 10kg
+    - 15kg
+    - 5kg
+    correctOptionIndex: 0
+  - question: "Muinaiset egyptil\xE4iset k\xE4yttiv\xE4t amforeja veden kuljettamiseen.
+      Yksi amfora voi sis\xE4lt\xE4\xE4 30 litraa vett\xE4. Jos he tarvitsevat 120
+      litraa vett\xE4 kastelua varten, kuinka monta amforaa he tarvitsevat?"
+    options:
+    - 3
+    - 4
+    - 5
+    correctOptionIndex: 1
+  - question: "Muinaisessa Egyptiss\xE4 k\xE4ytettiin mittayksikk\xF6n\xE4 'khar'
+      vehn\xE4n mittaamiseen. Yksi khar vastaa 75 kilogrammaa. Jos viljelij\xE4 ker\xE4\xE4
+      4 kharia vehn\xE4\xE4, kuinka monta kilogrammaa vehn\xE4\xE4 h\xE4nell\xE4
+      on yhteens\xE4?"
+    options:
+    - 200kg
+    - 300kg
+    - 450kg
+    correctOptionIndex: 1
+  - question: "Egyptil\xE4iset k\xE4yttiv\xE4t mittayksikk\xF6\xE4 'deben' kullan
+      mittaamiseen. Yksi deben vastaa noin 90 grammaa. Jos aarre sis\xE4lt\xE4\xE4
+      3 debeni\xE4 kultaa, kuinka monta grammaa kultaa aarteessa on yhteens\xE4?"
+    options:
+    - 180g
+    - 270g
+    - 360g
+    correctOptionIndex: 1
+  - question: "Muinaisessa Egyptiss\xE4 kultaa pidettiin arvokkaana metallina ja
+      sit\xE4 k\xE4ytettiin korujen valmistukseen. Jos yksi kultasormus painaa 10
+      grammaa ja kultasepp\xE4 valmistaa 15 sormusta, kuinka monta grammaa kultaa
+      h\xE4n tarvitsee yhteens\xE4?  "
+    options:
+    - 150g
+    - 200g
+    - 100g
+    correctOptionIndex: 0
+  questionText: {fileID: 0}
+  optionAText: {fileID: 0}
+  optionBText: {fileID: 0}
+  optionCText: {fileID: 0}
+  optionAButton: {fileID: 0}
+  optionBButton: {fileID: 0}
+  optionCButton: {fileID: 0}
+  dialogueManager: {fileID: 6852849566834222539}
