@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -14,22 +15,61 @@ using UnityEngine;
  * 
  * Limit which side of the scale can take items.
  * Tutorial limits actions player can take. 
+ * 
+ * When something is added/removed
+ * Update weights
+ * Update animation 
+ * Animation speed based on amount of weight difference added/removed
+ * Shake before rotation starts?
 */ 
 
 public class ScaleBehaviour : MonoBehaviour
 {
+    private float currentRotation;
+    private int leftCombinedWeight;
+    private int rightCombinedWeight;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private Transform leftCup;
+    private Transform rightCup;
+
+    [SerializeField] private Transform rotatingBeam;
+    [SerializeField] private Rigidbody2D rotatingBeamRBody;
+    [SerializeField] private float maxRotationAngle = 20;
+    [SerializeField] private List<ItemSO> leftCupItems = new List<ItemSO>();
+    [SerializeField] private List<ItemSO> rightCupItems = new List<ItemSO>();
+
+    public void AddItemToScale(ScaleCup side, ItemSO addedItem)
     {
-        
+        if (side == ScaleCup.left)
+        {
+            leftCupItems.Add(addedItem);
+            leftCombinedWeight += addedItem.ItemWeight;
+        }
+
+        else
+        {
+            rightCupItems.Add(addedItem);
+            rightCombinedWeight += addedItem.ItemWeight;
+        }
+
+        UpdateWeights();
     }
-    private void OnCollisionStay2D(Collision2D collision)
+
+    public void RemoveItemFromScale(ScaleCup side, ItemSO addedItem)
     {
-        
+
     }
-    private void OnCollisionExit2D(Collision2D collision)
+
+    private void UpdateWeights()
     {
-        
+        CalculateRotation();
+    }
+
+    private void CalculateRotation()
+    {
+        rotatingBeamRBody.rotation += 0.3f;
+        //rotatingBeam.Rotate(0, 0, 0.3f);
+        //leftCombinedWeight - rightCombinedWeight
     }
 }
 public class Quest
@@ -37,4 +77,9 @@ public class Quest
     public string description;
     public ItemType itemType;
     public float targetWeight;
+}
+public enum ScaleCup
+{
+    left,
+    right,
 }

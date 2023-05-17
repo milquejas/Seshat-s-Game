@@ -35,8 +35,8 @@ TagManager:
   - EventTrigger
   - GrabbableObject
   - OutOfBounds
-  - 
-  - 
+  - AntiqueScale
+  - NoCollisions
   - 
   - 
   - 

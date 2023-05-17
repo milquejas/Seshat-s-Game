@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 /* 
  * Scale minigame mouse/touch usage
@@ -63,8 +64,12 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                     if (InteractTarget.TryGetComponent<DraggableWeightedItem>(out DraggableWeightedItem target))
                     {
                         targetDragItem = target;
-                        targetDragItem.EnableItemCollider(false);
+                        targetDragItem.ChangeToNoCollisionLayer(true);
+                        //targetDragItem.EnableItemCollider(false);
                         targetDragItem.transform.position = touchPosition;
+
+                        targetDragItem.RBody.isKinematic = false;
+                        targetDragItem.RemoveFromCup();
                     }
                 }
                 break;
@@ -83,14 +88,18 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                 break;
 
             case TouchPhase.Stationary:
+                if (targetDragItem is null) return;
 
+                Vector2 velocityDirection1 = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
+                targetDragItem.RBody.velocity = velocityDirection1 * draggingSpeed;
                 break;
 
             case TouchPhase.Ended:
                 thisTouchInteracting = false;
 
                 if (targetDragItem is null) return;
-                
+
+                targetDragItem.ChangeToNoCollisionLayer(false);
                 targetDragItem.EnableItemCollider(true);
                 
                 break;

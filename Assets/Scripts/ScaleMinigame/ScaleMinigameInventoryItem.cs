@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /*
@@ -13,30 +14,31 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
     public InventoryWeightedItem inventoryWeightedItem;
     [SerializeField] private ScaleMinigamePooler inventoryPooler;
     private DraggableWeightedItem selectedItem;
+    [SerializeField] private TextMeshPro amountText;
 
     private SpriteRenderer itemImage;
+
 
     public void InitializeInventoryItem()
     {
         inventoryPooler = GetComponentInParent<ScaleMinigamePooler>();
         itemImage = GetComponent<SpriteRenderer>();
         itemImage.sprite = inventoryWeightedItem.ItemType.ItemImage;
+        updateItemAmountText();
     }
 
     public Transform Interact()
     {
         selectedItem = inventoryPooler.GetPooledItem();
-        selectedItem.Item = inventoryWeightedItem.ItemType;
+
         selectedItem.gameObject.SetActive(true);
         selectedItem.originPoolPosition = transform.position;
         selectedItem.originInventoryItem = this;
 
         inventoryWeightedItem.ItemAmount -= 1;
 
-        if (inventoryWeightedItem.ItemAmount <= 0 )
-        {
-            transform.gameObject.SetActive(false);
-        }
+        updateItemAmountText();
+        selectedItem.InitializeWeightedItem(inventoryWeightedItem.ItemType);
 
         return selectedItem.transform;
     }
@@ -44,5 +46,17 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
     void OnMouseOver()
     {
         // Debug.Log($"Hovering over {gameObject.name}");
+    }
+
+    public void updateItemAmountText()
+    {
+        amountText.text = inventoryWeightedItem.ItemAmount.ToString();
+
+        if (inventoryWeightedItem.ItemAmount <= 0)
+        {
+            transform.gameObject.SetActive(false);
+        }
+        if (inventoryWeightedItem.ItemAmount == 1)
+            amountText.text = null;
     }
 }

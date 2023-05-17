@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7798704937484056377}
   - component: {fileID: 7798704937484056376}
   - component: {fileID: 7798704937484056379}
+  - component: {fileID: 7043882395736525742}
   m_Layer: 0
   m_Name: Kuppi1
   m_TagString: LeftCup
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8126595, y: 2.7197106}
   m_EdgeRadius: 0
+--- !u!114 &7043882395736525742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798704937484056378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefa4821b1a6250438fb6b6728500238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

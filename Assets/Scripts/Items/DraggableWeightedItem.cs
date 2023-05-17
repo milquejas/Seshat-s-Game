@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 /*
  * Setup item so it takes info from SO when enabled so it can be pooled
@@ -15,18 +14,21 @@ using static UnityEditor.Progress;
 public class DraggableWeightedItem : MonoBehaviour, IInteractable
 {
     [field: SerializeField] public bool InRange { get; set; }
+    private LayerMask Interactable;
+    private LayerMask layermask;
     public ItemSO Item;
 
     [field: NonSerialized] public Rigidbody2D RBody;
 
     [field: NonSerialized] public SpriteRenderer itemImage;
     public ScaleMinigameInventoryItem originInventoryItem;
+    [field: NonSerialized] public ScaleCupScript ItemIsInThisCup;
 
     private List<GameObject> listOfColliderChildren = new List<GameObject>();
+    [field: NonSerialized] public Transform originalParent;
 
     public Vector2 originPoolPosition;
 
-    // awake runs before OnEnable?
     private void Awake()
     {
         if (listOfColliderChildren.Count == 0)
@@ -36,6 +38,33 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
                 listOfColliderChildren.Add(child.gameObject);
             }
         }
+        originalParent = transform.parent;
+    }
+
+    public void RemoveFromCup()
+    {
+        if (ItemIsInThisCup is not null)
+        {
+            ItemIsInThisCup.RemoveFromCup(this);
+        }
+    }
+
+
+    public void ChangeToNoCollisionLayer(bool toggle)
+    {
+        string layerName;
+
+        if (toggle)
+            layerName = "NoCollisions";
+
+        else
+            layerName = "Interactable";
+
+        if (GetComponentInChildren<Collider2D>() != null)
+        {
+            GetComponentInChildren<Collider2D>().gameObject.layer = LayerMask.NameToLayer(layerName);
+        }
+            
     }
 
     public Transform Interact()
@@ -52,6 +81,13 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
         itemImage.color = Color.white;
 
         //EnableItemCollider(true);
+    }
+
+    public void InitializeWeightedItem(ItemSO item)
+    {
+        Item = item;
+        RBody.mass = Item.ItemWeight;
+        itemImage.sprite = Item.ItemImage;
     }
 
     // also gravity disabled while collider disabled

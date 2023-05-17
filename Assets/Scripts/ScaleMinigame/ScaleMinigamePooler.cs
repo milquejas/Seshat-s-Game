@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 /*
  * Touch this inventory item and pooled WeightedItem appears into mouse position
@@ -21,6 +22,8 @@ public class ScaleMinigamePooler : MonoBehaviour
     [SerializeField] private int itemPoolAmount;
     [SerializeField] private Transform containerForPooledItems;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
+
+    [SerializeField] private Collider2D[] cupColliders;
 
     public DraggableWeightedItem ItemPrefab;
     public ScaleMinigameInventoryItem InventoryItemPrefab;
@@ -53,6 +56,12 @@ public class ScaleMinigamePooler : MonoBehaviour
         {
             Debug.Log("item pool has been used up...");
             selectedItem = itemsInUsePool[0];
+
+            selectedItem.EnableItemCollider(false);
+            selectedItem.originInventoryItem.gameObject.SetActive(true);
+            selectedItem.originInventoryItem.inventoryWeightedItem.ItemAmount += 1;
+            selectedItem.originInventoryItem.updateItemAmountText();
+
             itemsInUsePool.RemoveAt(0);
             itemsInUsePool.Add(selectedItem);
 
@@ -70,9 +79,10 @@ public class ScaleMinigamePooler : MonoBehaviour
     {
         item.EnableItemCollider(false);
         item.RBody.velocity = Vector2.zero;
+        item.originInventoryItem.inventoryWeightedItem.ItemAmount += 1;
 
         float elapsedTime = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime <= duration - 0.2f)
         {
             elapsedTime += Time.deltaTime;
             float percent = Mathf.Clamp01(elapsedTime / duration);
@@ -86,7 +96,8 @@ public class ScaleMinigamePooler : MonoBehaviour
         itemPool.Add(item);
         itemsInUsePool.Remove(item);
         item.originInventoryItem.gameObject.SetActive(true);
-        item.originInventoryItem.inventoryWeightedItem.ItemAmount += 1;
+        item.originInventoryItem.updateItemAmountText();
+
         item.gameObject.SetActive(false);
     }
     void OnMouseOver()
