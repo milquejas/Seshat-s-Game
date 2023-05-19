@@ -11,7 +11,6 @@ public class NPCMovement : MonoBehaviour
     private int currentWaypoint = 0;
     private bool isInteracting = false; // is NPC currently interacting with the player?
     private bool isWaiting = false; // is NPC currently waiting at a waypoint?
-    private GameObject npcCharacter;
 
     void Update()
     {
