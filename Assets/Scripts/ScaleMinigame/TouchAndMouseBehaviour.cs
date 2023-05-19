@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -82,16 +83,14 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                     //targetDragItem.transform
                     if (targetDragItem is null) return;
 
-                    Vector2 velocityDirection = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
-                    targetDragItem.RBody.velocity = velocityDirection * draggingSpeed;
+                    MoveTarged(touchPosition);
                 }
                 break;
 
             case TouchPhase.Stationary:
                 if (targetDragItem is null) return;
 
-                Vector2 velocityDirection1 = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
-                targetDragItem.RBody.velocity = velocityDirection1 * draggingSpeed;
+                MoveTarged(touchPosition);
                 break;
 
             case TouchPhase.Ended:
@@ -104,5 +103,11 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                 
                 break;
         }
+    }
+
+    private void MoveTarged(Vector2 touchPosition)
+    {
+        Vector2 velocityDirection = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
+        targetDragItem.RBody.velocity = Vector2.ClampMagnitude(velocityDirection, 7) * draggingSpeed;
     }
 }

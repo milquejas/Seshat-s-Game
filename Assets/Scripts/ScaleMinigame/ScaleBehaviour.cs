@@ -1,7 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
+ * https://www.youtube.com/watch?v=criEPZC6z_Y
+ * Finding a good reference to animate weighing scale like this was pain
+ * 
  * When stuff stays in a cup for 2sec, sticky them and add them to the weight pool? 
  * Every time something is added, update weights and animation? 
  * Every time something is removed, update weights and animation? 
@@ -21,20 +25,27 @@ using UnityEngine;
  * Update animation 
  * Animation speed based on amount of weight difference added/removed
  * Shake before rotation starts?
-*/ 
+ * 
+ * Speed of item added to cup shakes scale?
+ * 
+ * (rightcup - leftcup)/ leftcup
+ * Coroutine moving towards target rotation. Speed changes based on relative difference of weights. 
+*/
 
 public class ScaleBehaviour : MonoBehaviour
 {
-    private float currentRotation;
-    private int leftCombinedWeight;
-    private int rightCombinedWeight;
-
-    private Transform leftCup;
-    private Transform rightCup;
-
-    [SerializeField] private Transform rotatingBeam;
+    [SerializeField] private Rigidbody2D leftCupRBody;
+    [SerializeField] private Rigidbody2D rightCupRBody;
     [SerializeField] private Rigidbody2D rotatingBeamRBody;
-    [SerializeField] private float maxRotationAngle = 20;
+
+    [Header("Cup weights for testing")]
+    [SerializeField] private float leftCupMass;
+    [SerializeField] private float rightCupMass;
+
+    [Header("Equal weight balance speed up")]
+    [SerializeField] private float equalTorqueAmount;
+    [SerializeField] private float equalTorqueTreshold;
+
     [SerializeField] private List<ItemSO> leftCupItems = new List<ItemSO>();
     [SerializeField] private List<ItemSO> rightCupItems = new List<ItemSO>();
 
@@ -43,35 +54,61 @@ public class ScaleBehaviour : MonoBehaviour
         if (side == ScaleCup.left)
         {
             leftCupItems.Add(addedItem);
-            leftCombinedWeight += addedItem.ItemWeight;
         }
 
-        else
+        if (side == ScaleCup.right)
         {
             rightCupItems.Add(addedItem);
-            rightCombinedWeight += addedItem.ItemWeight;
         }
 
-        UpdateWeights();
+        UpdateMassForTesting();
     }
 
     public void RemoveItemFromScale(ScaleCup side, ItemSO addedItem)
     {
+        if (side == ScaleCup.left)
+        {
+            leftCupItems.Remove(addedItem);
+        }
 
+        if (side == ScaleCup.right)
+        {
+            rightCupItems.Remove(addedItem);
+        }
+
+        // reset mass for empty cups, in case of bugs
+        if (leftCupItems.Count == 0)
+            leftCupRBody.mass = 1;
+
+        if (rightCupItems.Count == 0)
+            rightCupRBody.mass = 1;
+
+        UpdateMassForTesting();
     }
 
-    private void UpdateWeights()
+    private void UpdateMassForTesting()
     {
-        CalculateRotation();
+        leftCupMass = leftCupRBody.mass;
+        rightCupMass = rightCupRBody.mass;
     }
 
-    private void CalculateRotation()
+    // Speed up scale balancing when equal weights
+    private void FixedUpdate()
     {
-        rotatingBeamRBody.rotation += 0.3f;
-        //rotatingBeam.Rotate(0, 0, 0.3f);
-        //leftCombinedWeight - rightCombinedWeight
+        if (leftCupRBody.mass == rightCupRBody.mass)
+        {
+            if (rotatingBeamRBody.rotation < -equalTorqueTreshold)
+            {
+                rotatingBeamRBody.AddTorque(equalTorqueAmount * rightCupRBody.mass);
+            }
+            if (rotatingBeamRBody.rotation > equalTorqueTreshold)
+            {
+                rotatingBeamRBody.AddTorque(-equalTorqueAmount * rightCupRBody.mass);
+            }
+        }
     }
 }
+
 public class Quest
 {
     public string description;

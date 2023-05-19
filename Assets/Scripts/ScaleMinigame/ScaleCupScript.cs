@@ -12,14 +12,18 @@ public class ScaleCupScript : MonoBehaviour
 {
     private Collider2D cupCollider;
     private ScaleBehaviour scaleBehaviour;
+    private Rigidbody2D cupRBody;
+    [SerializeField] private float massReductionAmount;
     [SerializeField] private float cupStickynessLimitWidth;
     [SerializeField] private float itemUnderCupHeight;
     [SerializeField] private ScaleCup side;
+    [SerializeField] private Transform ParentForItem;
 
     private void Start()
     {
         scaleBehaviour = GetComponentInParent<ScaleBehaviour>();
         cupCollider = GetComponent<Collider2D>();
+        cupRBody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,9 +41,10 @@ public class ScaleCupScript : MonoBehaviour
             collision.rigidbody.velocity = Vector2.zero;
             collision.rigidbody.angularVelocity = 0f;
 
+            cupRBody.mass += item.Item.ItemWeight / massReductionAmount;
             scaleBehaviour.AddItemToScale(side, item.Item);
 
-            item.transform.SetParent(transform, true);
+            item.transform.SetParent(ParentForItem, true);
         }
 
         else
@@ -50,48 +55,13 @@ public class ScaleCupScript : MonoBehaviour
 
     public void RemoveFromCup(DraggableWeightedItem item)
     {
-        Debug.Log("item exited cup");
+        cupRBody.mass -= item.Item.ItemWeight / massReductionAmount;
+        item.ItemIsInThisCup = null;
+
         scaleBehaviour.RemoveItemFromScale(side, item.Item);
 
         item.transform.SetParent(item.originalParent, true);
 
         Physics2D.IgnoreCollision(cupCollider, item.GetComponentInChildren<Collider2D>(), false);
     }
-
-    // if thing chills on cup somehow, but has not been entered/added, this checks and adds
-    /*
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out DraggableWeightedItem item))
-        {
-            if (item.EnteredScaleCupProperly) return;
-
-            float distance = collision.transform.position.x - transform.position.x;
-            if (Mathf.Abs(distance) <= cupStickynessLimitWidth && item.transform.position.y >= transform.position.y - itemUnderCupHeight)
-            {
-                collision.rigidbody.velocity = Vector2.zero;
-                collision.rigidbody.angularVelocity = 0f;
-
-                item.EnteredScaleCupProperly = true;
-                scaleBehaviour.AddItemToScale(side, item.Item);
-
-                item.transform.SetParent(transform, true);
-
-                Debug.Log("Why did this OnCollisionStay2D run?");
-            }
-        }
-    }*/
-    /*
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        DraggableWeightedItem item = collision.gameObject.GetComponent<DraggableWeightedItem>();
-        if (item.EnteredScaleCupProperly)
-        {
-            Debug.Log("item exited cup");
-            item.EnteredScaleCupProperly = false;
-            scaleBehaviour.RemoveItemFromScale(side, item.Item);
-
-            item.transform.SetParent(item.originalParent, true);
-        }
-    }*/
 }

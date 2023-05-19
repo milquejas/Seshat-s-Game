@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 /*
  * Touch this inventory item and pooled WeightedItem appears into mouse position
@@ -100,6 +99,7 @@ public class ScaleMinigamePooler : MonoBehaviour
 
         item.gameObject.SetActive(false);
     }
+
     void OnMouseOver()
     {
         // Debug.Log($"Hovering over {gameObject.name}");

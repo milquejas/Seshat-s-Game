@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: 10
   ItemImage: {fileID: -1954698220, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
-  ItemWeight: 0
+  ItemWeight: 650

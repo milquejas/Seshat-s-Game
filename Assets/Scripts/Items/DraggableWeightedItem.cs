@@ -77,7 +77,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
         itemImage = GetComponent<SpriteRenderer>();
         itemImage.sprite = Item.ItemImage;
         RBody = GetComponent<Rigidbody2D>();
-        RBody.mass = Item.ItemWeight;
+        RBody.mass = Item.ItemWeight / 100f;
         itemImage.color = Color.white;
 
         //EnableItemCollider(true);
@@ -86,7 +86,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
     public void InitializeWeightedItem(ItemSO item)
     {
         Item = item;
-        RBody.mass = Item.ItemWeight;
+        RBody.mass = Item.ItemWeight / 100f;
         itemImage.sprite = Item.ItemImage;
     }
 
