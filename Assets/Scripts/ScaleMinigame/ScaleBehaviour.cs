@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,30 +5,8 @@ using UnityEngine;
  * https://www.youtube.com/watch?v=criEPZC6z_Y
  * Finding a good reference to animate weighing scale like this was pain
  * 
- * When stuff stays in a cup for 2sec, sticky them and add them to the weight pool? 
- * Every time something is added, update weights and animation? 
- * Every time something is removed, update weights and animation? 
- * If scale is even && one side has only weights -> enable accept trade button? 
- * Accepting trade gives you what trade ui says. 
- * Inventory update sends event to quest manager. 
- * QuestManager compares items you got to quest target. 
- * Start from beginning/reset inventory if wrong. 
- * 
- * Tip button to show what is inside a cup and their weights?
- * 
- * Limit which side of the scale can take items.
- * Tutorial limits actions player can take. 
- * 
- * When something is added/removed
- * Update weights
- * Update animation 
- * Animation speed based on amount of weight difference added/removed
- * Shake before rotation starts?
- * 
- * Speed of item added to cup shakes scale?
- * 
- * (rightcup - leftcup)/ leftcup
- * Coroutine moving towards target rotation. Speed changes based on relative difference of weights. 
+ * If scale is balanced, add torque to speed up balancing
+ * Contains Lists of items in each cup for quests
 */
 
 public class ScaleBehaviour : MonoBehaviour

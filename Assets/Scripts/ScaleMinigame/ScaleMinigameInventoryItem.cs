@@ -3,8 +3,7 @@ using UnityEngine;
 
 /*
  * Touch this inventory item and pooled WeightedItem appears into mouse position
- * This should spawn from possible inventory
- * 
+ * Sets up pooled items type
 */
 
 public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
@@ -43,11 +42,6 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
         return selectedItem.transform;
     }
 
-    void OnMouseOver()
-    {
-        // Debug.Log($"Hovering over {gameObject.name}");
-    }
-
     public void updateItemAmountText()
     {
         amountText.text = inventoryWeightedItem.ItemAmount.ToString();
@@ -58,5 +52,10 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
         }
         if (inventoryWeightedItem.ItemAmount == 1)
             amountText.text = null;
+    }
+
+    void OnMouseOver()
+    {
+        // Debug.Log($"Hovering over {gameObject.name}");
     }
 }

@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Touch this inventory item and pooled WeightedItem appears into mouse position
+/* 
+ * Spawns both pooled draggable items 
+ * And inventory items with amount indicated
+ * Touch a inventory item and pooled WeightedItem appears into mouse position
  * This should spawn from possible inventory
+ * Currently inventory is just TempInventoryList
+ * 
+ * Item returning calls ReturnItemToPool with fadeout and animation
  * 
 */
 [System.Serializable]

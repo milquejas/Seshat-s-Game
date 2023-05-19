@@ -1,29 +1,26 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static AntiqueScaleExtensions;
 
 /*
- * Setup item so it takes info from SO when enabled so it can be pooled
- * Spawning back to inventory if dropped outside the game. 
- * Animation when placed into inventory
- * Needs reference of coordinates of item slot in inventory? Or just fly into the middle of the inventory?
- * Draggable
+ * IInteractable item that is moved through TouchAndMouseBehaiour script
+ * Collider specific to different SO items 
+ * Colliders can be toggled
+ * Coupled to ScaleCupScript to handle antique scale
 */
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class DraggableWeightedItem : MonoBehaviour, IInteractable
 {
     [field: SerializeField] public bool InRange { get; set; }
-    private LayerMask Interactable;
-    private LayerMask layermask;
     public ItemSO Item;
 
     [field: NonSerialized] public Rigidbody2D RBody;
-
     [field: NonSerialized] public SpriteRenderer itemImage;
-    public ScaleMinigameInventoryItem originInventoryItem;
     [field: NonSerialized] public ScaleCupScript ItemIsInThisCup;
 
+    public ScaleMinigameInventoryItem originInventoryItem;
     private List<GameObject> listOfColliderChildren = new List<GameObject>();
     [field: NonSerialized] public Transform originalParent;
 
@@ -77,7 +74,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
         itemImage = GetComponent<SpriteRenderer>();
         itemImage.sprite = Item.ItemImage;
         RBody = GetComponent<Rigidbody2D>();
-        RBody.mass = Item.ItemWeight / 100f;
+        RBody.mass = ConvertRealWeightToUnityMass(Item.ItemWeight);
         itemImage.color = Color.white;
 
         //EnableItemCollider(true);
@@ -86,7 +83,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
     public void InitializeWeightedItem(ItemSO item)
     {
         Item = item;
-        RBody.mass = Item.ItemWeight / 100f;
+        RBody.mass = ConvertRealWeightToUnityMass(Item.ItemWeight);
         itemImage.sprite = Item.ItemImage;
     }
 

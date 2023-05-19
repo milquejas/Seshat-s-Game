@@ -1,19 +1,17 @@
 using UnityEngine;
+using static AntiqueScaleExtensions;
 
 /*
- * Check when produce collides. 
- * Stick produce to surface
- * If produce edge is over certain absolute from centre, dont stick
- * Check on exit if item hit edge
- * 
-*/ 
+ * Collision with DraggableWeightedItem adds item to ScaleBehaviour list,
+ * Disables collisions, sets to kinematic and changes items parent
+ * Remove from cup is called from interacting with DraggableWeightedItem after items ItemIsInThisCup is not null
+*/
 
 public class ScaleCupScript : MonoBehaviour
 {
     private Collider2D cupCollider;
     private ScaleBehaviour scaleBehaviour;
     private Rigidbody2D cupRBody;
-    [SerializeField] private float massReductionAmount;
     [SerializeField] private float cupStickynessLimitWidth;
     [SerializeField] private float itemUnderCupHeight;
     [SerializeField] private ScaleCup side;
@@ -41,7 +39,7 @@ public class ScaleCupScript : MonoBehaviour
             collision.rigidbody.velocity = Vector2.zero;
             collision.rigidbody.angularVelocity = 0f;
 
-            cupRBody.mass += item.Item.ItemWeight / massReductionAmount;
+            cupRBody.mass += ConvertRealWeightToUnityMass(item.Item.ItemWeight);
             scaleBehaviour.AddItemToScale(side, item.Item);
 
             item.transform.SetParent(ParentForItem, true);
@@ -55,7 +53,7 @@ public class ScaleCupScript : MonoBehaviour
 
     public void RemoveFromCup(DraggableWeightedItem item)
     {
-        cupRBody.mass -= item.Item.ItemWeight / massReductionAmount;
+        cupRBody.mass -= ConvertRealWeightToUnityMass(item.Item.ItemWeight);
         item.ItemIsInThisCup = null;
 
         scaleBehaviour.RemoveItemFromScale(side, item.Item);

@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 /* 
  * Scale minigame mouse/touch usage
