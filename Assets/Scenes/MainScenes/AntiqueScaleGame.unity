@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 1686219227, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
       propertyPath: CharacterPlacement
       value: 
-      objectReference: {fileID: 1029233127}
+      objectReference: {fileID: 0}
     - target: {fileID: 1686219227, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
       propertyPath: CurrentConversation
       value: 
@@ -640,17 +640,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1029233127 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 744854859, guid: ddb6d7afc2889db4ca83f86880b6b841, type: 3}
-  m_PrefabInstance: {fileID: 377807053}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1041429416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1444,7 +1433,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 15.504571, y: 1.8817943}
+  m_Size: {x: 14.22, y: 2.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1463,16 +1452,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempInventoryList:
-  - ItemType: {fileID: 11400000, guid: d2f2c9f53fc238b4991c8359857a8ab6, type: 2}
-    ItemAmount: 4
-  - ItemType: {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
-    ItemAmount: 2
-  - ItemType: {fileID: 11400000, guid: ec50c3f299851ec4891ea0131ad28618, type: 2}
+  - ItemType: {fileID: 11400000, guid: 7aa7da15abfb0b64c88db245fc993767, type: 2}
+    ItemAmount: 55
+  - ItemType: {fileID: 11400000, guid: 542b869f8db022f4199e1a045e9a4079, type: 2}
     ItemAmount: 5
-  - ItemType: {fileID: 11400000, guid: fa6eaaafd132566489b321a6223299f1, type: 2}
-    ItemAmount: 1
-  - ItemType: {fileID: 11400000, guid: d7a5766f625db6c448899fbe9a4cc3f5, type: 2}
+  - ItemType: {fileID: 11400000, guid: d09603c2ad86bdb44aa50aa8a5abed89, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: 009451a94f7003c42b9abc081ed64f84, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
     ItemAmount: 99
+  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: fd83cd4d17f50d44d90967ddea046a9e, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: 7f7e04a02c8567a4ca21d7ceb015623e, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: a812aca8f7fe45b4ea860e2adfccd6bd, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: 5e6ce1323b515124bba0c7f2ae903575, type: 2}
+    ItemAmount: 5
   itemPoolAmount: 25
   containerForPooledItems: {fileID: 925089300}
   returnToPoolAnimationCurve:
@@ -1524,7 +1523,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 1.43
+  m_Spacing: 0.89
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1550,6 +1549,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.25, y: -3.75}
-  m_SizeDelta: {x: 4.82, y: 4.81}
+  m_AnchoredPosition: {x: 0, y: -3.7}
+  m_SizeDelta: {x: 12.21, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}

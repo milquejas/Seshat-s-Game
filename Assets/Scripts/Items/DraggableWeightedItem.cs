@@ -21,7 +21,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
     [field: NonSerialized] public ScaleCupScript ItemIsInThisCup;
 
     public ScaleMinigameInventoryItem originInventoryItem;
-    private List<GameObject> listOfColliderChildren = new List<GameObject>();
+    [SerializeField] private List<GameObject> listOfColliderChildren = new List<GameObject>();
     [field: NonSerialized] public Transform originalParent;
 
     public Vector2 originPoolPosition;
@@ -135,6 +135,22 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
                 break;
 
             case ItemType.Watermelon:
+                listOfColliderChildren[(int)Item.ItemName].SetActive(toggle);
+                break;
+
+            case ItemType.Weight1to10:
+                listOfColliderChildren[(int)Item.ItemName].SetActive(toggle);
+                break;
+
+            case ItemType.Weight20to100:
+                listOfColliderChildren[(int)Item.ItemName].SetActive(toggle);
+                break;
+
+            case ItemType.Weight500to1000:
+                listOfColliderChildren[(int)Item.ItemName].SetActive(toggle);
+                break;
+
+            case ItemType.Weight5000to10000:
                 listOfColliderChildren[(int)Item.ItemName].SetActive(toggle);
                 break;
 

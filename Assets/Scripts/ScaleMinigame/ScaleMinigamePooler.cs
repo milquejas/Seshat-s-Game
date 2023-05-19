@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* 
+ * Pooling for this use case is overkill optimization
+ * Possible problems later
+ * 
  * Spawns both pooled draggable items 
  * And inventory items with amount indicated
  * Touch a inventory item and pooled WeightedItem appears into mouse position
@@ -81,6 +84,7 @@ public class ScaleMinigamePooler : MonoBehaviour
     
     public IEnumerator ReturnItemToPool(DraggableWeightedItem item, float duration)
     {
+        item.RemoveFromCup();
         item.EnableItemCollider(false);
         item.RBody.velocity = Vector2.zero;
         item.originInventoryItem.inventoryWeightedItem.ItemAmount += 1;

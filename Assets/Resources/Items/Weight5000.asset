@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd28277a98a13f94c90867d879ec5dc0, type: 3}
+  m_Name: Weight5000
+  m_EditorClassIdentifier: 
+  ItemName: 14
+  ItemImage: {fileID: 863071956, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  ItemWeight: 5000
