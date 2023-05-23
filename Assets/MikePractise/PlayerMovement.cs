@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Animator anim;
     private Rigidbody2D rb;
+    private bool canMove = true; // Added line
 
     //public List<GameObject> cubes;
 
@@ -30,29 +31,50 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (canMove) // Added line
         {
-            movement *= runSpeedMultiplier;
-        }
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        if (movement != Vector2.zero)
-        {
-            //anim.SetFloat("horizontal", movement.x);
-            //anim.SetFloat("vertical", movement.y);
-            anim.SetBool("isMoving", true);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                movement *= runSpeedMultiplier;
+            }
+
+            if (movement != Vector2.zero)
+            {
+                //anim.SetFloat("horizontal", movement.x);
+                //anim.SetFloat("vertical", movement.y);
+                anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
         else
         {
-            anim.SetBool("isMoving", false);
+            movement = Vector2.zero; // Added line
+            anim.SetBool("isMoving", false); // Added line
         }
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
+        if (canMove) // Added line
+        {
+            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movement);
+        }
+    }
+
+    public void FreezePlayer() // Added method
+    {
+        canMove = false;
+    }
+
+    public void UnfreezePlayer() // Added method
+    {
+        canMove = true;
     }
 
     //void OnTriggerEnter2D(Collider2D other)
