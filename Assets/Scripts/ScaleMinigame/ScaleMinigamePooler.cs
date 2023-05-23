@@ -30,8 +30,6 @@ public class ScaleMinigamePooler : MonoBehaviour
     [SerializeField] private Transform containerForPooledItems;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
 
-    [SerializeField] private Collider2D[] cupColliders;
-
     public DraggableWeightedItem ItemPrefab;
     public ScaleMinigameInventoryItem InventoryItemPrefab;
 
