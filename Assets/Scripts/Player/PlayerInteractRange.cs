@@ -10,7 +10,7 @@ public class PlayerInteractRange : MonoBehaviour
     {
         if (collider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
         {
-            interactableScript.inRange = true;
+            interactableScript.InRange = true;
         }
     }
 
@@ -18,7 +18,7 @@ public class PlayerInteractRange : MonoBehaviour
     {
         if (collider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
         {
-            interactableScript.inRange = false;
+            interactableScript.InRange = false;
         }
     }
 }

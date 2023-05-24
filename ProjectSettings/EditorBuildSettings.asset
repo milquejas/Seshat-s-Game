@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/PracticeScenes/QuessAnswer.unity
+    guid: c33e2556f29ad544e9c192e2b146651b
   m_configObjects: {}

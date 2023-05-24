@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 // The StatueRiddle class manages the riddle game logic.
 public class StatueRiddle : MonoBehaviour
 {
     public List<Button> optionButtons; // List of all the option buttons for the riddle.
     public TMP_Text hintText; // Text component that will display hints or messages to the player.
-    public PlayerMovement playerMovement; // Reference to the PlayerController script.
+    public TouchMovementAndInteraction playerMovement; // Reference to the PlayerController script.
     private int[] correctAnswers; // Array storing the correct answers for each question.
     private int[] playerAnswers; // Array storing the player's selected answers.
 
@@ -70,6 +71,8 @@ public class StatueRiddle : MonoBehaviour
         if (correctCount == correctAnswers.Length)
         {
             hintText.text = "Congratulations! You've solved all the puzzles.";
+            OnQuitButtonClicked();
+            // start coruoutine -> pari sekkaa jotain animaatiocrappia -> se coroutine callaa OnQuitButtonClicked
         }
         else
         {
@@ -83,6 +86,7 @@ public class StatueRiddle : MonoBehaviour
             }
         }
     }
+
 
     // This method is called when the "Quit" button is clicked.
     public void OnQuitButtonClicked()
