@@ -8,6 +8,7 @@ using static AntiqueScaleExtensions;
  * Collider specific to different SO items 
  * Colliders can be toggled
  * Coupled to ScaleCupScript to handle antique scale
+ * TODO: sorting layer depth raised each time you interact with an item to get it to front. 
 */
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]

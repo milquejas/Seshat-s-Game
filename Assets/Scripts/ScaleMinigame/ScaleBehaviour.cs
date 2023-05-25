@@ -86,12 +86,6 @@ public class ScaleBehaviour : MonoBehaviour
     }
 }
 
-public class Quest
-{
-    public string description;
-    public ItemType itemType;
-    public float targetWeight;
-}
 public enum ScaleCup
 {
     left,

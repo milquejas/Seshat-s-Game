@@ -26,7 +26,7 @@ public class ScaleCupScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<DraggableWeightedItem>().ItemIsInThisCup is not null) return;
+        if (collision.gameObject.GetComponent<ScaleMinigameInventoryItem>() is not null) return;
 
         float distance = collision.transform.position.x - transform.position.x;
         DraggableWeightedItem item = collision.gameObject.GetComponent<DraggableWeightedItem>();
@@ -45,6 +45,7 @@ public class ScaleCupScript : MonoBehaviour
             scaleBehaviour.AddItemToScale(side, item.Item);
 
             item.transform.SetParent(ParentForItem, true);
+            item.itemImage.sortingOrder = -3;
         }
 
         else
@@ -60,6 +61,7 @@ public class ScaleCupScript : MonoBehaviour
 
         scaleBehaviour.RemoveItemFromScale(side, item.Item);
 
+        item.itemImage.sortingOrder = 2;
         item.transform.SetParent(item.originalParent, true);
 
         Physics2D.IgnoreCollision(cupCollider, item.GetComponentInChildren<Collider2D>(), false);

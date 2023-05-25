@@ -2,6 +2,7 @@ using UnityEngine;
 
 /* 
  * Scale minigame mouse/touch usage
+ * TODO: delay on clicks to limit bug abuse?
 */
 
 public class TouchAndMouseBehaviour : MonoBehaviour
