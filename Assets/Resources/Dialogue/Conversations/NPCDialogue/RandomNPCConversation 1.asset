@@ -38,4 +38,4 @@ MonoBehaviour:
     - AnswerText: ei
       AnswerSwitchCase: ExitCase
     - AnswerText: Alotetaan
-      AnswerSwitchCase: StartFiveQuestionsPuzzle
+      AnswerSwitchCase: StartThreeMultipickPuzzle

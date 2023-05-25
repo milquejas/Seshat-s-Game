@@ -14,6 +14,7 @@ public class DialogAnswers : MonoBehaviour
     [SerializeField] private ConversationList allConversations;
     [SerializeField] private GameObject Puzzle01;
     [SerializeField] private GameObject FiveQuestionPuzzle;
+    [SerializeField] private ThreeMultipickPuzzle ThreeMultipickPuzzle;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class DialogAnswers : MonoBehaviour
         {
                  // way to completely exit conversation
             case "ExitCase":
-                dialog.ExitDialog();
+                dialog.ExitDialog(false);
                 break;
 
                 // way to continue the same conversation after a question
@@ -41,17 +42,29 @@ public class DialogAnswers : MonoBehaviour
                 break;
 
             case "StartStatuePuzzle":
-                dialog.ExitDialog();
+                dialog.ExitDialog(true);
                 Puzzle01.SetActive(true);
                 break;
 
             case "StartFiveQuestionsPuzzle":
-                dialog.ExitDialog();
+                dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
                 break;
 
             case "StartScaleAntiqueScene":
                 SceneManager.LoadScene("QuessAnswer");
+                break;
+
+            case "StartThreeMultipickPuzzle":
+                dialog.ExitDialog(true);
+                ThreeMultipickPuzzle.gameObject.SetActive(true);
+                ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[0]);
+                break;
+
+            case "StartThreeMultipickPuzzleTest":
+                dialog.ExitDialog(true);
+                ThreeMultipickPuzzle.gameObject.SetActive(true);
+                ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[1]);
                 break;
 
             default:
