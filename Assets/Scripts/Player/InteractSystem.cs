@@ -43,7 +43,7 @@ public static class InteractSystem
 
             if (closestCollider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
             {
-                if (interactableScript.inRange) 
+                if (interactableScript.InRange) 
                 { 
                     interactableScript.Interact();
                     return true;

@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class CursorScript : MonoBehaviour
+/*public class CursorScript : MonoBehaviour
 {
     public Texture2D cursor;
     public Texture2D cursorClicked;
 
-    private CursorControl controls;
+    //private CursorControl controls;
 
     private void Awake()
     {
         //Cursor.visible = true;
-        controls = new CursorControl();
+        //controls = new CursorControl();
         ChangeCursor(cursor);
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -41,5 +41,5 @@ public class CursorScript : MonoBehaviour
     {
         ChangeCursor(cursor);
     }
-}
+}*/
 

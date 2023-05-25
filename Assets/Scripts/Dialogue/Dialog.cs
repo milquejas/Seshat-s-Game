@@ -49,7 +49,7 @@ public class Dialog : MonoBehaviour
     public void StartConversation(Conversation _conversation)
     {
         gameObject.SetActive(true);
-        playerControls.disableTouch = true;
+        playerControls.disableMovement = true;
 
         CurrentConversation = _conversation;
         lineNumber = 0;
@@ -60,7 +60,7 @@ public class Dialog : MonoBehaviour
 
     public void ExitDialog()
     {
-        playerControls.disableTouch = false;
+        playerControls.disableMovement = false;
         gameObject.SetActive(false);
     }
 

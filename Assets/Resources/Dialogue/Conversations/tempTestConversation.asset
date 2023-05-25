@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
   m_Name: tempTestConversation
   m_EditorClassIdentifier: 
-  ConversationName: 
+  ConversationName: StatuePuzzleStart
   Lines:
   - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
-    LineType: 0
-    dialogueText: kakka
-    LineAnswer: []
+    LineType: 1
+    dialogueText: Start puzzle?
+    LineAnswer:
+    - AnswerText: Sure?!
+      AnswerSwitchCase: StartStatuePuzzle
+    - AnswerText: No
+      AnswerSwitchCase: ExitCase
   - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
     Position: 1
     LineType: 0

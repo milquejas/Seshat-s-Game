@@ -2,6 +2,6 @@
 // some reference: https://www.youtube.com/watch?v=THmW4YolDok
 public interface IInteractable
 {
-    public bool inRange { get; set; }
+    public bool InRange { get; set; }
     public void Interact();
 }

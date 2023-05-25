@@ -12,20 +12,25 @@ public class TouchMovementAndInteraction : MonoBehaviour
 {
     private Vector2 touchStartPosition, movedPosition, movementDirection;
 
-    [SerializeField] private float minimumMove, moveSpeedMultiplier, interactionCircleSize, playerInteractionDistance;
+    [SerializeField] private float minimumMove, moveSpeedMultiplier, interactionCircleSize, playerInteractionDistance, runSpeedMultiplier;
     [field: SerializeField] public float MaxMoveSpeed { get; private set; }
 
     [SerializeField] private LineRenderer bowGuideLine;
 
-    public bool disableTouch { private get; set; }
+    public bool disableMovement;
 
     private bool thisTouchInteracting;
+    private Vector2 movement;
+    public Rigidbody2D rb { get; private set; }
 
-    public Rigidbody2D PlayerRigidbody { get; private set; }
+
+    private Animator anim;
+    //private bool canMove = true; // Added line
 
     void Start()
     {
-        PlayerRigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -52,24 +57,39 @@ public class TouchMovementAndInteraction : MonoBehaviour
                 HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Ended);
             }
         }
+
+        if (disableMovement) return;
+
+        movementDirection = new Vector2(movement.x = Input.GetAxisRaw("Horizontal"), movement.y = Input.GetAxisRaw("Vertical"));
+        movementDirection *= runSpeedMultiplier;
+        MovePlayer();
+    }
+
+    public void FreezePlayer() // Added method
+    {
+        disableMovement = true;
+    }
+
+    public void UnfreezePlayer() // Added method
+    {
+        disableMovement = false;
     }
 
     private void HandleTouch(int touchFingerId, Vector2 touchPosition, TouchPhase touchPhase)
     {
-        if (disableTouch)
+        if (disableMovement)
         {
             bowGuideLine.enabled = false;
             return;
         }
         
-
         switch (touchPhase)
         {
             case TouchPhase.Began:
                 if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize))
                 {
                     thisTouchInteracting = true;
-                    PlayerRigidbody.velocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
                     return;
                 }
 
@@ -136,7 +156,13 @@ public class TouchMovementAndInteraction : MonoBehaviour
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            PlayerRigidbody.velocity = Vector2.ClampMagnitude(movementDirection * moveSpeedMultiplier, MaxMoveSpeed);
+            
+            // TODO animate here
         }
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = Vector2.ClampMagnitude(movementDirection * moveSpeedMultiplier, MaxMoveSpeed);
     }
 }
