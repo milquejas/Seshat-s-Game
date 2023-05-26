@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
   m_Name: tempAnotherTest
   m_EditorClassIdentifier: 
-  ConversationName: KakkaConversation
+  ConversationName: BeginConversation
   Lines:
   - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
     Position: 0
