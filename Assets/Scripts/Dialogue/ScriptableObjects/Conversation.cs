@@ -44,7 +44,7 @@ public enum DialogLineType
     Puzzle
 }
 
-[CreateAssetMenu(fileName = "New conversation", menuName = "Conversation")]
+[CreateAssetMenu(fileName = "New conversation", menuName = "Dialogue/Conversation")]
 public class Conversation : ScriptableObject
 {
     public string ConversationName;

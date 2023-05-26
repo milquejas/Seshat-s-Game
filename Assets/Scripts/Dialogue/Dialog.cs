@@ -49,7 +49,7 @@ public class Dialog : MonoBehaviour
     public void StartConversation(Conversation _conversation)
     {
         gameObject.SetActive(true);
-        playerControls.disableMovement = true;
+        playerControls.DisablePlayerMovement(true);
 
         CurrentConversation = _conversation;
         lineNumber = 0;
@@ -58,9 +58,9 @@ public class Dialog : MonoBehaviour
         ShowDialog();
     }
 
-    public void ExitDialog()
+    public void ExitDialog(bool disableControls)
     {
-        playerControls.disableMovement = false;
+        playerControls.DisablePlayerMovement(disableControls);
         gameObject.SetActive(false);
     }
 
@@ -68,7 +68,7 @@ public class Dialog : MonoBehaviour
     {
         if (lineNumber >= CurrentConversation.Lines.Length)
         {
-            ExitDialog();
+            ExitDialog(false);
             return;
         }
 
