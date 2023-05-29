@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public List<ItemSO> Items = new List<ItemSO>();
+    public List<ItemSOMike> Items = new List<ItemSOMike>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -21,12 +20,12 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Add(ItemSO item)
+    public void Add(ItemSOMike item)
     {
         Items.Add(item);
     }
 
-    public void Remove(ItemSO item)
+    public void Remove(ItemSOMike item)
     {
         Items.Remove(item);
     }

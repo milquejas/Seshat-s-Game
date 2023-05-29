@@ -26,7 +26,7 @@ public class Dialog : MonoBehaviour
     public int lineNumber { get; set; }
     private bool answering;
 
-    public Conversation CurrentConversation;
+    public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
 
     private Character speaker;
@@ -46,7 +46,7 @@ public class Dialog : MonoBehaviour
         dialogAnswers = GetComponent<DialogAnswers>();
     }
 
-    public void StartConversation(Conversation _conversation)
+    public void StartConversation(ConversationSO _conversation)
     {
         gameObject.SetActive(true);
         playerControls.DisablePlayerMovement(true);

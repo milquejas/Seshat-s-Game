@@ -6,8 +6,9 @@ public class RandomPuzzleNPC : MonoBehaviour, IInteractable
     [field: SerializeField] public bool InRange { get; set; }
     public UnityEvent StartDialog;
 
-    public void Interact()
+    public Transform Interact()
     {
-         StartDialog.Invoke();
+        StartDialog.Invoke();
+        return transform;
     }
 }

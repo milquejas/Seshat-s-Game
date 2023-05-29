@@ -45,7 +45,7 @@ public enum DialogLineType
 }
 
 [CreateAssetMenu(fileName = "New conversation", menuName = "Dialogue/Conversation")]
-public class Conversation : ScriptableObject
+public class ConversationSO : ScriptableObject
 {
     public string ConversationName;
     public Line[] Lines;

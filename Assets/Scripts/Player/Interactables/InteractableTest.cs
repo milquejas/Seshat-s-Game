@@ -7,10 +7,11 @@ public class InteractableTest : MonoBehaviour, IInteractable
     public bool InRange { get; set; }
 
     public UnityEvent OnInteract;
-    public void Interact()
+    public Transform Interact()
     {
         Debug.Log($"interacted with{gameObject.name}");
         OnInteract.Invoke();
+        return this.transform;
     }
 
     void OnMouseOver()

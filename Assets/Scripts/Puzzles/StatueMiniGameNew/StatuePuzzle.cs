@@ -33,11 +33,12 @@ public class StatuePuzzle : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact()
+    public Transform Interact()
     {
         // if riddle complete, start different dialog or something else
         riddleWindow.SetActive(true);
         DisablePlayerMovement(true);
+        return transform;
     }
 
     // OnTriggerEnter2D method is called when the Collider2D other enters the trigger.

@@ -2,15 +2,15 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Item" ,menuName = "Item/Create New Item")]
-public class ItemSO : ScriptableObject
+public class ItemSOMike : ScriptableObject
 {
     public int id;
     public string itemName;
     public int value;
     public Sprite itemImage;
-    public ItemType itemType;
+    public ItemTypeMike itemType;
 
-    public enum ItemType
+    public enum ItemTypeMike
     {
         Apple,
         Citrus
