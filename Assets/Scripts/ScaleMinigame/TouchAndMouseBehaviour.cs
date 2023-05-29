@@ -65,8 +65,9 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                     {
                         targetDragItem = target;
                         targetDragItem.ChangeToNoCollisionLayer(true);
-                        //targetDragItem.EnableItemCollider(false);
+                        
                         targetDragItem.transform.position = touchPosition;
+
 
                         targetDragItem.RBody.isKinematic = false;
                         targetDragItem.RemoveFromCup();
@@ -77,19 +78,16 @@ public class TouchAndMouseBehaviour : MonoBehaviour
             case TouchPhase.Moved:
                 if (thisTouchInteracting)
                 {
-                    //InteractTarget.transform.position = touchPosition;
-
-                    //targetDragItem.transform
                     if (targetDragItem is null) return;
 
-                    MoveTarged(touchPosition);
+                    MoveTarget(touchPosition);
                 }
                 break;
 
             case TouchPhase.Stationary:
                 if (targetDragItem is null) return;
 
-                MoveTarged(touchPosition);
+                MoveTarget(touchPosition);
                 break;
 
             case TouchPhase.Ended:
@@ -104,7 +102,7 @@ public class TouchAndMouseBehaviour : MonoBehaviour
         }
     }
 
-    private void MoveTarged(Vector2 touchPosition)
+    private void MoveTarget(Vector2 touchPosition)
     {
         Vector2 velocityDirection = new Vector2(touchPosition.x - targetDragItem.transform.position.x, touchPosition.y - targetDragItem.transform.position.y);
         targetDragItem.RBody.velocity = Vector2.ClampMagnitude(velocityDirection, 7) * draggingSpeed;
