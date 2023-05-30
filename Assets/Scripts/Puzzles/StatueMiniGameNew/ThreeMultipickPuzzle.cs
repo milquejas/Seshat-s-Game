@@ -11,7 +11,7 @@ public class ThreeMultipickPuzzle : MonoBehaviour
     [SerializeField] private List<Button> optionButtons; // List of all the option buttons for the riddle.
 
     [SerializeField] private TouchMovementAndInteraction playerControls; // Reference to the PlayerController script.
-    [SerializeField] public ThreeMultipickPuzzleSO[] allPuzzles;
+    [SerializeField] public StatuePuzzleSO[] allPuzzles;
     
     private int[] playerAnswers; // Array storing the player's selected answers.
     private int[] correctAnswers;
@@ -34,7 +34,7 @@ public class ThreeMultipickPuzzle : MonoBehaviour
         }
     }
 
-    public void InitializeThreeMultipickPuzzle(ThreeMultipickPuzzleSO givenPuzzle)
+    public void InitializeThreeMultipickPuzzle(StatuePuzzleSO givenPuzzle)
     {
         correctAnswers = givenPuzzle.CorrectAnswers;
         hintMessage.text = givenPuzzle.HintMessage;

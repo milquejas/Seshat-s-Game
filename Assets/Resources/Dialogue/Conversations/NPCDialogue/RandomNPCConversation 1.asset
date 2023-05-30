@@ -14,28 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: RandomNPCConversation
   Lines:
-  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
-    Position: 0
-    LineType: 0
-    dialogueText: kakka
-    LineAnswer: []
-  - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
-    Position: 0
-    LineType: 1
-    dialogueText: Jatketaanko? Vai eri scene?
-    LineAnswer:
+  - {character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}, Position: 0, LineType: 0, dialogueText: 'Greetings fellow citizen! ', LineAnswer: []
+}
+  - {character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}, Position: 0, LineType: 1, dialogueText: Jatketaanko? Vai eri scene?, LineAnswer:
     - AnswerText: ei
       AnswerSwitchCase: ExitCase
     - AnswerText: Jatketaan
       AnswerSwitchCase: Continue
     - AnswerText: Eri scene
       AnswerSwitchCase: StartScaleAntiqueScene
-  - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
-    Position: 0
-    LineType: 1
-    dialogueText: Alotetaanko puzzle?
-    LineAnswer:
+}
+  - {character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}, Position: 0, LineType: 1, dialogueText: Alotetaanko puzzle?, LineAnswer:
     - AnswerText: ei
       AnswerSwitchCase: ExitCase
     - AnswerText: Alotetaan
       AnswerSwitchCase: StartThreeMultipickPuzzle
+}

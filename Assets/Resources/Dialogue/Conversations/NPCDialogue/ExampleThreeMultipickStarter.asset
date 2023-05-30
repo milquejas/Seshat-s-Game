@@ -17,7 +17,8 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
     Position: 0
     LineType: 1
-    dialogueText: StartPuzzle
+    dialogueText: Greetings. I am the Spirit of this Statue and i have Five Questions
+      for you. You must give me 4/5 right answers to get the reward! Good luck!
     LineAnswer:
     - AnswerText: test
       AnswerSwitchCase: StartThreeMultipickPuzzleTest

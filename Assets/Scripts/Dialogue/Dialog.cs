@@ -14,11 +14,11 @@ using System.Collections.Generic;
 public class Dialog : MonoBehaviour
 {
     public Image Portrait;
+    public Image AnswerButtonPanel;
     public TMP_Text SpeakerName;
     public TMP_Text dialog;
-    public Image AnswerButtonPanel;
-    public GameObject AnswerButton;
 
+    public GameObject AnswerButton;
     private List<GameObject> answerButtons = new List<GameObject>();
 
     [SerializeField] private TouchMovementAndInteraction playerControls;
@@ -26,7 +26,7 @@ public class Dialog : MonoBehaviour
     public int lineNumber { get; set; }
     private bool answering;
 
-    public Conversation CurrentConversation;
+    public NPCConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
 
     private Character speaker;
@@ -46,7 +46,7 @@ public class Dialog : MonoBehaviour
         dialogAnswers = GetComponent<DialogAnswers>();
     }
 
-    public void StartConversation(Conversation _conversation)
+    public void StartConversation(NPCConversationSO _conversation)
     {
         gameObject.SetActive(true);
         playerControls.DisablePlayerMovement(true);
@@ -156,4 +156,4 @@ public class Dialog : MonoBehaviour
         answerButtons.Clear();
     }
 }
-    
+
