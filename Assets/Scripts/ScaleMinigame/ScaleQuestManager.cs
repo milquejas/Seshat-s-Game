@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Check if inventory has exact quest items
@@ -26,8 +27,9 @@ public class ScaleQuest
     public List<ItemSO> CupTwoWeights;
 }
 
-public class QuestManager : MonoBehaviour
+public class ScaleQuestManager : MonoBehaviour
 {
+    [SerializeField] private Button readyButton;
     [SerializeField] private Dialog dialog;
 
     private void Start()

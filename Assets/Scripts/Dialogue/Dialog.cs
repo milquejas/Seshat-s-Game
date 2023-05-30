@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+
 /*
- * light starting reference:
- * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
- * Could add emotions to characters
- * Questions and dialog branching is badly implemented. 
- * Didn't think much how to make transitions for any dialog changes...
- *  
+* light starting reference:
+* https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
+* Could add emotions to characters
+* Questions and dialog branching is badly implemented. 
+* Didn't think much how to make transitions for any dialog changes...
+*  
 */
 
 public class Dialog : MonoBehaviour
@@ -21,13 +22,15 @@ public class Dialog : MonoBehaviour
 
     private List<GameObject> answerButtons = new List<GameObject>();
 
-    [SerializeField] private TouchMovementAndInteraction playerControls;
-
     public int lineNumber { get; set; }
     private bool answering;
 
     public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
+
+    [Header("GameObject with player controls")]
+    [SerializeField] private GameObject playerControls;
+    private IPlayerInteract playerInteraction;
 
     private Character speaker;
     public Character Speaker
@@ -44,12 +47,13 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         dialogAnswers = GetComponent<DialogAnswers>();
+        playerInteraction = playerControls.GetComponent<IPlayerInteract>();
     }
 
     public void StartConversation(ConversationSO _conversation)
     {
         gameObject.SetActive(true);
-        playerControls.DisablePlayerMovement(true);
+        playerInteraction.DisablePlayerMovement(true);
 
         CurrentConversation = _conversation;
         lineNumber = 0;
@@ -60,7 +64,7 @@ public class Dialog : MonoBehaviour
 
     public void ExitDialog(bool disableControls)
     {
-        playerControls.DisablePlayerMovement(disableControls);
+        playerInteraction.DisablePlayerMovement(disableControls);
         gameObject.SetActive(false);
     }
 

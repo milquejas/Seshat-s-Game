@@ -20,8 +20,9 @@ public class ScaleBehaviour : MonoBehaviour
     [SerializeField] private float rightCupMass;
 
     [Header("Equal weight balance speed up")]
-    [SerializeField] private float equalTorqueAmount;
+    [SerializeField] private float torqueAmount;
     [SerializeField] private float equalTorqueTreshold;
+    [SerializeField] private float torqueRotationRange;
 
     [SerializeField] private List<ItemSO> leftCupItems = new List<ItemSO>();
     [SerializeField] private List<ItemSO> rightCupItems = new List<ItemSO>();
@@ -69,19 +70,29 @@ public class ScaleBehaviour : MonoBehaviour
         rightCupMass = rightCupRBody.mass;
     }
 
-    // Speed up scale balancing when equal weights
+    // Speed up scale movement with extra torque
     private void FixedUpdate()
     {
         if (leftCupRBody.mass == rightCupRBody.mass)
         {
             if (rotatingBeamRBody.rotation < -equalTorqueTreshold)
             {
-                rotatingBeamRBody.AddTorque(equalTorqueAmount * rightCupRBody.mass);
+                rotatingBeamRBody.AddTorque(torqueAmount * rightCupRBody.mass);
             }
             if (rotatingBeamRBody.rotation > equalTorqueTreshold)
             {
-                rotatingBeamRBody.AddTorque(-equalTorqueAmount * rightCupRBody.mass);
+                rotatingBeamRBody.AddTorque(-torqueAmount * rightCupRBody.mass);
             }
+        }
+
+        if (leftCupRBody.mass > rightCupRBody.mass && rotatingBeamRBody.rotation > -torqueRotationRange) 
+        {
+            rotatingBeamRBody.AddTorque(torqueAmount * leftCupRBody.mass);
+        }
+
+        if (rightCupRBody.mass > leftCupRBody.mass && rotatingBeamRBody.rotation < torqueRotationRange)
+        {
+            rotatingBeamRBody.AddTorque(-torqueAmount * rightCupRBody.mass);
         }
     }
 }

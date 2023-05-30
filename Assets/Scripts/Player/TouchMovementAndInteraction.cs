@@ -8,7 +8,7 @@ using UnityEngine;
 */
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TouchMovementAndInteraction : MonoBehaviour
+public class TouchMovementAndInteraction : MonoBehaviour, IPlayerInteract
 {
     [SerializeField] private float minimumMove, movementSpeed, interactionCircleSize;
 
@@ -64,9 +64,10 @@ public class TouchMovementAndInteraction : MonoBehaviour
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
-    public void DisablePlayerMovement(bool toggle)
+
+    public void DisablePlayerMovement(bool disable)
     {
-        disableMovement = toggle;
+        disableMovement = disable;
         movementDirection = Vector2.zero;
     }
 

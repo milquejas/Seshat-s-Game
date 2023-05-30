@@ -5,7 +5,7 @@ using UnityEngine;
  * TODO: delay on clicks to limit bug abuse?
 */
 
-public class TouchAndMouseBehaviour : MonoBehaviour
+public class TouchAndMouseBehaviour : MonoBehaviour, IPlayerInteract
 {
     [SerializeField] private float interactionCircleSize;
     [SerializeField] private float draggingSpeed;
@@ -43,6 +43,10 @@ public class TouchAndMouseBehaviour : MonoBehaviour
                 HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Ended);
             }
         }
+    }
+    public void DisablePlayerMovement(bool disable)
+    {
+        ControlDisabled = disable;
     }
 
     private void HandleTouch(int touchFingerId, Vector2 touchPosition, TouchPhase touchPhase)
@@ -97,7 +101,9 @@ public class TouchAndMouseBehaviour : MonoBehaviour
 
                 targetDragItem.ChangeToNoCollisionLayer(false);
                 targetDragItem.EnableItemCollider(true);
-                
+
+                InteractTarget = null;
+                targetDragItem = null;
                 break;
         }
     }
