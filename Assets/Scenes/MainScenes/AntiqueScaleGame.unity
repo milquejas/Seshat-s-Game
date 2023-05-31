@@ -1627,7 +1627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempInventoryList:
-  - ItemType: {fileID: 11400000, guid: d7a5766f625db6c448899fbe9a4cc3f5, type: 2}
+  - ItemType: {fileID: 11400000, guid: a2e7fa3c4645e9848bb18ad5f9d4596f, type: 2}
     ItemAmount: 55
   - ItemType: {fileID: 11400000, guid: fa6eaaafd132566489b321a6223299f1, type: 2}
     ItemAmount: 5

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
+  m_Name: con_npcDialogTreeExampleStart
+  m_EditorClassIdentifier: 
+  ConversationName: NPCExampleDialogTreeStart
+  Lines:
+  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+    Position: 0
+    LineType: 1
+    dialogueText: Would you like to solve some hard problems?
+    LineAnswer:
+    - AnswerText: Yes, sure
+      AnswerSwitchCase: ExampleDialogTree_PickedHard
+    - AnswerText: No way
+      AnswerSwitchCase: Continue
+  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: 'Ah well... You will have to answer an easy one then. '
+    LineAnswer: []
+  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+    Position: 0
+    LineType: 1
+    dialogueText: How much is 3/4l?
+    LineAnswer:
+    - AnswerText: 7,5dl
+      AnswerSwitchCase: ExampleDialogTree_CorrectAnswer
+    - AnswerText: 0,075l
+      AnswerSwitchCase: Continue
+  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: Ah, not quite. Good luck next time young one.
+    LineAnswer: []

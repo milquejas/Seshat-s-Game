@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb8683576c5974ca87c179b10803eb, type: 3}
+  m_Name: 3multi_GuessWeights
+  m_EditorClassIdentifier: 
+  HintMessage: Ancient Egyptians didn't use the metric system, but they should have
+  CorrectAnswers: 000000000000000001000000
+  Questions:
+  - MultipickQuestionText: Carrot weight is about
+    MultipickAnswer1: 100g
+    MultipickAnswer2: 1kg
+    MultipickAnswer3: 1dg
+  - MultipickQuestionText: How about a fairly big watermelon?
+    MultipickAnswer1: 600g
+    MultipickAnswer2: 200g
+    MultipickAnswer3: 10 000g
+  - MultipickQuestionText: I have a weight that says it is 5kg, how many grams is
+      it?
+    MultipickAnswer1: 50000g
+    MultipickAnswer2: 5000g
+    MultipickAnswer3: 500g

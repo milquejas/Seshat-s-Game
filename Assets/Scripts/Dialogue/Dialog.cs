@@ -4,21 +4,22 @@ using TMPro;
 using System.Collections.Generic;
 
 /*
-* light starting reference:
+* starting reference:
 * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
 * Could add emotions to characters
 * Questions and dialog branching is badly implemented. 
 * Didn't think much how to make transitions for any dialog changes...
-*  
+* 
 */
 
 public class Dialog : MonoBehaviour
 {
-    public Image Portrait;
-    public TMP_Text SpeakerName;
-    public TMP_Text dialog;
-    public Image AnswerButtonPanel;
-    public GameObject AnswerButton;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private Image Portrait;
+    [SerializeField] private TMP_Text SpeakerName;
+    [SerializeField] private TMP_Text dialog;
+    [SerializeField] private Image AnswerButtonPanel;
+    [SerializeField] private GameObject AnswerButton;
 
     private List<GameObject> answerButtons = new List<GameObject>();
 
@@ -30,7 +31,7 @@ public class Dialog : MonoBehaviour
 
     [Header("GameObject with player controls")]
     [SerializeField] private GameObject playerControls;
-    private IPlayerInteract playerInteraction;
+    private IPlayerTouch playerInteraction;
 
     private Character speaker;
     public Character Speaker
@@ -47,12 +48,12 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         dialogAnswers = GetComponent<DialogAnswers>();
-        playerInteraction = playerControls.GetComponent<IPlayerInteract>();
+        playerInteraction = playerControls.GetComponent<IPlayerTouch>();
     }
 
     public void StartConversation(ConversationSO _conversation)
     {
-        gameObject.SetActive(true);
+        canvas.SetActive(true);
         playerInteraction.DisablePlayerMovement(true);
 
         CurrentConversation = _conversation;
@@ -65,7 +66,7 @@ public class Dialog : MonoBehaviour
     public void ExitDialog(bool disableControls)
     {
         playerInteraction.DisablePlayerMovement(disableControls);
-        gameObject.SetActive(false);
+        canvas.SetActive(false);
     }
 
     public void ShowDialog()
@@ -82,7 +83,10 @@ public class Dialog : MonoBehaviour
         }
 
         AdjustUIPositions();
-        Speaker = CurrentConversation.Lines[lineNumber].character;
+
+        if (CurrentConversation.Lines[lineNumber].character is not null)
+            Speaker = CurrentConversation.Lines[lineNumber].character;
+
         dialog.text = CurrentConversation.Lines[lineNumber].dialogueText;
     }
 
@@ -118,7 +122,7 @@ public class Dialog : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning("current conversation position switch hit default, oh no panic?!");
+                Debug.LogWarning("current conversation position switch hit default, debug?!");
                 break;
         }
     }

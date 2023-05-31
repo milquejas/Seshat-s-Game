@@ -8,7 +8,7 @@ using UnityEngine;
 */
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TouchMovementAndInteraction : MonoBehaviour, IPlayerInteract
+public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
 {
     [SerializeField] private float minimumMove, movementSpeed, interactionCircleSize;
 

@@ -5,7 +5,7 @@ using UnityEngine;
  * TODO: delay on clicks to limit bug abuse?
 */
 
-public class TouchAndMouseBehaviour : MonoBehaviour, IPlayerInteract
+public class TouchAndMouseBehaviour : MonoBehaviour, IPlayerTouch
 {
     [SerializeField] private float interactionCircleSize;
     [SerializeField] private float draggingSpeed;

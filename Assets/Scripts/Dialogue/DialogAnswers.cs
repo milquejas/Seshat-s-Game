@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class DialogAnswers : MonoBehaviour
 {
     private Dialog dialog;
-    [SerializeField] private ConversationList allConversations;
+    [SerializeField] private ConversationListSO allConversations;
     [SerializeField] private GameObject Puzzle01;
     [SerializeField] private GameObject FiveQuestionPuzzle;
     [SerializeField] private ThreeMultipickPuzzle ThreeMultipickPuzzle;
@@ -36,9 +36,13 @@ public class DialogAnswers : MonoBehaviour
                 dialog.ShowDialog();
                 break;
 
-                // example on how to change to specific different conversation
-            case "TestCase":
-                dialog.StartConversation(allConversations.ConversationSO.Find(x => x.ConversationName == "KakkaConversation"));
+                // example on how to change to specific different conversation mid dialogue
+            case "ExampleDialogTree_PickedHard":
+                dialog.StartConversation(allConversations.ConversationSO.Find(x => x.ConversationName == "NPCExampleDialogTreeHard"));
+                break;
+
+            case "ExampleDialogTree_CorrectAnswer":
+                dialog.StartConversation(allConversations.ConversationSO.Find(x => x.ConversationName == "NPCExampleDialogTreeSuccess"));
                 break;
 
             case "StartStatuePuzzle":
@@ -61,7 +65,7 @@ public class DialogAnswers : MonoBehaviour
                 ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[0]);
                 break;
 
-            case "StartThreeMultipickPuzzleTest":
+            case "StartGuessWeightsPuzzle":
                 dialog.ExitDialog(true);
                 ThreeMultipickPuzzle.gameObject.SetActive(true);
                 ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[1]);
