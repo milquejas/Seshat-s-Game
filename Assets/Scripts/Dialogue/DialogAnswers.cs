@@ -12,7 +12,7 @@ public class DialogAnswers : MonoBehaviour
 {
     private Dialog dialog;
     [SerializeField] private ConversationListSO allConversations;
-    [SerializeField] private GameObject Puzzle01;
+    //[SerializeField] private GameObject Puzzle01;
     [SerializeField] private GameObject FiveQuestionPuzzle;
     [SerializeField] private ThreeMultipickPuzzle ThreeMultipickPuzzle;
 
@@ -45,18 +45,13 @@ public class DialogAnswers : MonoBehaviour
                 dialog.StartConversation(allConversations.ConversationSO.Find(x => x.ConversationName == "NPCExampleDialogTreeSuccess"));
                 break;
 
-            case "StartStatuePuzzle":
-                dialog.ExitDialog(true);
-                Puzzle01.SetActive(true);
-                break;
-
             case "StartFiveQuestionsPuzzle":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
                 break;
 
             case "StartScaleAntiqueScene":
-                SceneManager.LoadScene("QuessAnswer");
+                SceneManager.LoadScene("AntiqueScaleGame");
                 break;
 
             case "StartThreeMultipickPuzzle":
