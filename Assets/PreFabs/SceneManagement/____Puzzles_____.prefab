@@ -126,16 +126,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286974414728248023, guid: 392a30942a8b1a54f8683079bf39898b, type: 3}
       propertyPath: m_Name
-      value: ThreeMultipickPuzzle
+      value: CatStatuePuzzle
       objectReference: {fileID: 0}
-    - target: {fileID: 5685504180958367563, guid: 392a30942a8b1a54f8683079bf39898b, type: 3}
-      propertyPath: playerControls
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685504180958367563, guid: 392a30942a8b1a54f8683079bf39898b, type: 3}
-      propertyPath: allPuzzles.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: ffe8002c5888d8d478a9a8fbf1ce6eaf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 392a30942a8b1a54f8683079bf39898b, type: 3}
 --- !u!224 &1791939796810158761 stripped

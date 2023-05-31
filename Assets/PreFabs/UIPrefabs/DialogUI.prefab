@@ -472,6 +472,7 @@ MonoBehaviour:
   canvas: {fileID: 5148274486709773529}
   Portrait: {fileID: 5148274484832104243}
   SpeakerName: {fileID: 5148274485351195071}
+  SpeakerNameBox: {fileID: 5148274486086150990}
   dialog: {fileID: 5148274486204116109}
   AnswerButtonPanel: {fileID: 5148274486352197728}
   AnswerButton: {fileID: 2137746694326885621, guid: a2f4b2be086027b4399fa203f0023696, type: 3}
@@ -490,7 +491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allConversations: {fileID: 11400000, guid: ea854ef4ff4595543b6c310b13d0c1fb, type: 2}
-  Puzzle01: {fileID: 0}
   FiveQuestionPuzzle: {fileID: 0}
   ThreeMultipickPuzzle: {fileID: 0}
 --- !u!1 &5148274485893610653

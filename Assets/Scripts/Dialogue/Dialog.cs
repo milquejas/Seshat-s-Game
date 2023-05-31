@@ -17,6 +17,7 @@ public class Dialog : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image Portrait;
     [SerializeField] private TMP_Text SpeakerName;
+    [SerializeField] private Image SpeakerNameBox;
     [SerializeField] private TMP_Text dialog;
     [SerializeField] private Image AnswerButtonPanel;
     [SerializeField] private GameObject AnswerButton;
@@ -33,8 +34,8 @@ public class Dialog : MonoBehaviour
     [SerializeField] private GameObject playerControls;
     private IPlayerTouch playerInteraction;
 
-    private Character speaker;
-    public Character Speaker
+    private CharacterSO speaker;
+    public CharacterSO Speaker
     {
         get => speaker;
         set
@@ -84,8 +85,19 @@ public class Dialog : MonoBehaviour
 
         AdjustUIPositions();
 
-        if (CurrentConversation.Lines[lineNumber].character is not null)
+        if (CurrentConversation.Lines[lineNumber].character is null)
+        {
+            SpeakerNameBox.gameObject.SetActive(false);
+            Portrait.gameObject.SetActive(false);
+            SpeakerName.gameObject.SetActive(false);
+        }
+        else
+        {
+            SpeakerNameBox.gameObject.SetActive(true);
+            Portrait.gameObject.SetActive(true);
+            SpeakerName.gameObject.SetActive(true);
             Speaker = CurrentConversation.Lines[lineNumber].character;
+        }
 
         dialog.text = CurrentConversation.Lines[lineNumber].dialogueText;
     }
