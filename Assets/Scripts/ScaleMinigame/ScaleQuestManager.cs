@@ -18,15 +18,12 @@ using UnityEngine.UI;
 // Quest has inventory item list, which cup is active, quest tooltip text, 
 // what happens after quest?
 
-public class ScaleQuest
-{
-    public string description;
-    public ItemType itemType;
-    public float targetWeight;
-    public List<ItemSO> CupOneTarget;
-    public List<ItemSO> CupTwoWeights;
-}
-
+/*
+ * If freetrade cup weight =/= cup2 weight, popup and say scale not equal please fix
+ * If cup has weights and produce, popup and say don't mix weights and produce
+ * If quest is a place produce or place weights phase and player puts stuff on wrong side, take back to pool and popup and say pls stop
+ * 
+ */
 public class ScaleQuestManager : MonoBehaviour
 {
     [SerializeField] private Button readyButton;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Item" ,menuName = "Item/Create New Item")]
+[CreateAssetMenu(fileName = "New Item" ,menuName = "ItemMike/Create New Item")]
 public class ItemSOMike : ScriptableObject
 {
     public int id;

@@ -27,7 +27,6 @@ public class ScaleMinigamePooler : MonoBehaviour
     public List<InventoryWeightedItem> TempInventoryList = new List<InventoryWeightedItem>();
 
     [SerializeField] private int itemPoolAmount;
-    [SerializeField] private Transform containerForPooledItems;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
 
     public DraggableWeightedItem ItemPrefab;
@@ -40,7 +39,7 @@ public class ScaleMinigamePooler : MonoBehaviour
     {
         for (int i = 0; i < itemPoolAmount; i++)
         {
-            itemPool.Add(Instantiate(ItemPrefab, containerForPooledItems));
+            itemPool.Add(Instantiate(ItemPrefab));
         }
 
         foreach(InventoryWeightedItem inventoryWeightedItem in TempInventoryList) 
