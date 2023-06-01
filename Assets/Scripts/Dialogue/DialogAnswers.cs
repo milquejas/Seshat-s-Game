@@ -11,10 +11,9 @@ using UnityEngine.SceneManagement;
 public class DialogAnswers : MonoBehaviour
 {
     private Dialog dialog;
-    [SerializeField] private ConversationListSO allConversations;
-    //[SerializeField] private GameObject Puzzle01;
+    [SerializeField] private AllConversationsListSO allConversations;
     [SerializeField] private GameObject FiveQuestionPuzzle;
-    [SerializeField] private ThreeMultipickPuzzle ThreeMultipickPuzzle;
+    [SerializeField] private CatStatuePuzzle CatStatuePuzzle;
 
     private void Start()
     {
@@ -25,7 +24,7 @@ public class DialogAnswers : MonoBehaviour
     {
         switch (answerCase)
         {
-                 // way to completely exit conversation
+                // way to completely exit conversation
             case "ExitCase":
                 dialog.ExitDialog(false);
                 break;
@@ -54,16 +53,16 @@ public class DialogAnswers : MonoBehaviour
                 SceneManager.LoadScene("AntiqueScaleGame");
                 break;
 
-            case "StartThreeMultipickPuzzle":
+            case "StartStatuePuzzle":
                 dialog.ExitDialog(true);
-                ThreeMultipickPuzzle.gameObject.SetActive(true);
-                ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[0]);
+                CatStatuePuzzle.gameObject.SetActive(true);
+                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.allPuzzles[0]);
                 break;
 
             case "StartGuessWeightsPuzzle":
                 dialog.ExitDialog(true);
-                ThreeMultipickPuzzle.gameObject.SetActive(true);
-                ThreeMultipickPuzzle.InitializeThreeMultipickPuzzle(ThreeMultipickPuzzle.allPuzzles[1]);
+                CatStatuePuzzle.gameObject.SetActive(true);
+                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.allPuzzles[1]);
                 break;
 
             default:

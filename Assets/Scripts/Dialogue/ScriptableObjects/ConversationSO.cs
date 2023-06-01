@@ -9,7 +9,8 @@ using UnityEngine;
 [System.Serializable]
 public struct Line
 {
-    public Character character;
+    [Header("Character can be left empty to show none")]
+    public CharacterSO character;
     public CharacterPosition Position;
     public DialogLineType LineType;
 
