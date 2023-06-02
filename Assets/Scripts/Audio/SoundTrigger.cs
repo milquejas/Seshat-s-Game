@@ -9,7 +9,7 @@ public class SoundTrigger : MonoBehaviour
     private AudioSource source;
 
     [SerializeField]
-    private Collider2D soundTriggerPoint;
+    private Collider2D soundTriggerCollider;
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
