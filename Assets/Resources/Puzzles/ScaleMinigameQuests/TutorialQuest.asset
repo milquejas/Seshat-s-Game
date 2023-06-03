@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d8c095c524c104d93ed5edc380fa09, type: 3}
   m_Name: TutorialQuest
   m_EditorClassIdentifier: 
-  Description: 
+  QuestStartDialogue: {fileID: 0}
+  Description: Place 3 potatoes on one side of the scale
   QuestPlayerInventory:
-  - ItemType: {fileID: 0}
-    ItemAmount: 0
+  - ItemType: {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
+    ItemAmount: 5
+  - ItemType: {fileID: 11400000, guid: c6e66ba8e69c8ed4c81ca628ca9f3a1d, type: 2}
+    ItemAmount: 3
+  - ItemType: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+    ItemAmount: 4
   QuestType: 0
-  PlaceTheseProduce: []
+  PlaceTheseProduce:
+  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
+  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
+  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
   MerchantTradeItem: {fileID: 0}
   MerchantTradeRatios:
   - Item: {fileID: 0}
     Ratio: 0
-  QuestStartDialogue: {fileID: 0}

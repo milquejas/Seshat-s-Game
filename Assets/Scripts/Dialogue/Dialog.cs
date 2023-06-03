@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System;
 
 /*
 * starting reference:
@@ -10,10 +11,13 @@ using System.Collections.Generic;
 * Questions and dialog branching is badly implemented. 
 * Didn't think much how to make transitions for any dialog changes...
 * 
+* Static event action DialogEndedEvent when dialog ends
 */
 
 public class Dialog : MonoBehaviour
 {
+    public static event Action<ConversationSO> DialogEndedEvent;
+
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image Portrait;
     [SerializeField] private TMP_Text SpeakerName;
@@ -68,6 +72,9 @@ public class Dialog : MonoBehaviour
     {
         playerInteraction.DisablePlayerMovement(disableControls);
         canvas.SetActive(false);
+        
+        // Event launched when dialog ends
+        DialogEndedEvent.Invoke(CurrentConversation);
     }
 
     public void ShowDialog()

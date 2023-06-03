@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,12 +29,33 @@ public class ScaleQuestManager : MonoBehaviour
 {
     [SerializeField] private Button readyButton;
     [SerializeField] private Dialog dialog;
+    [SerializeField] private GameObject gameplayUI;
+    [SerializeField] private GameObject questDescriptionContainer;
+    [SerializeField] private TMP_Text questDescription;
+    [SerializeField] private Image questArrowPointerImage;
+    [SerializeField] private GameObject tradeRatioContainer;
+    [SerializeField] private TMP_Text tradeRatios;
+    [SerializeField] private ScaleMinigamePooler itemPooler; 
+
+    // TODO: Quests could be pulled from game manager on scene load
+    [SerializeField] private ScaleMinigameQuestSO[] questOrder;
+    private int currentQuest;
 
     private void Start()
     {
         //dialog.ConversationEnded += CheckConversation;
+        Dialog.DialogEndedEvent += DialogEnd;
     }
 
+    private void DialogEnd(ConversationSO conversation)
+    {
+        StartQuest();
+    }
+
+    private void StartQuest()
+    {
+        itemPooler.InitializeScaleInventory(questOrder[currentQuest].QuestPlayerInventory);
+    }
 
     private void CheckConversation(ConversationSO conversation)
     {

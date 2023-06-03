@@ -24,7 +24,7 @@ public struct InventoryWeightedItem
 
 public class ScaleMinigamePooler : MonoBehaviour
 {
-    public List<InventoryWeightedItem> TempInventoryList = new List<InventoryWeightedItem>();
+    public List<InventoryWeightedItem> InventoryList = new List<InventoryWeightedItem>();
 
     [SerializeField] private int itemPoolAmount;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
@@ -41,8 +41,13 @@ public class ScaleMinigamePooler : MonoBehaviour
         {
             itemPool.Add(Instantiate(ItemPrefab));
         }
+    }
 
-        foreach(InventoryWeightedItem inventoryWeightedItem in TempInventoryList) 
+    public void InitializeScaleInventory(List<InventoryWeightedItem> inventoryList)
+    {
+        InventoryList = inventoryList;
+
+        foreach (InventoryWeightedItem inventoryWeightedItem in InventoryList)
         {
             ScaleMinigameInventoryItem inventoryItem = Instantiate(InventoryItemPrefab, transform);
             inventoryItem.inventoryWeightedItem = inventoryWeightedItem;

@@ -725,18 +725,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565569573}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4808485, y: 0.4808485, z: 0.4808485}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1820184624}
-  m_Father: {fileID: 1307547339}
-  m_RootOrder: 1
+  m_Father: {fileID: 1679649270}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -247.8, y: 0}
+  m_AnchoredPosition: {x: -119.15425, y: 0}
   m_SizeDelta: {x: 375.5, y: 136.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565569575
@@ -1182,7 +1182,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   readyButton: {fileID: 565569575}
-  dialog: {fileID: 0}
+  dialog: {fileID: 939185164}
+  gameplayUI: {fileID: 1679649266}
+  questDescriptionContainer: {fileID: 547022148}
+  questDescription: {fileID: 725438227}
+  questArrowPointerImage: {fileID: 1701568430}
+  tradeRatioContainer: {fileID: 1548482328}
+  tradeRatios: {fileID: 57740211}
+  itemPooler: {fileID: 2076638019}
+  questOrder:
+  - {fileID: 11400000, guid: 9340e3c66e57ac14885a66c9e8dace72, type: 2}
+  - {fileID: 11400000, guid: 9340e3c66e57ac14885a66c9e8dace72, type: 2}
+--- !u!114 &939185164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+  m_PrefabInstance: {fileID: 641127307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e894b60ead41cfc4ba1953e88ec7e27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1041429416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1400,7 +1421,7 @@ GameObject:
   - component: {fileID: 1307547337}
   - component: {fileID: 1307547336}
   m_Layer: 5
-  m_Name: ScaleMinigameUI
+  m_Name: PermanentSettingsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1480,7 +1501,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1470768207}
-  - {fileID: 565569574}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1532,7 +1552,7 @@ GameObject:
   - component: {fileID: 1470768209}
   - component: {fileID: 1470768208}
   m_Layer: 5
-  m_Name: CurrentQuestBox
+  m_Name: SettingsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,6 +1872,7 @@ RectTransform:
   - {fileID: 547022149}
   - {fileID: 1701568429}
   - {fileID: 1548482329}
+  - {fileID: 565569574}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2232,19 +2253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8059473520a8da84181f438bf8752dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TempInventoryList:
-  - ItemType: {fileID: 11400000, guid: a2e7fa3c4645e9848bb18ad5f9d4596f, type: 2}
-    ItemAmount: 55
-  - ItemType: {fileID: 11400000, guid: fa6eaaafd132566489b321a6223299f1, type: 2}
-    ItemAmount: 5
-  - ItemType: {fileID: 11400000, guid: 3a82a1b8b5e5c63498b1bb41357e353a, type: 2}
-    ItemAmount: 5
-  - ItemType: {fileID: 11400000, guid: 009451a94f7003c42b9abc081ed64f84, type: 2}
-    ItemAmount: 5
-  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
-    ItemAmount: 99
-  - ItemType: {fileID: 11400000, guid: a812aca8f7fe45b4ea860e2adfccd6bd, type: 2}
-    ItemAmount: 5
+  InventoryList: []
   itemPoolAmount: 25
   returnToPoolAnimationCurve:
     serializedVersion: 2
