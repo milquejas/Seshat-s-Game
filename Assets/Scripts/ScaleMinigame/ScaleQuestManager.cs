@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,7 +36,11 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private Image questArrowPointerImage;
     [SerializeField] private GameObject tradeRatioContainer;
     [SerializeField] private TMP_Text tradeRatios;
-    [SerializeField] private ScaleMinigamePooler itemPooler; 
+    [SerializeField] private ScaleMinigamePooler itemPooler;
+
+    [SerializeField] private GameObject FadeOutCanvas;
+
+    private ScaleCup? produceCup = null;
 
     // TODO: Quests could be pulled from game manager on scene load
     [SerializeField] private ScaleMinigameQuestSO[] questOrder;
@@ -43,6 +48,8 @@ public class ScaleQuestManager : MonoBehaviour
 
     private void Start()
     {
+        // Load scene async? For fadeout during enter
+        // https://forum.unity.com/threads/what-and-how-is-the-best-way-to-fade-in-out-when-loading-switching-scenes.1388280/
         //dialog.ConversationEnded += CheckConversation;
         Dialog.DialogEndedEvent += DialogEnd;
     }
@@ -50,11 +57,35 @@ public class ScaleQuestManager : MonoBehaviour
     private void DialogEnd(ConversationSO conversation)
     {
         StartQuest();
+        FadeOutCanvas.SetActive(true);
+
     }
 
     private void StartQuest()
     {
         itemPooler.InitializeScaleInventory(questOrder[currentQuest].QuestPlayerInventory);
+    }
+
+    public void ProducePlacedInCup(ScaleCup cup)
+    {
+        if (CheckIfWrongCup(cup))
+        {
+            // todo false message to player: "pick one cup" or place weights on the other side
+        }
+    }
+
+    private bool CheckIfWrongCup(ScaleCup cup)
+    {
+        if (questOrder[currentQuest].QuestType == ScaleMinigameQuestSO.ScaleQuestType.FreeTrading) return false;
+
+        if (produceCup is null)
+        {
+            produceCup = cup;
+        }
+
+        if (cup == produceCup) return false;
+
+        return true;
     }
 
     private void CheckConversation(ConversationSO conversation)

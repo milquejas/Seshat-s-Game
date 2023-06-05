@@ -24,7 +24,7 @@ public struct InventoryWeightedItem
 
 public class ScaleMinigamePooler : MonoBehaviour
 {
-    public List<InventoryWeightedItem> InventoryList = new List<InventoryWeightedItem>();
+    private List<InventoryWeightedItem> InventoryList = new List<InventoryWeightedItem>();
 
     [SerializeField] private int itemPoolAmount;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
@@ -37,17 +37,17 @@ public class ScaleMinigamePooler : MonoBehaviour
 
     private void Start()
     {
+        InventoryList.Clear();
         for (int i = 0; i < itemPoolAmount; i++)
         {
             itemPool.Add(Instantiate(ItemPrefab));
         }
     }
 
-    public void InitializeScaleInventory(List<InventoryWeightedItem> inventoryList)
+    public void InitializeScaleInventory(List<InventoryWeightedItem> questInventoryList)
     {
-        InventoryList = inventoryList;
 
-        foreach (InventoryWeightedItem inventoryWeightedItem in InventoryList)
+        foreach (InventoryWeightedItem inventoryWeightedItem in questInventoryList)
         {
             ScaleMinigameInventoryItem inventoryItem = Instantiate(InventoryItemPrefab, transform);
             inventoryItem.inventoryWeightedItem = inventoryWeightedItem;
