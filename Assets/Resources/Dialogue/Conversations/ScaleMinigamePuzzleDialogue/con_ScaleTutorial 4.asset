@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
+  m_Name: con_ScaleTutorial 4
+  m_EditorClassIdentifier: 
+  ConversationName: ScaleTutorial4
+  Lines:
+  - character: {fileID: 11400000, guid: 34e9b5929305e544ca8756730077fb3e, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: 'Wonderful! As you might have noticed, all our fruits are completely
+      uniform. They magically all weigh the same. '
+    LineAnswer: []
+  - character: {fileID: 11400000, guid: 34e9b5929305e544ca8756730077fb3e, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: Somewhere else, we would have to fiddle more with the weights to
+      get accurate weights
+    LineAnswer: []
+  - character: {fileID: 11400000, guid: 34e9b5929305e544ca8756730077fb3e, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: Rejoice! All apples weigh exactly 150grams!
+    LineAnswer: []
+  - character: {fileID: 11400000, guid: 34e9b5929305e544ca8756730077fb3e, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: Now, if I would trade you one citrus for every 300grams of apple.
+      Use the scale and place as many apples as would give you 2 citrus fruit
+    LineAnswer: []

@@ -15,3 +15,4 @@ MonoBehaviour:
   ItemName: 11
   ItemImage: {fileID: -10834866, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
   ItemWeight: 5
+  Weight: 1

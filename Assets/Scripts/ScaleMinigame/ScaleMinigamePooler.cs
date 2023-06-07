@@ -24,10 +24,7 @@ public struct InventoryWeightedItem
 
 public class ScaleMinigamePooler : MonoBehaviour
 {
-    public List<InventoryWeightedItem> TempInventoryList = new List<InventoryWeightedItem>();
-
     [SerializeField] private int itemPoolAmount;
-    [SerializeField] private Transform containerForPooledItems;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
 
     public DraggableWeightedItem ItemPrefab;
@@ -35,21 +32,43 @@ public class ScaleMinigamePooler : MonoBehaviour
 
     [SerializeField] private List<DraggableWeightedItem> itemPool = new List<DraggableWeightedItem>();
     [SerializeField] private List<DraggableWeightedItem> itemsInUsePool = new List<DraggableWeightedItem>();
+    private List<ScaleMinigameInventoryItem> inventoryItemsList = new List<ScaleMinigameInventoryItem>();
 
     private void Start()
     {
         for (int i = 0; i < itemPoolAmount; i++)
         {
-            itemPool.Add(Instantiate(ItemPrefab, containerForPooledItems));
+            itemPool.Add(Instantiate(ItemPrefab));
         }
+    }
 
-        foreach(InventoryWeightedItem inventoryWeightedItem in TempInventoryList) 
+    public void InitializeScaleInventory(List<InventoryWeightedItem> questInventoryList)
+    {
+
+        foreach (InventoryWeightedItem inventoryWeightedItem in questInventoryList)
         {
             ScaleMinigameInventoryItem inventoryItem = Instantiate(InventoryItemPrefab, transform);
             inventoryItem.inventoryWeightedItem = inventoryWeightedItem;
-
+            
             inventoryItem.InitializeInventoryItem();
+            inventoryItemsList.Add(inventoryItem);
         }
+    }
+
+    public void ResetEverything()
+    {
+        List<DraggableWeightedItem> inUseItems = new List<DraggableWeightedItem>(itemsInUsePool);
+
+        foreach (DraggableWeightedItem item in inUseItems)
+        {
+            StartCoroutine(ReturnItemToPool(item, 0));
+        }
+
+        foreach (ScaleMinigameInventoryItem inventoryItem in inventoryItemsList)
+        {
+            Destroy(inventoryItem.gameObject);
+        }
+        inventoryItemsList.Clear();
     }
 
     public DraggableWeightedItem GetPooledItem()
