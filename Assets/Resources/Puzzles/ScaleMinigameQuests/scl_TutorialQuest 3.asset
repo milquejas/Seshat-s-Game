@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88d8c095c524c104d93ed5edc380fa09, type: 3}
-  m_Name: scl_TutorialQuest
+  m_Name: scl_TutorialQuest 3
   m_EditorClassIdentifier: 
-  QuestStartDialogue: {fileID: 0}
-  Description: Place 3 potatoes on one side of the scale
+  QuestStartDialogue: {fileID: 11400000, guid: 89b9187a076a2c0478ef030dc4e7de1e, type: 2}
+  Description: Place one apple and balance it with weights
   QuestPlayerInventory:
-  - ItemType: {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
-    ItemAmount: 5
-  - ItemType: {fileID: 11400000, guid: c6e66ba8e69c8ed4c81ca628ca9f3a1d, type: 2}
-    ItemAmount: 3
   - ItemType: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
-    ItemAmount: 4
-  QuestType: 0
+    ItemAmount: 1
+  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+    ItemAmount: 1
+  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+    ItemAmount: 1
+  - ItemType: {fileID: 11400000, guid: 009451a94f7003c42b9abc081ed64f84, type: 2}
+    ItemAmount: 1
+  QuestType: 1
   PlaceTheseProduce:
-  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
-  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
-  - {fileID: 11400000, guid: ec4f2e6390a3169498a5beb370392362, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
   MerchantTradeItem: {fileID: 0}
   MerchantTradeRatios:
   - Item: {fileID: 0}

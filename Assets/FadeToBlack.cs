@@ -1,9 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 /*
  * Quick fade in
+ * ref: https://forum.unity.com/threads/how-can-i-fade-in-out-a-canvas-group-alpha-color-with-duration-time.969864/#post-6311295
  * TODO: setup for scene switching
  */
 

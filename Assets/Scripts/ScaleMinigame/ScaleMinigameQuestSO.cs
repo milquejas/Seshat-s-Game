@@ -19,8 +19,8 @@ public class ScaleMinigameQuestSO : ScriptableObject
 
     public enum ScaleQuestType
     {
-        PlaceProduce,
-        PlaceWeights,
+        PlaceOnOneCup,
+        PlaceBalanced,
         FreeTrading,
     }
 }

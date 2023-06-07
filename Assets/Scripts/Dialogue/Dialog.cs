@@ -16,7 +16,7 @@ using System;
 
 public class Dialog : MonoBehaviour
 {
-    public static event Action<ConversationSO> DialogEndedEvent;
+    public event Action<ConversationSO> DialogEndedEvent;
 
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image Portrait;
@@ -50,7 +50,7 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         dialogAnswers = GetComponent<DialogAnswers>();
         playerInteraction = playerControls.GetComponent<IPlayerTouch>();

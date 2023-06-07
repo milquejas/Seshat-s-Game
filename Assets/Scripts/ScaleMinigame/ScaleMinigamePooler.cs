@@ -24,8 +24,6 @@ public struct InventoryWeightedItem
 
 public class ScaleMinigamePooler : MonoBehaviour
 {
-    private List<InventoryWeightedItem> InventoryList = new List<InventoryWeightedItem>();
-
     [SerializeField] private int itemPoolAmount;
     [SerializeField] private AnimationCurve returnToPoolAnimationCurve;
 
@@ -34,10 +32,10 @@ public class ScaleMinigamePooler : MonoBehaviour
 
     [SerializeField] private List<DraggableWeightedItem> itemPool = new List<DraggableWeightedItem>();
     [SerializeField] private List<DraggableWeightedItem> itemsInUsePool = new List<DraggableWeightedItem>();
+    private List<ScaleMinigameInventoryItem> inventoryItemsList = new List<ScaleMinigameInventoryItem>();
 
     private void Start()
     {
-        InventoryList.Clear();
         for (int i = 0; i < itemPoolAmount; i++)
         {
             itemPool.Add(Instantiate(ItemPrefab));
@@ -51,9 +49,26 @@ public class ScaleMinigamePooler : MonoBehaviour
         {
             ScaleMinigameInventoryItem inventoryItem = Instantiate(InventoryItemPrefab, transform);
             inventoryItem.inventoryWeightedItem = inventoryWeightedItem;
-
+            
             inventoryItem.InitializeInventoryItem();
+            inventoryItemsList.Add(inventoryItem);
         }
+    }
+
+    public void ResetEverything()
+    {
+        List<DraggableWeightedItem> inUseItems = new List<DraggableWeightedItem>(itemsInUsePool);
+
+        foreach (DraggableWeightedItem item in inUseItems)
+        {
+            StartCoroutine(ReturnItemToPool(item, 0));
+        }
+
+        foreach (ScaleMinigameInventoryItem inventoryItem in inventoryItemsList)
+        {
+            Destroy(inventoryItem.gameObject);
+        }
+        inventoryItemsList.Clear();
     }
 
     public DraggableWeightedItem GetPooledItem()

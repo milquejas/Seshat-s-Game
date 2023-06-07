@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,56 +36,146 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private Image questArrowPointerImage;
     [SerializeField] private GameObject tradeRatioContainer;
     [SerializeField] private TMP_Text tradeRatios;
+
     [SerializeField] private ScaleMinigamePooler itemPooler;
+    [SerializeField] private ScaleBehaviour scaleBehaviour;
 
     [SerializeField] private GameObject FadeOutCanvas;
-
-    private ScaleCup? produceCup = null;
+    [SerializeField] private ConversationSO StartingDialog;
 
     // TODO: Quests could be pulled from game manager on scene load
     [SerializeField] private ScaleMinigameQuestSO[] questOrder;
     private int currentQuest;
 
+    [SerializeField] private List<ItemSO> weightItems;
     private void Start()
     {
         // Load scene async? For fadeout during enter
         // https://forum.unity.com/threads/what-and-how-is-the-best-way-to-fade-in-out-when-loading-switching-scenes.1388280/
         //dialog.ConversationEnded += CheckConversation;
-        Dialog.DialogEndedEvent += DialogEnd;
+
+        dialog.DialogEndedEvent += DialogEnd;
+
+        StartQuest();
     }
 
     private void DialogEnd(ConversationSO conversation)
     {
-        StartQuest();
-        FadeOutCanvas.SetActive(true);
-
+        // StartQuest();
+        // FadeOutCanvas.SetActive(true);
+        questDescriptionContainer.SetActive(true);
+        
     }
 
     private void StartQuest()
     {
         itemPooler.InitializeScaleInventory(questOrder[currentQuest].QuestPlayerInventory);
-    }
 
-    public void ProducePlacedInCup(ScaleCup cup)
-    {
-        if (CheckIfWrongCup(cup))
+        if(questOrder[currentQuest].QuestStartDialogue is not null)
         {
-            // todo false message to player: "pick one cup" or place weights on the other side
-        }
-    }
-
-    private bool CheckIfWrongCup(ScaleCup cup)
-    {
-        if (questOrder[currentQuest].QuestType == ScaleMinigameQuestSO.ScaleQuestType.FreeTrading) return false;
-
-        if (produceCup is null)
-        {
-            produceCup = cup;
+            dialog.StartConversation(questOrder[currentQuest].QuestStartDialogue);
+            questDescriptionContainer.SetActive(false);
         }
 
-        if (cup == produceCup) return false;
+        questDescription.text = questOrder[currentQuest].Description;
+    }
 
+    // when trade is pressed... 
+    // List<ItemSO> PlaceTheseProduce
+    // ScaleBehaviour.leftCupItems
+    // ScaleBehaviour.rightCupItems
+    public void ReadyButtonPressed()
+    {
+        if (questOrder[currentQuest].QuestType == ScaleMinigameQuestSO.ScaleQuestType.PlaceOnOneCup) 
+            ReadyPlaceOnOneCupQuest();
+        
+        else if (questOrder[currentQuest].QuestType == ScaleMinigameQuestSO.ScaleQuestType.PlaceBalanced) 
+            ReadyPlaceBalancedQuest();
+
+        else if (questOrder[currentQuest].QuestType == ScaleMinigameQuestSO.ScaleQuestType.FreeTrading) 
+            ReadyFreeTradingQuest();
+    }
+
+    private bool ListIsWeights(List<ItemSO> itemList)
+    {
+        foreach (ItemSO item in itemList)
+        {
+            if (!item.Weight)
+                return false;
+        }
         return true;
+    }
+
+    private bool ListFitsQuest(List<ItemSO> itemList)
+    {
+        return itemList.OrderBy(m => m.ItemName).SequenceEqual(questOrder[currentQuest].PlaceTheseProduce.OrderBy(m => m.ItemName));
+    }
+
+    private void ReadyPlaceOnOneCupQuest()
+    {
+        bool leftIsEmptyList = scaleBehaviour.leftCupItems.Count == 0;
+        bool rightIsEmptyList = scaleBehaviour.rightCupItems.Count == 0;
+        bool leftFitsQuest =
+            ListFitsQuest(scaleBehaviour.leftCupItems);
+
+        bool rightFitsQuest =
+            ListFitsQuest(scaleBehaviour.rightCupItems);
+
+        if ((leftFitsQuest && rightIsEmptyList) ||
+            (rightFitsQuest && leftIsEmptyList))
+        {
+            ProgressQuest();
+        }
+
+        else
+        {
+            print("try again!?");
+        }
+    }
+
+    // Place Balanced Quest means place weights and produce in different sides?
+    private void ReadyPlaceBalancedQuest()
+    {
+        if (!scaleBehaviour.ScaleIsBalanced())
+        {
+            print("Scale is not balanced!");
+            return;
+        }
+
+        bool leftFitsQuest =
+            ListFitsQuest(scaleBehaviour.leftCupItems);
+
+        bool rightFitsQuest =
+            ListFitsQuest(scaleBehaviour.rightCupItems);
+
+        if (!leftFitsQuest && !rightFitsQuest)
+        {
+            print("Place the right items in a cup");
+            return;
+        }
+
+        if ((leftFitsQuest && !ListIsWeights(scaleBehaviour.rightCupItems)) || 
+            (rightFitsQuest && !ListIsWeights(scaleBehaviour.leftCupItems)))
+        {
+            print("Use only marked weights to balance the scale");
+            return;
+        }
+
+        itemPooler.ResetEverything();
+        ProgressQuest();
+    }
+
+    // free trading could have own button with trade text?
+    private void ReadyFreeTradingQuest()
+    {
+
+    }
+
+    private void ProgressQuest()
+    {
+        Debug.Log("success progressing quest");
+        currentQuest++;
+        StartQuest();
     }
 
     private void CheckConversation(ConversationSO conversation)
