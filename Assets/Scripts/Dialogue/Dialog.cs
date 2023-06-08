@@ -74,7 +74,7 @@ public class Dialog : MonoBehaviour
         canvas.SetActive(false);
         
         // Event launched when dialog ends
-        DialogEndedEvent.Invoke(CurrentConversation);
+        DialogEndedEvent?.Invoke(CurrentConversation);
     }
 
     public void ShowDialog()
