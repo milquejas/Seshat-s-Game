@@ -1075,50 +1075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234082, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 1729498137}
     - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 1907595660}
-    - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: CurrentConversation
-      value: 
-      objectReference: {fileID: 11400000, guid: e3ae82e36f1eed14d82827f332c76e62, type: 2}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 952.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 651.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 476.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486709773529, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
 --- !u!1 &725438225
@@ -2077,11 +2037,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701568428}
   m_CullTransparentMesh: 1
---- !u!1 &1729498137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5148274486709773529, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-  m_PrefabInstance: {fileID: 641127307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735991472
 GameObject:
   m_ObjectHideFlags: 0

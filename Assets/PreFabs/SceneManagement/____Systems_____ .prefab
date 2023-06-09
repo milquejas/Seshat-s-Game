@@ -80,7 +80,7 @@ GameObject:
   m_Layer: 0
   m_Name: '____Systems_____ '
   m_TagString: Untagged
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -91,7 +91,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7287391064603295612}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -129,7 +129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7287391065811533579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 9.63, y: -25.81, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,18 +208,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7287391064603295613}
     m_Modifications:
-    - target: {fileID: 5148274485402234080, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: Puzzle01
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234080, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: FiveQuestionPuzzle
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234080, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: ThreeMultipickPuzzle
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5148274485402234081, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -267,42 +255,6 @@ PrefabInstance:
     - target: {fileID: 5148274485402234082, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_Name
       value: DialogUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: playerControls
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486086150984, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_Name
-      value: CharacterContainer
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 952.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 651.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 476.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486709773529, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
