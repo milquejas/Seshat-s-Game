@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "New weight item", menuName = "Item")]
 public class ItemSO : ScriptableObject
@@ -6,6 +7,7 @@ public class ItemSO : ScriptableObject
     public ItemType ItemName;
     public Sprite ItemImage;
     public int ItemWeight;
+    public bool Weight;
 }
 
 public enum ItemType

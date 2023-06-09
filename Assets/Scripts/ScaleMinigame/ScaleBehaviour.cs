@@ -24,8 +24,8 @@ public class ScaleBehaviour : MonoBehaviour
     [SerializeField] private float equalTorqueTreshold;
     [SerializeField] private float torqueRotationRange;
 
-    [SerializeField] private List<ItemSO> leftCupItems = new List<ItemSO>();
-    [SerializeField] private List<ItemSO> rightCupItems = new List<ItemSO>();
+    public List<ItemSO> leftCupItems = new List<ItemSO>();
+    public List<ItemSO> rightCupItems = new List<ItemSO>();
 
     public void AddItemToScale(ScaleCup side, ItemSO addedItem)
     {
@@ -68,6 +68,14 @@ public class ScaleBehaviour : MonoBehaviour
     {
         leftCupMass = leftCupRBody.mass;
         rightCupMass = rightCupRBody.mass;
+    }
+
+    public bool ScaleIsBalanced()
+    {
+        if (leftCupMass == rightCupMass)
+            return true;
+
+        return false;
     }
 
     // Speed up scale movement with extra torque
