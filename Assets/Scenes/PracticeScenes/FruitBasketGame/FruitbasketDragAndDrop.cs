@@ -3,19 +3,19 @@ using UnityEngine;
 public class FruitbasketDragAndDrop : MonoBehaviour
 {
     private static bool isDraggingEnabled = true;
+    private bool isMouseOver = false;  // Uusi muuttuja
 
     private bool isDragging = false;
     private Vector2 startPosition;
     private Vector2 offset;
-    private bool wasNewFruitCreated = false;  // Uusi muuttuja
+    private bool wasNewFruitCreated = false;
 
     public GameController gameController;
-    public GameObject[] fruitPrefabs;  // Hedelm‰prefabit
+    public GameObject[] fruitPrefabs;
     public int fruitIndex;
 
     void Start()
     {
-        // GameController and fruitIndex should be set in the inspector for each fruit
     }
 
     void OnMouseDown()
@@ -25,7 +25,12 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             isDragging = true;
             startPosition = transform.position;
             offset = startPosition - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            CreateNewFruit();  // Luodaan uusi hedelm‰ heti, kun alkuper‰ist‰ aletaan raahata
+            CreateNewFruit();
+
+            if (!isMouseOver)
+            {
+                gameController.HideTooltip();
+            }
         }
     }
 
@@ -33,6 +38,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     {
         if (isDragging)
         {
+            gameController.HideTooltip();
             Vector2 newPosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
             transform.position = newPosition;
         }
@@ -41,21 +47,27 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
-        wasNewFruitCreated = false;  // Nollataan muuttuja seuraavaa raahausta varten
+        wasNewFruitCreated = false;
         if (!this.gameObject.GetComponent<Collider2D>().IsTouching(GameObject.FindGameObjectWithTag("Basket").GetComponent<Collider2D>()))
         {
             transform.position = startPosition;
         }
+        gameController.HideTooltip();
     }
 
     void OnMouseEnter()
     {
+        isMouseOver = true;
         gameController.ShowTooltip(fruitIndex);
     }
 
     void OnMouseExit()
     {
-        gameController.HideTooltip();
+        isMouseOver = false;
+        if (!isDragging)
+        {
+            gameController.HideTooltip();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -64,6 +76,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         {
             gameController.AddFruitToBasket(fruitIndex);
             gameObject.SetActive(false);
+            gameController.FruitInBasket();
         }
     }
 
@@ -81,18 +94,14 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     {
         if (gameController.GetFruitQuantity(fruitIndex) > 0)
         {
-            // Luodaan uusi hedelm‰
             GameObject newFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity);
-            // Asetetaan uudelle hedelm‰lle oikea GameController ja hedelm‰n indeksi
             newFruit.GetComponent<FruitbasketDragAndDrop>().gameController = gameController;
             newFruit.GetComponent<FruitbasketDragAndDrop>().fruitIndex = fruitIndex;
         }
         else
         {
-            // Jos hedelm‰‰ ei ole j‰ljell‰, luodaan tumma siluetti
             GameObject emptyFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity);
             emptyFruit.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
-            // Poistetaan DragAndDrop-komponentti, jotta hedelm‰‰ ei voi en‰‰ raahata
             Destroy(emptyFruit.GetComponent<FruitbasketDragAndDrop>());
         }
     }

@@ -3,6 +3,8 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
+    public Canvas canvas;
+    public Camera mainCamera;
     public GameObject[] fruitGameObjects;
     private readonly int[] startingQuantities = new int[11] { 4, 2, 4, 2, 2, 4, 4, 4, 1, 2, 4 };
     private int[] fruitQuantities;
@@ -30,20 +32,31 @@ public class GameController : MonoBehaviour
         tooltipText = tooltipGameObject.GetComponent<TMP_Text>(); // Get TextMeshPro component
         tooltipGameObject.SetActive(false); // Hide tooltip at the start
     }
-    void Update()
-    {
-        // Move the tooltip to follow the mouse
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 10; // distance from the camera
-        tooltipGameObject.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
-    }
-
     public void ShowTooltip(int fruitIndex)
     {
         string tooltip = $"Weight: {fruitWeights[fruitIndex]} Value: {fruitValues[fruitIndex]}";
         tooltipText.text = tooltip;
+
+        // Calculate the position of the tooltip to match the mouse cursor
+        Vector3 mousePosition = Input.mousePosition;
+
+        // Adjust the position so the tooltip appears above the mouse
+        float yOffset = 150f; // Change this value to adjust the vertical offset of the tooltip
+        mousePosition.y += yOffset;
+
+        // Set the position of the tooltip
+        tooltipGameObject.transform.position = mousePosition;
+
         tooltipGameObject.SetActive(true);
     }
+
+
+    public void FruitInBasket()
+    {
+        HideTooltip();
+    }
+
+
 
     public void HideTooltip()
     {

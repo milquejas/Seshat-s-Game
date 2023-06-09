@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 64010
+  controlID: 31579
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 64011
+  controlID: 31555
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 63982
+  controlID: 31556
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,9 +227,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3eff0000
-      m_LastClickedID: 65342
-      m_ExpandedIDs: 92c3feff52c5feff80c7feffced3feff0ae5feff0008ffff2008ffff2e08ffff3008ffff948affff74bbffff66d5ffff26fbffffe261000054990000dc9d0000e49d0000e89d0000f29d0000069e00000a9e00000e9e00002a9e00003e9e0000429e0000469e00006c9e0000809e0000ecee000008ef000016ef00003cef00004eef00007cf4000086f40000c4f4000064fa0000b4fa000076fc000080fc0000befc000088fe0000d8fe00004eff000058ff000096ff0000
+      m_SelectedIDs: fad10000
+      m_LastClickedID: 53754
+      m_ExpandedIDs: ae7effff0e92ffff4af9ffff26fbffff14620000c6d10000eed10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -389,9 +389,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: -284, y: -177}
+      snapOffset: {x: 101, y: -177}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
+      snapCorner: 2
       id: Scene View/Camera
       index: 1
       layout: 4
@@ -527,9 +527,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 470.19702, y: 704.0015, z: -46.376614}
+    m_Target: {x: 901.7163, y: 557.71027, z: -2.2649548}
     speed: 2
-    m_Value: {x: 470.19702, y: 704.0015, z: -46.376614}
+    m_Value: {x: 901.7163, y: 557.71027, z: -2.2649548}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -580,9 +580,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 812.86194
+    m_Target: 299.12247
     speed: 2
-    m_Value: 812.86194
+    m_Value: 299.12247
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 64012
+  controlID: 31520
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -763,22 +763,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/PracticeScenes/FruitBasketGame
+    - Assets/Scenes/PracticeScenes/FruitBasketGame/prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scenes/PracticeScenes/FruitBasketGame
+  - Assets/Scenes/PracticeScenes/FruitBasketGame/prefabs
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\jsaar\Documents\GitHub\MathGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 495}
-    m_SelectedIDs: fe640000
-    m_LastClickedID: 25854
-    m_ExpandedIDs: 000000009e640000a0640000a2640000a4640000a6640000a8640000aa640000ac640000ae640000b0640000b2640000b4640000b6640000b8640000ba640000bc640000be640000c0640000c2640000c4640000c6640000c8640000ca640000cc640000ce640000d0640000d2640000d4640000d6640000f8640000f6660000
+    scrollPos: {x: 0, y: 295}
+    m_SelectedIDs: 48650000
+    m_LastClickedID: 25928
+    m_ExpandedIDs: 00000000b6640000b8640000ba640000bc640000be640000c0640000c2640000c4640000c6640000c8640000ca640000cc640000ce640000d0640000d2640000d4640000d6640000d8640000da640000dc640000de640000e0640000e2640000e4640000e6640000e8640000ea640000ec640000ee640000f0640000f264000026650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -806,7 +806,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ac6b0000
     m_LastClickedID: 27564
-    m_ExpandedIDs: 000000009e640000a0640000a2640000a4640000a6640000a8640000aa640000ac640000ae640000b0640000b2640000b4640000b6640000b8640000ba640000bc640000be640000c0640000c2640000c4640000c6640000c8640000ca640000cc640000ce640000d0640000d2640000d4640000d6640000f8640000f6660000
+    m_ExpandedIDs: 00000000b6640000b8640000ba640000bc640000be640000c0640000c2640000c4640000c6640000c8640000ca640000cc640000ce640000d0640000d2640000d4640000d6640000d8640000da640000dc640000de640000e0640000e2640000e4640000e6640000e8640000ea640000ec640000ee640000f0640000f2640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -831,8 +831,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3eff0000
-    m_LastClickedInstanceID: 65342
+    m_SelectedInstanceIDs: fad10000
+    m_LastClickedInstanceID: 53754
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000fc6b0000a269000020660000ae6400007e6c0000be6d00005e6c0000a46700000ea50000d8680000d0680000c8680000c0680000ba680000d2680000ce680000726400008064000084640000806e00007e750000dc7e0000288c000092cc000074650000b6650000e864000026be0000486700001c670000226a0000c47c00005060000034700000be680000606b00007281000042690000a8600000d86d0000000000004a630000
     m_RenameOverlay:
