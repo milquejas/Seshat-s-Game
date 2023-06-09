@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: playerControls
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5148274486086150984, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_Name
+      value: CharacterContainer
+      objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
