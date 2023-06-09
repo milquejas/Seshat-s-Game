@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlaySoundOnClick : MonoBehaviour
 {
-    [SerializeField]
-    private AudioClip _clip;
+    //[SerializeField]
+    //private AudioClip _clip;
 
-    public void SoundOnClick()
-    {
-        SoundManager.Instance.PlaySound(_clip);
-    }
+    //public void SoundOnClick()
+    //{
+    //    SoundManager.Instance.PlaySound(_clip);
+    //}
 }
