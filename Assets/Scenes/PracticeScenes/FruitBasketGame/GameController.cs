@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
@@ -8,16 +9,22 @@ public class GameController : MonoBehaviour
     public GameObject[] fruitGameObjects;
     private readonly int[] startingQuantities = new int[11] { 4, 2, 4, 2, 2, 4, 4, 4, 1, 2, 4 };
     private int[] fruitQuantities;
-    private readonly int[] fruitWeights = new int[11] { 1, 2, 1, 2, 2, 1, 1, 1, 3, 2, 1 };
-    private readonly int[] fruitValues = new int[11] { 1, 4, 3, 5, 4, 1, 3, 1, 7, 6, 3 };
+    [SerializeField]
+    private int[] fruitWeights = new int[11];
+
+    [SerializeField]
+    private int[] fruitValues = new int[11];
     public TMP_Text[] fruitQuantityTexts;
     private int totalWeight = 0;
     private int totalValue = 0;
-    private readonly int maxWeight = 11;
+    private readonly int maxWeight = 1000;
     private Vector2[] originalPositions;
 
-    public GameObject tooltipGameObject; // Tooltip GameObject
-    private TMP_Text tooltipText; // Tooltip Text component
+    // Tooltip GameObject
+    public GameObject tooltipGameObject;
+
+    // Tooltip Text component
+    private TMP_Text tooltipText;
 
     private void Start()
     {
@@ -29,22 +36,21 @@ public class GameController : MonoBehaviour
         }
         UpdateInventoryTexts();
 
-        tooltipText = tooltipGameObject.GetComponent<TMP_Text>(); // Get TextMeshPro component
-        tooltipGameObject.SetActive(false); // Hide tooltip at the start
+        // Get TextMeshPro component
+        tooltipText = tooltipGameObject.GetComponent<TMP_Text>();
+
+        // Hide tooltip at the start
+        tooltipGameObject.SetActive(false);
     }
+
     public void ShowTooltip(int fruitIndex)
     {
-        string tooltip = $"Weight: {fruitWeights[fruitIndex]} Value: {fruitValues[fruitIndex]}";
+        string tooltip = $"Weight: {fruitWeights[fruitIndex]} g Value: {fruitValues[fruitIndex]} gold";
         tooltipText.text = tooltip;
 
-        // Calculate the position of the tooltip to match the mouse cursor
         Vector3 mousePosition = Input.mousePosition;
-
-        // Adjust the position so the tooltip appears above the mouse
-        float yOffset = 150f; // Change this value to adjust the vertical offset of the tooltip
+        float yOffset = 100f;
         mousePosition.y += yOffset;
-
-        // Set the position of the tooltip
         tooltipGameObject.transform.position = mousePosition;
 
         tooltipGameObject.SetActive(true);
@@ -55,8 +61,6 @@ public class GameController : MonoBehaviour
     {
         HideTooltip();
     }
-
-
 
     public void HideTooltip()
     {
@@ -79,14 +83,8 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < fruitQuantities.Length; i++)
         {
             fruitQuantityTexts[i].text = fruitQuantities[i].ToString();
-            if (fruitQuantities[i] == 0)
-            {
-                fruitGameObjects[i].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
-            }
-            else
-            {
-                fruitGameObjects[i].GetComponent<SpriteRenderer>().color = Color.white;
-            }
+            Color fruitColor = fruitQuantities[i] == 0 ? new Color(0.5f, 0.5f, 0.5f, 1) : Color.white;
+            fruitGameObjects[i].GetComponent<SpriteRenderer>().color = fruitColor;
         }
     }
 
@@ -97,17 +95,26 @@ public class GameController : MonoBehaviour
             Debug.Log("Basket is too heavy! Resetting...");
             ResetBasket();
         }
+        else if (fruitQuantities.Sum() > startingQuantities.Sum() - 5)
+        {
+            Debug.Log("Not enough fruits! Resetting...");
+            ResetBasket();
+        }
         else
         {
-            Debug.Log("Basket is within weight limit. Total value of fruits: " + totalValue);
+            Debug.Log("Basket is within weight limit and has enough fruits. Total value of fruits: " + totalValue);
         }
     }
+
 
     public void ResetBasket()
     {
         totalWeight = 0;
         totalValue = 0;
-        fruitQuantities = (int[])startingQuantities.Clone();
+        for (int i = 0; i < startingQuantities.Length; i++)
+        {
+            fruitQuantities[i] = startingQuantities[i];
+        }
         for (int i = 0; i < fruitGameObjects.Length; i++)
         {
             fruitGameObjects[i].transform.position = originalPositions[i];

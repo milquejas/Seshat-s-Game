@@ -3,16 +3,17 @@ using UnityEngine;
 public class FruitbasketDragAndDrop : MonoBehaviour
 {
     private static bool isDraggingEnabled = true;
-    private bool isMouseOver = false;  // Uusi muuttuja
-
+    private bool isMouseOver = false;
     private bool isDragging = false;
     private Vector2 startPosition;
     private Vector2 offset;
-    private bool wasNewFruitCreated = false;
 
     public GameController gameController;
     public GameObject[] fruitPrefabs;
     public int fruitIndex;
+
+    private bool isCreatingNewFruit = false; // Uusi muuttuja
+    private float tooltipDelay = 0.1f; // Viive ennen tooltipin näyttämistä
 
     void Start()
     {
@@ -25,14 +26,13 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             isDragging = true;
             startPosition = transform.position;
             offset = startPosition - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            isCreatingNewFruit = true; // Asetetaan uusi muuttuja todeksi
             CreateNewFruit();
-
-            if (!isMouseOver)
-            {
-                gameController.HideTooltip();
-            }
+            isCreatingNewFruit = false; // Asetetaan uusi muuttuja epätodeksi
+          
         }
     }
+
 
     void OnMouseDrag()
     {
@@ -47,7 +47,6 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
-        wasNewFruitCreated = false;
         if (!this.gameObject.GetComponent<Collider2D>().IsTouching(GameObject.FindGameObjectWithTag("Basket").GetComponent<Collider2D>()))
         {
             transform.position = startPosition;
@@ -58,17 +57,28 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     void OnMouseEnter()
     {
         isMouseOver = true;
-        gameController.ShowTooltip(fruitIndex);
+        if (!isDragging && !isCreatingNewFruit) // Älä näytä tooltipia, jos objektia raahataan tai uutta hedelmää luodaan
+        {
+            Invoke(nameof(ShowTooltip), tooltipDelay);
+        }
     }
 
     void OnMouseExit()
     {
         isMouseOver = false;
-        if (!isDragging)
+        if (!isDragging || !isDraggingEnabled)
         {
+            CancelInvoke(nameof(ShowTooltip)); // Peruuta tooltipin näyttäminen, jos hiiri poistuu hedelmän päältä ennen viiveen loppumista
             gameController.HideTooltip();
         }
     }
+
+    void ShowTooltip()
+    {
+        gameController.ShowTooltip(fruitIndex);
+    }
+
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
