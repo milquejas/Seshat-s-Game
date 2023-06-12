@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryItemController : MonoBehaviour
 {
-    ItemSO item;
+    ItemSOMike item;
 
     public Button RemoveButton;
     public void RemoveItem()
@@ -15,7 +13,7 @@ public class InventoryItemController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void AddItem(ItemSO newItem)
+    public void AddItem(ItemSOMike newItem)
     {
         item = newItem;
     }
@@ -24,11 +22,11 @@ public class InventoryItemController : MonoBehaviour
     {
         switch (item.itemType)
         {
-            case ItemSO.ItemType.Apple:
+            case ItemSOMike.ItemTypeMike.Apple:
                 Player.Instance.IncreaseHealth(item.value);
                 break;
 
-            case ItemSO.ItemType.Citrus:
+            case ItemSOMike.ItemTypeMike.Citrus:
                 Player.Instance.IncreaseHealth(item.value);
                 break;
         }

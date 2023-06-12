@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d8c095c524c104d93ed5edc380fa09, type: 3}
+  m_Name: scl_TutorialQuest 5
+  m_EditorClassIdentifier: 
+  QuestStartDialogue: {fileID: 11400000, guid: 63c2425c6324b434cbf4029caeafc526, type: 2}
+  Description: 300grams of apple is one citrus, place so many apples that you get
+    2 citrus
+  QuestPlayerInventory:
+  - ItemType: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+    ItemAmount: 6
+  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+    ItemAmount: 8
+  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+    ItemAmount: 8
+  QuestType: 1
+  PlaceTheseProduce:
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  MerchantTradeItem: {fileID: 0}
+  MerchantTradeRatios:
+  - Item: {fileID: 0}
+    Ratio: 0

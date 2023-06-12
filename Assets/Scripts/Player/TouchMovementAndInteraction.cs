@@ -1,31 +1,29 @@
 using UnityEngine;
 
 /* 
- * check if interactable triggered -> check if in player range -> interact -> no movement 
- * Otherwise movement
- * Mouse and touch based joystick movement. 
+ * Press screen -> move player towards spot
+ * clamped movementDirection
+ * 
  * 
 */
 
-[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
-public class TouchMovementAndInteraction : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
 {
-    private Vector2 touchStartPosition, movedPosition, movementDirection;
+    [SerializeField] private float minimumMove, movementSpeed, interactionCircleSize;
 
-    [SerializeField] private float minimumMove, moveSpeedMultiplier, interactionCircleSize, playerInteractionDistance;
-    [field: SerializeField] public float MaxMoveSpeed { get; private set; }
-
-    [SerializeField] private LineRenderer bowGuideLine;
-
-    public bool disableTouch { private get; set; }
-
+    private Vector2 movementDirection, playerPosition;
+    private bool disableMovement;
     private bool thisTouchInteracting;
+    private bool isTouchMoving;
 
-    public Rigidbody2D PlayerRigidbody { get; private set; }
-
+    public Rigidbody2D rb { get; private set; }
+    private Animator anim;
+    
     void Start()
     {
-        PlayerRigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -52,24 +50,42 @@ public class TouchMovementAndInteraction : MonoBehaviour
                 HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Ended);
             }
         }
+
+        // keyboard movement
+        if (disableMovement) return;
+
+        if (!isTouchMoving)
+        {
+            movementDirection = GetKeyboardMovement();
+        }
     }
+
+    private Vector2 GetKeyboardMovement()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    public void DisablePlayerMovement(bool disable)
+    {
+        disableMovement = disable;
+        movementDirection = Vector2.zero;
+    }
+
 
     private void HandleTouch(int touchFingerId, Vector2 touchPosition, TouchPhase touchPhase)
     {
-        if (disableTouch)
+        if (disableMovement)
         {
-            bowGuideLine.enabled = false;
             return;
         }
         
-
         switch (touchPhase)
         {
             case TouchPhase.Began:
                 if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize))
                 {
                     thisTouchInteracting = true;
-                    PlayerRigidbody.velocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
                     return;
                 }
 
@@ -94,49 +110,49 @@ public class TouchMovementAndInteraction : MonoBehaviour
                     thisTouchInteracting = false;
                     return;
                 }
-                TouchEnd(touchPosition);
+                TouchEnding(touchPosition);
                 break;
         }
     }
+
     private void TouchBegin(Vector2 touchPosition)
     {
-        touchStartPosition = touchPosition;
-        movedPosition = Vector2.zero;
-
-        // line guide
-        bowGuideLine.SetPosition(0, touchPosition);
-        bowGuideLine.SetPosition(1, touchPosition);
-        bowGuideLine.enabled = true;
+        isTouchMoving = true;
+        playerPosition = transform.position;
+        movementDirection = touchPosition - playerPosition;
     }
 
     private void TouchMoving(Vector2 touchPosition)
     {
-        // update movement direction
-        movedPosition = new Vector2(touchPosition.x, touchPosition.y);
-        movementDirection = movedPosition - touchStartPosition;
-
-        MovePlayer();
-
-        // line guide
-        bowGuideLine.SetPosition(1, touchPosition);
+        playerPosition = transform.position;
+        movementDirection = touchPosition - playerPosition;
     }
 
     private void TouchStationary(Vector2 touchPosition)
     {
-        MovePlayer();
+        playerPosition = transform.position;
+        movementDirection = touchPosition - playerPosition;
     }
 
-    private void TouchEnd(Vector2 touchPosition)
+    private void TouchEnding(Vector2 touchPosition)
     {
-        // disable line
-        bowGuideLine.enabled = false;
+        movementDirection = Vector2.zero;
+        isTouchMoving = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (disableMovement) return;
+
+        MovePlayer();
     }
 
     private void MovePlayer()
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            PlayerRigidbody.velocity = Vector2.ClampMagnitude(movementDirection * moveSpeedMultiplier, MaxMoveSpeed);
+            
+            rb.velocity = movementDirection.normalized * movementSpeed;
         }
     }
 }

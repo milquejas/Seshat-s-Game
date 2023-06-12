@@ -59,12 +59,12 @@ public class RoomChange : MonoBehaviour
 
         StopCoroutine(fixedUpdateCoroutine);
         trigger.enabled = true;
-        player.disableTouch = false;
+        player.DisablePlayerMovement(false);
     }
 
     private IEnumerator StartRoomTransition()
     {
-        player.disableTouch = true;
+        player.DisablePlayerMovement(true);
 
         fixedUpdateCoroutine = AutoMovePlayer(-exitDirection);
         StartCoroutine(fixedUpdateCoroutine);
@@ -80,7 +80,8 @@ public class RoomChange : MonoBehaviour
     {
         for ( ; ; ) // ;..;  ´,,`  (•,,•)
         {
-            player.PlayerRigidbody.velocity = Vector2.ClampMagnitude(moveDirection, player.MaxMoveSpeed);
+            // TODO fix movement speed?
+            player.rb.velocity = Vector2.ClampMagnitude(moveDirection, 5);
             yield return new WaitForFixedUpdate();
         }
     }

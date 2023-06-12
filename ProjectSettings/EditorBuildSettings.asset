@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainScenes/IsometricMain.unity
+    guid: 0582e6e33ee79854d80d342994de2e53
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/AntiqueScaleGame.unity
+    guid: d72856edb012bb14d86e8d02cc087a7d
+  - enabled: 1
+    path: Assets/Scenes/PracticeScenes/QuessAnswer.unity
+    guid: c33e2556f29ad544e9c192e2b146651b
   m_configObjects: {}

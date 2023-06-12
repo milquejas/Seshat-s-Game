@@ -2,35 +2,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System;
+
 /*
- * light starting reference:
- * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
- * Could add emotions to characters
- * Questions and dialog branching is badly implemented. 
- * Didn't think much how to make transitions for any dialog changes...
- *  
+* starting reference:
+* https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
+* Could add emotions to characters
+* Questions and dialog branching is badly implemented. 
+* Didn't think much how to make transitions for any dialog changes...
+* 
+* Static event action DialogEndedEvent when dialog ends
 */
 
 public class Dialog : MonoBehaviour
 {
-    public Image Portrait;
-    public TMP_Text SpeakerName;
-    public TMP_Text dialog;
-    public Image AnswerButtonPanel;
-    public GameObject AnswerButton;
+    public event Action<ConversationSO> DialogEndedEvent;
+
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private Image Portrait;
+    [SerializeField] private TMP_Text SpeakerName;
+    [SerializeField] private Image CharacterContainer;
+    [SerializeField] private TMP_Text dialog;
+    [SerializeField] private Image AnswerButtonPanel;
+    [SerializeField] private GameObject AnswerButton;
 
     private List<GameObject> answerButtons = new List<GameObject>();
-
-    [SerializeField] private TouchMovementAndInteraction playerControls;
 
     public int lineNumber { get; set; }
     private bool answering;
 
-    public Conversation CurrentConversation;
+    public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
 
-    private Character speaker;
-    public Character Speaker
+    [Header("GameObject with player controls")]
+    [SerializeField] private GameObject playerControls;
+    private IPlayerTouch playerInteraction;
+
+    private CharacterSO speaker;
+    public CharacterSO Speaker
     {
         get => speaker;
         set
@@ -41,15 +50,16 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         dialogAnswers = GetComponent<DialogAnswers>();
+        playerInteraction = playerControls.GetComponent<IPlayerTouch>();
     }
 
-    public void StartConversation(Conversation _conversation)
+    public void StartConversation(ConversationSO _conversation)
     {
-        gameObject.SetActive(true);
-        playerControls.disableTouch = true;
+        canvas.SetActive(true);
+        playerInteraction.DisablePlayerMovement(true);
 
         CurrentConversation = _conversation;
         lineNumber = 0;
@@ -58,17 +68,20 @@ public class Dialog : MonoBehaviour
         ShowDialog();
     }
 
-    public void ExitDialog()
+    public void ExitDialog(bool disableControls)
     {
-        playerControls.disableTouch = false;
-        gameObject.SetActive(false);
+        playerInteraction.DisablePlayerMovement(disableControls);
+        canvas.SetActive(false);
+        
+        // Event launched when dialog ends
+        DialogEndedEvent?.Invoke(CurrentConversation);
     }
 
     public void ShowDialog()
     {
         if (lineNumber >= CurrentConversation.Lines.Length)
         {
-            ExitDialog();
+            ExitDialog(false);
             return;
         }
 
@@ -78,7 +91,21 @@ public class Dialog : MonoBehaviour
         }
 
         AdjustUIPositions();
-        Speaker = CurrentConversation.Lines[lineNumber].character;
+
+        if (CurrentConversation.Lines[lineNumber].character is null)
+        {
+            CharacterContainer.gameObject.SetActive(false);
+            Portrait.gameObject.SetActive(false);
+            SpeakerName.gameObject.SetActive(false);
+        }
+        else
+        {
+            CharacterContainer.gameObject.SetActive(true);
+            Portrait.gameObject.SetActive(true);
+            SpeakerName.gameObject.SetActive(true);
+            Speaker = CurrentConversation.Lines[lineNumber].character;
+        }
+
         dialog.text = CurrentConversation.Lines[lineNumber].dialogueText;
     }
 
@@ -95,26 +122,32 @@ public class Dialog : MonoBehaviour
         switch (CurrentConversation.Lines[lineNumber].Position)
         {
             case CharacterPosition.Left:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(200f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(0, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(0, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Right:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(1000f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(1, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(1, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(-274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Middle:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(600f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(0.5f, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(0.5f, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
                 break;
 
             case CharacterPosition.None:
-                Portrait.gameObject.SetActive(false);
+                CharacterContainer.gameObject.SetActive(false);
                 break;
 
             default:
-                Debug.LogWarning("current conversation position switch hit default, oh no panic?!");
+                Debug.LogWarning("current conversation position switch hit default, debug?!");
                 break;
         }
     }
