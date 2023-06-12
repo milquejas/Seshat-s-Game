@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: NPCExampleDialogTreeStart
   Lines:
-  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
     Position: 0
     LineType: 1
     dialogueText: Would you like to solve some hard problems?
@@ -23,12 +23,12 @@ MonoBehaviour:
       AnswerSwitchCase: ExampleDialogTree_PickedHard
     - AnswerText: No way
       AnswerSwitchCase: Continue
-  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
     Position: 0
     LineType: 0
     dialogueText: 'Ah well... You will have to answer an easy one then. '
     LineAnswer: []
-  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
     Position: 0
     LineType: 1
     dialogueText: How much is 3/4l?
@@ -37,7 +37,7 @@ MonoBehaviour:
       AnswerSwitchCase: ExampleDialogTree_CorrectAnswer
     - AnswerText: 0,075l
       AnswerSwitchCase: Continue
-  - character: {fileID: 11400000, guid: 988c783913251db4983eca14c6199dc5, type: 2}
+  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
     Position: 0
     LineType: 0
     dialogueText: Ah, not quite. Good luck next time young one.

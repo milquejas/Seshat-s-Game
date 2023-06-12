@@ -134,14 +134,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5148274485893610652}
+  m_Father: {fileID: 5148274486086150991}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 246.59998, y: 161.20007}
-  m_SizeDelta: {x: 150, y: 250}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 161.25, y: 232.16747}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5148274484832104242
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -552586457, guid: 59f45d56711065249bff2b7306b0e144, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -319,7 +319,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5148274486086150991}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -472,7 +472,7 @@ MonoBehaviour:
   canvas: {fileID: 5148274486709773529}
   Portrait: {fileID: 5148274484832104243}
   SpeakerName: {fileID: 5148274485351195071}
-  SpeakerNameBox: {fileID: 5148274486086150990}
+  CharacterContainer: {fileID: 5148274486086150990}
   dialog: {fileID: 5148274486204116109}
   AnswerButtonPanel: {fileID: 5148274486352197728}
   AnswerButton: {fileID: 2137746694326885621, guid: a2f4b2be086027b4399fa203f0023696, type: 3}
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allConversations: {fileID: 11400000, guid: ea854ef4ff4595543b6c310b13d0c1fb, type: 2}
   FiveQuestionPuzzle: {fileID: 0}
-  ThreeMultipickPuzzle: {fileID: 0}
+  CatStatuePuzzle: {fileID: 0}
 --- !u!1 &5148274485893610653
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +523,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5148274484832104236}
   - {fileID: 5148274486204116110}
   - {fileID: 5148274486086150991}
   m_Father: {fileID: 5148274485253848187}
@@ -584,7 +583,7 @@ GameObject:
   - component: {fileID: 5148274486086150989}
   - component: {fileID: 5148274486086150990}
   m_Layer: 0
-  m_Name: SpeakerBox
+  m_Name: CharacterContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,13 +601,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5148274484832104236}
   - {fileID: 5148274485351195064}
   m_Father: {fileID: 5148274485893610652}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274, y: -5.3999023}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -274.3, y: 0}
   m_SizeDelta: {x: 548.6, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5148274486086150989
@@ -680,7 +680,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5148274485893610652}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -926,7 +926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5148274486709773528
 RectTransform:
   m_ObjectHideFlags: 0
