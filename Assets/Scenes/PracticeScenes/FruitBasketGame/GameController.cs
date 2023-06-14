@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     private int[] fruitQuantities;
     [SerializeField]
     private int[] fruitWeights = new int[11];
-
     [SerializeField]
     private int[] fruitValues = new int[11];
     public TMP_Text[] fruitQuantityTexts;
@@ -19,11 +18,7 @@ public class GameController : MonoBehaviour
     private int totalValue = 0;
     private readonly int maxWeight = 1000;
     private Vector2[] originalPositions;
-
-    // Tooltip GameObject
     public GameObject tooltipGameObject;
-
-    // Tooltip Text component
     private TMP_Text tooltipText;
 
     private void Start()
@@ -36,16 +31,13 @@ public class GameController : MonoBehaviour
         }
         UpdateInventoryTexts();
 
-        // Get TextMeshPro component
         tooltipText = tooltipGameObject.GetComponent<TMP_Text>();
-
-        // Hide tooltip at the start
         tooltipGameObject.SetActive(false);
     }
 
     public void ShowTooltip(int fruitIndex)
     {
-        string tooltip = $"Weight: {fruitWeights[fruitIndex]} g Value: {fruitValues[fruitIndex]} gold";
+        string tooltip = $"Paino: {fruitWeights[fruitIndex]} g Arvo: {fruitValues[fruitIndex]} kultaa";
         tooltipText.text = tooltip;
 
         Vector3 mousePosition = Input.mousePosition;
@@ -55,7 +47,6 @@ public class GameController : MonoBehaviour
 
         tooltipGameObject.SetActive(true);
     }
-
 
     public void FruitInBasket()
     {
@@ -72,49 +63,81 @@ public class GameController : MonoBehaviour
         if (fruitQuantities[fruitIndex] > 0)
         {
             totalWeight += fruitWeights[fruitIndex];
-            totalValue += fruitValues[fruitIndex];
             fruitQuantities[fruitIndex]--;
             UpdateInventoryTexts();
+
+            if (fruitQuantities[fruitIndex] == 0)
+            {
+                UpdateInventoryTexts();
+            }
+
+            if (totalWeight <= maxWeight) // Tarkista, että hedelmä mahtuu korin maksimipainoon
+            {
+                totalValue += fruitValues[fruitIndex]; // Päivitä kokonaisarvo vain, jos hedelmä lisätään koriin
+            }
+
+            int basketValue = CalculateBasketValue();
+            Debug.Log("Basket value: " + basketValue);
         }
     }
 
-    private void UpdateInventoryTexts()
+
+    private int CalculateBasketValue()
+    {
+        int basketValue = 0;
+        for (int i = 0; i < fruitQuantities.Length; i++)
+        {
+            int fruitValue = fruitValues[i] * (startingQuantities[i] - fruitQuantities[i]);
+            basketValue += fruitValue;
+        }
+        return basketValue;
+    }
+
+    public void UpdateInventoryTexts()
     {
         for (int i = 0; i < fruitQuantities.Length; i++)
         {
             fruitQuantityTexts[i].text = fruitQuantities[i].ToString();
-            Color fruitColor = fruitQuantities[i] == 0 ? new Color(0.5f, 0.5f, 0.5f, 1) : Color.white;
+            Color fruitColor = fruitQuantities[i] <= 0 ? new Color(0.5f, 0.5f, 0.5f, 1) : Color.white;
             fruitGameObjects[i].GetComponent<SpriteRenderer>().color = fruitColor;
+
+            if (fruitQuantities[i] == 0)
+            {
+                TMP_Text fruitText = fruitGameObjects[i].GetComponentInChildren<TMP_Text>();
+                fruitText?.SetText("0"); // Päivitä tekstikomponentin arvo "0":ksi
+
+                if (fruitText != null)
+                {
+                    fruitText.text = "0"; // Aseta hedelmän teksti "0" arvoksi
+                }
+            }
         }
     }
+
 
     public void CheckBasket()
     {
         if (totalWeight > maxWeight)
         {
-            Debug.Log("Basket is too heavy! Resetting...");
+            Debug.Log("Kori on liian painava! Nollataan...");
             ResetBasket();
         }
         else if (fruitQuantities.Sum() > startingQuantities.Sum() - 5)
         {
-            Debug.Log("Not enough fruits! Resetting...");
+            Debug.Log("Ei tarpeeksi hedelmiä! Nollataan...");
             ResetBasket();
         }
         else
         {
-            Debug.Log("Basket is within weight limit and has enough fruits. Total value of fruits: " + totalValue);
+            Debug.Log("Kori on sopivan painoinen ja siinä on tarpeeksi hedelmiä. Hedelmien kokonaisarvo: " + totalValue);
         }
     }
-
 
     public void ResetBasket()
     {
         totalWeight = 0;
         totalValue = 0;
-        for (int i = 0; i < startingQuantities.Length; i++)
-        {
-            fruitQuantities[i] = startingQuantities[i];
-        }
+        fruitQuantities = (int[])startingQuantities.Clone();
         for (int i = 0; i < fruitGameObjects.Length; i++)
         {
             fruitGameObjects[i].transform.position = originalPositions[i];

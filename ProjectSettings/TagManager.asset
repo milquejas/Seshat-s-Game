@@ -24,6 +24,7 @@ TagManager:
   - RightCup
   - Basket
   - Fruit
+  - FruitGameArea
   layers:
   - Default
   - TransparentFX

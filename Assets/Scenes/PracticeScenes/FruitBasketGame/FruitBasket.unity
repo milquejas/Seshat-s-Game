@@ -2191,7 +2191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -650.00006, y: -236}
+  m_AnchoredPosition: {x: 74.3, y: -435.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570615903
@@ -2900,6 +2900,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1994851903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994851905}
+  - component: {fileID: 1994851904}
+  - component: {fileID: 1994851906}
+  m_Layer: 0
+  m_Name: FruitGameArea
+  m_TagString: FruitGameArea
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1994851904
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994851903}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.73351717, y: -2.5673113}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 25.206085, y: 12.736284}
+  m_EdgeRadius: 0
+--- !u!4 &1994851905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994851903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7483704, y: 5.2463837, z: 0.24621846}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1994851906
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994851903}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.80103827, y: -9.171892}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 25.191364, y: 0.5994797}
+  m_EdgeRadius: 0
 --- !u!1 &2037678829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,8 +3144,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2137685679}
   - component: {fileID: 2137685678}
-  - component: {fileID: 2137685680}
   - component: {fileID: 2137685681}
+  - component: {fileID: 2137685682}
+  - component: {fileID: 2137685683}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Basket
@@ -3135,8 +3221,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2137685680
-BoxCollider2D:
+--- !u!50 &2137685681
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137685677}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &2137685682
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3158,30 +3265,43 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!50 &2137685681
-Rigidbody2D:
-  serializedVersion: 4
+  m_Points:
+    m_Paths:
+    - - {x: 0.43566447, y: 0.4952558}
+      - {x: 0.42458385, y: -0.44377813}
+      - {x: -0.009593202, y: -0.41368428}
+      - {x: -0.43445623, y: -0.44203454}
+      - {x: -0.43786064, y: 0.50780916}
+      - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+--- !u!61 &2137685683
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137685677}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0051600635, y: 0.058712766}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.78327817, y: 0.8630034}
+  m_EdgeRadius: 0
 --- !u!1001 &79247504433298264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3199,11 +3319,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79247503472948730, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.000019
+      value: -3.56
       objectReference: {fileID: 0}
     - target: {fileID: 79247503472948730, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.560028
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 79247503472948730, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3235,6 +3355,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 79247503472948730, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 79247503472948731, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 79247503472948732, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
@@ -3281,6 +3405,14 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 7914615028734182608, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914615028734182608, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
 --- !u!1001 &185898672201067034
@@ -3290,6 +3422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: 185898672245820640, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 185898672245820641, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
       propertyPath: gameController
       value: 
@@ -3382,6 +3518,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Produce_Olives
       objectReference: {fileID: 0}
+    - target: {fileID: 2010963337160173732, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010963337160173732, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
 --- !u!1001 &906571285309159356
@@ -3391,6 +3535,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -6561570780399518187, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6561570780399518187, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 906571284922404840, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
       propertyPath: gameController
       value: 
@@ -3483,6 +3635,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 906571284922404847, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
 --- !u!1001 &1562678183688330613
@@ -3536,6 +3692,10 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[9]
       value: 
       objectReference: {fileID: 1254248096}
+    - target: {fileID: 1562678183451857041, guid: 49842c445039f3e41831634c034b7a20, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1562678183451857044, guid: 49842c445039f3e41831634c034b7a20, type: 3}
       propertyPath: m_Name
       value: Produce_Watermelon
@@ -3584,6 +3744,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3195734351218172525, guid: 49842c445039f3e41831634c034b7a20, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195734351218172525, guid: 49842c445039f3e41831634c034b7a20, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49842c445039f3e41831634c034b7a20, type: 3}
 --- !u!1001 &3688277170998059655
@@ -3593,6 +3761,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: 550157569733597132, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 550157569733597132, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3688277172077762161, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
       propertyPath: m_Name
       value: Produce_Citrus
@@ -3641,6 +3817,10 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 3688277172077762174, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3688277172077762175, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3694,9 +3874,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -2235025160546973528, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2235025160546973528, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2235025160546973528, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2235025160546973528, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5415216813107589760, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
       propertyPath: m_Name
       value: Produce_Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415216813107589765, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5415216813107589766, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
       propertyPath: m_RootOrder
@@ -3795,6 +3995,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -8631681537521414958, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8631681537521414958, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5796737280762353425, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
       propertyPath: m_Name
       value: Produce_Orange
@@ -3841,6 +4049,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5796737280762353427, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796737280762353428, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5796737280762353429, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
@@ -3896,6 +4108,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -8809234660133699115, guid: f0da45201b638184bad922af22b1fed5, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8809234660133699115, guid: f0da45201b638184bad922af22b1fed5, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6212085509555498258, guid: f0da45201b638184bad922af22b1fed5, type: 3}
       propertyPath: gameController
       value: 
@@ -3940,6 +4160,10 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 6212085509555498259, guid: f0da45201b638184bad922af22b1fed5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6212085509555498260, guid: f0da45201b638184bad922af22b1fed5, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3997,6 +4221,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -6676077459924189124, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6676077459924189124, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6532635715433520619, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
       propertyPath: gameController
       value: 
@@ -4041,6 +4273,10 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 6532635715433520620, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6532635715433520621, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4101,6 +4337,10 @@ PrefabInstance:
     - target: {fileID: 8400052724293785905, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
       propertyPath: m_Name
       value: Produce_Pomegranate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400052724293785906, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8400052724293785907, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
       propertyPath: m_RootOrder
@@ -4190,6 +4430,14 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 9123881111056904837, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123881111056904837, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
 --- !u!1001 &8434964089793243109
@@ -4199,6 +4447,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721334507}
     m_Modifications:
+    - target: {fileID: -5472539662849973114, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5472539662849973114, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8434964088895458672, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4287,6 +4543,10 @@ PrefabInstance:
       propertyPath: fruitPrefabs.Array.data[10]
       value: 
       objectReference: {fileID: 303582689}
+    - target: {fileID: 8434964088895458675, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8434964088895458678, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
       propertyPath: m_Name
       value: Produce_Cantaloupe
