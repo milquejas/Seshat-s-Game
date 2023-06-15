@@ -12,6 +12,7 @@ using System;
 * Didn't think much how to make transitions for any dialog changes...
 * 
 * Static event action DialogEndedEvent when dialog ends
+* Takes optional NPCDialogStart class as parameter to complete tasks
 */
 
 public class Dialog : MonoBehaviour
@@ -33,6 +34,7 @@ public class Dialog : MonoBehaviour
 
     public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
+    private NPCDialogStart npcDialogStarter;
 
     [Header("GameObject with player controls")]
     [SerializeField] private GameObject playerControls;
@@ -56,8 +58,9 @@ public class Dialog : MonoBehaviour
         playerInteraction = playerControls.GetComponent<IPlayerTouch>();
     }
 
-    public void StartConversation(ConversationSO _conversation)
+    public void StartConversation(ConversationSO _conversation, NPCDialogStart _npcDialogStarter = null)
     {
+        npcDialogStarter = _npcDialogStarter;
         canvas.SetActive(true);
         playerInteraction.DisablePlayerMovement(true);
 
@@ -175,7 +178,7 @@ public class Dialog : MonoBehaviour
 
         AnswerButtonPanel.gameObject.SetActive(false);
 
-        dialogAnswers.AnswerReactions(answerCase);
+        dialogAnswers.AnswerReactions(answerCase, npcDialogStarter);
     }
 
     // destroy buttons and empty list, remove listeners just in case to clean memory leaks

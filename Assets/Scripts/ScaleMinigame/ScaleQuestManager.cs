@@ -35,13 +35,13 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private TMP_Text questDescription;
     [SerializeField] private Image questArrowPointerImage;
     [SerializeField] private GameObject tradeRatioContainer;
-    [SerializeField] private TMP_Text tradeRatios;
+    [SerializeField] private TMP_Text tradeRatios;    
 
     [SerializeField] private ScaleMinigamePooler itemPooler;
     [SerializeField] private ScaleBehaviour scaleBehaviour;
 
     [SerializeField] private GameObject FadeOutCanvas;
-    [SerializeField] private ConversationSO StartingDialog;
+    [SerializeField] private ConversationSO ExitDialogue;
 
     // TODO: Quests could be pulled from game manager on scene load
     [SerializeField] private ScaleMinigameQuestSO[] questOrder;
@@ -173,6 +173,13 @@ public class ScaleQuestManager : MonoBehaviour
 
     private void ProgressQuest()
     {
+        if (questOrder[currentQuest].LastQuestInRow)
+        {
+            currentQuest++;
+            dialog.StartConversation(ExitDialogue);
+            GameManager.GameManagerInstance.LoadScene("IsometricMain");
+        }
+
         Debug.Log("success progressing quest");
         currentQuest++;
         StartQuest();

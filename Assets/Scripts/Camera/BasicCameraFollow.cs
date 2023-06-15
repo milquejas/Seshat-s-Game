@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BasicCameraFollow : MonoBehaviour 
 {
+    [SerializeField] private LevelSpawnSO spawnPoint;
 
-	private Vector3 startingPosition;
+
 	public Transform followTarget;
 	private Vector3 targetPos;
 	public float moveSpeed;
 	
 	void Start()
 	{
-		startingPosition = transform.position;
-	}
+		transform.position = spawnPoint.CurrentSpawnLocation - new Vector3(0,0, 10f);
+    }
 
 	void Update () 
 	{

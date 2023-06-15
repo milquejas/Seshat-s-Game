@@ -103,6 +103,11 @@ public class ScaleBehaviour : MonoBehaviour
             rotatingBeamRBody.AddTorque(-torqueAmount * rightCupRBody.mass);
         }
     }
+
+    public void LeaveScaleMinigame()
+    {
+        GameManager.GameManagerInstance.LoadScene("IsometricMain");
+    }
 }
 
 public enum ScaleCup

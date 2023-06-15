@@ -18,6 +18,7 @@ MonoBehaviour:
   - ItemType: {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
     ItemAmount: 3
   QuestType: 0
+  LastQuestInRow: 1
   PlaceTheseProduce:
   - {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
   - {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
