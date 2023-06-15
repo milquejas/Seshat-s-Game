@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     private int[] fruitQuantities;
     [SerializeField]
     private int[] fruitWeights = new int[11];
-
     [SerializeField]
     private int[] fruitValues = new int[11];
     public TMP_Text[] fruitQuantityTexts;
@@ -20,7 +19,8 @@ public class GameController : MonoBehaviour
     private readonly int maxWeight = 1040;
     private Vector2[] originalPositions;
 
-
+    // New array to hold SpriteRenderers
+    private SpriteRenderer[] _fruitRenderers;
 
     // Tooltip GameObject
     public GameObject tooltipGameObject;
@@ -32,9 +32,11 @@ public class GameController : MonoBehaviour
     {
         fruitQuantities = (int[])startingQuantities.Clone();
         originalPositions = new Vector2[fruitGameObjects.Length];
+        _fruitRenderers = new SpriteRenderer[fruitGameObjects.Length];
         for (int i = 0; i < fruitGameObjects.Length; i++)
         {
             originalPositions[i] = fruitGameObjects[i].transform.position;
+            _fruitRenderers[i] = fruitGameObjects[i].GetComponent<SpriteRenderer>();
         }
         UpdateInventoryTexts();
 
@@ -77,8 +79,15 @@ public class GameController : MonoBehaviour
             totalValue += fruitValues[fruitIndex];
             fruitQuantities[fruitIndex]--;
             UpdateInventoryTexts();
+
+            if (fruitQuantities[fruitIndex] == 0)
+            {
+                fruitGameObjects[fruitIndex].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+                Destroy(fruitGameObjects[fruitIndex].GetComponent<FruitbasketDragAndDrop>());
+            }
         }
     }
+
 
     private void UpdateInventoryTexts()
     {
@@ -86,7 +95,7 @@ public class GameController : MonoBehaviour
         {
             fruitQuantityTexts[i].text = fruitQuantities[i].ToString();
             Color fruitColor = fruitQuantities[i] == 0 ? new Color(0.5f, 0.5f, 0.5f, 1) : Color.white;
-            fruitGameObjects[i].GetComponent<SpriteRenderer>().color = fruitColor;
+            _fruitRenderers[i].color = fruitColor;
         }
     }
 
@@ -97,36 +106,49 @@ public class GameController : MonoBehaviour
             Debug.Log("Basket is too heavy! Resetting...");
             ResetBasket();
         }
-        else if (fruitQuantities.Sum() > startingQuantities.Sum() - 5)
-        {
-            Debug.Log("Not enough fruits! Resetting...");
-            ResetBasket();
-        }
         else
         {
-            Debug.Log("Basket is within weight limit and has enough fruits. Total value of fruits: " + totalValue);
-        }
-    }
+            int totalFruitQuantity = 0;
+            int totalStartingQuantity = 0;
+            for (int i = 0; i < fruitQuantities.Length; i++)
+            {
+                totalFruitQuantity += fruitQuantities[i];
+                totalStartingQuantity += startingQuantities[i];
+            }
 
-
-    public void ResetBasket()
-    {
-        totalWeight = 0;
-        totalValue = 0;
-        for (int i = 0; i < startingQuantities.Length; i++)
-        {
-            fruitQuantities[i] = startingQuantities[i];
+            if (totalFruitQuantity > totalStartingQuantity - 5)
+            {
+                Debug.Log("Not enough fruits! Resetting...");
+                ResetBasket();
+            }
+            else
+            {
+                Debug.Log("Basket is within weight limit and has enough fruits. Total value of fruits: " + totalValue);
+            }
         }
-        for (int i = 0; i < fruitGameObjects.Length; i++)
-        {
-            fruitGameObjects[i].transform.position = originalPositions[i];
-            fruitGameObjects[i].SetActive(true);
-        }
-        UpdateInventoryTexts();
     }
 
     public int GetFruitQuantity(int fruitIndex)
     {
         return fruitQuantities[fruitIndex];
     }
+
+    public void ResetBasket()
+    {
+        totalWeight = 0;
+        totalValue = 0;
+        fruitQuantities = (int[])startingQuantities.Clone();
+        UpdateInventoryTexts();
+        for (int i = 0; i < fruitGameObjects.Length; i++)
+        {
+            fruitGameObjects[i].transform.position = originalPositions[i];
+            fruitGameObjects[i].GetComponent<SpriteRenderer>().color = Color.white;
+            if (fruitGameObjects[i].GetComponent<FruitbasketDragAndDrop>() == null)
+            {
+                fruitGameObjects[i].AddComponent<FruitbasketDragAndDrop>();
+            }
+            fruitGameObjects[i].GetComponent<FruitbasketDragAndDrop>().ReturnToOriginalPosition();
+        }
+    }
+
 }
