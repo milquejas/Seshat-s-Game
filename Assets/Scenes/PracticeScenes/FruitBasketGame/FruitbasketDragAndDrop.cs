@@ -1,176 +1,175 @@
+using System.Collections;
 using UnityEngine;
 
 public class FruitbasketDragAndDrop : MonoBehaviour
 {
-    private static bool isDraggingEnabled = true; // Onko raahaaminen sallittu
-    private bool isMouseOver = false; // Onko hiiri objektin p‰‰ll‰
-    private bool isDragging = false; // Onko objektia raahattu
-    private Vector2 startPosition; // Alkuper‰inen sijainti
-    private Vector2 offset; // Hiiren sijainnin ja objektin sijainnin v‰linen ero
+    private static bool isDraggingEnabled = true;
+    private bool isMouseOver = false;
+    private bool isDragging = false;
+    private Vector2 startPosition;
+    private Vector2 offset;
 
-    public GameController gameController; // Viittaus peliohjaimen komponenttiin
-    public GameObject[] fruitPrefabs; // Taulukko hedelm‰prefabeista
-    public int fruitIndex; // Hedelm‰n indeksi
+    public GameController gameController;
+    public GameObject[] fruitPrefabs;
+    public int fruitIndex;
 
     private bool isCreatingNewFruit = false; // Uusi muuttuja
     private float tooltipDelay = 0.1f; // Viive ennen tooltipin n‰ytt‰mist‰
 
-    private Rigidbody2D fruitRigidBody; // Hedelm‰n Rigidbody2D-komponentti
-
-    private int fruitToDeduct = -1;  // Lis‰tty muuttuja
-    private bool isFirstDrag = true; // Lis‰tty muuttuja
-    private bool newFruitCreated = false; // Uusi muuttuja
-    private bool isInsideGameArea = false; // Onko hedelm‰ pelialueen sis‰ll‰
-
+    private Vector2 previousMousePosition;
+    private float throwForce = 1000f;
+    private float torqueForce = 10f;
+    private bool isInBasket = false;  // Uusi muuttuja
+    private bool isInInventory = true;
+    private Quaternion originalRotation;
 
 
     void Start()
     {
-        fruitRigidBody = GetComponent<Rigidbody2D>(); // Hae Rigidbody2D-komponentti
+        originalRotation = transform.rotation;
     }
 
     void OnMouseDown()
     {
-        if (isDraggingEnabled)
+        if (isDraggingEnabled && !isInBasket && isInInventory)
         {
             isDragging = true;
             startPosition = transform.position;
             offset = startPosition - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            fruitRigidBody.isKinematic = true;
-            newFruitCreated = false; // Aseta uusi hedelm‰ luomattomaksi
+            isCreatingNewFruit = true; // Asetetaan uusi muuttuja todeksi
+            CreateNewFruit();
+            isCreatingNewFruit = false; // Asetetaan uusi muuttuja ep‰todeksi
+            GetComponent<Rigidbody2D>().isKinematic = true;
+            previousMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 
     void OnMouseDrag()
     {
-        if (isDragging)
+        if (isDragging && !isInBasket)
         {
             gameController.HideTooltip();
-            Vector2 newPosition = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            Vector2 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 newPosition = currentMousePosition + offset;
             transform.position = newPosition;
-            if (!newFruitCreated && !isInsideGameArea) // Tarkista, onko uusi hedelm‰ jo luotu JA onko hedelm‰ pelialueella
-            {
-                CreateNewFruit(); // Luo uusi hedelm‰ vain, jos sit‰ ei ole viel‰ luotu JA hedelm‰ ei ole pelialueella
-                newFruitCreated = true; // Aseta uusi hedelm‰ luoduksi
-            }
+            previousMousePosition = currentMousePosition;
         }
     }
-
 
     void OnMouseUp()
-{
-    if (isDragging)
     {
-        isDragging = false; // Aseta raahaaminen pois p‰‰lt‰
-
-        if (isTouchingBasket())
+        if (isDragging && !isInBasket)
         {
-            CreateNewFruit(); // Luo uusi hedelm‰, jos objekti koskettaa koria
-        }
+            isDragging = false;
+            Vector2 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 throwDirection = currentMousePosition - previousMousePosition;
+            GetComponent<Rigidbody2D>().isKinematic = false;
+            GetComponent<Rigidbody2D>().AddForce(throwDirection * throwForce);
 
-        gameController.HideTooltip(); // Piilota tooltip
+            Vector2 grabOffset = (Vector2)transform.position - currentMousePosition;
+            float torque = Vector3.Cross(grabOffset, throwDirection.normalized).z;
+            GetComponent<Rigidbody2D>().AddTorque(torque * torqueForce);
 
-        if (!isTouchingBasket())
-        {
-            fruitRigidBody.isKinematic = false; // Aseta Rigidbody ei-kinemaattiseksi, jos objekti ei kosketa koria
-        }
-
-        // Tarkista, onko hedelm‰n m‰‰r‰ nolla inventaariossa
-        if(gameController.GetFruitQuantity(fruitIndex) == 0) 
-        {
-            gameController.UpdateInventoryTexts(); // P‰ivit‰ teksti‰, jos hedelm‰n m‰‰r‰ inventaariossa on nolla
+            StartCoroutine(ResetFruitPositionWithDelay());  // K‰ynnist‰ Coroutine
         }
     }
-}
+
 
 
 
     void OnMouseEnter()
     {
-        isMouseOver = true; // Aseta hiiri objektin p‰‰ll‰
-
+        isMouseOver = true;
         if (!isDragging && !isCreatingNewFruit) // ƒl‰ n‰yt‰ tooltipia, jos objektia raahataan tai uutta hedelm‰‰ luodaan
         {
-            Invoke(nameof(ShowTooltip), tooltipDelay); // N‰yt‰ tooltip viiveen j‰lkeen
-        }
-
-        // Tarkista, onko hiiri pelialueella
-        Collider2D fruitGameAreaCollider = GameObject.FindGameObjectWithTag("FruitGameArea").GetComponent<Collider2D>(); // Hae pelialueen Collider2D-komponentti
-        if (fruitGameAreaCollider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition))) // Tarkista, koskettaako hiiri pelialuetta
-        {
-            fruitRigidBody.isKinematic = false; // Aseta Rigidbody ei-kinemaattiseksi
+            Invoke(nameof(ShowTooltip), tooltipDelay);
         }
     }
 
     void OnMouseExit()
     {
-        isMouseOver = false; // Aseta hiiri pois objektin p‰‰lt‰
+        isMouseOver = false;
+        gameController.HideTooltip();  // Piilota tooltip
+    }
 
-        if (!isDragging || !isDraggingEnabled)
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Inventory"))
         {
-            CancelInvoke(nameof(ShowTooltip)); // Peruuta tooltipin n‰ytt‰minen, jos hiiri poistuu hedelm‰n p‰‰lt‰ ennen viiveen loppumista
-            gameController.HideTooltip(); // Piilota tooltip
+            isInInventory = false; // Asetetaan hedelm‰ pois inventaarion alueelta
         }
     }
 
     void ShowTooltip()
     {
-        gameController.ShowTooltip(fruitIndex); // N‰yt‰ tooltip
+        gameController.ShowTooltip(fruitIndex);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Basket") && !newFruitCreated) // Jos objekti koskettaa koria JA uutta hedelm‰‰ ei ole luotu
+        if (other.gameObject.CompareTag("Basket"))
         {
-            gameController.AddFruitToBasket(fruitIndex); // Lis‰‰ hedelm‰ koriin
-            gameController.FruitInBasket(); // P‰ivit‰ peliohjainta hedelm‰n lis‰‰misen j‰lkeen
-            newFruitCreated = true; // Aseta uusi hedelm‰ luoduksi
+            gameController.AddFruitToBasket(fruitIndex);
+            gameObject.layer = LayerMask.NameToLayer("InBasket");
+            isInBasket = true;  // Aseta uusi muuttuja todeksi
+            gameController.FruitInBasket();
+
+            StopCoroutine(ResetFruitPositionWithDelay());  // Katkaise Coroutine
         }
-        else if (other.gameObject.CompareTag("FruitGameArea")) // Jos objekti on pelialueella
+        else if (other.gameObject.CompareTag("Inventory"))
         {
-            isInsideGameArea = true; // Aseta isInsideGameArea true:ksi
+            isInInventory = true; // Asetetaan hedelm‰ inventaarion alueelle
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("FruitGameArea")) // Jos objekti poistuu pelialueelta
-        {
-            isInsideGameArea = false; // Aseta isInsideGameArea false:ksi
-        }
-    }
 
     public static void DisableDragging()
     {
-        isDraggingEnabled = false; // Poista raahaaminen k‰ytˆst‰
+        isDraggingEnabled = false;
     }
 
     public static void EnableDragging()
     {
-        isDraggingEnabled = true; // Salli raahaaminen
+        isDraggingEnabled = true;
     }
 
     private void CreateNewFruit()
     {
-        if (gameController.GetFruitQuantity(fruitIndex) > 1) // Tarkista, onko hedelmi‰ j‰ljell‰ inventaarissa
+        if (gameController.GetFruitQuantity(fruitIndex) > 0)
         {
-            GameObject newFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity); // Luo uusi hedelm‰
-            newFruit.GetComponent<FruitbasketDragAndDrop>().gameController = gameController; // Aseta peliohjaimen viittaus uudelle hedelm‰lle
-            newFruit.GetComponent<FruitbasketDragAndDrop>().fruitIndex = fruitIndex; // Aseta hedelm‰n indeksi uudelle hedelm‰lle
-
-            gameController.AddFruitToBasket(fruitIndex); // Lis‰‰ uusi hedelm‰ koriin ja v‰henn‰ hedelm‰n m‰‰r‰‰ inventaarissa
+            GameObject newFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity);
+            newFruit.GetComponent<FruitbasketDragAndDrop>().gameController = gameController;
+            newFruit.GetComponent<FruitbasketDragAndDrop>().fruitIndex = fruitIndex;
+            newFruit.layer = LayerMask.NameToLayer("Default");  
         }
         else
         {
-            GameObject emptyFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity); // Luo tyhj‰ hedelm‰
-            emptyFruit.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1); // Aseta tyhj‰n hedelm‰n v‰ri harmaaksi
-            Destroy(emptyFruit.GetComponent<FruitbasketDragAndDrop>()); // Poista raahaaminen tyhj‰lt‰ hedelm‰lt‰
+            GameObject emptyFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity);
+            emptyFruit.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 1);
+            Destroy(emptyFruit.GetComponent<FruitbasketDragAndDrop>());
+        }
+    }
+    IEnumerator ResetFruitPositionWithDelay()
+    {
+        yield return new WaitForSeconds(2);  // Odotetaan 2 sekuntia
+
+        if (!isInBasket) // Tarkistetaan, ettei hedelm‰ ole korissa
+        {
+            ResetFruitPosition();  // Kutsutaan ResetFruitPosition-metodia
         }
     }
 
 
-    private bool isTouchingBasket()
+    private void ResetFruitPosition()
     {
-        return this.gameObject.GetComponent<Collider2D>().IsTouching(GameObject.FindGameObjectWithTag("Basket").GetComponent<Collider2D>()); // Tarkista, koskettaako objekti koria
+        // Nollaa kaikki voimat
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().angularVelocity = 0f;
+
+        transform.position = startPosition;
+        transform.rotation = originalRotation;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        isInBasket = false;
     }
 }
