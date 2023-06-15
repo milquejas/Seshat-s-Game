@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8400052724293785907}
   - component: {fileID: 8400052724293785904}
-  - component: {fileID: 8400052724293785906}
   - component: {fileID: 8400052724293785933}
   - component: {fileID: 9123881111056904837}
+  - component: {fileID: 583077443}
   m_Layer: 0
   m_Name: Produce_Pomegranate
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,32 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8400052724293785906
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8400052724293785905}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0872726, y: 0.9963636}
-    newSize: {x: 1.0872726, y: 0.9963636}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0872726, y: 0.9963636}
-  m_EdgeRadius: 0
 --- !u!114 &8400052724293785933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,17 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   fruitPrefabs:
-  - {fileID: 5415216813107589760, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
-  - {fileID: 8434964088895458678, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
-  - {fileID: 3688277172077762161, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
-  - {fileID: 6532635715433520623, guid: 6f656b4aa1830d74e87e9e3ff9ebd9d5, type: 3}
-  - {fileID: 906571284922404844, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
-  - {fileID: 185898672245820653, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
-  - {fileID: 6212085509555498262, guid: f0da45201b638184bad922af22b1fed5, type: 3}
-  - {fileID: 5796737280762353425, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8400052724293785905}
-  - {fileID: 79247503472948728, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
-  - {fileID: 1562678183451857044, guid: 49842c445039f3e41831634c034b7a20, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   fruitIndex: 8
 --- !u!50 &9123881111056904837
 Rigidbody2D:
@@ -147,16 +121,32 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8400052724293785905}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &583077443
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8400052724293785905}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.051775873, y: -0.013939977}
+  serializedVersion: 2
+  m_Radius: 0.47792047

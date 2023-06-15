@@ -14,11 +14,11 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     public int fruitIndex;
 
     private bool isCreatingNewFruit = false; // Uusi muuttuja
-    private float tooltipDelay = 0.1f; // Viive ennen tooltipin näyttämistä
+   
 
     private Vector2 previousMousePosition;
-    private float throwForce = 1000f;
-    private float torqueForce = 10f;
+    private float throwForce = 2000f;
+    private float torqueForce = 100f;
     private bool isInBasket = false;  // Uusi muuttuja
     private bool isInInventory = true;
     private Quaternion originalRotation;
@@ -74,15 +74,12 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         }
     }
 
-
-
-
     void OnMouseEnter()
     {
         isMouseOver = true;
         if (!isDragging && !isCreatingNewFruit) // Älä näytä tooltipia, jos objektia raahataan tai uutta hedelmää luodaan
         {
-            Invoke(nameof(ShowTooltip), tooltipDelay);
+            ShowTooltip();
         }
     }
 
@@ -97,6 +94,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         if (other.gameObject.CompareTag("Inventory"))
         {
             isInInventory = false; // Asetetaan hedelmä pois inventaarion alueelta
+            gameController.HideTooltip(); // Piilota tooltip, kun hedelmä poistuu inventaarion alueelta
         }
     }
 
@@ -122,7 +120,6 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         }
     }
 
-
     public static void DisableDragging()
     {
         isDraggingEnabled = false;
@@ -140,7 +137,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             GameObject newFruit = Instantiate(fruitPrefabs[fruitIndex], startPosition, Quaternion.identity);
             newFruit.GetComponent<FruitbasketDragAndDrop>().gameController = gameController;
             newFruit.GetComponent<FruitbasketDragAndDrop>().fruitIndex = fruitIndex;
-            newFruit.layer = LayerMask.NameToLayer("Default");  
+            newFruit.layer = LayerMask.NameToLayer("Default");
         }
         else
         {
@@ -149,6 +146,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             Destroy(emptyFruit.GetComponent<FruitbasketDragAndDrop>());
         }
     }
+
     IEnumerator ResetFruitPositionWithDelay()
     {
         yield return new WaitForSeconds(2);  // Odotetaan 2 sekuntia
@@ -158,7 +156,6 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             ResetFruitPosition();  // Kutsutaan ResetFruitPosition-metodia
         }
     }
-
 
     private void ResetFruitPosition()
     {
