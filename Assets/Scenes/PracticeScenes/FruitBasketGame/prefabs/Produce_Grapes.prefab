@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6532635715433520621}
   - component: {fileID: 6532635715433520622}
-  - component: {fileID: 6532635715433520620}
   - component: {fileID: 6532635715433520619}
   - component: {fileID: -6676077459924189124}
+  - component: {fileID: 500930663}
   m_Layer: 0
   m_Name: Produce_Grapes
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,32 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6532635715433520620
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6532635715433520623}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.0163636, y: 1.5363636}
-    newSize: {x: 2.0163636, y: 1.5363636}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.0163636, y: 1.5363636}
-  m_EdgeRadius: 0
 --- !u!114 &6532635715433520619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,17 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   fruitPrefabs:
-  - {fileID: 5415216813107589760, guid: 62842a880a1e82a47955936fa1d80a63, type: 3}
-  - {fileID: 8434964088895458678, guid: 55c7901470adc9844aa88ecdd381c15a, type: 3}
-  - {fileID: 3688277172077762161, guid: 9c663967d3a2b094f897e5fb5d253f36, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 6532635715433520623}
-  - {fileID: 906571284922404844, guid: d9a33ac657ef760439b2552d99c606ed, type: 3}
-  - {fileID: 185898672245820653, guid: b9571beb9343c354cb596c90de13d56c, type: 3}
-  - {fileID: 6212085509555498262, guid: f0da45201b638184bad922af22b1fed5, type: 3}
-  - {fileID: 5796737280762353425, guid: 99d535c4e7e9d71409635aa1c787f842, type: 3}
-  - {fileID: 8400052724293785905, guid: a37ef82b587acec4788f82ecef8057e8, type: 3}
-  - {fileID: 79247503472948728, guid: ffc60243b12f132479c0add6e8ce09cc, type: 3}
-  - {fileID: 1562678183451857044, guid: 49842c445039f3e41831634c034b7a20, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   fruitIndex: 3
 --- !u!50 &-6676077459924189124
 Rigidbody2D:
@@ -147,16 +121,32 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6532635715433520623}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &500930663
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6532635715433520623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000000708998, y: -0.05947507}
+  m_Size: {x: 2.0163639, y: 1.4174143}
+  m_Direction: 1
