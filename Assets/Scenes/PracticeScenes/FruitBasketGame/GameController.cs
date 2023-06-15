@@ -17,8 +17,10 @@ public class GameController : MonoBehaviour
     public TMP_Text[] fruitQuantityTexts;
     private int totalWeight = 0;
     private int totalValue = 0;
-    private readonly int maxWeight = 1000;
+    private readonly int maxWeight = 1040;
     private Vector2[] originalPositions;
+
+
 
     // Tooltip GameObject
     public GameObject tooltipGameObject;

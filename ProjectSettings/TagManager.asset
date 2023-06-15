@@ -24,6 +24,8 @@ TagManager:
   - RightCup
   - Basket
   - Fruit
+  - Table
+  - Inventory
   layers:
   - Default
   - TransparentFX
@@ -39,7 +41,7 @@ TagManager:
   - AntiqueScale
   - OutOfBounds
   - NoCollisions
-  - 
+  - InBasket
   - 
   - 
   - 
