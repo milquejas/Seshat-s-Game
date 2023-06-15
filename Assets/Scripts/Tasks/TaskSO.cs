@@ -9,5 +9,15 @@ public class TaskSO : ScriptableObject
     public int Progress;
     
     public bool Completed;
-}
 
+    private void OnDisable()
+    {
+        Progress = 0;
+        Completed = false;
+    }
+    private void OnEnable()
+    {
+        Progress = 0;
+        Completed = false;
+    }
+}

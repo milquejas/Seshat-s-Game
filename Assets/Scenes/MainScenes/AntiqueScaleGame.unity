@@ -1137,6 +1137,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 434828560061253886, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
+      propertyPath: tasks
+      value: 
+      objectReference: {fileID: 11400000, guid: 999b3c09a586a874bbbb5a7187e06818, type: 2}
+    - target: {fileID: 434828560061253886, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
       propertyPath: fadeTime
       value: 0.4
       objectReference: {fileID: 0}
@@ -1306,6 +1310,7 @@ MonoBehaviour:
   scaleBehaviour: {fileID: 801077825}
   FadeOutCanvas: {fileID: 2025274390}
   ExitDialogue: {fileID: 11400000, guid: 222c43f9be26b0c4f8b480eda235251f, type: 2}
+  ScaleMinigameTask: {fileID: 11400000, guid: 2509879046c0f2d4ab0fa348e2bdb153, type: 2}
   questOrder:
   - {fileID: 11400000, guid: 9340e3c66e57ac14885a66c9e8dace72, type: 2}
   - {fileID: 11400000, guid: 2c57a4ecd1ee8e7469164ca04e9c4f9a, type: 2}
@@ -1765,8 +1770,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801077825}
-        m_TargetAssemblyTypeName: ScaleBehaviour, Assembly-CSharp
+      - m_Target: {fileID: 801077824}
+        m_TargetAssemblyTypeName: ScaleQuestManager, Assembly-CSharp
         m_MethodName: LeaveScaleMinigame
         m_Mode: 1
         m_Arguments:

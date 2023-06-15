@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float fadeTime;
     [SerializeField] private TMP_Text versionText;
     
-    [Header("Keeps spawn locations permanent in isometric scene...")]
+    [Header("Keeps ScriptableObjects out of garbage collection...")]
     [SerializeField] private LevelSpawnSO spawnPoint;
-    
+    [SerializeField] private TaskListSO tasks;
+
     void Start()
     {
         //CheckDevice();

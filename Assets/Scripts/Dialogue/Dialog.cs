@@ -11,6 +11,8 @@ using System;
 * Questions and dialog branching is badly implemented. 
 * Didn't think much how to make transitions for any dialog changes...
 * 
+* StartDialogue cant be started with a unity event anymore... Doesnt like odd parameters
+* 
 * Static event action DialogEndedEvent when dialog ends
 * Takes optional NPCDialogStart class as parameter to complete tasks
 */
