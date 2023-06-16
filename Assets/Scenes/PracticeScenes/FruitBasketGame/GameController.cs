@@ -9,22 +9,17 @@ public class GameController : MonoBehaviour
     public GameObject[] fruitGameObjects;
     private readonly int[] startingQuantities = new int[11] { 4, 2, 4, 2, 2, 4, 4, 4, 1, 2, 4 };
     private int[] fruitQuantities;
-    [SerializeField]
-    private int[] fruitWeights = new int[11];
-    [SerializeField]
-    private int[] fruitValues = new int[11];
+    [SerializeField] private int[] fruitWeights = new int[11];
+    [SerializeField] private int[] fruitValues = new int[11];
     public TMP_Text[] fruitQuantityTexts;
     private int totalWeight = 0;
     private int totalValue = 0;
     private readonly int maxWeight = 1040;
     private Vector2[] originalPositions;
-
     // New array to hold SpriteRenderers
     private SpriteRenderer[] _fruitRenderers;
-
     // Tooltip GameObject
     public GameObject tooltipGameObject;
-
     // Tooltip Text component
     private TMP_Text tooltipText;
 
@@ -33,11 +28,13 @@ public class GameController : MonoBehaviour
         fruitQuantities = (int[])startingQuantities.Clone();
         originalPositions = new Vector2[fruitGameObjects.Length];
         _fruitRenderers = new SpriteRenderer[fruitGameObjects.Length];
+
         for (int i = 0; i < fruitGameObjects.Length; i++)
         {
             originalPositions[i] = fruitGameObjects[i].transform.position;
             _fruitRenderers[i] = fruitGameObjects[i].GetComponent<SpriteRenderer>();
         }
+
         UpdateInventoryTexts();
 
         // Get TextMeshPro component
@@ -51,15 +48,12 @@ public class GameController : MonoBehaviour
     {
         string tooltip = $"Weight: {fruitWeights[fruitIndex]} g Value: {fruitValues[fruitIndex]} gold";
         tooltipText.text = tooltip;
-
         Vector3 mousePosition = Input.mousePosition;
         float yOffset = 100f;
         mousePosition.y += yOffset;
         tooltipGameObject.transform.position = mousePosition;
-
         tooltipGameObject.SetActive(true);
     }
-
 
     public void FruitInBasket()
     {
@@ -88,7 +82,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     private void UpdateInventoryTexts()
     {
         for (int i = 0; i < fruitQuantities.Length; i++)
@@ -110,6 +103,7 @@ public class GameController : MonoBehaviour
         {
             int totalFruitQuantity = 0;
             int totalStartingQuantity = 0;
+
             for (int i = 0; i < fruitQuantities.Length; i++)
             {
                 totalFruitQuantity += fruitQuantities[i];
@@ -139,16 +133,18 @@ public class GameController : MonoBehaviour
         totalValue = 0;
         fruitQuantities = (int[])startingQuantities.Clone();
         UpdateInventoryTexts();
+
         for (int i = 0; i < fruitGameObjects.Length; i++)
         {
             fruitGameObjects[i].transform.position = originalPositions[i];
             fruitGameObjects[i].GetComponent<SpriteRenderer>().color = Color.white;
+
             if (fruitGameObjects[i].GetComponent<FruitbasketDragAndDrop>() == null)
             {
                 fruitGameObjects[i].AddComponent<FruitbasketDragAndDrop>();
             }
+
             fruitGameObjects[i].GetComponent<FruitbasketDragAndDrop>().ReturnToOriginalPosition();
         }
     }
-
 }

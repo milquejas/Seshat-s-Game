@@ -8,26 +8,23 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     private bool isDragging = false;
     private Vector2 startPosition;
     private Vector2 offset;
-
     public GameController gameController;
     public GameObject[] fruitPrefabs;
     public int fruitIndex;
-
     private bool isCreatingNewFruit = false; // Uusi muuttuja
-   
-
     private Vector2 previousMousePosition;
     private float throwForce = 2000f;
     private float torqueForce = 100f;
-    private bool isInBasket = false;  // Uusi muuttuja
+    private bool isInBasket = false; // Uusi muuttuja
     private bool isInInventory = true;
     private Quaternion originalRotation;
     private Rigidbody2D _rigidbody;
+    private bool hasBeenDragged = false; // Uusi muuttuja
 
-        void Start()
+    void Start()
     {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            originalRotation = transform.rotation;
+        _rigidbody = GetComponent<Rigidbody2D>();
+        originalRotation = transform.rotation;
     }
 
     void OnMouseDown()
@@ -39,9 +36,15 @@ public class FruitbasketDragAndDrop : MonoBehaviour
                 isDragging = true;
                 startPosition = transform.position;
                 offset = startPosition - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                isCreatingNewFruit = true; // Asetetaan uusi muuttuja todeksi
-                CreateNewFruit();
-                isCreatingNewFruit = false; // Asetetaan uusi muuttuja epätodeksi
+
+                if (!hasBeenDragged) // Tarkista onko hedelmää jo raahattu
+                {
+                    isCreatingNewFruit = true; // Asetetaan uusi muuttuja todeksi
+                    CreateNewFruit();
+                    isCreatingNewFruit = false; // Asetetaan uusi muuttuja epätodeksi
+                    hasBeenDragged = true; // Asetetaan uusi muuttuja todeksi
+                }
+
                 GetComponent<Rigidbody2D>().isKinematic = true;
                 previousMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
@@ -52,7 +55,6 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             isDragging = false;
         }
     }
-
 
     void OnMouseDrag()
     {
@@ -75,18 +77,17 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             Vector2 throwDirection = currentMousePosition - previousMousePosition;
             GetComponent<Rigidbody2D>().isKinematic = false;
             GetComponent<Rigidbody2D>().AddForce(throwDirection * throwForce);
-
             Vector2 grabOffset = (Vector2)transform.position - currentMousePosition;
             float torque = Vector3.Cross(grabOffset, throwDirection.normalized).z;
             GetComponent<Rigidbody2D>().AddTorque(torque * torqueForce);
-
-            StartCoroutine(ResetFruitPositionWithDelay());  // Käynnistä Coroutine
+            StartCoroutine(ResetFruitPositionWithDelay()); // Käynnistä Coroutine
         }
     }
 
     void OnMouseEnter()
     {
         isMouseOver = true;
+
         if (!isDragging && !isCreatingNewFruit) // Älä näytä tooltipia, jos objektia raahataan tai uutta hedelmää luodaan
         {
             ShowTooltip();
@@ -96,7 +97,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     void OnMouseExit()
     {
         isMouseOver = false;
-        gameController.HideTooltip();  // Piilota tooltip
+        gameController.HideTooltip(); // Piilota tooltip
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -119,10 +120,9 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         {
             gameController.AddFruitToBasket(fruitIndex);
             gameObject.layer = LayerMask.NameToLayer("InBasket");
-            isInBasket = true;  // Aseta uusi muuttuja todeksi
+            isInBasket = true; // Aseta uusi muuttuja todeksi
             gameController.FruitInBasket();
-
-            StopCoroutine(ResetFruitPositionWithDelay());  // Katkaise Coroutine
+            StopCoroutine(ResetFruitPositionWithDelay()); // Katkaise Coroutine
         }
         else if (other.gameObject.CompareTag("Inventory"))
         {
@@ -156,19 +156,19 @@ public class FruitbasketDragAndDrop : MonoBehaviour
             Destroy(emptyFruit.GetComponent<FruitbasketDragAndDrop>());
         }
     }
+
     public void ReturnToOriginalPosition()
     {
         transform.position = startPosition;
     }
 
-
     IEnumerator ResetFruitPositionWithDelay()
     {
-        yield return new WaitForSeconds(2);  // Odotetaan 2 sekuntia
+        yield return new WaitForSeconds(2); // Wait for 2 seconds
 
-        if (!isInBasket) // Tarkistetaan, ettei hedelmä ole korissa
+        if (!isInBasket) // Check if the fruit is not in the basket
         {
-            ResetFruitPosition();  // Kutsutaan ResetFruitPosition-metodia
+            Destroy(gameObject); // Destroy the fruit
         }
     }
 
@@ -177,7 +177,6 @@ public class FruitbasketDragAndDrop : MonoBehaviour
         // Nollaa kaikki voimat
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0f;
-
         transform.position = startPosition;
         transform.rotation = originalRotation;
         GetComponent<Rigidbody2D>().isKinematic = true;
