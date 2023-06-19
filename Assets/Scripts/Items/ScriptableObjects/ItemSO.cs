@@ -8,6 +8,7 @@ public class ItemSO : ScriptableObject
     public Sprite ItemImage;
     public int ItemWeight;
     public bool Weight;
+    public int GoldValue;
 }
 
 public enum ItemType
