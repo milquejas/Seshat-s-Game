@@ -22,6 +22,7 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
 
     [Header("Place conversationSO here")]
     [SerializeField] private ConversationSO conversation;
+    [SerializeField] private ConversationSO TaskCompleteConversation;
     [SerializeField] private TaskSO npcTask;
 
     [Header("Child questionmarks animation variables")]
@@ -40,6 +41,12 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
     {
         if (conversationDisabled) return transform;
 
+        if (npcTask.Completed)
+        {
+            dialogSystem.StartConversation(TaskCompleteConversation, this);
+            return transform;
+        }
+            
         dialogSystem.StartConversation(conversation, this);
         return transform;
     }

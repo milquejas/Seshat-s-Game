@@ -20,7 +20,7 @@ public class FruitbasketDragAndDrop : MonoBehaviour
     public bool isInInventory = true;
     private Quaternion originalRotation;
     private Rigidbody2D _rigidbody;
-    private bool hasBeenDragged = false; // Uusi muuttuja
+    //private bool hasBeenDragged = false; // Uusi muuttuja
 
     void Start()
     {

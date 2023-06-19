@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
         UpdateInventoryTexts();
 
         // Get TextMeshPro component
-        tooltipText = tooltipGameObject.GetComponent<TMP_Text>();
+        //tooltipText = tooltipGameObject.GetComponent<TMP_Text>();
 
         // Hide tooltip at the start
         tooltipGameObject.SetActive(false);
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
     public void ShowTooltip(int fruitIndex)
     {
         string tooltip = $"Weight: {fruitWeights[fruitIndex]} g Value: {fruitValues[fruitIndex]} gold";
-        tooltipText.text = tooltip;
+        //tooltipText.text = tooltip;
         Vector3 mousePosition = Input.mousePosition;
         float yOffset = 100f;
         mousePosition.y += yOffset;
