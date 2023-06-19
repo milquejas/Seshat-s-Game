@@ -606,6 +606,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1683774632}
     - target: {fileID: 8265484807531330446, guid: 20fc76db0171a4b4989a13e7af7a7002, type: 3}
+      propertyPath: randomSecondNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265484807531330446, guid: 20fc76db0171a4b4989a13e7af7a7002, type: 3}
       propertyPath: easyMathList.Array.size
       value: 0
       objectReference: {fileID: 0}
