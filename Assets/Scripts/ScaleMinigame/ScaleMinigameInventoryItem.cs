@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
 
     private SpriteRenderer itemImage;
 
+    public static event Action<ItemSO> basketItemTouched;
 
     public void InitializeInventoryItem()
     {
@@ -39,6 +41,7 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
         updateItemAmountText();
         selectedItem.InitializeWeightedItem(inventoryWeightedItem.ItemType);
 
+        basketItemTouched?.Invoke(inventoryWeightedItem.ItemType);
         return selectedItem.transform;
     }
 

@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     // Tooltip GameObject
     public GameObject tooltipGameObject;
     // Tooltip Text component
-    private TMP_Text tooltipText;
+    
 
     private void Start()
     {
@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         float yOffset = 100f;
         mousePosition.y += yOffset;
         tooltipGameObject.transform.position = mousePosition;
-        tooltipGameObject.SetActive(true);
+        
     }
 
     public void FruitInBasket()

@@ -26,6 +26,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
     [field: NonSerialized] public Transform originalParent;
 
     public Vector2 originPoolPosition;
+    public static event Action<ItemSO> DraggableItemTouched;
 
     private void Awake()
     {
@@ -67,6 +68,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
 
     public Transform Interact()
     {
+        DraggableItemTouched?.Invoke(Item);
         return transform;
     }
 
