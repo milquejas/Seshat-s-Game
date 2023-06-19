@@ -4,18 +4,20 @@ using UnityEngine;
  * Press screen -> move player towards spot
  * clamped movementDirection
  * 
- * 
 */
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
 {
     [SerializeField] private float minimumMove, movementSpeed, interactionCircleSize;
+    [SerializeField] private LevelSpawnSO spawnPoint;
+    [SerializeField] private Transform spriteAndAnimationChild;
 
     private Vector2 movementDirection, playerPosition;
     private bool disableMovement;
     private bool thisTouchInteracting;
     private bool isTouchMoving;
+    private bool isFacingLeft;
 
     public Rigidbody2D rb { get; private set; }
     private Animator anim;
@@ -24,6 +26,15 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        // setup spawn
+        transform.position = spawnPoint.CurrentSpawnLocation;
+        //Camera.main.transform.position = spawnPoint.CurrentSpawnLocation;
+    }
+
+    public void SetSpawnLocation()
+    {
+        spawnPoint.CurrentSpawnLocation = transform.position;
     }
 
     void Update()
@@ -151,8 +162,17 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            
+            PlayerFlip();
             rb.velocity = movementDirection.normalized * movementSpeed;
         }
+    }
+
+    private void PlayerFlip()
+    {
+        if (movementDirection.x < 0 && isFacingLeft) return;
+        if (movementDirection.x > 0 && !isFacingLeft) return;
+
+        isFacingLeft = !isFacingLeft;
+        spriteAndAnimationChild.localScale = new Vector3(spriteAndAnimationChild.localScale.x * -1, 1, 1);
     }
 }

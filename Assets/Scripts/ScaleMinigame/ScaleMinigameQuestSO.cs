@@ -11,6 +11,7 @@ public class ScaleMinigameQuestSO : ScriptableObject
     public string Description;
     public List<InventoryWeightedItem> QuestPlayerInventory;
     public ScaleQuestType QuestType;
+    public bool LastQuestInRow;
 
     public List<ItemSO> PlaceTheseProduce;
 
