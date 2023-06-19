@@ -4,8 +4,8 @@ using TMPro;
 
 public class FiveQuestionsPuzzleManager : MonoBehaviour
 {
-    public TextMeshProUGUI dialogueText;
-    public GameObject dialogueBox;
+    public TextMeshProUGUI resultText;
+    public GameObject resultPanel;
 
     public string[] dialogueLines;
     private int currentLine;
@@ -13,7 +13,7 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
     // Starts the dialogue with the given action onDialogueEnd
     public void StartDialogue(System.Action onDialogueEnd)
     {
-        dialogueBox.SetActive(true);
+        resultPanel.SetActive(true);
         StartCoroutine(DisplayDialogue(onDialogueEnd));
     }
 
@@ -25,14 +25,14 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
         // Display each dialogue line with a 3-second delay
         while (currentLine < dialogueLines.Length)
         {
-            dialogueText.text = dialogueLines[currentLine];
+            resultText.text = dialogueLines[currentLine];
             currentLine++;
 
             yield return new WaitForSeconds(3f);
         }
 
         // Hide the dialogue box and invoke the given action
-        dialogueBox.SetActive(false);
+        resultPanel.SetActive(false);
         onDialogueEnd?.Invoke();
     }
 }

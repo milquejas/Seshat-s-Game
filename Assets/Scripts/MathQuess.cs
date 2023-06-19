@@ -21,9 +21,7 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private List<int> easyMathList = new();
 
-    [SerializeField] 
     private int randomFirstNumber;
-    [SerializeField]
     private int randomSecondNumber;
 
     private int firstNumberInProblem;

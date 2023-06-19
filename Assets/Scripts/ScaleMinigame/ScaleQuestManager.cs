@@ -5,27 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
- * Check if inventory has exact quest items
- * List of InventoryWeightedItem for each weight puzzle. 
- * Enter puzzle, start specific puzzle
- * Populate ScaleMinigamePooler with puzzle phase specific items
- * Give proper dialogue to specific phases of puzzle
- * Give dialogue to wrong and right answers
- * Progress Scale
  * 
- * "Place 3 oranges on one side of the scale, then press ready"
- * "Very good, next place 300g on the other side, then press ready"
-*/
-
-// Quest has inventory item list, which cup is active, quest tooltip text, 
-// what happens after quest?
-
-/*
- * If freetrade cup weight =/= cup2 weight, popup and say scale not equal please fix
- * If cup has weights and produce, popup and say don't mix weights and produce
- * If quest is a place produce or place weights phase and player puts stuff on wrong side, take back to pool and popup and say pls stop
  * 
  */
+
 public class ScaleQuestManager : MonoBehaviour
 {
     [SerializeField] private Button readyButton;
@@ -35,13 +18,14 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private TMP_Text questDescription;
     [SerializeField] private Image questArrowPointerImage;
     [SerializeField] private GameObject tradeRatioContainer;
-    [SerializeField] private TMP_Text tradeRatios;
+    [SerializeField] private TMP_Text tradeRatios;    
 
     [SerializeField] private ScaleMinigamePooler itemPooler;
     [SerializeField] private ScaleBehaviour scaleBehaviour;
 
     [SerializeField] private GameObject FadeOutCanvas;
-    [SerializeField] private ConversationSO StartingDialog;
+    [SerializeField] private ConversationSO ExitDialogue;
+    [SerializeField] private TaskSO ScaleMinigameTask;
 
     // TODO: Quests could be pulled from game manager on scene load
     [SerializeField] private ScaleMinigameQuestSO[] questOrder;
@@ -61,14 +45,16 @@ public class ScaleQuestManager : MonoBehaviour
 
     private void DialogEnd(ConversationSO conversation)
     {
-        // StartQuest();
-        // FadeOutCanvas.SetActive(true);
         questDescriptionContainer.SetActive(true);
-        
+
+        if (ScaleMinigameTask.Completed)
+            LeaveScaleMinigame();
     }
 
     private void StartQuest()
     {
+        currentQuest = ScaleMinigameTask.Progress;
+
         itemPooler.InitializeScaleInventory(questOrder[currentQuest].QuestPlayerInventory);
 
         if(questOrder[currentQuest].QuestStartDialogue is not null)
@@ -168,23 +154,26 @@ public class ScaleQuestManager : MonoBehaviour
     // free trading could have own button with trade text?
     private void ReadyFreeTradingQuest()
     {
-
+        print("free trading not implemented");
     }
 
     private void ProgressQuest()
     {
-        Debug.Log("success progressing quest");
+        if (questOrder[currentQuest].LastQuestInRow)
+        {
+            // currentQuest++;
+            dialog.StartConversation(ExitDialogue);
+
+            ScaleMinigameTask.Completed = true;
+        }
+
         currentQuest++;
+        ScaleMinigameTask.Progress = currentQuest;
         StartQuest();
     }
 
-    private void CheckConversation(ConversationSO conversation)
+    public void LeaveScaleMinigame()
     {
-        switch (conversation.ConversationName)
-        {
-            case "TutorialEnter":
-                
-                break;
-        }
+        GameManager.GameManagerInstance.LoadScene("IsometricMain");
     }
 }

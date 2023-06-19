@@ -21,9 +21,7 @@ public class Addition : MonoBehaviour
     [SerializeField]
     private List<int> easyMathList = new();
 
-    [SerializeField]
     private int randomFirstNumber;
-    [SerializeField]
     private int randomSecondNumber;
 
     private int firstNumberInProblem;
@@ -69,7 +67,11 @@ public class Addition : MonoBehaviour
             case "+":
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem + secondNumberInProblem;
-                break;           
+                break;
+
+            default:
+                Debug.LogError("Invalid operator type");
+                break;
         }
 
         //answerOne = firstNumberInProblem - secondNumberInProblem;

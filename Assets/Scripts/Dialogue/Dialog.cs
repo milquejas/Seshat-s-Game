@@ -11,7 +11,10 @@ using System;
 * Questions and dialog branching is badly implemented. 
 * Didn't think much how to make transitions for any dialog changes...
 * 
+* StartDialogue cant be started with a unity event anymore... Doesnt like odd parameters
+* 
 * Static event action DialogEndedEvent when dialog ends
+* Takes optional NPCDialogStart class as parameter to complete tasks
 */
 
 public class Dialog : MonoBehaviour
@@ -21,7 +24,7 @@ public class Dialog : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private Image Portrait;
     [SerializeField] private TMP_Text SpeakerName;
-    [SerializeField] private Image SpeakerNameBox;
+    [SerializeField] private Image CharacterContainer;
     [SerializeField] private TMP_Text dialog;
     [SerializeField] private Image AnswerButtonPanel;
     [SerializeField] private GameObject AnswerButton;
@@ -33,6 +36,7 @@ public class Dialog : MonoBehaviour
 
     public ConversationSO CurrentConversation;
     private DialogAnswers dialogAnswers;
+    private NPCDialogStart npcDialogStarter;
 
     [Header("GameObject with player controls")]
     [SerializeField] private GameObject playerControls;
@@ -56,8 +60,9 @@ public class Dialog : MonoBehaviour
         playerInteraction = playerControls.GetComponent<IPlayerTouch>();
     }
 
-    public void StartConversation(ConversationSO _conversation)
+    public void StartConversation(ConversationSO _conversation, NPCDialogStart _npcDialogStarter = null)
     {
+        npcDialogStarter = _npcDialogStarter;
         canvas.SetActive(true);
         playerInteraction.DisablePlayerMovement(true);
 
@@ -94,13 +99,13 @@ public class Dialog : MonoBehaviour
 
         if (CurrentConversation.Lines[lineNumber].character is null)
         {
-            SpeakerNameBox.gameObject.SetActive(false);
+            CharacterContainer.gameObject.SetActive(false);
             Portrait.gameObject.SetActive(false);
             SpeakerName.gameObject.SetActive(false);
         }
         else
         {
-            SpeakerNameBox.gameObject.SetActive(true);
+            CharacterContainer.gameObject.SetActive(true);
             Portrait.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
             Speaker = CurrentConversation.Lines[lineNumber].character;
@@ -122,22 +127,28 @@ public class Dialog : MonoBehaviour
         switch (CurrentConversation.Lines[lineNumber].Position)
         {
             case CharacterPosition.Left:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(200f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(0, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(0, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Right:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(1000f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(1, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(1, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(-274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Middle:
-                Portrait.gameObject.SetActive(true);
-                Portrait.rectTransform.position = new Vector3(600f, Portrait.rectTransform.position.y, Portrait.rectTransform.position.z);
+                Portrait.SetNativeSize();
+                CharacterContainer.rectTransform.anchorMin = new Vector2(0.5f, 1);
+                CharacterContainer.rectTransform.anchorMax = new Vector2(0.5f, 1);
+                CharacterContainer.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
                 break;
 
             case CharacterPosition.None:
-                Portrait.gameObject.SetActive(false);
+                CharacterContainer.gameObject.SetActive(false);
                 break;
 
             default:
@@ -169,7 +180,7 @@ public class Dialog : MonoBehaviour
 
         AnswerButtonPanel.gameObject.SetActive(false);
 
-        dialogAnswers.AnswerReactions(answerCase);
+        dialogAnswers.AnswerReactions(answerCase, npcDialogStarter);
     }
 
     // destroy buttons and empty list, remove listeners just in case to clean memory leaks
