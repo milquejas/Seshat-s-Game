@@ -15,3 +15,5 @@ MonoBehaviour:
   ItemName: 8
   ItemImage: {fileID: 1693266465, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
   ItemWeight: 130
+  Weight: 0
+  GoldValue: 60
