@@ -18,6 +18,7 @@ public static class InteractSystem
     static InteractSystem()
     {
         interactableContactFilter.SetLayerMask(interactableLayer);
+        
     }
 
     public static Transform TryToInteract(Vector2 touchPosition, float size)

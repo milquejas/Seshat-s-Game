@@ -7,11 +7,9 @@ using System;
 /*
 * starting reference:
 * https://github.com/draffauf/unity-dialogue-system/blob/master/Assets/Scripts/SpeakerUIController.cs 
-* Could add emotions to characters
-* Questions and dialog branching is badly implemented. 
-* Didn't think much how to make transitions for any dialog changes...
 * 
-* StartDialogue cant be started with a unity event anymore... Doesnt like odd parameters
+* Create ConversationSO ->
+* Call referenced dialog.StartConversation(ConversationSO) to start a dialog in scene
 * 
 * Static event action DialogEndedEvent when dialog ends
 * Takes optional NPCDialogStart class as parameter to complete tasks

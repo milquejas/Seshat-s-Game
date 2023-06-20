@@ -165,6 +165,7 @@ public class ScaleQuestManager : MonoBehaviour
             dialog.StartConversation(ExitDialogue);
 
             ScaleMinigameTask.Completed = true;
+            return;
         }
 
         currentQuest++;

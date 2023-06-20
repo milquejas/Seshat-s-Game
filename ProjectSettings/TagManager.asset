@@ -22,6 +22,11 @@ TagManager:
   - Omena
   - LeftCup
   - RightCup
+  - Basket
+  - Fruit
+  - Table
+  - Inventory
+  - Clone
   layers:
   - Default
   - TransparentFX
@@ -37,7 +42,7 @@ TagManager:
   - AntiqueScale
   - OutOfBounds
   - NoCollisions
-  - 
+  - InBasket
   - 
   - 
   - 
