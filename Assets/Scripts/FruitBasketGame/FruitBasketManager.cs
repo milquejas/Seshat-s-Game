@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class FruitBasketManager : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class FruitBasketManager : MonoBehaviour
     private GameObject basketInfo;
     [SerializeField]
     private TMP_Text basketInfoText;
-    private int maxWeight = 1250;
-    
+    [SerializeField]
+    private Button readyButton;
+    private int weightLimit = 720;
+    private int valueGoal = 280;
+
 
 
     void Start()
@@ -29,6 +33,7 @@ public class FruitBasketManager : MonoBehaviour
         basketPooler.InitializeScaleInventory(puzzleItems);
         ScaleMinigameInventoryItem.basketItemTouched += ShowTooltip;
         DraggableWeightedItem.DraggableItemTouched += ShowTooltip;
+        readyButton.onClick.AddListener(CheckReadyButton);
     }
 
     private void OnDisable()
@@ -61,6 +66,44 @@ public class FruitBasketManager : MonoBehaviour
 
         }
     }
+    private void CheckReadyButton()
+    {
+        int totalWeight = CalculateBasketWeight();
+        int totalValue = CalculateBasketValue();
+
+        List<string> messages = new List<string>();
+
+        if (totalWeight > weightLimit)
+        {
+            messages.Add("The basket is too heavy! Try removing some fruits.");
+        }
+        else if (totalWeight < weightLimit)
+        {
+            messages.Add("You can fit in more fruits.");
+            if (totalValue < valueGoal)
+            {
+                messages.Add("The basket's value is not enough!");
+            }
+        }
+
+        string message = messages.Count > 0 ? string.Join(" ", messages) : "The target has been achieved and the basket is ready. Congratulations!";
+        tooltipText.text = message;
+        tooltipContainer.SetActive(true);
+    }
+
+
+
+
+
+    private int CalculateBasketValue()
+    {
+        int totalValue = 0;
+        foreach (ItemSO item in basketItems)
+        {
+            totalValue += item.GoldValue;
+        }
+        return totalValue;
+    }
 
     private int CalculateBasketWeight()
     {
@@ -71,7 +114,7 @@ public class FruitBasketManager : MonoBehaviour
         }
         return totalbasketWeight;
 
-        
+
     }
     private void ShowBasketInfo()
     {
@@ -80,8 +123,8 @@ public class FruitBasketManager : MonoBehaviour
             basketInfo.SetActive(false);
             return;
         }
-            basketInfo.SetActive(true);
-        basketInfoText.text = $"Weight limit :{maxWeight}g<br>Current Weight: {CalculateBasketWeight()}g";
+        basketInfo.SetActive(true);
+        basketInfoText.text = $"Weight limit :{weightLimit}g<br>Current Weight: {CalculateBasketWeight()}g";
     }
 
     private void ShowTooltip(ItemSO item)
