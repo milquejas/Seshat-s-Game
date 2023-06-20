@@ -1,10 +1,10 @@
-using System;
 using UnityEngine;
 
 /* 
  * Press screen -> move player towards spot
  * clamped movementDirection
- * 
+ * Handles player animations
+ * TODO: walk sounds
 */
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -21,13 +21,19 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private bool isFacingUp;
     private bool isFacingRight;
 
+    // for animation
+    private bool isInWalkAnim;
+    private bool isWalking;
+
     public Rigidbody2D rb { get; private set; }
     [SerializeField] private Animator animatorFront;
     [SerializeField] private Animator animatorBack;
+    private Animator currentAnimator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentAnimator = animatorFront;
 
         // setup spawn
         transform.position = spawnPoint.CurrentSpawnLocation;
@@ -131,7 +137,6 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private void TouchBegin(Vector2 touchPosition)
     {
         isTouchMoving = true;
-        AnimatePlayer(true);
         playerPosition = transform.position;
         movementDirection = touchPosition - playerPosition;
     }
@@ -152,7 +157,6 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         movementDirection = Vector2.zero;
         isTouchMoving = false;
-        AnimatePlayer(false);
     }
 
     private void FixedUpdate()
@@ -160,30 +164,54 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         if (disableMovement) return;
 
         MovePlayer();
+        AnimatePlayer();
     }
 
-    private void AnimatePlayer(bool walking)
+    private void AnimatePlayer()
     {
-        if (walking)
+        if (isWalking && !isInWalkAnim)
         {
-            animatorBack.SetTrigger("StartWalking");
-            animatorFront.SetTrigger("StartWalking");
-            
-            return;
+            currentAnimator.SetTrigger("StartWalking");
+            isInWalkAnim = true;
         }
 
-        animatorBack.SetTrigger("StartIdle");
-        animatorFront.SetTrigger("StartIdle");
+        if (!isWalking && isInWalkAnim) 
+        {
+            currentAnimator.SetTrigger("StartIdle");
+            isInWalkAnim = false;
+        }
     }
 
     private void MovePlayer()
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
+            isWalking = true;
             PlayerFlipY();
             PlayerFlipX();
             rb.velocity = movementDirection.normalized * movementSpeed;
         }
+        else
+        {
+            isWalking = false;
+        }
+
+    }
+    private void PlayerFlipY()
+    {
+        if (movementDirection.y < 0 && isFacingUp) return;
+        if (movementDirection.y > 0 && !isFacingUp) return;
+
+        isFacingUp = !isFacingUp;
+
+        animatorFront.gameObject.SetActive(isFacingUp);
+        animatorBack.gameObject.SetActive(!isFacingUp);
+
+        if (isFacingUp)
+            currentAnimator = animatorFront;
+        else
+            currentAnimator = animatorBack;
+        isInWalkAnim = false;
     }
     private void PlayerFlipX()
     {
@@ -193,16 +221,5 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         isFacingRight = !isFacingRight;
         animatorFront.transform.localScale = new Vector3(animatorFront.transform.localScale.x * -1, animatorFront.transform.localScale.y, 1);
         animatorBack.transform.localScale = new Vector3(animatorBack.transform.localScale.x * -1, animatorBack.transform.localScale.y, 1);
-    }
-    private void PlayerFlipY()
-    {
-        if (movementDirection.y < 0 && isFacingUp) return;
-        if (movementDirection.y > 0 && !isFacingUp) return;
-
-        isFacingUp = !isFacingUp;
-        
-        animatorFront.gameObject.SetActive(isFacingUp);
-        animatorBack.gameObject.SetActive(!isFacingUp);
-        AnimatePlayer(isTouchMoving);
     }
 }
