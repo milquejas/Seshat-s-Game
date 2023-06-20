@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /* 
@@ -17,15 +18,16 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private bool disableMovement;
     private bool thisTouchInteracting;
     private bool isTouchMoving;
-    private bool isFacingLeft;
+    private bool isFacingUp;
+    private bool isFacingRight;
 
     public Rigidbody2D rb { get; private set; }
-    private Animator anim;
-    
+    [SerializeField] private Animator animatorFront;
+    [SerializeField] private Animator animatorBack;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
 
         // setup spawn
         transform.position = spawnPoint.CurrentSpawnLocation;
@@ -129,6 +131,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private void TouchBegin(Vector2 touchPosition)
     {
         isTouchMoving = true;
+        AnimatePlayer(true);
         playerPosition = transform.position;
         movementDirection = touchPosition - playerPosition;
     }
@@ -149,6 +152,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         movementDirection = Vector2.zero;
         isTouchMoving = false;
+        AnimatePlayer(false);
     }
 
     private void FixedUpdate()
@@ -158,21 +162,47 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         MovePlayer();
     }
 
+    private void AnimatePlayer(bool walking)
+    {
+        if (walking)
+        {
+            animatorBack.SetTrigger("StartWalking");
+            animatorFront.SetTrigger("StartWalking");
+            
+            return;
+        }
+
+        animatorBack.SetTrigger("StartIdle");
+        animatorFront.SetTrigger("StartIdle");
+    }
+
     private void MovePlayer()
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            PlayerFlip();
+            PlayerFlipY();
+            PlayerFlipX();
             rb.velocity = movementDirection.normalized * movementSpeed;
         }
     }
-
-    private void PlayerFlip()
+    private void PlayerFlipX()
     {
-        if (movementDirection.x < 0 && isFacingLeft) return;
-        if (movementDirection.x > 0 && !isFacingLeft) return;
+        if (movementDirection.x < 0 && isFacingRight) return;
+        if (movementDirection.x > 0 && !isFacingRight) return;
 
-        isFacingLeft = !isFacingLeft;
-        spriteAndAnimationChild.localScale = new Vector3(spriteAndAnimationChild.localScale.x * -1, 1, 1);
+        isFacingRight = !isFacingRight;
+        animatorFront.transform.localScale = new Vector3(animatorFront.transform.localScale.x * -1, animatorFront.transform.localScale.y, 1);
+        animatorBack.transform.localScale = new Vector3(animatorBack.transform.localScale.x * -1, animatorBack.transform.localScale.y, 1);
+    }
+    private void PlayerFlipY()
+    {
+        if (movementDirection.y < 0 && isFacingUp) return;
+        if (movementDirection.y > 0 && !isFacingUp) return;
+
+        isFacingUp = !isFacingUp;
+        
+        animatorFront.gameObject.SetActive(isFacingUp);
+        animatorBack.gameObject.SetActive(!isFacingUp);
+        AnimatePlayer(isTouchMoving);
     }
 }
