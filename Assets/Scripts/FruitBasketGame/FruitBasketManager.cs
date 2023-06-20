@@ -1,136 +1,177 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI; 
 
 public class FruitBasketManager : MonoBehaviour
 {
-    [SerializeField]
-    private ScaleMinigamePooler basketPooler;
-    [SerializeField]
-    private List<InventoryWeightedItem> puzzleItems;
-    [SerializeField]
-    private List<ItemSO> basketItems = new List<ItemSO>();
-    [SerializeField]
-    private TMP_Text tooltipText;
-    [SerializeField]
-    private GameObject tooltipContainer;
-    [SerializeField]
-    private GameObject basketInfo;
-    [SerializeField]
-    private TMP_Text basketInfoText;
-    [SerializeField]
-    private Button readyButton;
-    private int weightLimit = 720;
-    private int valueGoal = 280;
+    [SerializeField] private ScaleMinigamePooler basketPooler;
+    [SerializeField] private List<ItemSO> basketItems = new List<ItemSO>();
 
+    [SerializeField] private TMP_Text tooltipText;
+    [SerializeField] private GameObject tooltipContainer;
+    [SerializeField] private GameObject basketInfo;
+    [SerializeField] private TMP_Text basketInfoText;
 
+    [SerializeField] Button readyButton;
+
+    private int currentQuest;
+    [SerializeField] private FruitBasketQuestSO[] BasketPuzzleQuests;
+
+    [SerializeField] private Dialog dialog;
+    [SerializeField] private TaskSO FruitBasketTask;
+    [SerializeField] private ConversationSO ExitDialogue;
+
+    [SerializeField] private ConversationSO biggerValueDifference;
+    [SerializeField] private ConversationSO grapelessMisery;
+    [SerializeField] private ConversationSO smallValueDifference;
+    [SerializeField] private ConversationSO tooHeavy;
+    [SerializeField] private ConversationSO tooLight;
+    [SerializeField] private ConversationSO wayTooHeavy;
 
     void Start()
     {
-        basketPooler.InitializeScaleInventory(puzzleItems);
         ScaleMinigameInventoryItem.basketItemTouched += ShowTooltip;
         DraggableWeightedItem.DraggableItemTouched += ShowTooltip;
         readyButton.onClick.AddListener(CheckReadyButton);
+        dialog.DialogEndedEvent += DialogEnd;
+
+        StartQuest();
+    }
+
+    private void StartQuest()
+    {
+        currentQuest = FruitBasketTask.Progress;
+
+        basketPooler.InitializeScaleInventory(BasketPuzzleQuests[currentQuest].BasketItems);
+
+        if (BasketPuzzleQuests[currentQuest].StartingConversation is not null)
+        {
+            dialog.StartConversation(BasketPuzzleQuests[currentQuest].StartingConversation);
+        }
+    }
+
+    private void QuestComplete()
+    {
+        FruitBasketTask.Progress++;
+        FruitBasketTask.Completed = true;
+        dialog.StartConversation(ExitDialogue);
     }
 
     private void OnDisable()
     {
         ScaleMinigameInventoryItem.basketItemTouched -= ShowTooltip;
         DraggableWeightedItem.DraggableItemTouched -= ShowTooltip;
+        dialog.DialogEndedEvent -= DialogEnd;
+    }
+
+    private void DialogEnd(ConversationSO conversation)
+    {
+        if (FruitBasketTask.Completed)
+            LeaveFruitBasketScene();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponentInParent<DraggableWeightedItem>())
-
         {
             DraggableWeightedItem draggedItem = collision.gameObject.GetComponentInParent<DraggableWeightedItem>();
             basketItems.Add(draggedItem.Item);
             ShowBasketInfo();
-
-
         }
-
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponentInParent<DraggableWeightedItem>())
-
         {
             DraggableWeightedItem draggedItem = collision.gameObject.GetComponentInParent<DraggableWeightedItem>();
             basketItems.Remove(draggedItem.Item);
             ShowBasketInfo();
-
         }
     }
+
+    // Checks setup in order of importance
     private void CheckReadyButton()
     {
-        int totalWeight = CalculateBasketWeight();
-        int totalValue = CalculateBasketValue();
+        var (totalValue, totalWeight) = CalculateBasketItems();
+        int maxWeight = BasketPuzzleQuests[currentQuest].WeightLimit;
+        int goalValue = BasketPuzzleQuests[currentQuest].ValueGoal;
 
-        List<string> messages = new List<string>();
-
-        if (totalWeight > weightLimit)
-        {
-            messages.Add("The basket is too heavy! Try removing some fruits.");
+        // way too heavy
+        if (totalWeight > maxWeight + 250){
+            dialog.StartConversation(wayTooHeavy);
+            return;
         }
-        else if (totalWeight < weightLimit)
+        // too heavy
+        if (totalWeight > maxWeight){
+            dialog.StartConversation(tooHeavy);
+            return;
+        }
+        // way too light
+        if (totalWeight < maxWeight - 300)
         {
-            messages.Add("You can fit in more fruits.");
-            if (totalValue < valueGoal)
-            {
-                messages.Add("The basket's value is not enough!");
-            }
+            dialog.StartConversation(tooLight);
+            return;
+        }
+        // if basket doesnt have grapes and list has grapes
+        if (BasketPuzzleQuests[currentQuest].QuestHasGrapes && !basketItems.Any(item => item.ItemName == ItemType.Grapes))
+        {
+            dialog.StartConversation(grapelessMisery);
+            return;
+        }
+        // value difference big
+        if (totalValue < goalValue - 30)
+        {
+            dialog.StartConversation(biggerValueDifference);
+            return;
+        }
+        // small value difference
+        if (totalValue < goalValue)
+        {
+            dialog.StartConversation(smallValueDifference);
+            return;
         }
 
-        string message = messages.Count > 0 ? string.Join(" ", messages) : "The target has been achieved and the basket is ready. Congratulations!";
-        tooltipText.text = message;
-        tooltipContainer.SetActive(true);
+        QuestComplete();
     }
 
-
-
-
-
-    private int CalculateBasketValue()
+    // calculation as tuple type to do less iteration on a list
+    private (int value, int weight) CalculateBasketItems()
     {
         int totalValue = 0;
-        foreach (ItemSO item in basketItems)
-        {
-            totalValue += item.GoldValue;
-        }
-        return totalValue;
-    }
-
-    private int CalculateBasketWeight()
-    {
         int totalbasketWeight = 0;
         foreach (ItemSO item in basketItems)
         {
             totalbasketWeight += item.ItemWeight;
+            totalValue += item.GoldValue;
         }
-        return totalbasketWeight;
-
-
+        return (totalValue, totalbasketWeight);
     }
+
     private void ShowBasketInfo()
     {
-        if (CalculateBasketWeight() == 0)
+        var (totalValue, totalWeight) = CalculateBasketItems();
+        if (totalWeight == 0)
         {
             basketInfo.SetActive(false);
             return;
         }
         basketInfo.SetActive(true);
-        basketInfoText.text = $"Weight limit :{weightLimit}g<br>Current Weight: {CalculateBasketWeight()}g";
+        basketInfoText.text = $"Weight limit :{BasketPuzzleQuests[currentQuest].WeightLimit}g<br>Current " +
+            $"Weight: {totalWeight}g<br>" +
+            $"Value: {totalValue}";
     }
 
     private void ShowTooltip(ItemSO item)
     {
         tooltipContainer.SetActive(true);
         tooltipText.text = $"{item.ItemName}<br>Weight: {item.ItemWeight}g Value: {item.GoldValue} gold";
+    }
 
+    public void LeaveFruitBasketScene()
+    {
+        GameManager.GameManagerInstance.LoadScene("IsometricMain");
     }
 }

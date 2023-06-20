@@ -18,7 +18,7 @@ using UnityEngine;
 [System.Serializable]
 public struct InventoryWeightedItem
 {
-    public ItemSO ItemType;
+    public ItemSO InventoryItemSO;
     public int ItemAmount;
 }
 
@@ -33,6 +33,7 @@ public class ScaleMinigamePooler : MonoBehaviour
     [SerializeField] private List<DraggableWeightedItem> itemPool = new List<DraggableWeightedItem>();
     [SerializeField] private List<DraggableWeightedItem> itemsInUsePool = new List<DraggableWeightedItem>();
     private List<ScaleMinigameInventoryItem> inventoryItemsList = new List<ScaleMinigameInventoryItem>();
+    public int ItemSortingOrder;
 
     private void Start()
     {
@@ -45,17 +46,17 @@ public class ScaleMinigamePooler : MonoBehaviour
     public void InitializeScaleInventory(List<InventoryWeightedItem> questInventoryList)
     {
 
-        foreach (InventoryWeightedItem inventoryWeightedItem in questInventoryList)
+        foreach (InventoryWeightedItem _inventoryWeightedItem in questInventoryList)
         {
             ScaleMinigameInventoryItem inventoryItem = Instantiate(InventoryItemPrefab, transform);
-            inventoryItem.inventoryWeightedItem = inventoryWeightedItem;
+            inventoryItem.inventoryWeightedItem = _inventoryWeightedItem;
             
             inventoryItem.InitializeInventoryItem();
             inventoryItemsList.Add(inventoryItem);
         }
     }
 
-    public void ResetEverything()
+    public void ResetEverything(bool onlyDraggables = false)
     {
         List<DraggableWeightedItem> inUseItems = new List<DraggableWeightedItem>(itemsInUsePool);
 
@@ -63,6 +64,8 @@ public class ScaleMinigamePooler : MonoBehaviour
         {
             StartCoroutine(ReturnItemToPool(item, 0));
         }
+
+        if (onlyDraggables) return;
 
         foreach (ScaleMinigameInventoryItem inventoryItem in inventoryItemsList)
         {

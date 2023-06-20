@@ -88,6 +88,9 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         disableMovement = disable;
         movementDirection = Vector2.zero;
+
+        isWalking = false;
+        AnimatePlayer();
     }
 
 

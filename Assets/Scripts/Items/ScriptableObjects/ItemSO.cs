@@ -7,7 +7,7 @@ public class ItemSO : ScriptableObject
     public ItemType ItemName;
     public Sprite ItemImage;
     public int ItemWeight;
-    public bool Weight;
+    public bool ScaleWeight;
     public int GoldValue;
 }
 
