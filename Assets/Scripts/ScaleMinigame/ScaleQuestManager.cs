@@ -34,10 +34,6 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private List<ItemSO> weightItems;
     private void Start()
     {
-        // Load scene async? For fadeout during enter
-        // https://forum.unity.com/threads/what-and-how-is-the-best-way-to-fade-in-out-when-loading-switching-scenes.1388280/
-        //dialog.ConversationEnded += CheckConversation;
-
         dialog.DialogEndedEvent += DialogEnd;
 
         StartQuest();

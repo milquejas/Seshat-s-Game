@@ -1136,14 +1136,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 434828560061253886, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
-      propertyPath: tasks
-      value: 
-      objectReference: {fileID: 11400000, guid: 999b3c09a586a874bbbb5a7187e06818, type: 2}
-    - target: {fileID: 434828560061253886, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
-      propertyPath: fadeTime
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
 --- !u!1 &725438225
@@ -2814,6 +2806,7 @@ MonoBehaviour:
   InventoryItemPrefab: {fileID: 657656983385993494, guid: a3adb3d5bb506574b9bb437a544dcb8f, type: 3}
   itemPool: []
   itemsInUsePool: []
+  ItemSortingOrder: 0
 --- !u!114 &2076638020
 MonoBehaviour:
   m_ObjectHideFlags: 0

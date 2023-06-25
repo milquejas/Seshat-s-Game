@@ -78,15 +78,6 @@ public class ScaleBehaviour : MonoBehaviour
         return false;
     }
 
-    private void Test()
-    {
-        int test = 0;
-        foreach (ItemSO item in leftCupItems)
-        {
-            test += item.ItemWeight;
-        }
-    }
-
     // Speed up scale movement with extra torque
     private void FixedUpdate()
     {
