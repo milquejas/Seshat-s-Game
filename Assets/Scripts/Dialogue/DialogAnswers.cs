@@ -59,6 +59,11 @@ public class DialogAnswers : MonoBehaviour
                 // change sounds here or inside scene?
                 break;
 
+            case "StartFruitBasketPuzzleScene":
+                GameManager.GameManagerInstance.LoadScene("FruitBasketGame");
+                // change sounds here or inside scene?
+                break;
+
             case "StartStatuePuzzle":
                 dialog.ExitDialog(true);
                 CatStatuePuzzle.gameObject.SetActive(true);

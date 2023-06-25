@@ -3,7 +3,8 @@ using UnityEngine;
 /* 
  * Press screen -> move player towards spot
  * clamped movementDirection
- * 
+ * Handles player animations
+ * TODO: walk sounds
 */
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,15 +18,22 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private bool disableMovement;
     private bool thisTouchInteracting;
     private bool isTouchMoving;
-    private bool isFacingLeft;
+    private bool isFacingUp;
+    private bool isFacingRight;
+
+    // for animation
+    private bool isInWalkAnim;
+    private bool isWalking;
 
     public Rigidbody2D rb { get; private set; }
-    private Animator anim;
-    
+    [SerializeField] private Animator animatorFront;
+    [SerializeField] private Animator animatorBack;
+    private Animator currentAnimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        currentAnimator = animatorFront;
 
         // setup spawn
         transform.position = spawnPoint.CurrentSpawnLocation;
@@ -80,6 +88,9 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         disableMovement = disable;
         movementDirection = Vector2.zero;
+
+        isWalking = false;
+        AnimatePlayer();
     }
 
 
@@ -156,23 +167,62 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         if (disableMovement) return;
 
         MovePlayer();
+        AnimatePlayer();
+    }
+
+    private void AnimatePlayer()
+    {
+        if (isWalking && !isInWalkAnim)
+        {
+            currentAnimator.SetTrigger("StartWalking");
+            isInWalkAnim = true;
+        }
+
+        if (!isWalking && isInWalkAnim) 
+        {
+            currentAnimator.SetTrigger("StartIdle");
+            isInWalkAnim = false;
+        }
     }
 
     private void MovePlayer()
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
-            PlayerFlip();
+            isWalking = true;
+            PlayerFlipY();
+            PlayerFlipX();
             rb.velocity = movementDirection.normalized * movementSpeed;
         }
+        else
+        {
+            isWalking = false;
+        }
+
     }
-
-    private void PlayerFlip()
+    private void PlayerFlipY()
     {
-        if (movementDirection.x < 0 && isFacingLeft) return;
-        if (movementDirection.x > 0 && !isFacingLeft) return;
+        if (movementDirection.y < 0 && isFacingUp) return;
+        if (movementDirection.y > 0 && !isFacingUp) return;
 
-        isFacingLeft = !isFacingLeft;
-        spriteAndAnimationChild.localScale = new Vector3(spriteAndAnimationChild.localScale.x * -1, 1, 1);
+        isFacingUp = !isFacingUp;
+
+        animatorFront.gameObject.SetActive(isFacingUp);
+        animatorBack.gameObject.SetActive(!isFacingUp);
+
+        if (isFacingUp)
+            currentAnimator = animatorFront;
+        else
+            currentAnimator = animatorBack;
+        isInWalkAnim = false;
+    }
+    private void PlayerFlipX()
+    {
+        if (movementDirection.x < 0 && isFacingRight) return;
+        if (movementDirection.x > 0 && !isFacingRight) return;
+
+        isFacingRight = !isFacingRight;
+        animatorFront.transform.localScale = new Vector3(animatorFront.transform.localScale.x * -1, animatorFront.transform.localScale.y, 1);
+        animatorBack.transform.localScale = new Vector3(animatorBack.transform.localScale.x * -1, animatorBack.transform.localScale.y, 1);
     }
 }

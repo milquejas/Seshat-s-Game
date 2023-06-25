@@ -42,6 +42,10 @@ public class ScaleQuestManager : MonoBehaviour
 
         StartQuest();
     }
+    private void OnDisable()
+    {
+        dialog.DialogEndedEvent -= DialogEnd;
+    }
 
     private void DialogEnd(ConversationSO conversation)
     {
@@ -86,7 +90,7 @@ public class ScaleQuestManager : MonoBehaviour
     {
         foreach (ItemSO item in itemList)
         {
-            if (!item.Weight)
+            if (!item.ScaleWeight)
                 return false;
         }
         return true;

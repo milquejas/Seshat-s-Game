@@ -16,11 +16,11 @@ MonoBehaviour:
   Description: 300grams of apple is one citrus, place so many apples that you get
     2 citrus
   QuestPlayerInventory:
-  - ItemType: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
     ItemAmount: 6
-  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
     ItemAmount: 8
-  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
     ItemAmount: 8
   QuestType: 1
   LastQuestInRow: 1

@@ -12,7 +12,7 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
     [field: SerializeField]
     public bool InRange { get; set; }
     public InventoryWeightedItem inventoryWeightedItem;
-    [SerializeField] private ScaleMinigamePooler inventoryPooler;
+    [SerializeField] public ScaleMinigamePooler inventoryPooler;
     private DraggableWeightedItem selectedItem;
     [SerializeField] private TextMeshPro amountText;
 
@@ -24,7 +24,7 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
     {
         inventoryPooler = GetComponentInParent<ScaleMinigamePooler>();
         itemImage = GetComponent<SpriteRenderer>();
-        itemImage.sprite = inventoryWeightedItem.ItemType.ItemImage;
+        itemImage.sprite = inventoryWeightedItem.InventoryItemSO.ItemImage;
         updateItemAmountText();
     }
 
@@ -39,9 +39,9 @@ public class ScaleMinigameInventoryItem : MonoBehaviour, IInteractable
         inventoryWeightedItem.ItemAmount -= 1;
 
         updateItemAmountText();
-        selectedItem.InitializeWeightedItem(inventoryWeightedItem.ItemType);
+        selectedItem.InitializeWeightedItem(inventoryWeightedItem.InventoryItemSO);
 
-        basketItemTouched?.Invoke(inventoryWeightedItem.ItemType);
+        basketItemTouched?.Invoke(inventoryWeightedItem.InventoryItemSO);
         return selectedItem.transform;
     }
 

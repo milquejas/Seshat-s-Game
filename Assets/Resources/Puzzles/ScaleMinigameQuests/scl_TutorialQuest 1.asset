@@ -15,7 +15,7 @@ MonoBehaviour:
   QuestStartDialogue: {fileID: 11400000, guid: e3ae82e36f1eed14d82827f332c76e62, type: 2}
   Description: Place 3 onions on one side of the scale
   QuestPlayerInventory:
-  - ItemType: {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
     ItemAmount: 3
   QuestType: 0
   LastQuestInRow: 0

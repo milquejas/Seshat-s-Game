@@ -15,9 +15,10 @@ MonoBehaviour:
   QuestStartDialogue: {fileID: 11400000, guid: ffc581b40068e0447bc32252f3383f73, type: 2}
   Description: Balance the 3 onions by using weights
   QuestPlayerInventory:
-  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
     ItemAmount: 3
   QuestType: 1
+  LastQuestInRow: 0
   PlaceTheseProduce:
   - {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
   - {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}

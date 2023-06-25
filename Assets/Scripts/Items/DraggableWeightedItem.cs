@@ -63,11 +63,11 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
         {
             GetComponentInChildren<Collider2D>().gameObject.layer = LayerMask.NameToLayer(layerName);
         }
-            
     }
 
     public Transform Interact()
     {
+        itemImage.sortingOrder = originInventoryItem.inventoryPooler.ItemSortingOrder++;
         DraggableItemTouched?.Invoke(Item);
         return transform;
     }
@@ -85,6 +85,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
 
     public void InitializeWeightedItem(ItemSO item)
     {
+        itemImage.sortingOrder = originInventoryItem.inventoryPooler.ItemSortingOrder++;
         Item = item;
         RBody.mass = ConvertRealWeightToUnityMass(Item.ItemWeight);
         itemImage.sprite = Item.ItemImage;

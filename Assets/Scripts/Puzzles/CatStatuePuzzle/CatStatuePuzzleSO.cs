@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct ThreeMultipickQuestion
+public struct CatStatuePuzzleQuestion
 {
     [TextArea(4, 5)]
     public string MultipickQuestionText;
@@ -16,7 +16,7 @@ public struct ThreeMultipickQuestion
 
 
 
-[CreateAssetMenu(fileName = "ThreeMultipickQuestionnairePuzzle", menuName = "Puzzles/ThreeMultipickQuestionnairePuzzle")]
+[CreateAssetMenu(fileName = "CatStatuePuzzle", menuName = "Puzzles/CatStatuePuzzleSO")]
 public class CatStatuePuzzleSO : ScriptableObject
 {
     public string HintMessage;
@@ -25,5 +25,5 @@ public class CatStatuePuzzleSO : ScriptableObject
     public int[] CorrectAnswers;
 
     [Header("Needs 3 questions")]
-    public ThreeMultipickQuestion[] Questions;
+    public CatStatuePuzzleQuestion[] Questions;
 }

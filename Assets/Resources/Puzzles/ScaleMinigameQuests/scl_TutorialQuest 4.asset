@@ -15,13 +15,14 @@ MonoBehaviour:
   QuestStartDialogue: {fileID: 11400000, guid: 3bc8900c9879a054fab2479d3def959e, type: 2}
   Description: Place 600g of apples on the scale and balance it
   QuestPlayerInventory:
-  - ItemType: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
     ItemAmount: 6
-  - ItemType: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
     ItemAmount: 6
-  - ItemType: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+  - InventoryItemSO: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
     ItemAmount: 2
   QuestType: 1
+  LastQuestInRow: 0
   PlaceTheseProduce:
   - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
   - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}

@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainScenes/StartingScreen.unity
+    guid: 2058be4dad47f354eab174221c173135
+  - enabled: 1
     path: Assets/Scenes/MainScenes/IsometricMain.unity
     guid: 0582e6e33ee79854d80d342994de2e53
   - enabled: 1
     path: Assets/Scenes/MainScenes/AntiqueScaleGame.unity
     guid: d72856edb012bb14d86e8d02cc087a7d
   - enabled: 1
+    path: Assets/Scenes/MainScenes/FruitBasketGame.unity
+    guid: 89f11dac6527d1a45b7ff115b63b6c69
+  - enabled: 0
     path: Assets/Scenes/PracticeScenes/QuessAnswer.unity
     guid: c33e2556f29ad544e9c192e2b146651b
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/StartingScreen.unity
-    guid: 2058be4dad47f354eab174221c173135
   m_configObjects: {}
