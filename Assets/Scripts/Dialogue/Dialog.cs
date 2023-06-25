@@ -29,7 +29,7 @@ public class Dialog : MonoBehaviour
 
     private List<GameObject> answerButtons = new List<GameObject>();
 
-    public int lineNumber { get; set; }
+    public int LineNumber { get; set; }
     private bool answering;
 
     public ConversationSO CurrentConversation;
@@ -65,7 +65,7 @@ public class Dialog : MonoBehaviour
         playerInteraction.DisablePlayerMovement(true);
 
         CurrentConversation = _conversation;
-        lineNumber = 0;
+        LineNumber = 0;
         // transform.gameObject.SetActive(true);
 
         ShowDialog();
@@ -82,20 +82,20 @@ public class Dialog : MonoBehaviour
 
     public void ShowDialog()
     {
-        if (lineNumber >= CurrentConversation.Lines.Length)
+        if (LineNumber >= CurrentConversation.Lines.Length)
         {
             ExitDialog(false);
             return;
         }
 
-        if (CurrentConversation.Lines[lineNumber].LineType == DialogLineType.Question)
+        if (CurrentConversation.Lines[LineNumber].LineType == DialogLineType.Question)
         {
             StartQuestion();
         }
 
         AdjustUIPositions();
 
-        if (CurrentConversation.Lines[lineNumber].character is null)
+        if (CurrentConversation.Lines[LineNumber].character is null)
         {
             CharacterContainer.gameObject.SetActive(false);
             Portrait.gameObject.SetActive(false);
@@ -106,23 +106,23 @@ public class Dialog : MonoBehaviour
             CharacterContainer.gameObject.SetActive(true);
             Portrait.gameObject.SetActive(true);
             SpeakerName.gameObject.SetActive(true);
-            Speaker = CurrentConversation.Lines[lineNumber].character;
+            Speaker = CurrentConversation.Lines[LineNumber].character;
         }
 
-        dialog.text = CurrentConversation.Lines[lineNumber].dialogueText;
+        dialog.text = CurrentConversation.Lines[LineNumber].dialogueText;
     }
 
     public void DialogClicked()
     {
         if (answering) return;
 
-        lineNumber++;
+        LineNumber++;
         ShowDialog();
     }
 
     private void AdjustUIPositions()
     {
-        switch (CurrentConversation.Lines[lineNumber].Position)
+        switch (CurrentConversation.Lines[LineNumber].Position)
         {
             case CharacterPosition.Left:
                 Portrait.SetNativeSize();
@@ -161,7 +161,7 @@ public class Dialog : MonoBehaviour
         answering = true;
         // creates all answer buttons and sets their 
         AnswerButtonPanel.gameObject.SetActive(true);
-        foreach (Answer answer in CurrentConversation.Lines[lineNumber].LineAnswer)
+        foreach (Answer answer in CurrentConversation.Lines[LineNumber].LineAnswer)
         {
             GameObject newButton = Instantiate(AnswerButton, AnswerButtonPanel.transform);
             answerButtons.Add(newButton);

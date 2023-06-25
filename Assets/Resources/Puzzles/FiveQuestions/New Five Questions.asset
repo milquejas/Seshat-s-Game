@@ -13,18 +13,42 @@ MonoBehaviour:
   m_Name: New Five Questions
   m_EditorClassIdentifier: 
   question:
-  - question: 
-    options: []
+  - question: The mummy weighs 40 kilograms without the wrappings. With the wrappings,
+      the mass of the mummy is 50 kilograms. What is the mass of the wrappers?
+    options:
+    - 15kg
+    - 10kg
+    - 5kg
+    correctOptionIndex: 1
+  - question: Ancient Egyptians used amphoras to transport water. One Amphora can
+      contain 30 liters of water. If they need 120 liters of water for irrigation,
+      how many amphoras do they need?
+    options:
+    - 3
+    - 5
+    - 4
+    correctOptionIndex: 2
+  - question: In ancient Egypt, the unit of measure 'khar' was used to measure wheat.
+      One Khar equals 75 kilograms. If a farmer collects 4 khars of wheat, how many
+      kilograms of wheat does he have in total?
+    options:
+    - 200kg
+    - 450kg
+    - 300kg
+    correctOptionIndex: 2
+  - question: The Egyptians used the 'deben' unit of measure to measure gold. One
+      Deben is equivalent to about 90 grams. If the treasure contains 3 deben of
+      gold, how many grams of gold are in the treasure in total?
+    options:
+    - 270g
+    - 360g
+    - 180g
     correctOptionIndex: 0
-  - question: 
-    options: []
-    correctOptionIndex: 0
-  - question: 
-    options: []
-    correctOptionIndex: 0
-  - question: 
-    options: []
-    correctOptionIndex: 0
-  - question: 
-    options: []
-    correctOptionIndex: 0
+  - question: In ancient Egypt, gold was considered a precious metal and was used
+      to make jewelry. If one gold ring weighs 10 grams and a goldsmith makes 15
+      rings, how many grams of gold does he need in total?
+    options:
+    - 100g
+    - 150g
+    - 200g
+    correctOptionIndex: 1

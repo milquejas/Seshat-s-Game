@@ -4,7 +4,7 @@ using TMPro;
 
 public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 {
-    public Task[] tasks;
+    //public Task[] tasks;
     public TextMeshProUGUI questionText;
     public TextMeshProUGUI optionAText;
     public TextMeshProUGUI optionBText;
@@ -22,13 +22,13 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 
     [SerializeField] FiveQuestionsSO fiveQuestionsSO;
 
-    [System.Serializable]
-    public class Task
-    {
-        public string question;
-        public string[] options;
-        public int correctOptionIndex;
-    }
+    //[System.Serializable]
+    //public class Task
+    //{
+    //    public string question;
+    //    public string[] options;
+    //    public int correctOptionIndex;
+    //}
 
     // Initialize the game
     void Start()
