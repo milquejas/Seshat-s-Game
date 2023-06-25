@@ -20,6 +20,8 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     private int currentTaskIndex;
     private List<int> taskOrder;
 
+    [SerializeField] FiveQuestionsSO fiveQuestionsSO;
+
     [System.Serializable]
     public class Task
     {
@@ -49,16 +51,16 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     List<int> GenerateRandomTaskOrder()
     {
         List<int> order = new List<int>();
-        for (int i = 0; i < tasks.Length; i++)
+        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
         {
             order.Add(i);
         }
 
         // Shuffle the task order
-        for (int i = 0; i < tasks.Length; i++)
+        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
         {
             int temp = order[i];
-            int randomIndex = Random.Range(i, tasks.Length);
+            int randomIndex = Random.Range(i, fiveQuestionsSO.question.Length);
             order[i] = order[randomIndex];
             order[randomIndex] = temp;
         }
@@ -69,7 +71,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Displays the task with the given task index
     void DisplayTask(int taskIndex)
     {
-        Task currentTask = tasks[taskIndex];
+        FiveQuestionTask currentTask = fiveQuestionsSO.question[taskIndex];
 
         // Shuffle the options
         List<string> shuffledOptions = new List<string>(currentTask.options);
@@ -98,14 +100,14 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Checks if the selected option is correct
     public void CheckOption(int optionIndex)
     {
-        if (tasks[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
+        if (fiveQuestionsSO.question[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
         {
-            playerScore = Mathf.Min(playerScore + 1, tasks.Length); // Add points for the correct answer, but do not exceed the total number of questions
+            playerScore = Mathf.Min(playerScore + 1, fiveQuestionsSO.question.Length); // Add points for the correct answer, but do not exceed the total number of questions
         }
 
         currentTaskIndex++;
 
-        if (currentTaskIndex < tasks.Length)
+        if (currentTaskIndex < fiveQuestionsSO.question.Length)
         {
             DisplayTask(taskOrder[currentTaskIndex]);
         }
