@@ -25,14 +25,14 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private bool isInWalkAnim;
     private bool isWalking;
 
-    public Rigidbody2D rb { get; private set; }
+    public Rigidbody2D RB { get; private set; }
     [SerializeField] private Animator animatorFront;
     [SerializeField] private Animator animatorBack;
     private Animator currentAnimator;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
         currentAnimator = animatorFront;
 
         // setup spawn
@@ -76,6 +76,12 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         if (!isTouchMoving)
         {
             movementDirection = GetKeyboardMovement();
+            if (GetKeyboardMovement() != Vector2.zero)
+            {
+                isWalking = true;
+                return;
+            }
+            isWalking = false;
         }
     }
 
@@ -107,7 +113,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
                 if (InteractSystem.TryToInteract(touchPosition, interactionCircleSize))
                 {
                     thisTouchInteracting = true;
-                    rb.velocity = Vector2.zero;
+                    RB.velocity = Vector2.zero;
                     return;
                 }
 
@@ -192,7 +198,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
             isWalking = true;
             PlayerFlipY();
             PlayerFlipX();
-            rb.velocity = movementDirection.normalized * movementSpeed;
+            RB.velocity = movementDirection.normalized * movementSpeed;
         }
         else
         {
@@ -202,7 +208,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     }
     private void PlayerFlipY()
     {
-        if (movementDirection.y < 0 && isFacingUp) return;
+        if (movementDirection.y <= 0 && isFacingUp) return;
         if (movementDirection.y > 0 && !isFacingUp) return;
 
         isFacingUp = !isFacingUp;
