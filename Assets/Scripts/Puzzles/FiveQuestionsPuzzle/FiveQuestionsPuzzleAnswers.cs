@@ -4,7 +4,7 @@ using TMPro;
 
 public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 {
-    public Task[] tasks;
+
     public TextMeshProUGUI questionText;
     public TextMeshProUGUI optionAText;
     public TextMeshProUGUI optionBText;
@@ -20,16 +20,14 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     private int currentTaskIndex;
     private List<int> taskOrder;
 
-    [System.Serializable]
-    public class Task
+    [SerializeField] FiveQuestionsSO fiveQuestionsSO;
+
+    void Start()
     {
-        public string question;
-        public string[] options;
-        public int correctOptionIndex;
+        StartFiveQuestionsPuzzle();
     }
 
-    // Initialize the game
-    void Start()
+    public void StartFiveQuestionsPuzzle()
     {
         taskOrder = GenerateRandomTaskOrder();
         DisplayTask(taskOrder[currentTaskIndex]);
@@ -45,20 +43,22 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         optionCButton.SetActive(visible);
     }
 
+    
+    
     // Generates a random order for tasks
     List<int> GenerateRandomTaskOrder()
     {
         List<int> order = new List<int>();
-        for (int i = 0; i < tasks.Length; i++)
+        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
         {
             order.Add(i);
         }
 
         // Shuffle the task order
-        for (int i = 0; i < tasks.Length; i++)
+        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
         {
             int temp = order[i];
-            int randomIndex = Random.Range(i, tasks.Length);
+            int randomIndex = Random.Range(i, fiveQuestionsSO.question.Length);
             order[i] = order[randomIndex];
             order[randomIndex] = temp;
         }
@@ -69,7 +69,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Displays the task with the given task index
     void DisplayTask(int taskIndex)
     {
-        Task currentTask = tasks[taskIndex];
+        FiveQuestionTask currentTask = fiveQuestionsSO.question[taskIndex];
 
         // Shuffle the options
         List<string> shuffledOptions = new List<string>(currentTask.options);
@@ -98,14 +98,14 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Checks if the selected option is correct
     public void CheckOption(int optionIndex)
     {
-        if (tasks[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
+        if (fiveQuestionsSO.question[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
         {
-            playerScore = Mathf.Min(playerScore + 1, tasks.Length); // Add points for the correct answer, but do not exceed the total number of questions
+            playerScore = Mathf.Min(playerScore + 1, fiveQuestionsSO.question.Length); // Add points for the correct answer, but do not exceed the total number of questions
         }
 
         currentTaskIndex++;
 
-        if (currentTaskIndex < tasks.Length)
+        if (currentTaskIndex < fiveQuestionsSO.question.Length)
         {
             DisplayTask(taskOrder[currentTaskIndex]);
         }
@@ -115,8 +115,8 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 
             if (playerScore < 4)
             {
-                dialogueManager.dialogueLines = new string[] { $"You answered {playerScore}/5 correctly. Try again from the beginning." };
-                dialogueManager.StartDialogue(() =>
+                dialogueManager.ResultLines = new string[] { $"You answered {playerScore}/5 correctly. Try again from the beginning." };
+                dialogueManager.RestartQuest(() =>
                 {
                     currentTaskIndex = 0; // Reset the task index
                     taskOrder = GenerateRandomTaskOrder(); // Generate a new random order
@@ -126,8 +126,8 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
             }
             else
             {
-                dialogueManager.dialogueLines = new string[] { $"Congratulations! You answered {playerScore}/5 correctly!" };
-                dialogueManager.StartDialogue(null);
+                dialogueManager.ResultLines = new string[] { $"Congratulations! You answered {playerScore}/5 correctly!" };
+                dialogueManager.RestartQuest(null);
                 // At this point, you can add code to transition to the next event or scene
             }
         }

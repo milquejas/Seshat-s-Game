@@ -34,7 +34,7 @@ public class DialogAnswers : MonoBehaviour
 
                 // way to continue the same conversation after a question
             case "Continue":
-                dialog.lineNumber++;
+                dialog.LineNumber++;
                 dialog.ShowDialog();
                 break;
 
