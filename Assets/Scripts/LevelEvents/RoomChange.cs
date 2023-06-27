@@ -81,7 +81,7 @@ public class RoomChange : MonoBehaviour
         for ( ; ; ) // ;..;  ´,,`  (•,,•)
         {
             // TODO fix movement speed?
-            player.rb.velocity = Vector2.ClampMagnitude(moveDirection, 5);
+            player.RB.velocity = Vector2.ClampMagnitude(moveDirection, 5);
             yield return new WaitForFixedUpdate();
         }
     }
