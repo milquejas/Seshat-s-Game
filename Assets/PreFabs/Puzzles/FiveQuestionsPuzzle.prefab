@@ -695,7 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultText: {fileID: 4993786676506405142}
   resultPanel: {fileID: 4993786677198384597}
-  dialogueLines: []
+  ResultLines: []
 --- !u!114 &4993786676496785577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,46 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cb448a5e5f4084888f0c7740589b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tasks:
-  - question: The mummy weighs 40 kilograms without the wrappings. With the wrappings,
-      the mass of the mummy is 50 kilograms. What is the mass of the wrappers?
-    options:
-    - 10kg
-    - 15kg
-    - 5kg
-    correctOptionIndex: 0
-  - question: Ancient Egyptians used amphoras to transport water. One Amphora can
-      contain 30 liters of water. If they need 120 liters of water for irrigation,
-      how many amphoras do they need?
-    options:
-    - 3
-    - 4
-    - 5
-    correctOptionIndex: 1
-  - question: In ancient Egypt, the unit of measure 'khar' was used to measure wheat.
-      One Khar equals 75 kilograms. If a farmer collects 4 khars of wheat, how many
-      kilograms of wheat does he have in total?
-    options:
-    - 200kg
-    - 300kg
-    - 450kg
-    correctOptionIndex: 1
-  - question: The Egyptians used the 'deben' unit of measure to measure gold. One
-      Deben is equivalent to about 90 grams. If the treasure contains 3 deben of
-      gold, how many grams of gold are in the treasure in total?
-    options:
-    - 180g
-    - 270g
-    - 360g
-    correctOptionIndex: 1
-  - question: In ancient Egypt, gold was considered a precious metal and was used
-      to make jewelry. If one gold ring weighs 10 grams and a goldsmith makes 15
-      rings, how many grams of gold does he need in total?
-    options:
-    - 150g
-    - 200g
-    - 100g
-    correctOptionIndex: 0
   questionText: {fileID: 4993786675840650127}
   optionAText: {fileID: 4993786676717203927}
   optionBText: {fileID: 4993786676020132242}
@@ -756,6 +716,7 @@ MonoBehaviour:
   optionBButton: {fileID: 4993786677933599232}
   optionCButton: {fileID: 4993786676359976114}
   dialogueManager: {fileID: 4993786676496785576}
+  AllPuzzles: []
 --- !u!1 &4993786676506405144
 GameObject:
   m_ObjectHideFlags: 0

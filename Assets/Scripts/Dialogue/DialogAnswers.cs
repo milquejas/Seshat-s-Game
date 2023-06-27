@@ -16,6 +16,8 @@ public class DialogAnswers : MonoBehaviour
 
     [SerializeField] private AllConversationsListSO allConversations;
     [SerializeField] private GameObject FiveQuestionPuzzle;
+    [SerializeField] private FiveQuestionsPuzzleAnswers FiveQuestionPuzzleAnswers;
+
     [SerializeField] private CatStatuePuzzle CatStatuePuzzle;
 
     private void Start()
@@ -57,14 +59,17 @@ public class DialogAnswers : MonoBehaviour
             case "StartFiveQuestionsPuzzleEasy":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[0]);
                 break;
             case "StartFiveQuestionsPuzzleMedium":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[1]);
                 break;
             case "StartFiveQuestionsPuzzleHard":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[2]);
                 break;
 
             case "StartScaleAntiqueScene":

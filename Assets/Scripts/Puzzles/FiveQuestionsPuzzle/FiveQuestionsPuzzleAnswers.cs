@@ -26,7 +26,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 
     void Start()
     {
-        StartFiveQuestionsPuzzle(AllPuzzles[0]);
+        //StartFiveQuestionsPuzzle(AllPuzzles[0]);
     }
 
     public void StartFiveQuestionsPuzzle(FiveQuestionsSO chosenPuzzle)

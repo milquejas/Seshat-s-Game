@@ -16,6 +16,12 @@ MonoBehaviour:
   Lines:
   - character: {fileID: 0}
     Position: 0
-    LineType: 0
+    LineType: 1
     dialogueText: Hello, Do you want difficulty or ease?
-    LineAnswer: []
+    LineAnswer:
+    - AnswerText: Easy
+      AnswerSwitchCase: StartFiveQuestionsPuzzleEasy
+    - AnswerText: Medium
+      AnswerSwitchCase: StartFiveQuestionsPuzzleMedium
+    - AnswerText: Hard
+      AnswerSwitchCase: StartFiveQuestionsPuzzleHard
