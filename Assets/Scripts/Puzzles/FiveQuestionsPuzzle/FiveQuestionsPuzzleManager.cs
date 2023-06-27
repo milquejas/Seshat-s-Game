@@ -7,25 +7,25 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
     public TextMeshProUGUI resultText;
     public GameObject resultPanel;
 
-    public string[] dialogueLines;
+    public string[] ResultLines;
     private int currentLine;
 
     // Starts the dialogue with the given action onDialogueEnd
-    public void StartDialogue(System.Action onDialogueEnd)
+    public void RestartQuest(System.Action onDialogueEnd)
     {
         resultPanel.SetActive(true);
-        StartCoroutine(DisplayDialogue(onDialogueEnd));
+        StartCoroutine(DisplayQuest(onDialogueEnd));
     }
 
     // Coroutine for displaying the dialogue
-    IEnumerator DisplayDialogue(System.Action onDialogueEnd)
+    IEnumerator DisplayQuest(System.Action onDialogueEnd)
     {
         currentLine = 0;
 
         // Display each dialogue line with a 3-second delay
-        while (currentLine < dialogueLines.Length)
+        while (currentLine < ResultLines.Length)
         {
-            resultText.text = dialogueLines[currentLine];
+            resultText.text = ResultLines[currentLine];
             currentLine++;
 
             yield return new WaitForSeconds(3f);

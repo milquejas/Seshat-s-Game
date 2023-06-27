@@ -95,7 +95,7 @@ public class Dialog : MonoBehaviour
 
         AdjustUIPositions();
 
-        if (CurrentConversation.Lines[LineNumber].character is null)
+        if (CurrentConversation.Lines[LineNumber].character == null)
         {
             CharacterContainer.gameObject.SetActive(false);
             Portrait.gameObject.SetActive(false);
