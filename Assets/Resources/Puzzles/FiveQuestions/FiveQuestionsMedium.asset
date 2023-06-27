@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0ae65b4f04cca43b34cc328a235d36, type: 3}
+  m_Name: FiveQuestionsMedium
+  m_EditorClassIdentifier: 
+  question:
+  - question: An ancient Egyptian temple has 6 columns in the front row, 8 columns
+      in the middle row, and 6 columns in the back row. How many columns are there
+      in total?
+    options:
+    - 16
+    - 24
+    - 20
+    correctOptionIndex: 2
+  - question: The pharaoh's treasure room contains 72 golden artifacts. If the artifacts
+      are divided equally into 9 chests, how many artifacts will each chest hold?
+    options:
+    - 9
+    - 8
+    - 7
+    correctOptionIndex: 1
+  - question: "The Great Sphinx is 73 meters long. If a miniature model of the Sphinx
+      is made at a scale of 1:10, how long is the miniature model in meters?\r"
+    options:
+    - 0,073
+    - 0,73
+    - 7,3
+    correctOptionIndex: 2
+  - question: A group of archaeologists found 32 ancient Egyptian coins. They decided
+      to divide the coins equally among 4 team members. How many coins will each
+      team member receive?
+    options:
+    - 8
+    - 16
+    - 4
+    correctOptionIndex: 0
+  - question: In an ancient Egyptian market, a merchant sells 24 clay pots. If each
+      customer buys 3 pots, how many customers can the merchant serve?
+    options:
+    - 3
+    - 5
+    - 8
+    correctOptionIndex: 2

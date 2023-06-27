@@ -2,6 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class MathQuestion
+{
+    public int FirstNumber { get; private set; }
+    public int SecondNumber { get; private set; }
+    public string OperatorType { get; private set; }
+    public int CorrectAnswer { get; private set; }
+    public List<int> WrongAnswers { get; private set; }
+
+    public MathQuestion(int firstNumber, int secondNumber, string operatorType, int correctAnswer, List<int> wrongAnswers)
+    {
+        FirstNumber = firstNumber;
+        SecondNumber = secondNumber;
+        OperatorType = operatorType;
+        CorrectAnswer = correctAnswer;
+        WrongAnswers = wrongAnswers;
+    }
+}
+
 public class MathQuestionGenerator
 {
     private readonly List<int> numberList;
@@ -33,7 +51,8 @@ public class MathQuestionGenerator
         wrongAnswers.Add(GenerateWrongAnswer(correctAnswer));
         wrongAnswers.Add(GenerateWrongAnswer(correctAnswer));*/
 
-        MathQuestion mathQuestion = new MathQuestion(firstNumber, secondNumber, operatorType, correctAnswer, wrongAnswers);
+        MathQuestion mathQuestion = new MathQuestion(firstNumber, secondNumber, operatorType, 
+            correctAnswer, wrongAnswers);
         return mathQuestion;
     }
 
@@ -78,26 +97,10 @@ public class MathQuestionGenerator
         int wrongAnswer = correctAnswer;
         while (wrongAnswer == correctAnswer)
         {
-            wrongAnswer = UnityEngine.Random.Range(correctAnswer - 10, correctAnswer + 10);
+            wrongAnswer = Random.Range(correctAnswer - 10, correctAnswer + 10);
         }
         return wrongAnswer;
     }
 }
 
-public class MathQuestion
-{
-    public int FirstNumber { get; private set; }
-    public int SecondNumber { get; private set; }
-    public string OperatorType { get; private set; }
-    public int CorrectAnswer { get; private set; }
-    public List<int> WrongAnswers { get; private set; }
 
-    public MathQuestion(int firstNumber, int secondNumber, string operatorType, int correctAnswer, List<int> wrongAnswers)
-    {
-        FirstNumber = firstNumber;
-        SecondNumber = secondNumber;
-        OperatorType = operatorType;
-        CorrectAnswer = correctAnswer;
-        WrongAnswers = wrongAnswers;
-    }
-}

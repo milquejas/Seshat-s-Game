@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0ae65b4f04cca43b34cc328a235d36, type: 3}
+  m_Name: FiveQuestionsHard
+  m_EditorClassIdentifier: 
+  question:
+  - question: The walls of an ancient Egyptian pyramid are made up of 620 limestone
+      blocks. If each layer of the pyramid consists of 20 blocks, how many layers
+      are there in the pyramid?
+    options:
+    - 20
+    - 32
+    - 31
+    correctOptionIndex: 2
+  - question: The length of the Nile River is approximately 6,650 kilometers. If
+      an ancient Egyptian boat travels at an average speed of 25 kilometers per hour,
+      how many hour's does it take to travel the entire length of the Nile River?
+    options:
+    - 3325
+    - 266
+    - 264
+    correctOptionIndex: 2
+  - question: An ancient Egyptian pharaoh has 5 sons. If each son has 4 daughters,
+      and each daughter has 3 pet cats, how many pet cats does the pharaoh's family
+      have in total?
+    options:
+    - 60
+    - 20
+    - 40
+    correctOptionIndex: 0
+  - question: An archaeological expedition discovers a tomb with 8 chambers. Inside
+      each chamber, there are 12 statues. If each statue weighs 75 kilograms, what
+      is the total weight of all the statues in the tomb?
+    options:
+    - 800
+    - 680
+    - 720
+    correctOptionIndex: 2
+  - question: An ancient Egyptian ruler wants to distribute 480 loaves of bread among
+      his subjects equally. If each person can receive 8 loaves of bread, how many
+      people are there in the kingdom?
+    options:
+    - 40
+    - 30
+    - 60
+    correctOptionIndex: 2
