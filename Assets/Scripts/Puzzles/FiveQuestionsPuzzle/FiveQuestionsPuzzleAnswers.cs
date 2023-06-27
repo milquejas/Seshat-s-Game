@@ -19,20 +19,26 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     private int playerScore;
     private int currentTaskIndex;
     private List<int> taskOrder;
+    
+    public FiveQuestionsSO[] AllPuzzles;
 
-    [SerializeField] FiveQuestionsSO fiveQuestionsSO;
+    private FiveQuestionsSO currentFiveQuestionsSO;
 
     void Start()
     {
-        StartFiveQuestionsPuzzle();
+        StartFiveQuestionsPuzzle(AllPuzzles[0]);
     }
 
-    public void StartFiveQuestionsPuzzle()
+    public void StartFiveQuestionsPuzzle(FiveQuestionsSO chosenPuzzle)
     {
+        currentFiveQuestionsSO = chosenPuzzle;
         taskOrder = GenerateRandomTaskOrder();
         DisplayTask(taskOrder[currentTaskIndex]);
         playerScore = 0;
+
     }
+
+
 
     // Set the visibility of the question and answer buttons
     void SetQuestionAndButtonsVisibility(bool visible)
@@ -49,16 +55,16 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     List<int> GenerateRandomTaskOrder()
     {
         List<int> order = new List<int>();
-        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
+        for (int i = 0; i < currentFiveQuestionsSO.question.Length; i++)
         {
             order.Add(i);
         }
 
         // Shuffle the task order
-        for (int i = 0; i < fiveQuestionsSO.question.Length; i++)
+        for (int i = 0; i < currentFiveQuestionsSO.question.Length; i++)
         {
             int temp = order[i];
-            int randomIndex = Random.Range(i, fiveQuestionsSO.question.Length);
+            int randomIndex = Random.Range(i, currentFiveQuestionsSO.question.Length);
             order[i] = order[randomIndex];
             order[randomIndex] = temp;
         }
@@ -69,7 +75,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Displays the task with the given task index
     void DisplayTask(int taskIndex)
     {
-        FiveQuestionTask currentTask = fiveQuestionsSO.question[taskIndex];
+        FiveQuestionTask currentTask = currentFiveQuestionsSO.question[taskIndex];
 
         // Shuffle the options
         List<string> shuffledOptions = new List<string>(currentTask.options);
@@ -98,20 +104,22 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Checks if the selected option is correct
     public void CheckOption(int optionIndex)
     {
-        if (fiveQuestionsSO.question[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
+        if (currentFiveQuestionsSO.question[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
         {
-            playerScore = Mathf.Min(playerScore + 1, fiveQuestionsSO.question.Length); // Add points for the correct answer, but do not exceed the total number of questions
+            // Add points for the correct answer, but do not exceed the total number of questions
+            playerScore = Mathf.Min(playerScore + 1, currentFiveQuestionsSO.question.Length); 
         }
 
         currentTaskIndex++;
 
-        if (currentTaskIndex < fiveQuestionsSO.question.Length)
+        if (currentTaskIndex < currentFiveQuestionsSO.question.Length)
         {
             DisplayTask(taskOrder[currentTaskIndex]);
         }
         else
         {
-            SetQuestionAndButtonsVisibility(false); // Hide the question and buttons
+            // Hide the question and buttons
+            SetQuestionAndButtonsVisibility(false); 
 
             if (playerScore < 4)
             {
