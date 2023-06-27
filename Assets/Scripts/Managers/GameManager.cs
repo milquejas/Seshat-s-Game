@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (GameManagerInstance is not null && GameManagerInstance != this)
+        if (GameManagerInstance != null && GameManagerInstance != this)
         {
             Destroy(gameObject);
             return;
@@ -105,5 +105,4 @@ public class GameManager : MonoBehaviour
         }
         return m_DeviceType;
     }
-    
 }

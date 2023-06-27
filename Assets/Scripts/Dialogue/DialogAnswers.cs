@@ -54,6 +54,19 @@ public class DialogAnswers : MonoBehaviour
                 FiveQuestionPuzzle.SetActive(true);
                 break;
 
+            case "StartFiveQuestionsPuzzleEasy":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                break;
+            case "StartFiveQuestionsPuzzleMedium":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                break;
+            case "StartFiveQuestionsPuzzleHard":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                break;
+
             case "StartScaleAntiqueScene":
                 GameManager.GameManagerInstance.LoadScene("AntiqueScaleGame");
                 // change sounds here or inside scene?

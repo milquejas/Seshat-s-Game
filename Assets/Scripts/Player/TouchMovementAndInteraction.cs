@@ -208,6 +208,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     }
     private void PlayerFlipY()
     {
+        if (movementDirection.y == 0) return;
         if (movementDirection.y <= 0 && isFacingUp) return;
         if (movementDirection.y > 0 && !isFacingUp) return;
 
@@ -224,6 +225,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     }
     private void PlayerFlipX()
     {
+        if (movementDirection.x == 0) return;
         if (movementDirection.x < 0 && isFacingRight) return;
         if (movementDirection.x > 0 && !isFacingRight) return;
 
