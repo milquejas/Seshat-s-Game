@@ -7,6 +7,8 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
 
 
     [SerializeField] private bool conversationDisabled;
+    [SerializeField] private bool pickPuzzleProgress;
+    [SerializeField] private int taskProgressionPuzzle;
 
     private IEnumerator questionmarkAnimationCoroutine;
     public bool InRange
@@ -46,7 +48,12 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
             dialogSystem.StartConversation(TaskCompleteConversation, this);
             return transform;
         }
-            
+        
+        if (pickPuzzleProgress)
+        {
+            GameManager.GameManagerInstance.CurrentPuzzleIndex = taskProgressionPuzzle;
+        }
+
         dialogSystem.StartConversation(conversation, this);
         return transform;
     }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FruitBasketManager : MonoBehaviour
 {
     [SerializeField] private ScaleMinigamePooler basketPooler;
-    [SerializeField] private List<ItemSO> basketItems = new List<ItemSO>();
+    [SerializeField] private List<ItemSO> basketItems = new();
 
     [SerializeField] private TMP_Text tooltipText;
     [SerializeField] private GameObject tooltipContainer;
@@ -20,7 +20,7 @@ public class FruitBasketManager : MonoBehaviour
     [SerializeField] private FruitBasketQuestSO[] BasketPuzzleQuests;
 
     [SerializeField] private Dialog dialog;
-    [SerializeField] private TaskSO FruitBasketTask;
+    [SerializeField] private TaskSO[] FruitBasketTask;
     [SerializeField] private ConversationSO ExitDialogue;
 
     [SerializeField] private ConversationSO biggerValueDifference;
@@ -42,11 +42,11 @@ public class FruitBasketManager : MonoBehaviour
 
     private void StartQuest()
     {
-        currentQuest = FruitBasketTask.Progress;
+        currentQuest = GameManager.GameManagerInstance.CurrentPuzzleIndex;
 
         basketPooler.InitializeScaleInventory(BasketPuzzleQuests[currentQuest].BasketItems);
 
-        if (BasketPuzzleQuests[currentQuest].StartingConversation is not null)
+        if (BasketPuzzleQuests[currentQuest].StartingConversation != null)
         {
             dialog.StartConversation(BasketPuzzleQuests[currentQuest].StartingConversation);
         }
@@ -54,8 +54,8 @@ public class FruitBasketManager : MonoBehaviour
 
     private void QuestComplete()
     {
-        FruitBasketTask.Progress++;
-        FruitBasketTask.Completed = true;
+        FruitBasketTask[currentQuest].Progress++;
+        FruitBasketTask[currentQuest].Completed = true;
         dialog.StartConversation(ExitDialogue);
     }
 
@@ -68,7 +68,7 @@ public class FruitBasketManager : MonoBehaviour
 
     private void DialogEnd(ConversationSO conversation)
     {
-        if (FruitBasketTask.Completed)
+        if (FruitBasketTask[currentQuest].Completed)
             LeaveFruitBasketScene();
     }
 

@@ -2142,9 +2142,20 @@ MonoBehaviour:
   basketInfoText: {fileID: 1166465349}
   readyButton: {fileID: 565569575}
   BasketPuzzleQuests:
+  - {fileID: 11400000, guid: 399df7a3f48d6b041a9e6320ddd5e5fc, type: 2}
   - {fileID: 11400000, guid: e43b55d29c5cbc14db27ed2fc7784353, type: 2}
+  - {fileID: 11400000, guid: c7d943602ede8a84c9f88895184a9072, type: 2}
+  - {fileID: 11400000, guid: 036b3fc531306b140a1f2038429dbf11, type: 2}
+  - {fileID: 11400000, guid: 5d9fc052459e6e64c96faaf3bf5491f5, type: 2}
+  - {fileID: 11400000, guid: 0330ef48915c1b34aa45e3c0f0ac750a, type: 2}
   dialog: {fileID: 1241959532}
-  FruitBasketTask: {fileID: 11400000, guid: de3d93b1dd7383b4bb1b0d1c40dc5a95, type: 2}
+  FruitBasketTask:
+  - {fileID: 11400000, guid: de3d93b1dd7383b4bb1b0d1c40dc5a95, type: 2}
+  - {fileID: 11400000, guid: 8c4fb0f65bc3b2547b732aa6893d7d84, type: 2}
+  - {fileID: 11400000, guid: f38c95138909a73488f76e21ed679c95, type: 2}
+  - {fileID: 11400000, guid: 2f9c48a737383ea4eb34bdce3a8c8838, type: 2}
+  - {fileID: 11400000, guid: ec1a863335151b0489edddedb4d5dd51, type: 2}
+  - {fileID: 11400000, guid: afab4481abb25da4eb44b36b85f3eb1d, type: 2}
   ExitDialogue: {fileID: 11400000, guid: 5c3f0892e1b9910489cf023f2ab3c788, type: 2}
   biggerValueDifference: {fileID: 11400000, guid: 6f73b56ba24c4404b9f364c926cb0b3f, type: 2}
   grapelessMisery: {fileID: 11400000, guid: bf26909444db2c44da75927a5646adfe, type: 2}

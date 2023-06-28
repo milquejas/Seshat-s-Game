@@ -17,6 +17,5 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
     Position: 0
     LineType: 0
-    dialogueText: Please help me maximize the value in this basket. I can't lift
-      it if it has more than 720 grams of weight...
+    dialogueText: Please help me maximize the value in this basket.
     LineAnswer: []
