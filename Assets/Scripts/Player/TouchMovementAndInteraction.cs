@@ -203,9 +203,10 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         else
         {
             isWalking = false;
+            AnimatePlayer();
         }
-
     }
+
     private void PlayerFlipY()
     {
         if (movementDirection.y == 0) return;

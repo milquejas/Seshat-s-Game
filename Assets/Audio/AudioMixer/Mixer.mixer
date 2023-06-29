@@ -1,38 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!243 &-8414505202116391876
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Interactables
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: ac15790011d2e4246b30254d89561dd4
-  m_Children: []
-  m_Volume: 9d09b99399b6bea47917ed78d1300e95
-  m_Pitch: b95a9a3c33c98a7478c27ddcf4333400
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: -6490142161257745137}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
---- !u!244 &-6490142161257745137
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 3ff9cf35b468fd84086feb96653ccf58
-  m_EffectName: Attenuation
-  m_MixLevel: f62a40bfac7bc3c43a101828c22e61a1
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!243 &-5923352930126809338
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -70,8 +37,6 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 614e71585ab82ff4aba1569995075a1e
     name: MusicVolume
-  - guid: 9d09b99399b6bea47917ed78d1300e95
-    name: MyExposedParam
   - guid: 383f6fbf700e1904eb7112aeec27b4c8
     name: SFXVolume
   m_AudioMixerGroupViews:
@@ -79,7 +44,6 @@ AudioMixerController:
     - d61342b454fba7a44a63ec09e244f55b
     - 9eac1ab597e6bc147b69906393005966
     - b68544a214034454f814fb5d14dba941
-    - ac15790011d2e4246b30254d89561dd4
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -95,7 +59,6 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 7407504860355978198}
   - {fileID: -5923352930126809338}
-  - {fileID: -8414505202116391876}
   m_Volume: d8f506a41fd4e3c4f96fac308fb2b7a2
   m_Pitch: bbbef37518aef5e4983e15ed44cce2e1
   m_Send: 00000000000000000000000000000000
@@ -168,7 +131,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BackgroundMusic
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 9eac1ab597e6bc147b69906393005966
   m_Children: []
