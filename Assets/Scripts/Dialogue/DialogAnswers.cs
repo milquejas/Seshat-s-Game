@@ -15,10 +15,14 @@ public class DialogAnswers : MonoBehaviour
     [SerializeField] private TaskListSO taskList;
 
     [SerializeField] private AllConversationsListSO allConversations;
+
     [SerializeField] private GameObject FiveQuestionPuzzle;
-    [SerializeField] private FiveQuestionsPuzzleAnswers FiveQuestionPuzzleAnswers;
+
+    [SerializeField] private FiveQuestionsPuzzleAnswers FiveQuestionsPuzzleAnswers;
 
     [SerializeField] private CatStatuePuzzle CatStatuePuzzle;
+
+    [SerializeField] private MathQuess MathQuess;
 
     private void Start()
     {
@@ -59,17 +63,22 @@ public class DialogAnswers : MonoBehaviour
             case "StartFiveQuestionsPuzzleEasy":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[0]);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[0]);
                 break;
             case "StartFiveQuestionsPuzzleMedium":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[1]);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[1]);
                 break;
             case "StartFiveQuestionsPuzzleHard":
                 dialog.ExitDialog(true);
                 FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionPuzzleAnswers.AllPuzzles[2]);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[2]);
+                break;
+
+            case "StartTotemQuest":
+                dialog.ExitDialog(true);
+                MathQuess.StartTotemQuest();
                 break;
 
             case "StartScaleAntiqueScene":
@@ -85,13 +94,13 @@ public class DialogAnswers : MonoBehaviour
             case "StartStatuePuzzle":
                 dialog.ExitDialog(true);
                 CatStatuePuzzle.gameObject.SetActive(true);
-                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.allPuzzles[0]);
+                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.AllPuzzles[0]);
                 break;
 
             case "StartGuessWeightsPuzzle":
                 dialog.ExitDialog(true);
                 CatStatuePuzzle.gameObject.SetActive(true);
-                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.allPuzzles[1]);
+                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.AllPuzzles[1]);
                 break;
 
             default:

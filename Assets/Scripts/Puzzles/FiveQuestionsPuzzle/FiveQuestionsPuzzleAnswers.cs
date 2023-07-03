@@ -24,11 +24,6 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 
     private FiveQuestionsSO currentFiveQuestionsSO;
 
-    void Start()
-    {
-        //StartFiveQuestionsPuzzle(AllPuzzles[0]);
-    }
-
     public void StartFiveQuestionsPuzzle(FiveQuestionsSO chosenPuzzle)
     {
         currentFiveQuestionsSO = chosenPuzzle;
@@ -54,7 +49,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     // Generates a random order for tasks
     List<int> GenerateRandomTaskOrder()
     {
-        List<int> order = new List<int>();
+        List<int> order = new();
         for (int i = 0; i < currentFiveQuestionsSO.question.Length; i++)
         {
             order.Add(i);
@@ -78,7 +73,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         FiveQuestionTask currentTask = currentFiveQuestionsSO.question[taskIndex];
 
         // Shuffle the options
-        List<string> shuffledOptions = new List<string>(currentTask.options);
+        List<string> shuffledOptions = new(currentTask.options);
         for (int i = 0; i < shuffledOptions.Count; i++)
         {
             string temp = shuffledOptions[i];

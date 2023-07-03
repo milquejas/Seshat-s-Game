@@ -30,7 +30,7 @@ public class DisplayMathQuestion : MonoBehaviour
         }
 
         // Aseta oikea vastaus satunnaiseen paikkaan vastauksista
-        int correctAnswerIndex = UnityEngine.Random.Range(0, answerTexts.Length);
+        int correctAnswerIndex = Random.Range(0, answerTexts.Length);
         answerTexts[correctAnswerIndex].text = mathQuestion.CorrectAnswer.ToString();
     }
 

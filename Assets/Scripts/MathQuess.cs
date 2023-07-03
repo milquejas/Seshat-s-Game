@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -19,7 +18,21 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private TMP_Text rightOrWrong_Text;
     [SerializeField]
+    private GameObject operators;
+    [SerializeField]
+    private GameObject canvas;
+
+    [SerializeField]
     private List<int> easyMathList = new();
+    [SerializeField]
+    private List<int> mediumMathList = new();
+    [SerializeField]
+    private List<int> hardMathList = new();
+    [SerializeField]
+    private List<int> selectedList;
+
+    private bool isListPopulated = false;
+
 
     private int randomFirstNumber;
     private int randomSecondNumber;
@@ -36,71 +49,83 @@ public class MathQuess : MonoBehaviour
 
     private string currentOperator;
 
+    [SerializeField]
+    private TouchMovementAndInteraction movement;
 
-
-    private void Start()
+    public void StartTotemQuest()
     {
-        for (int i = 1; i <= 100; i++)
-        {
-            easyMathList.Add(i);
-        }
-        DisplayMathProblem("+");
-        
+        //for (int i = 1; i <= 100; i++)
+        //{
+        //    easyMathList.Add(i);
+        //}
+        DisplayMathProblem("");
+        canvas.SetActive(false);
     }
 
-    public void DisplayMathProblem(string Buttontype)
+    private void EndTotemQuest()
     {
-        // Generate a random number as the first and second numbers
-        randomFirstNumber = Random.Range(0, easyMathList.Count + 1);
-        randomSecondNumber = Random.Range(0, easyMathList.Count + 1);
+        operators.SetActive(false);
+        canvas.SetActive(false);
+        movement.DisablePlayerMovement(false);
+    }
 
-        // Assing your first and second number
+    private void PopulateList(List<int> list, int start, int end)
+    {
+        for (int i = start; i <= end; i++)
+        {
+            list.Add(i);
+        }
+    }
+
+    private void ListOfDifficulty()
+    {
+        if (!isListPopulated)
+        {
+            PopulateList(easyMathList, 1, 10);
+            PopulateList(mediumMathList, 1, 20);
+            PopulateList(hardMathList, 1, 100);
+            isListPopulated = true;
+        }
+    }
+
+    private void ChooseRandomList()
+    {
+        // Päätä, käytetäänkö easyMathList, mediumMathList vai hardMathList
+        // Voit asettaa selectedListin haluamaksesi
+        // Voit vaihtaa tämän mediumMathListiin tai hardMathListiin tarvittaessa
+        selectedList = easyMathList;
+        selectedList = mediumMathList;
+        selectedList = hardMathList;
+    }
+
+    private void ClearList()
+    {
+        easyMathList.Clear();
+        mediumMathList.Clear();
+        hardMathList.Clear();
+    }
+
+    private void GenerateRandomNumbers()
+    {
+        // Generate a random number as the first and second numbers using the easyMathList size as the upper limit
+        randomFirstNumber = Random.Range(0, selectedList.Count);
+        randomSecondNumber = Random.Range(0, selectedList.Count);
+
+        // Store the randomly generated numbers as the first and second numbers in the problem
         firstNumberInProblem = randomFirstNumber;
         secondNumberInProblem = randomSecondNumber;
+    }
 
-        /* 
-         * This is where you can enter either addition, subtraction, multiplication or division        
-         AnswerOne is allways the right answer, second is wrong.
-        */
-        currentOperator = Buttontype;
-
-        // Calculate the correct answer based on the current operator
-        switch (currentOperator)
-        {
-            case "+":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem + secondNumberInProblem;
-                break;
-            case "-":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem - secondNumberInProblem;
-                break;
-            case "*":
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem * secondNumberInProblem;
-                break;
-            case "/":
-                if (secondNumberInProblem == 0)
-                {
-                    secondNumberInProblem = 1;
-                }
-                operatorSign.text = currentOperator;
-                answerOne = firstNumberInProblem / secondNumberInProblem;
-                // Tarkista jakolaskun jäännös
-                if (firstNumberInProblem % secondNumberInProblem != 0)
-                {
-                    // Jos jäännös ei ole 0, kutsu metodia uudestaan
-                    DisplayMathProblem(currentOperator);
-                    return;
-                }
-                break;
-        }
-
-        //answerOne = firstNumberInProblem - secondNumberInProblem;
+    private void RandomAnswer()
+    {
+        // Generate a random number (0 or 1) to determine the order of the answers on the screen
         displayRandomAnswer = Random.Range(0, 2);
 
-        // Tässä luodaan väärä vastaus ja annetaan sille arvoksi 1-4 enemmän tai vähemmän,
-        // mitä oikea vastaus olisi
+        /* 
+          Create the wrong answer (answerTwo) by adding or subtracting a random value between 1 and 3
+          from the correct answer (answerOne).
+       */
+
         if (displayRandomAnswer == 0)
         {
             answerTwo = answerOne + Random.Range(1, 4);
@@ -109,40 +134,120 @@ public class MathQuess : MonoBehaviour
         {
             answerTwo = answerOne - Random.Range(1, 4);
         }
+        Debug.Log("random answer");
+    }
 
+    // Create a dictionary to map operators to their corresponding operations
+
+    public void DisplayMathProblem(string Buttontype)
+    {
+        operators.SetActive(true);
+
+        ListOfDifficulty();
+        GenerateRandomNumbers();
+
+        /* 
+        * Set the currentOperator based on the provided Buttontype parameter. 
+        * Possible values for Buttontype are "+", "-", "*", or "/".
+        * AnswerOne will always be the right answer, and the second answer will be wrong.
+        */
+        currentOperator = Buttontype;
+
+        // Calculate the correct answer based on the current operator
+        switch (currentOperator)
+        {
+
+            case "+":
+                // Show the canvas and hide the operators game object
+                canvas.SetActive(true);
+                operators.SetActive(false);
+                selectedList = easyMathList;
+                operatorSign.text = currentOperator;
+                answerOne = firstNumberInProblem + secondNumberInProblem;
+                RandomAnswer();
+                break;
+
+            case "-":
+                canvas.SetActive(true);
+                operators.SetActive(false);
+                selectedList = mediumMathList; 
+                operatorSign.text = currentOperator;
+                answerOne = firstNumberInProblem - secondNumberInProblem;
+                RandomAnswer();
+                break;
+
+            case "*":
+                canvas.SetActive(true);
+                operators.SetActive(false);
+                operatorSign.text = currentOperator;
+                answerOne = firstNumberInProblem * secondNumberInProblem;
+                RandomAnswer();
+                break;
+
+            case "/":
+                canvas.SetActive(true);
+                operators.SetActive(false);
+                // Check for division by zero
+                if (secondNumberInProblem == 0)
+                {
+                    secondNumberInProblem = 1;
+                }
+                operatorSign.text = currentOperator;
+                // Calculate the correct answer for the division
+                answerOne = firstNumberInProblem / secondNumberInProblem;
+
+                // Check for the remainder in division
+                if (firstNumberInProblem % secondNumberInProblem != 0)
+                {
+                    // If there is a remainder, call the method recursively to generate a new problem
+                    DisplayMathProblem(currentOperator);
+                    return;
+                }
+                RandomAnswer();
+                break;
+        }
+
+        //RandomAnswer();
+
+        // Update the UI elements to display the numbers and answers
         firstNumber.text = "" + firstNumberInProblem;
         secondNumber.text = "" + secondNumberInProblem;
+
+        // Determine the position of the correct answer and display both answers on the screen
         randomAnswerPlacement = Random.Range(0, 2);
 
         if (randomAnswerPlacement == 0)
         {
             answer1.text = "" + answerOne;
             answer2.text = "" + answerTwo;
+            // currentAnswer is set to 0, indicating that answer1 is the correct answer.
             currentAnswer = 0;
         }
         else
         {
             answer1.text = "" + answerTwo;
             answer2.text = "" + answerOne;
+            // currentAnswer is set to 1, indicating that answer2 is the correct answer.
             currentAnswer = 1;
 
         }
     }
+
     public void ButtonAnswer1()
     {
         if (currentAnswer == 0)
         {
             rightOrWrong_Text.enabled = true;
-            rightOrWrong_Text.color = Color.green;
+            rightOrWrong_Text.color = Color.blue;
             rightOrWrong_Text.text = ("Correct!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
         }
         else
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.red;
             rightOrWrong_Text.text = ("Try Again!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
         }
     }
     public void ButtonAnswer2()
@@ -150,19 +255,19 @@ public class MathQuess : MonoBehaviour
         if (currentAnswer == 1)
         {
             rightOrWrong_Text.enabled = true;
-            rightOrWrong_Text.color = Color.green;
+            rightOrWrong_Text.color = Color.blue;
             rightOrWrong_Text.text = ("Corrent!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
         }
         else
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.red;
             rightOrWrong_Text.text = ("Try Again!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
         }
     }
-    // Tämä void asettaa aina seuraavan tehtävän pelaajan valinnan jälkeen 
+    // Tämä asettaa aina seuraavan tehtävän pelaajan valinnan jälkeen 
     public void TurnOffText()
     {
         if (rightOrWrong_Text != null)
