@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2905799821190980492}
   - component: {fileID: 2905799821190980493}
-  - component: {fileID: 2905799821190980490}
+  - component: {fileID: 3427774213234762695}
   m_Layer: 0
   m_Name: FaraoTotem
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1618328340, guid: 084c9d0fb88759642aa62c28ff7fe0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &2905799821190980490
-CapsuleCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!58 &3427774213234762695
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,6 +98,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.41}
-  m_Size: {x: 0.42, y: 0.9}
-  m_Direction: 0
+  m_Offset: {x: -0.01156041, y: 0.14164925}
+  serializedVersion: 2
+  m_Radius: 0.20182225

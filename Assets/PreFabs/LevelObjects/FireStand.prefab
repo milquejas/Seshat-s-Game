@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6641283443146730828}
   - component: {fileID: 6641283443146730829}
-  - component: {fileID: 6641283443146730830}
+  - component: {fileID: 8883386572799052636}
   m_Layer: 0
   m_Name: FireStand
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1257999449, guid: 084c9d0fb88759642aa62c28ff7fe0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &6641283443146730830
-CapsuleCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!58 &8883386572799052636
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,6 +98,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.51}
-  m_Size: {x: 0.36, y: 0.93}
-  m_Direction: 0
+  m_Offset: {x: -0.005739212, y: 0.15660095}
+  serializedVersion: 2
+  m_Radius: 0.16583824

@@ -165,12 +165,12 @@ TextureImporter:
       name: Overworld_Assets_2
       rect:
         serializedVersion: 2
-        x: 688
-        y: 925
+        x: 689
+        y: 924
         width: 112
         height: 227
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.53899544, y: 0.005771721}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +191,7 @@ TextureImporter:
         width: 147
         height: 221
       alignment: 9
-      pivot: {x: 0.5, y: 0.049149595}
+      pivot: {x: 0.49999917, y: 0.029386632}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,8 +211,8 @@ TextureImporter:
         y: 977
         width: 89
         height: 183
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.43365, y: 0.02519151}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,13 +225,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets_5
+      name: tent_white_canvas
       rect:
         serializedVersion: 2
-        x: 1202
-        y: 884
-        width: 258
-        height: 258
+        x: 1214
+        y: 996
+        width: 234
+        height: 146
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,27 +304,6 @@ TextureImporter:
       bones: []
       spriteID: fed314178537f8e43ae32f8651edec26
       internalID: -65640711
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Overworld_Assets_9
-      rect:
-        serializedVersion: 2
-        x: 756
-        y: 614
-        width: 254
-        height: 258
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fea3da68f2a061f40b75920a5cbfa650
-      internalID: 908663161
       vertices: []
       indices: 
       edges: []
@@ -603,15 +582,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets_23
+      name: bench_l
       rect:
         serializedVersion: 2
         x: 75
         y: 317
-        width: 139
+        width: 96
         height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.047830343, y: 0.4699634}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -736,8 +715,8 @@ TextureImporter:
         y: 92
         width: 88
         height: 160
-      alignment: 9
-      pivot: {x: 0.4524845, y: 0.19012895}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -945,7 +924,7 @@ TextureImporter:
         x: 178
         y: 905
         width: 10
-        height: 131
+        height: 129
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -966,7 +945,7 @@ TextureImporter:
         x: 55
         y: 968
         width: 10
-        height: 127
+        height: 139
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -984,10 +963,10 @@ TextureImporter:
       name: blue_tent_canvas
       rect:
         serializedVersion: 2
-        x: 55
-        y: 1033
-        width: 254
-        height: 131
+        x: 65
+        y: 1034
+        width: 234
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1005,10 +984,10 @@ TextureImporter:
       name: tent_leaf_pole_midRight
       rect:
         serializedVersion: 2
-        x: 529
+        x: 476
         y: 915
-        width: 10
-        height: 118
+        width: 113
+        height: 158
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1028,10 +1007,10 @@ TextureImporter:
         serializedVersion: 2
         x: 589
         y: 945
-        width: 10
-        height: 101
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 23
+        height: 128
+      alignment: 9
+      pivot: {x: 0.22975491, y: 0.0029730797}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1107,13 +1086,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tent_leaf_canvas_bot
+      name: orange_tent
       rect:
         serializedVersion: 2
-        x: 476
-        y: 1028
-        width: 136
-        height: 45
+        x: 766
+        y: 743
+        width: 234
+        height: 129
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1121,8 +1100,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d41f17cf0e4dd3b4c8e2651e6c6c4d93
-      internalID: -590802205
+      spriteID: bd1bade0760e6564f9f2c97544055654
+      internalID: 505056671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orange_tent_pole_l
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 677
+        width: 10
+        height: 139
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2546ff6205a344d84cb3955ad20133
+      internalID: -730297098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orange_tent_pole_mid
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 614
+        width: 10
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4bee108caf43649b51f260c19fbbde
+      internalID: -2064404546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orange_tent_pole_r
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 677
+        width: 10
+        height: 139
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a475c9ac4fc58c74e9aa0fd78d0c10d2
+      internalID: -2052902024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bench_r
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 317
+        width: 43
+        height: 70
+      alignment: 9
+      pivot: {x: 0.87926465, y: 0.27320078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: add100a57c6f5cf4a8380c385b03518b
+      internalID: -566721750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tent_white_pole_mid
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 884
+        width: 10
+        height: 112
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd78724feca3d8840a2c6200f748169f
+      internalID: 1137656294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tent_white_pole_r
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 947
+        width: 12
+        height: 139
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7458da68514a274d96c20e7a88512ca
+      internalID: 258263514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tent_white_pole_l
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 947
+        width: 12
+        height: 139
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc701cca383bfc4588e946fad74a54b
+      internalID: 240950208
       vertices: []
       indices: 
       edges: []
@@ -1152,7 +1278,6 @@ TextureImporter:
       Overworld_Assets_20: 1233854231
       Overworld_Assets_21: 354571691
       Overworld_Assets_22: -1281886679
-      Overworld_Assets_23: -232459382
       Overworld_Assets_24: -1850464941
       Overworld_Assets_25: 1655033650
       Overworld_Assets_26: -1927178875
@@ -1169,15 +1294,23 @@ TextureImporter:
       Overworld_Assets_36: 2103132983
       Overworld_Assets_37: -396926184
       Overworld_Assets_4: -611444729
-      Overworld_Assets_5: -848176452
       Overworld_Assets_6: 598128070
       Overworld_Assets_7: -62177197
       Overworld_Assets_8: -65640711
       Overworld_Assets_9: 908663161
+      bench_l: -232459382
+      bench_leg_l: 930948414
+      bench_leg_mid: 1095871783
+      bench_leg_r: 1456364203
+      bench_r: -566721750
       blue_tent_canvas: -158541073
       blue_tent_pole_l: 1086103272
       blue_tent_pole_mid: -99382265
       blue_tent_pole_r: 15614159
+      orange_tent: 505056671
+      orange_tent_pole_l: -730297098
+      orange_tent_pole_mid: -2064404546
+      orange_tent_pole_r: -2052902024
       tent_leaf_canvas_bot: -590802205
       tent_leaf_canvas_mid: -1127012636
       tent_leaf_canvas_top: 1604503600
@@ -1185,6 +1318,10 @@ TextureImporter:
       tent_leaf_pole_midLeft: -631182064
       tent_leaf_pole_midRight: 1963469967
       tent_leaf_pole_r: -69248284
+      tent_white_canvas: -848176452
+      tent_white_pole_l: 240950208
+      tent_white_pole_mid: 1137656294
+      tent_white_pole_r: 258263514
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
