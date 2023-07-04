@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f88d478d0b0734899ac6e973c0750e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 11400000, guid: bb84074d773cbaf47b2c43ce53fcbb0f, type: 2}
   followTarget: {fileID: 0}
   moveSpeed: 3.17
 --- !u!1001 &2472577137119375783
@@ -255,6 +256,30 @@ PrefabInstance:
     - target: {fileID: 5148274485402234082, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_Name
       value: DialogUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 952.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 651.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 476.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -325.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
