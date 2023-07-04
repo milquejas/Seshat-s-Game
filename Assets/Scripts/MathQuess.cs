@@ -92,10 +92,10 @@ public class MathQuess : MonoBehaviour
         firstNumberInProblem = Random.Range(1, 99);
         secondNumberInProblem = Random.Range(1, 10);
 
-        while (firstNumberInProblem % secondNumberInProblem != 0)
-        {
-            secondNumberInProblem = Random.Range(3, 13);
-        }
+        //while (firstNumberInProblem % secondNumberInProblem != 0)
+        //{
+        //    secondNumberInProblem = Random.Range(1, 10);
+        //}
     }
 
     private void RandomAnswer()
@@ -246,14 +246,17 @@ public class MathQuess : MonoBehaviour
         returnButton.interactable = enable;
         quitButton.interactable = enable;
     }
+
     private void CorrectAnswerPressed()
     {
         maxNumberRange += successRangeIncrease;
     }
+
     private void WrongAnswerPressed()
     {
         maxNumberRange -= failureRangeReduction;
     }
+
     private void ResetRange()
     {
         maxNumberRange = defaultMaxNumberRange;
