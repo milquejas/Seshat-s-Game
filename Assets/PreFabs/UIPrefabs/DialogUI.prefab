@@ -140,7 +140,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 161.25, y: 232.16747}
+  m_SizeDelta: {x: 449.3, y: 436.1}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5148274484832104242
 CanvasRenderer:
@@ -172,7 +172,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -552586457, guid: 59f45d56711065249bff2b7306b0e144, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -490,9 +490,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ade7b6d060ed84eb55d38dcca61ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskList: {fileID: 0}
   allConversations: {fileID: 11400000, guid: ea854ef4ff4595543b6c310b13d0c1fb, type: 2}
   FiveQuestionPuzzle: {fileID: 0}
+  FiveQuestionsPuzzleAnswers: {fileID: 0}
   CatStatuePuzzle: {fileID: 0}
+  MathQuess: {fileID: 0}
 --- !u!1 &5148274485893610653
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5148274486709773528
 RectTransform:
   m_ObjectHideFlags: 0
