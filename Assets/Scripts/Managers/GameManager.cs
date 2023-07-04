@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GameManagerInstance;
+    public int CurrentPuzzleIndex;
 
     private string m_DeviceType;
     private IEnumerator coroutine = null;

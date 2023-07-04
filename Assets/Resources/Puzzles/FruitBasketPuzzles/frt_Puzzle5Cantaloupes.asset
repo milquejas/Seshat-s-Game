@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40321465d84ffc74aa76deb7526c5060, type: 3}
+  m_Name: frt_Puzzle5Cantaloupes
+  m_EditorClassIdentifier: 
+  StartingConversation: {fileID: 11400000, guid: 98fe7376468f05e4f8b1e7dfbbe50d73, type: 2}
+  BasketItems:
+  - InventoryItemSO: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+    ItemAmount: 4
+  - InventoryItemSO: {fileID: 11400000, guid: fa6eaaafd132566489b321a6223299f1, type: 2}
+    ItemAmount: 3
+  - InventoryItemSO: {fileID: 11400000, guid: d7a5766f625db6c448899fbe9a4cc3f5, type: 2}
+    ItemAmount: 3
+  - InventoryItemSO: {fileID: 11400000, guid: 3f27aeed1c4e46d4aa2adcf2ea36c48d, type: 2}
+    ItemAmount: 2
+  WeightLimit: 1900
+  ValueGoal: 305
+  QuestHasGrapes: 0

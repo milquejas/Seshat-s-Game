@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2374199950325201710}
   - component: {fileID: 2374199950325201711}
-  - component: {fileID: 2374199950325202128}
+  - component: {fileID: 1242171953014997342}
   m_Layer: 0
   m_Name: WeirdAloeVeraPlant
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 577741970, guid: 084c9d0fb88759642aa62c28ff7fe0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &2374199950325202128
-CapsuleCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!60 &1242171953014997342
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,6 +98,22 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.31}
-  m_Size: {x: 0.46, y: 0.55}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.2111111, y: 1.3666667}
+    newSize: {x: 1.09, y: 1.23}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.29226094, y: 0.17153096}
+      - {x: -0.17059135, y: 0.053703308}
+      - {x: 0.007879137, y: 0.023860456}
+      - {x: 0.2009325, y: 0.06388855}
+      - {x: 0.31669253, y: 0.21449123}
+      - {x: 0.12924004, y: 0.30653}
+      - {x: -0.15043236, y: 0.29642856}

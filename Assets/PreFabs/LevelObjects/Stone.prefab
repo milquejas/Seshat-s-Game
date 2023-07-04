@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2188490097583748287}
   - component: {fileID: 5377513848874486832}
-  - component: {fileID: 6228619225509544914}
+  - component: {fileID: 7023632362139307187}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: daaaae34d0708154baf5d0353d396a41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!61 &6228619225509544914
-BoxCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!60 &7023632362139307187
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05, y: 0.09}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5358154, y: 0.22763616}
@@ -108,6 +108,10 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.61, y: 0.4}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.35927373, y: -0.00005030632}
+      - {x: -0.12845421, y: -0.13521957}
+      - {x: 0.14637554, y: -0.13253832}
+      - {x: 0.37241668, y: 0.012407631}
+      - {x: -0.003839273, y: 0.17726123}

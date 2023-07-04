@@ -30,10 +30,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         taskOrder = GenerateRandomTaskOrder();
         DisplayTask(taskOrder[currentTaskIndex]);
         playerScore = 0;
-
     }
-
-
 
     // Set the visibility of the question and answer buttons
     void SetQuestionAndButtonsVisibility(bool visible)

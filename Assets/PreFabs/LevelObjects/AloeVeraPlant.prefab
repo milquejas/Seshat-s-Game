@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3249162895582381553}
   - component: {fileID: 3249162895582381550}
-  - component: {fileID: 3249162895582381551}
+  - component: {fileID: 3211546159135601603}
   m_Layer: 0
   m_Name: AloeVeraPlant
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 806850128, guid: 084c9d0fb88759642aa62c28ff7fe0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &3249162895582381551
-CapsuleCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!58 &3211546159135601603
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,6 +98,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17}
-  m_Size: {x: 0.42, y: 0.52}
-  m_Direction: 0
+  m_Offset: {x: 0.0011854172, y: 0.21370697}
+  serializedVersion: 2
+  m_Radius: 0.25074482

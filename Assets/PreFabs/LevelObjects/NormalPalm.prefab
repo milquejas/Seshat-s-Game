@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2742334128442312927}
   - component: {fileID: 2742334128442312926}
-  - component: {fileID: 2742334128442312925}
+  - component: {fileID: 6781173993293443573}
   m_Layer: 0
   m_Name: NormalPalm
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1267261957
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 598128070, guid: 084c9d0fb88759642aa62c28ff7fe0e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,9 +84,9 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &2742334128442312925
-CapsuleCollider2D:
+  m_SpriteSortPoint: 1
+--- !u!58 &6781173993293443573
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,6 +98,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: -0.55}
-  m_Size: {x: 0.48, y: 0.93}
-  m_Direction: 0
+  m_Offset: {x: 0.27813005, y: 0.12243301}
+  serializedVersion: 2
+  m_Radius: 0.12929565

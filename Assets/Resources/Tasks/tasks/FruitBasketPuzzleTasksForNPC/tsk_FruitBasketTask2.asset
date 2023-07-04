@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53e699eebeb643f458b23fe002db8de7, type: 3}
-  m_Name: tsk_FruitBasketTask
+  m_Name: tsk_FruitBasketTask2
   m_EditorClassIdentifier: 
   Title: Fruit Basket Problem
-  Description: How much value can he fit in a small basket?
+  Description: How much value can you fit in their basket?
   Progress: 0
   Completed: 0
