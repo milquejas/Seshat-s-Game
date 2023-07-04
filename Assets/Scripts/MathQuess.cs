@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MathQuess : MonoBehaviour
 {
-
     [SerializeField]
     private TMP_Text firstNumber;
     [SerializeField]
@@ -19,10 +17,14 @@ public class MathQuess : MonoBehaviour
     [SerializeField]
     private TMP_Text rightOrWrong_Text;
     [SerializeField]
-    private List<int> easyMathList = new();
+    private GameObject operators;
+    [SerializeField]
+    private GameObject canvas;
+    [SerializeField] private Button answer1Button;
+    [SerializeField] private Button answer2Button;
+    [SerializeField] private Button returnButton;
+    [SerializeField] private Button quitButton;
 
-    private int randomFirstNumber;
-    private int randomSecondNumber;
 
     private int firstNumberInProblem;
     private int secondNumberInProblem;
@@ -36,133 +38,231 @@ public class MathQuess : MonoBehaviour
 
     private string currentOperator;
 
+    // Vaikeutuva tehtävä range testit
+    [SerializeField] private int minNumberRange = 1;
+    [SerializeField] private int maxNumberRange = 10;
+    [SerializeField] private int successRangeIncrease = 2;
+    [SerializeField] private int failureRangeReduction = 1; 
+    private int defaultMaxNumberRange;
 
+    [SerializeField]
+    private TouchMovementAndInteraction movement;
 
     private void Start()
     {
-        for (int i = 1; i <= 100; i++)
-        {
-            easyMathList.Add(i);
-        }
-        DisplayMathProblem("+");
+        defaultMaxNumberRange = maxNumberRange;
+    }
+
+    public void StartTotemQuest()
+    {
+        ResetRange();
+        operators.SetActive(true);
+        canvas.SetActive(false);
+    }
+
+    private void EndTotemQuest()
+    {
+        operators.SetActive(false);
+        canvas.SetActive(false);
+        movement.DisablePlayerMovement(false);
+    }
+
+    private void GenerateRandomNumbersPlusMinus()
+    {
+        firstNumberInProblem = Random.Range(minNumberRange, maxNumberRange);
+        secondNumberInProblem = Random.Range(minNumberRange, maxNumberRange);
+    }
+
+    private void GenerateMultiplicationRandomNumbers()
+    {
         
+        if (maxNumberRange >= 20)
+        {
+            firstNumberInProblem = Random.Range(1, 10);
+            secondNumberInProblem = Random.Range(0, 10 + (maxNumberRange / 10));
+            return;
+        }
+
+        firstNumberInProblem = Random.Range(1, 10);
+        secondNumberInProblem = Random.Range(0, 10);
+    }
+
+    private void GenerateDivisionNumbers()
+    {
+        firstNumberInProblem = Random.Range(1, 99);
+        secondNumberInProblem = Random.Range(1, 10);
+
+        //while (firstNumberInProblem % secondNumberInProblem != 0)
+        //{
+        //    secondNumberInProblem = Random.Range(1, 10);
+        //}
+    }
+
+    private void RandomAnswer()
+    {
+        // Generate a random number (0 or 1) to determine the order of the answers on the screen
+        displayRandomAnswer = Random.Range(0, 2);
+
+        /* 
+          Create the wrong answer (answerTwo) by adding or subtracting a random value between 1 and 3
+          from the correct answer (answerOne).
+       */
+
+        if (displayRandomAnswer == 0)
+        {
+            answerTwo = answerOne + Random.Range(1, 7);
+        }
+        else
+        {
+            answerTwo = answerOne - Random.Range(1, 7);
+        }
     }
 
     public void DisplayMathProblem(string Buttontype)
     {
-        // Generate a random number as the first and second numbers
-        randomFirstNumber = Random.Range(0, easyMathList.Count + 1);
-        randomSecondNumber = Random.Range(0, easyMathList.Count + 1);
-
-        // Assing your first and second number
-        firstNumberInProblem = randomFirstNumber;
-        secondNumberInProblem = randomSecondNumber;
-
         /* 
-         * This is where you can enter either addition, subtraction, multiplication or division        
-         AnswerOne is allways the right answer, second is wrong.
+        * Set the currentOperator based on the provided Buttontype parameter. 
+        * Possible values for Buttontype are "+", "-", "*", or "/".
+        * AnswerOne will always be the right answer, and the second answer will be wrong.
         */
+        EnableButtons(true);
         currentOperator = Buttontype;
+        canvas.SetActive(true);
+        operators.SetActive(false);
 
         // Calculate the correct answer based on the current operator
         switch (currentOperator)
         {
             case "+":
+                // Show the canvas and hide the operators game object
+                GenerateRandomNumbersPlusMinus();
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem + secondNumberInProblem;
                 break;
+
             case "-":
+                GenerateRandomNumbersPlusMinus();
+                
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem - secondNumberInProblem;
                 break;
+
             case "*":
+                GenerateMultiplicationRandomNumbers();
+
                 operatorSign.text = currentOperator;
                 answerOne = firstNumberInProblem * secondNumberInProblem;
                 break;
+
             case "/":
-                if (secondNumberInProblem == 0)
-                {
-                    secondNumberInProblem = 1;
-                }
+                GenerateDivisionNumbers();
+
                 operatorSign.text = currentOperator;
+                // Calculate the correct answer for the division
                 answerOne = firstNumberInProblem / secondNumberInProblem;
-                // Tarkista jakolaskun jäännös
+
+                // Check for the remainder in division
                 if (firstNumberInProblem % secondNumberInProblem != 0)
                 {
-                    // Jos jäännös ei ole 0, kutsu metodia uudestaan
+                    // If there is a remainder, call the method recursively to generate a new problem
                     DisplayMathProblem(currentOperator);
                     return;
                 }
                 break;
         }
 
-        //answerOne = firstNumberInProblem - secondNumberInProblem;
-        displayRandomAnswer = Random.Range(0, 2);
+        RandomAnswer();
 
-        // Tässä luodaan väärä vastaus ja annetaan sille arvoksi 1-4 enemmän tai vähemmän,
-        // mitä oikea vastaus olisi
-        if (displayRandomAnswer == 0)
-        {
-            answerTwo = answerOne + Random.Range(1, 4);
-        }
-        else
-        {
-            answerTwo = answerOne - Random.Range(1, 4);
-        }
-
+        // Update the UI elements to display the numbers and answers
         firstNumber.text = "" + firstNumberInProblem;
         secondNumber.text = "" + secondNumberInProblem;
+
+        // Determine the position of the correct answer and display both answers on the screen
         randomAnswerPlacement = Random.Range(0, 2);
 
         if (randomAnswerPlacement == 0)
         {
             answer1.text = "" + answerOne;
             answer2.text = "" + answerTwo;
+            // currentAnswer is set to 0, indicating that answer1 is the correct answer.
             currentAnswer = 0;
         }
         else
         {
             answer1.text = "" + answerTwo;
             answer2.text = "" + answerOne;
+            // currentAnswer is set to 1, indicating that answer2 is the correct answer.
             currentAnswer = 1;
 
         }
     }
+
     public void ButtonAnswer1()
     {
+        EnableButtons(false);
         if (currentAnswer == 0)
         {
             rightOrWrong_Text.enabled = true;
-            rightOrWrong_Text.color = Color.green;
+            rightOrWrong_Text.color = Color.blue;
             rightOrWrong_Text.text = ("Correct!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
+            CorrectAnswerPressed();
         }
         else
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.red;
             rightOrWrong_Text.text = ("Try Again!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
+            WrongAnswerPressed();
         }
     }
+
     public void ButtonAnswer2()
     {
+        EnableButtons(false);
         if (currentAnswer == 1)
         {
             rightOrWrong_Text.enabled = true;
-            rightOrWrong_Text.color = Color.green;
+            rightOrWrong_Text.color = Color.blue;
             rightOrWrong_Text.text = ("Corrent!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
+            CorrectAnswerPressed();
         }
         else
         {
             rightOrWrong_Text.enabled = true;
             rightOrWrong_Text.color = Color.red;
             rightOrWrong_Text.text = ("Try Again!");
-            Invoke("TurnOffText", 1);
+            Invoke(nameof(TurnOffText), 1);
+            WrongAnswerPressed();
         }
     }
-    // Tämä void asettaa aina seuraavan tehtävän pelaajan valinnan jälkeen 
+
+    private void EnableButtons(bool enable)
+    {
+        answer1Button.interactable = enable;
+        answer2Button.interactable = enable;
+        returnButton.interactable = enable;
+        quitButton.interactable = enable;
+    }
+
+    private void CorrectAnswerPressed()
+    {
+        maxNumberRange += successRangeIncrease;
+    }
+
+    private void WrongAnswerPressed()
+    {
+        maxNumberRange -= failureRangeReduction;
+    }
+
+    private void ResetRange()
+    {
+        maxNumberRange = defaultMaxNumberRange;
+    }
+
+    // Tämä asettaa aina seuraavan tehtävän pelaajan valinnan jälkeen 
     public void TurnOffText()
     {
         if (rightOrWrong_Text != null)
