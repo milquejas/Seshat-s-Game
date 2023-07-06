@@ -14,10 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: 
   Lines:
+  - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
+    Position: 0
+    LineType: 1
+    dialogueText: 'Hey, i have these five questions i''ve been thinking. Do you want
+      to help me to solve those? '
+    LineAnswer:
+    - AnswerText: Yes, of course!!
+      AnswerSwitchCase: Continue
+    - AnswerText: Not now, i have better things to do!!
+      AnswerSwitchCase: ExitCase
   - character: {fileID: 0}
     Position: 0
     LineType: 1
-    dialogueText: Hello, Do you want difficulty or ease?
+    dialogueText: Well, pick the difficult what suits you the best?
     LineAnswer:
     - AnswerText: Easy
       AnswerSwitchCase: StartFiveQuestionsPuzzleEasy

@@ -17,7 +17,9 @@ MonoBehaviour:
   - character: {fileID: 0}
     Position: 0
     LineType: 1
-    dialogueText: 'So you wanna learn  basic Math? '
+    dialogueText: 'Do you wanna learn basic Math? '
     LineAnswer:
     - AnswerText: Yes!!
       AnswerSwitchCase: StartTotemQuest
+    - AnswerText: 'No!! '
+      AnswerSwitchCase: ExitCase
