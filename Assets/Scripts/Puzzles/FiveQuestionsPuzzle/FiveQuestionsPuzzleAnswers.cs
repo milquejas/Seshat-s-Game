@@ -1,25 +1,30 @@
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class FiveQuestionsPuzzleAnswers : MonoBehaviour
 {
+    public TouchMovementAndInteraction playerTouchMovement;
 
     public TextMeshProUGUI questionText;
     public TextMeshProUGUI optionAText;
     public TextMeshProUGUI optionBText;
     public TextMeshProUGUI optionCText;
 
+    public GameObject fiveQuestionsPuzzleObject;
+
     public GameObject optionAButton;
     public GameObject optionBButton;
     public GameObject optionCButton;
+
+    public GameObject exitButton;
 
     public FiveQuestionsPuzzleManager dialogueManager;
 
     private int playerScore;
     private int currentTaskIndex;
     private List<int> taskOrder;
-    
+
     public FiveQuestionsSO[] AllPuzzles;
 
     private FiveQuestionsSO currentFiveQuestionsSO;
@@ -27,10 +32,15 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
     public void StartFiveQuestionsPuzzle(FiveQuestionsSO chosenPuzzle)
     {
         currentFiveQuestionsSO = chosenPuzzle;
-        taskOrder = GenerateRandomTaskOrder();
-        DisplayTask(taskOrder[currentTaskIndex]);
         playerScore = 0;
+        currentTaskIndex = 0; // Reset the task index
+        taskOrder = GenerateRandomTaskOrder(); // Generate a new random order
+
+        DisplayTask(taskOrder[currentTaskIndex]);
+        dialogueManager.resultPanel.SetActive(false);
+        fiveQuestionsPuzzleObject.SetActive(true); // Make sure the FiveQuestionsPuzzle object is active
     }
+
 
     // Set the visibility of the question and answer buttons
     void SetQuestionAndButtonsVisibility(bool visible)
@@ -41,8 +51,8 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         optionCButton.SetActive(visible);
     }
 
-    
-    
+
+
     // Generates a random order for tasks
     List<int> GenerateRandomTaskOrder()
     {
@@ -91,6 +101,31 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         optionAText.text = currentTask.options[0];
         optionBText.text = currentTask.options[1];
         optionCText.text = currentTask.options[2];
+
+        // Show the exit button when the answer buttons are visible
+        exitButton.SetActive(true);
+    }
+    public void ExitPuzzle()
+    {
+        // Reset variables
+        playerScore = 0;
+        currentTaskIndex = 0;
+        taskOrder.Clear();
+
+        // Hide the entire FiveQuestionsPuzzle object
+        fiveQuestionsPuzzleObject.SetActive(false);
+
+        // Enable player movement
+        playerTouchMovement.DisablePlayerMovement(false);
+
+        // Show the question and buttons
+        SetQuestionAndButtonsVisibility(true);
+
+        // Generate a new random order
+        taskOrder = GenerateRandomTaskOrder();
+
+        // Display the first task
+        DisplayTask(taskOrder[currentTaskIndex]);
     }
 
     // Checks if the selected option is correct
@@ -99,7 +134,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         if (currentFiveQuestionsSO.question[taskOrder[currentTaskIndex]].correctOptionIndex == optionIndex)
         {
             // Add points for the correct answer, but do not exceed the total number of questions
-            playerScore = Mathf.Min(playerScore + 1, currentFiveQuestionsSO.question.Length); 
+            playerScore = Mathf.Min(playerScore + 1, currentFiveQuestionsSO.question.Length);
         }
 
         currentTaskIndex++;
@@ -111,11 +146,13 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         else
         {
             // Hide the question and buttons
-            SetQuestionAndButtonsVisibility(false); 
+            SetQuestionAndButtonsVisibility(false);
+            // Piilota exit-nappi
+            exitButton.SetActive(false);
 
             if (playerScore < 4)
             {
-                dialogueManager.ResultLines = new string[] { $"You answered {playerScore}/5 correctly. Try again from the beginning." };
+                dialogueManager.resultLines = new string[] { $"You answered {playerScore}/5 correctly. Try again from the beginning." };
                 dialogueManager.RestartQuest(() =>
                 {
                     currentTaskIndex = 0; // Reset the task index
@@ -126,10 +163,15 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
             }
             else
             {
-                dialogueManager.ResultLines = new string[] { $"Congratulations! You answered {playerScore}/5 correctly!" };
-                dialogueManager.RestartQuest(null);
+                dialogueManager.resultLines = new string[] { $"Congratulations! You answered {playerScore}/5 correctly!" };
+                dialogueManager.RestartQuest(() =>
+                {
+                    ExitPuzzle(); // Call the exit method
+                });
                 // At this point, you can add code to transition to the next event or scene
             }
         }
     }
+
+
 }

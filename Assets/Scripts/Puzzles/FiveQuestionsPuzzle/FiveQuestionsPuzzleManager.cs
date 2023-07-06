@@ -6,14 +6,16 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
 {
     public TextMeshProUGUI resultText;
     public GameObject resultPanel;
+    public GameObject questionPanel; // Lisätty viittaus QuestionPanel-objektiin
 
-    public string[] ResultLines;
+    public string[] resultLines;
     private int currentLine;
 
     // Starts the dialogue with the given action onDialogueEnd
     public void RestartQuest(System.Action onDialogueEnd)
     {
         resultPanel.SetActive(true);
+        questionPanel.SetActive(false); // Piilota QuestionPanel-objekti
         StartCoroutine(DisplayQuest(onDialogueEnd));
     }
 
@@ -23,9 +25,9 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
         currentLine = 0;
 
         // Display each dialogue line with a 3-second delay
-        while (currentLine < ResultLines.Length)
+        while (currentLine < resultLines.Length)
         {
-            resultText.text = ResultLines[currentLine];
+            resultText.text = resultLines[currentLine];
             currentLine++;
 
             yield return new WaitForSeconds(3f);
@@ -33,6 +35,7 @@ public class FiveQuestionsPuzzleManager : MonoBehaviour
 
         // Hide the dialogue box and invoke the given action
         resultPanel.SetActive(false);
+        questionPanel.SetActive(true); // Näytä QuestionPanel-objekti uudelleen
         onDialogueEnd?.Invoke();
     }
 }
