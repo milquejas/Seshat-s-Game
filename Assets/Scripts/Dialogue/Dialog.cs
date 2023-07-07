@@ -125,21 +125,18 @@ public class Dialog : MonoBehaviour
         switch (CurrentConversation.Lines[LineNumber].Position)
         {
             case CharacterPosition.Left:
-                //Portrait.SetNativeSize();
                 CharacterContainer.rectTransform.anchorMin = new Vector2(0, 1);
                 CharacterContainer.rectTransform.anchorMax = new Vector2(0, 1);
                 CharacterContainer.rectTransform.anchoredPosition = new Vector3(274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Right:
-                //Portrait.SetNativeSize();
                 CharacterContainer.rectTransform.anchorMin = new Vector2(1, 1);
                 CharacterContainer.rectTransform.anchorMax = new Vector2(1, 1);
                 CharacterContainer.rectTransform.anchoredPosition = new Vector3(-274.3f, 0, 0);
                 break;
 
             case CharacterPosition.Middle:
-                //Portrait.SetNativeSize();
                 CharacterContainer.rectTransform.anchorMin = new Vector2(0.5f, 1);
                 CharacterContainer.rectTransform.anchorMax = new Vector2(0.5f, 1);
                 CharacterContainer.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
@@ -192,4 +189,3 @@ public class Dialog : MonoBehaviour
         answerButtons.Clear();
     }
 }
-    

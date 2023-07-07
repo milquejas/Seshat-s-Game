@@ -75,9 +75,6 @@ public class MathQuess : MonoBehaviour
 
     private void GenerateMultiplicationRandomNumbers()
     {
-        
-        
-
         firstNumberInProblem = Random.Range(1, 10);
         secondNumberInProblem = Random.Range(0, 10);
     }
