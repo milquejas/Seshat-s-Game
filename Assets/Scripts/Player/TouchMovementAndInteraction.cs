@@ -85,10 +85,19 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
         }
     }
 
+    //P‰ivitettty liike sopimaan paremmin isometriseen n‰kym‰‰n 6.7.23
     private Vector2 GetKeyboardMovement()
     {
-        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        // Use these to adjust the movement speed in each direction
+        float horizontalFactor = 1.0f;
+        float verticalFactor = 0.5f;
+
+        return new Vector2((horizontalInput + verticalInput) * horizontalFactor, (verticalInput - horizontalInput) * verticalFactor).normalized;
     }
+
 
     public void DisablePlayerMovement(bool disable)
     {
