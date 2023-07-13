@@ -111,6 +111,7 @@ public class FiveQuestionsPuzzleAnswers : MonoBehaviour
         playerScore = 0;
         currentTaskIndex = 0;
         taskOrder.Clear();
+        dialogueManager.questionPanel.SetActive(true);
 
         // Hide the entire FiveQuestionsPuzzle object
         fiveQuestionsPuzzleObject.SetActive(false);

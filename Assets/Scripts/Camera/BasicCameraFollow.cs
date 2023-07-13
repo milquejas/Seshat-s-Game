@@ -14,7 +14,7 @@ public class BasicCameraFollow : MonoBehaviour
 		transform.position = spawnPoint.CurrentSpawnLocation - new Vector3(0,0, 10f);
     }
 
-	void Update () 
+	void LateUpdate () 
 	{
 		if(followTarget != null)
 		{
