@@ -12,7 +12,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private GameObject TasksCanvas;
     [SerializeField] private TaskMenuButton TasksButtonPrefab;
     [SerializeField] private Transform TaskButtonContainer;
-    [SerializeField] private TaskDetailWindowUI TaskDetailComponent;
+    [SerializeField] private TaskDetailWindowUI taskDetailWindow;
 
     [SerializeField] private GameObject playerControls;
     private List<TaskSO> tasksInMenu = new List<TaskSO>();
@@ -84,18 +84,13 @@ public class MenuUI : MonoBehaviour
         TaskSO[] taskList = GameManager.GameManagerInstance.currentTaskList.Tasks;
         foreach (TaskSO task in taskList)
         {
-            if (tasksInMenu.Contains(task)) return;
-
-            tasksInMenu.Add(task);
-            TaskMenuButton taskButton = Instantiate(TasksButtonPrefab, TaskButtonContainer, false);
-            taskButton.InitializeTaskButton(task);
-            taskButton.GetComponent<Button>().onClick.AddListener(delegate { TaskDetailComponent.ShowTaskDetails(task); });
+            if (!tasksInMenu.Contains(task))
+            {
+                tasksInMenu.Add(task);
+                TaskMenuButton taskButton = Instantiate(TasksButtonPrefab, TaskButtonContainer, false);
+                taskButton.InitializeTaskButton(taskDetailWindow, task);
+            }
         }
-    }
-
-    public void ShowTaskDetails(TaskSO task)
-    {
-        
     }
 
     public void Quit()
