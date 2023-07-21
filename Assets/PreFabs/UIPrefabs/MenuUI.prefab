@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2164797174457892880}
   - component: {fileID: 2164797174457892882}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: QuitGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2164797174498398614}
   - component: {fileID: 2164797174498398615}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: SettingsHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3497,9 +3497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Exit
-
-'
+  m_text: Quit Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 657eb7179e861154b91684c4a864bac6, type: 2}
   m_sharedMaterial: {fileID: 5818470973460286279, guid: 657eb7179e861154b91684c4a864bac6, type: 2}

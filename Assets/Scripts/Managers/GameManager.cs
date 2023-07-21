@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Keeps ScriptableObjects out of garbage collection...")]
     [SerializeField] private LevelSpawnSO spawnPoint;
-    [SerializeField] private TaskListSO tasks;
+    [SerializeField] public TaskListSO currentTaskList;
 
     void Start()
     {
