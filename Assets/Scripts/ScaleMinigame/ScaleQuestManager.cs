@@ -175,6 +175,6 @@ public class ScaleQuestManager : MonoBehaviour
 
     public void LeaveScaleMinigame()
     {
-        GameManager.GameManagerInstance.LoadScene("IsometricMain");
+        GameManager.GameManagerInstance.LoadScene("IsometricNewFlow");
     }
 }

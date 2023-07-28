@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: 
   Lines:
-  - character: {fileID: 0}
+  - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
     Position: 0
     LineType: 1
     dialogueText: Hello, Do you want difficulty or ease?

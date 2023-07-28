@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: NPCExampleDialogTreeHard
   Lines:
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 0
     dialogueText: 'Excellent, it took me two sleepless nights to create this puzzle.  '
     LineAnswer: []
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 0
     dialogueText: 'Before the whole world started using metrics we used to use something
       called a Cubit. It is the length from your shoulder to the tip of your middle
       finger. '
     LineAnswer: []
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 1
     dialogueText: The cubit I used to use is 523,5mm long. I measured that my neighbors
@@ -36,7 +36,7 @@ MonoBehaviour:
       AnswerSwitchCase: Continue
     - AnswerText: 6,282m
       AnswerSwitchCase: ExampleDialogTree_CorrectAnswer
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 0
     dialogueText: Not quite. Keep learning, you should use logic to find shortcuts.

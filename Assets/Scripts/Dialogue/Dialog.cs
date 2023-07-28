@@ -27,7 +27,7 @@ public class Dialog : MonoBehaviour
     [SerializeField] private Image AnswerButtonPanel;
     [SerializeField] private GameObject AnswerButton;
 
-    private List<GameObject> answerButtons = new List<GameObject>();
+    private List<GameObject> answerButtons = new();
 
     public int LineNumber { get; set; }
     private bool answering;
@@ -95,11 +95,18 @@ public class Dialog : MonoBehaviour
 
         AdjustUIPositions();
 
-        if (CurrentConversation.Lines[LineNumber].character == null)
+        if (CurrentConversation.Lines[LineNumber].character == null )
         {
             CharacterContainer.gameObject.SetActive(false);
             Portrait.gameObject.SetActive(false);
             SpeakerName.gameObject.SetActive(false);
+        }
+        else if (CurrentConversation.Lines[LineNumber].character.PortraitImage == null)
+        {
+            CharacterContainer.gameObject.SetActive(true);
+            Portrait.gameObject.SetActive(false);
+            SpeakerName.gameObject.SetActive(true);
+            Speaker = CurrentConversation.Lines[LineNumber].character;
         }
         else
         {

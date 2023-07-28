@@ -15,7 +15,8 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private TaskDetailWindowUI taskDetailWindow;
 
     [SerializeField] private GameObject playerControls;
-    private List<TaskSO> tasksInMenu = new List<TaskSO>();
+    private List<TaskSO> tasksInMenu = new();
+    private List<TaskMenuButton> taskButtonsInMenu = new();
     private IPlayerTouch playerInteraction;
 
     private bool menuOpen;
@@ -54,6 +55,7 @@ public class MenuUI : MonoBehaviour
     {
         if (tasksMenuOpen)
         {
+            taskDetailWindow.gameObject.SetActive(false);
             TasksCanvas.SetActive(false);
             tasksMenuOpen = !tasksMenuOpen;
         }
@@ -61,6 +63,7 @@ public class MenuUI : MonoBehaviour
         menuOpen = !menuOpen;
 
         MenuCanvas.SetActive(menuOpen);
+        taskDetailWindow.gameObject.SetActive(false);
         playerInteraction.DisablePlayerMovement(menuOpen);
     }
 
@@ -81,14 +84,24 @@ public class MenuUI : MonoBehaviour
 
     private void PoulateTasksMenu()
     {
+        foreach (TaskMenuButton button in taskButtonsInMenu)
+        {
+            if (button.buttonTask.Completed)
+            {
+                button.InitializeTaskButton(taskDetailWindow, button.buttonTask);
+            }
+        }
+
         TaskSO[] taskList = GameManager.GameManagerInstance.currentTaskList.Tasks;
         foreach (TaskSO task in taskList)
         {
             if (!tasksInMenu.Contains(task))
             {
                 tasksInMenu.Add(task);
+
                 TaskMenuButton taskButton = Instantiate(TasksButtonPrefab, TaskButtonContainer, false);
                 taskButton.InitializeTaskButton(taskDetailWindow, task);
+                taskButtonsInMenu.Add(taskButton);
             }
         }
     }

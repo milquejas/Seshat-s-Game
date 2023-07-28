@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Introduction to trading
   Description: Let the merchant help you trade with an ancient weight scale
-  Progress: 4
+  Progress: 0
   Completed: 0

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: NPCExampleDialogTreeSuccess
   Lines:
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 0
     dialogueText: Magnificent! You didn't just guess, right?
     LineAnswer: []
-  - character: {fileID: 11400000, guid: 3247191e7bfc0e64cb239a60b9f37cd5, type: 2}
+  - character: {fileID: 11400000, guid: 5db0572b421b2f142b7c6482071ae327, type: 2}
     Position: 0
     LineType: 0
     dialogueText: 'Hah! It is all good, if you can use logic to find the wrong answer,

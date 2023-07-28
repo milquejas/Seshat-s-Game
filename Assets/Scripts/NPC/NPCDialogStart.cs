@@ -67,6 +67,13 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
         questionmark.gameObject.SetActive(false);
     }
 
+    public void ChangeConversationAndTask(ConversationSO newConversation, ConversationSO newTaskDoneConversation, TaskSO newTask)
+    {
+        conversation = newConversation;
+        TaskCompleteConversation = newTaskDoneConversation;
+        npcTask = newTask;
+    }
+
     // Animations here
     private void RangeChanged()
     {
