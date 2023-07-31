@@ -16,8 +16,13 @@ MonoBehaviour:
   Lines:
   - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
     Position: 0
+    LineType: 0
+    dialogueText: "Hello Sadiki. \nI have made some fun questions for you. "
+    LineAnswer: []
+  - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
+    Position: 0
     LineType: 1
-    dialogueText: Hello, Do you want difficulty or ease?
+    dialogueText: "How about it? \nPick a difficulty."
     LineAnswer:
     - AnswerText: Easy
       AnswerSwitchCase: StartFiveQuestionsPuzzleEasy
@@ -25,3 +30,5 @@ MonoBehaviour:
       AnswerSwitchCase: StartFiveQuestionsPuzzleMedium
     - AnswerText: Hard
       AnswerSwitchCase: StartFiveQuestionsPuzzleHard
+    - AnswerText: Not right now
+      AnswerSwitchCase: Continue

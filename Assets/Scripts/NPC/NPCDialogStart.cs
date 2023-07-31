@@ -43,12 +43,16 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
     {
         if (conversationDisabled) return transform;
 
+        if (npcTask == null) 
+            goto Skip;
+
         if (npcTask.Completed)
         {
             dialogSystem.StartConversation(TaskCompleteConversation, this);
             return transform;
         }
-        
+        Skip: 
+
         if (pickPuzzleProgress)
         {
             GameManager.GameManagerInstance.CurrentPuzzleIndex = taskProgressionPuzzle;
