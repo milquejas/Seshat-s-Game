@@ -12,7 +12,10 @@ public class CatStatuePuzzle : MonoBehaviour
 
     [SerializeField] private TouchMovementAndInteraction playerControls; // Reference to the PlayerController script.
     public CatStatuePuzzleSO[] AllPuzzles;
-    
+    private TaskSO currentTask;
+    [SerializeField] private Dialog dialogSystem;
+    [SerializeField] private ConversationSO successConversation;
+
     private int[] playerAnswers; // Array storing the player's selected answers.
     private int[] correctAnswers;
     [SerializeField] private TMP_Text hintMessage, question1, question2, question3, question1Answer1, question1Answer2, question1Answer3, question2Answer1,
@@ -34,8 +37,9 @@ public class CatStatuePuzzle : MonoBehaviour
         }
     }
 
-    public void InitializeThreeMultipickPuzzle(CatStatuePuzzleSO givenPuzzle)
+    public void InitializeCatStatuePuzzle(CatStatuePuzzleSO givenPuzzle, TaskSO givenTask)
     {
+        currentTask = givenTask;
         correctAnswers = givenPuzzle.CorrectAnswers;
         hintMessage.text = givenPuzzle.HintMessage;
         question1.text = givenPuzzle.Questions[0].MultipickQuestionText;
@@ -88,13 +92,17 @@ public class CatStatuePuzzle : MonoBehaviour
         // If the player got all answers correct...
         if (correctCount == correctAnswers.Length)
         {
-            hintMessage.text = "Congratulations! You've solved all the puzzles.";
+            hintMessage.text = "Congratulations!";
+            currentTask.Completed = true;
+            
             OnQuitButtonClicked();
+            dialogSystem.StartConversation(successConversation);
             // TODO start coruoutine -> pari sekkaa jotain animaatiocrappia -> se coroutine callaa OnQuitButtonClicked
         }
+
         else
         {
-            hintMessage.text = "At least one of your answers is incorrect. Please try again!";
+            hintMessage.text = "Please try again!";
 
             // If some answers are incorrect, reset all answers and enable all buttons for another try.
             for (int i = 0; i < optionButtons.Count; i++)
@@ -104,7 +112,6 @@ public class CatStatuePuzzle : MonoBehaviour
             }
         }
     }
-
 
     // This method is called when the "Quit" button is clicked.
     public void OnQuitButtonClicked()

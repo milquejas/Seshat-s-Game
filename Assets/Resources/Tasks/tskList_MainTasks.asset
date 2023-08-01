@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0076f9079e57c44950e3702664d737, type: 3}
+  m_Name: tskList_MainTasks
+  m_EditorClassIdentifier: 
+  Title: First tasks
+  Tasks:
+  - {fileID: 11400000, guid: 2509879046c0f2d4ab0fa348e2bdb153, type: 2}
+  - {fileID: 11400000, guid: 6541a79c7ddefd64098d1bc0f5734206, type: 2}
+  - {fileID: 11400000, guid: 8d612a4cfb8bcd64e8eb3a94a7190d85, type: 2}
+  - {fileID: 11400000, guid: de3d93b1dd7383b4bb1b0d1c40dc5a95, type: 2}
+  - {fileID: 11400000, guid: 51b83579c70b0a641a6c5edf46eb7a0d, type: 2}
+  - {fileID: 11400000, guid: e20087cfdb6ed124595e61086da255b5, type: 2}

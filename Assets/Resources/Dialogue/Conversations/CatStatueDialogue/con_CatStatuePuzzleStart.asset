@@ -22,5 +22,5 @@ MonoBehaviour:
     LineAnswer:
     - AnswerText: Investigate statue
       AnswerSwitchCase: StartStatuePuzzle
-    - AnswerText: Leave the statue be
+    - AnswerText: Leave
       AnswerSwitchCase: ExitCase

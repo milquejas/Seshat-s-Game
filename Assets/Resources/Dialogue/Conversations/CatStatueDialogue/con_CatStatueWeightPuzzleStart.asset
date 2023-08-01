@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConversationName: npcStatuePuzzleCat
   Lines:
-  - character: {fileID: 11400000, guid: 308a2ff7dfa515444b9f9b86f1198067, type: 2}
+  - character: {fileID: 0}
     Position: 0
     LineType: 1
-    dialogueText: StartPuzzle
+    dialogueText: <color="red"> This statue seems to have an ominous puzzle in its
+      carvings
     LineAnswer:
-    - AnswerText: test
+    - AnswerText: Investigate statue
       AnswerSwitchCase: StartGuessWeightsPuzzle
+    - AnswerText: Leave
+      AnswerSwitchCase: ExitCase

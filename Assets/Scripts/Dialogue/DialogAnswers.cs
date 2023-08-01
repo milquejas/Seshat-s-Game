@@ -94,13 +94,13 @@ public class DialogAnswers : MonoBehaviour
             case "StartStatuePuzzle":
                 dialog.ExitDialog(true);
                 CatStatuePuzzle.gameObject.SetActive(true);
-                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.AllPuzzles[0]);
+                CatStatuePuzzle.InitializeCatStatuePuzzle(CatStatuePuzzle.AllPuzzles[0], npcDialogStarter.npcTask);
                 break;
 
             case "StartGuessWeightsPuzzle":
                 dialog.ExitDialog(true);
                 CatStatuePuzzle.gameObject.SetActive(true);
-                CatStatuePuzzle.InitializeThreeMultipickPuzzle(CatStatuePuzzle.AllPuzzles[1]);
+                CatStatuePuzzle.InitializeCatStatuePuzzle(CatStatuePuzzle.AllPuzzles[1], npcDialogStarter.npcTask);
                 break;
 
             default:

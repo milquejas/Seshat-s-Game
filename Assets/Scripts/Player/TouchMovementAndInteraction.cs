@@ -19,7 +19,7 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     private bool thisTouchInteracting;
     private bool isTouchMoving;
     private bool isFacingUp;
-    private bool isFacingRight;
+    [SerializeField] private bool isFacingLeft = true;
 
     // for animation
     private bool isInWalkAnim;
@@ -204,10 +204,13 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
     {
         if (Mathf.Abs(movementDirection.x) > minimumMove || Mathf.Abs(movementDirection.y) > minimumMove)
         {
+            
+            movementDirection = movementDirection.normalized * movementSpeed;
+            movementDirection = new Vector2(movementDirection.x, movementDirection.y * 0.75f);
             isWalking = true;
             PlayerFlipY();
             PlayerFlipX();
-            RB.velocity = movementDirection.normalized * movementSpeed;
+            RB.velocity = movementDirection;
         }
         else
         {
@@ -233,13 +236,14 @@ public class TouchMovementAndInteraction : MonoBehaviour, IPlayerTouch
             currentAnimator = animatorBack;
         isInWalkAnim = false;
     }
+
     private void PlayerFlipX()
     {
         if (movementDirection.x == 0) return;
-        if (movementDirection.x < 0 && isFacingRight) return;
-        if (movementDirection.x > 0 && !isFacingRight) return;
+        if (movementDirection.x < 0 && isFacingLeft) return;
+        if (movementDirection.x > 0 && !isFacingLeft) return;
 
-        isFacingRight = !isFacingRight;
+        isFacingLeft = !isFacingLeft;
         animatorFront.transform.localScale = new Vector3(animatorFront.transform.localScale.x * -1, animatorFront.transform.localScale.y, 1);
         animatorBack.transform.localScale = new Vector3(animatorBack.transform.localScale.x * -1, animatorBack.transform.localScale.y, 1);
     }

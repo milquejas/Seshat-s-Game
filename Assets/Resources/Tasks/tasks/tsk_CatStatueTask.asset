@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e699eebeb643f458b23fe002db8de7, type: 3}
   m_Name: tsk_CatStatueTask
   m_EditorClassIdentifier: 
-  Title: Statue Mystery
-  Description: Solve the mystery of the statue
+  Title: Statue Bread Mystery
+  Description: 'Someone has built statues around the town. This one has three hard
+    bread based questions. '
   Progress: 0
   Completed: 0

@@ -77,12 +77,12 @@ public class MenuUI : MonoBehaviour
             
         tasksMenuOpen = !tasksMenuOpen;
 
-        if (tasksMenuOpen) PoulateTasksMenu();
+        if (tasksMenuOpen) PopulateTasksMenu();
         TasksCanvas.SetActive(tasksMenuOpen);
         playerInteraction.DisablePlayerMovement(tasksMenuOpen);
     }
 
-    private void PoulateTasksMenu()
+    private void PopulateTasksMenu()
     {
         foreach (TaskMenuButton button in taskButtonsInMenu)
         {

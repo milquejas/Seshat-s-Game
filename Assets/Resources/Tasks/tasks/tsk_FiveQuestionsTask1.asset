@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e699eebeb643f458b23fe002db8de7, type: 3}
   m_Name: tsk_FiveQuestionsTask1
   m_EditorClassIdentifier: 
-  Title: Introduction to trading
-  Description: Five questions
+  Title: Saleswoman Bahitis questions
+  Description: 'Bahiti has a list of questions. Try to answer 4/5 right. '
   Progress: 0
   Completed: 0

@@ -25,7 +25,7 @@ public class NPCDialogStart : MonoBehaviour, IInteractable
     [Header("Place conversationSO here")]
     [SerializeField] private ConversationSO conversation;
     [SerializeField] private ConversationSO TaskCompleteConversation;
-    [SerializeField] private TaskSO npcTask;
+    public TaskSO npcTask;
 
     [Header("Child questionmarks animation variables")]
     [SerializeField] private RectTransform questionmark;
