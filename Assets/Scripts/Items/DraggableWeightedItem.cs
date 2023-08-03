@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static AntiqueScaleExtensions;
+using static UnityEditor.Progress;
 
 /*
  * IInteractable item that is moved through TouchAndMouseBehaiour script
@@ -23,6 +24,7 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
 
     public ScaleMinigameInventoryItem originInventoryItem;
     [SerializeField] private List<GameObject> listOfColliderChildren = new List<GameObject>();
+    [SerializeField] private SoundRandomizer soundRandomizer;
     [field: NonSerialized] public Transform originalParent;
 
     public Vector2 originPoolPosition;
@@ -67,8 +69,10 @@ public class DraggableWeightedItem : MonoBehaviour, IInteractable
 
     public Transform Interact()
     {
+        itemImage.sortingLayerName = "Playerdepth";
         itemImage.sortingOrder = originInventoryItem.inventoryPooler.ItemSortingOrder++;
         DraggableItemTouched?.Invoke(Item);
+        soundRandomizer.PlayRandomizedSound();
         return transform;
     }
 

@@ -19,5 +19,7 @@ MonoBehaviour:
     LineType: 1
     dialogueText: 'So you wanna learn  basic Math? '
     LineAnswer:
-    - AnswerText: Yes!!
+    - AnswerText: Yes
       AnswerSwitchCase: StartTotemQuest
+    - AnswerText: No
+      AnswerSwitchCase: Continue

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 579088099}
   - component: {fileID: 579088101}
   - component: {fileID: 579088100}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CupVisualRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1808373717
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 1267261957
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1612035141, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 1010696608}
   - component: {fileID: 1010696610}
   - component: {fileID: 1010696609}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CupVisualLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,9 +175,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1808373717
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 1267261957
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1612035141, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -218,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5968932021306724979}
   - component: {fileID: 2087733974903598357}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: scale_center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,9 +278,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1267261957
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -55728084, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 664318084395473002}
   - component: {fileID: 1749702789}
   - component: {fileID: 1749702794}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: RightCup
   m_TagString: RightCup
   m_Icon: {fileID: 0}
@@ -366,8 +366,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1808373717
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -1612035141, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -392,7 +392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefa4821b1a6250438fb6b6728500238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massReductionAmount: 100
   cupStickynessLimitWidth: 1.3
   itemUnderCupHeight: 2.5
   side: 1
@@ -449,7 +448,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -491,7 +490,7 @@ GameObject:
   - component: {fileID: 6260342412454233723}
   - component: {fileID: 1106016659}
   - component: {fileID: 1106016666}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: LeftCup
   m_TagString: LeftCup
   m_Icon: {fileID: 0}
@@ -551,8 +550,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1808373717
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -1612035141, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -577,7 +576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aefa4821b1a6250438fb6b6728500238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massReductionAmount: 100
   cupStickynessLimitWidth: 1.3
   itemUnderCupHeight: 2.5
   side: 0
@@ -634,7 +632,7 @@ Rigidbody2D:
   m_AngularDrag: 5
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -672,7 +670,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7284903290854625599}
   - component: {fileID: 3440869190304005136}
-  m_Layer: 0
+  - component: {fileID: 801077827}
+  - component: {fileID: 801077824}
+  - component: {fileID: 801077826}
+  m_Layer: 11
   m_Name: AntiqueScale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,10 +714,166 @@ MonoBehaviour:
   rotatingBeamRBody: {fileID: 1935042639}
   leftCupMass: 0
   rightCupMass: 0
-  equalTorqueAmount: 10
+  torqueAmount: 10
   equalTorqueTreshold: 2
+  torqueRotationRange: 6
   leftCupItems: []
   rightCupItems: []
+--- !u!82 &801077827
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284903290854625594}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5923352930126809338, guid: f86b5c6ee4dfc1445aa5e4c933181398, type: 2}
+  m_audioClip: {fileID: 8300000, guid: df819bf4ec74a9c4bb7983e2cd34fe00, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.435
+  m_Pitch: 1.26
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 11.656614
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &801077824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284903290854625594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1d66e63cbb8d644bdfe6c0cee1ba11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyButton: {fileID: 0}
+  dialog: {fileID: 0}
+  gameplayUI: {fileID: 0}
+  questDescriptionContainer: {fileID: 0}
+  questDescription: {fileID: 0}
+  questArrowPointerImage: {fileID: 0}
+  tradeRatioContainer: {fileID: 0}
+  tradeRatios: {fileID: 0}
+  itemPooler: {fileID: 0}
+  scaleBehaviour: {fileID: 3440869190304005136}
+  FadeOutCanvas: {fileID: 0}
+  ExitDialogue: {fileID: 11400000, guid: 222c43f9be26b0c4f8b480eda235251f, type: 2}
+  ScaleMinigameTask: {fileID: 11400000, guid: 2509879046c0f2d4ab0fa348e2bdb153, type: 2}
+  questOrder:
+  - {fileID: 11400000, guid: 9340e3c66e57ac14885a66c9e8dace72, type: 2}
+  - {fileID: 11400000, guid: 2c57a4ecd1ee8e7469164ca04e9c4f9a, type: 2}
+  - {fileID: 11400000, guid: 2380607a740380144900c5c6efe7fb51, type: 2}
+  - {fileID: 11400000, guid: 5d1a8129d89231c469938024797da973, type: 2}
+  - {fileID: 11400000, guid: 4fc9abcf4fd534948b3d1f7a36be7003, type: 2}
+  weightItems:
+  - {fileID: 11400000, guid: 7aa7da15abfb0b64c88db245fc993767, type: 2}
+  - {fileID: 11400000, guid: 542b869f8db022f4199e1a045e9a4079, type: 2}
+  - {fileID: 11400000, guid: d09603c2ad86bdb44aa50aa8a5abed89, type: 2}
+  - {fileID: 11400000, guid: 009451a94f7003c42b9abc081ed64f84, type: 2}
+  - {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+  - {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+  - {fileID: 11400000, guid: fd83cd4d17f50d44d90967ddea046a9e, type: 2}
+  - {fileID: 11400000, guid: 7f7e04a02c8567a4ca21d7ceb015623e, type: 2}
+  - {fileID: 11400000, guid: a812aca8f7fe45b4ea860e2adfccd6bd, type: 2}
+  - {fileID: 11400000, guid: 5e6ce1323b515124bba0c7f2ae903575, type: 2}
+--- !u!114 &801077826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7284903290854625594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b780754c1ebba458b9f29ab285844f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 801077827}
+  pitchVariance: 1
+  volumeVariance: 0.3
+  stereoPanVariance: 0.3
+  pitchUpOnly: 1
 --- !u!1 &8108553657158569507
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +886,7 @@ GameObject:
   - component: {fileID: 7744734064844839045}
   - component: {fileID: 1935042639}
   - component: {fileID: 1935042640}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: scale_lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,9 +950,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1267261957
+  m_SortingLayer: 2
+  m_SortingOrder: -2
   m_Sprite: {fileID: 931025283, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -843,7 +1000,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 2.69}
+  m_ConnectedAnchor: {x: 0, y: 1.18}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

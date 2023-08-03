@@ -11,6 +11,7 @@ public class ScaleCupScript : MonoBehaviour
 {
     private Collider2D cupCollider;
     private ScaleBehaviour scaleBehaviour;
+    private SoundRandomizer soundRandomizer;
     private Rigidbody2D cupRBody;
     [SerializeField] private float cupStickynessLimitWidth;
     [SerializeField] private float itemUnderCupHeight;
@@ -20,6 +21,7 @@ public class ScaleCupScript : MonoBehaviour
     private void Start()
     {
         scaleBehaviour = GetComponentInParent<ScaleBehaviour>();
+        soundRandomizer = GetComponentInParent<SoundRandomizer>();
         cupCollider = GetComponent<Collider2D>();
         cupRBody = GetComponent<Rigidbody2D>();
     }
@@ -30,6 +32,8 @@ public class ScaleCupScript : MonoBehaviour
 
         float distance = collision.transform.position.x - transform.position.x;
         DraggableWeightedItem item = collision.gameObject.GetComponent<DraggableWeightedItem>();
+
+        soundRandomizer.PlayRandomizedSound();
 
         if (Mathf.Abs(distance) <= cupStickynessLimitWidth && item.transform.position.y >= transform.position.y - itemUnderCupHeight)
         {
@@ -45,7 +49,7 @@ public class ScaleCupScript : MonoBehaviour
             scaleBehaviour.AddItemToScale(side, item.Item);
 
             item.transform.SetParent(ParentForItem, true);
-            item.itemImage.sortingOrder = -3;
+            item.itemImage.sortingLayerName = "Background";
         }
 
         else
@@ -61,7 +65,7 @@ public class ScaleCupScript : MonoBehaviour
 
         scaleBehaviour.RemoveItemFromScale(side, item.Item);
 
-        item.itemImage.sortingOrder = 2;
+        //item.itemImage.sortingOrder = 2;
         item.transform.SetParent(item.originalParent, true);
 
         Physics2D.IgnoreCollision(cupCollider, item.GetComponentInChildren<Collider2D>(), false);

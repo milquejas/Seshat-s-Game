@@ -77,6 +77,7 @@ public class FruitBasketManager : MonoBehaviour
         if (collision.gameObject.GetComponentInParent<DraggableWeightedItem>())
         {
             DraggableWeightedItem draggedItem = collision.gameObject.GetComponentInParent<DraggableWeightedItem>();
+            draggedItem.itemImage.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
             basketItems.Add(draggedItem.Item);
             ShowBasketInfo();
         }
@@ -87,6 +88,7 @@ public class FruitBasketManager : MonoBehaviour
         if (collision.gameObject.GetComponentInParent<DraggableWeightedItem>())
         {
             DraggableWeightedItem draggedItem = collision.gameObject.GetComponentInParent<DraggableWeightedItem>();
+            draggedItem.itemImage.maskInteraction = SpriteMaskInteraction.None;
             basketItems.Remove(draggedItem.Item);
             ShowBasketInfo();
         }
@@ -173,5 +175,6 @@ public class FruitBasketManager : MonoBehaviour
     public void LeaveFruitBasketScene()
     {
         GameManager.GameManagerInstance.LoadScene("IsometricNewFlow");
+        SoundManager.Instance.ChangeBackgroundSong(1.5f, 0);
     }
 }

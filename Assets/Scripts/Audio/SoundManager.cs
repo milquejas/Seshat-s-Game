@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class SoundManager : MonoBehaviour
     public const string SFX_KEY = "sfxVolume";
 
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,14 +35,20 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        LoadVolume();
     }
 
-    //public void PlaySound(AudioClip clip)
-    //{
-    //    playOnClickSource.PlayOneShot(clip);
-    //}
+    public void ChangeBackgroundSong(float duration, int songIndex)
+    {
+        StartCoroutine(FadeMusic(duration, audioClips[songIndex]));
+    }
+    private IEnumerator FadeMusic(float duration, AudioClip song)
+    {
+        StartCoroutine(FadeMixerGroup.StartFade(mixer, "MusicVolume", duration, 0));
+        yield return new WaitForSeconds(duration);
+        _musicSource.clip = song;
+        _musicSource.Play();
+        StartCoroutine(FadeMixerGroup.StartFade(mixer, "MusicVolume", duration, 1));
+    }
 
     public void ChangeMasterVolume(float value)
     {
@@ -56,14 +64,4 @@ public class SoundManager : MonoBehaviour
     {
         _musicSource.mute = !_musicSource.mute;
     }
-
-    private void LoadVolume()
-    {
-        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
-        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
-
-        mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
-        mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(sfxVolume) * 20);
-    }
-
 }
