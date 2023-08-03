@@ -17,39 +17,39 @@ MonoBehaviour:
       blocks. If each layer of the pyramid consists of 20 blocks, how many layers
       are there in the pyramid?
     options:
-    - 20
     - 32
+    - 20
     - 31
     correctOptionIndex: 2
   - question: The length of the Nile River is approximately 6,650 kilometers. If
       an ancient Egyptian boat travels at an average speed of 25 kilometers per hour,
       how many hour's does it take to travel the entire length of the Nile River?
     options:
-    - 3325
     - 266
     - 264
-    correctOptionIndex: 2
+    - 3325
+    correctOptionIndex: 1
   - question: An ancient Egyptian pharaoh has 5 sons. If each son has 4 daughters,
       and each daughter has 3 pet cats, how many pet cats does the pharaoh's family
       have in total?
     options:
+    - 40
     - 60
     - 20
-    - 40
-    correctOptionIndex: 0
+    correctOptionIndex: 1
   - question: An archaeological expedition discovers a tomb with 8 chambers. Inside
       each chamber, there are 12 statues. If each statue weighs 75 kilograms, what
       is the total weight of all the statues in the tomb?
     options:
-    - 800
-    - 680
-    - 720
-    correctOptionIndex: 2
+    - 7200
+    - 6800
+    - 8000
+    correctOptionIndex: 0
   - question: An ancient Egyptian ruler wants to distribute 480 loaves of bread among
       his subjects equally. If each person can receive 8 loaves of bread, how many
       people are there in the kingdom?
     options:
+    - 60
     - 40
     - 30
-    - 60
-    correctOptionIndex: 2
+    correctOptionIndex: 0
