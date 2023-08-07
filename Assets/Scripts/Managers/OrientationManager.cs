@@ -18,13 +18,12 @@ public class OrientationManager : MonoBehaviour
     void Start()
     {
         _orientation = Screen.orientation;
-        InvokeRepeating("CheckForChange", 1, 2);
+        InvokeRepeating(nameof(CheckForChange), 1, 2);
     }
 
     private static void OnOrientationChanged(ScreenOrientation orientation)
     {
-        if (OrientationChangedEvent != null)
-            OrientationChangedEvent(orientation);
+        OrientationChangedEvent?.Invoke(orientation);
     }
 
     private void CheckForChange()

@@ -986,7 +986,7 @@ TextureImporter:
         serializedVersion: 2
         x: 476
         y: 915
-        width: 113
+        width: 112
         height: 158
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1005,9 +1005,9 @@ TextureImporter:
       name: tent_leaf_pole_r
       rect:
         serializedVersion: 2
-        x: 589
+        x: 588
         y: 945
-        width: 23
+        width: 24
         height: 128
       alignment: 9
       pivot: {x: 0.22975491, y: 0.0029730797}

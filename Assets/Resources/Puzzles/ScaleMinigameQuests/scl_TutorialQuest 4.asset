@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: scl_TutorialQuest 4
   m_EditorClassIdentifier: 
   QuestStartDialogue: {fileID: 11400000, guid: 3bc8900c9879a054fab2479d3def959e, type: 2}
-  Description: Place 600g of apples on the scale and balance it
+  Description: Place 450g of apples on the scale and balance it
   QuestPlayerInventory:
   - InventoryItemSO: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
     ItemAmount: 6
@@ -24,7 +24,6 @@ MonoBehaviour:
   QuestType: 1
   LastQuestInRow: 0
   PlaceTheseProduce:
-  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
   - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
   - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
   - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
