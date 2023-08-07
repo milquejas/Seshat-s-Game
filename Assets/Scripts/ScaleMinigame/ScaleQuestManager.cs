@@ -32,6 +32,16 @@ public class ScaleQuestManager : MonoBehaviour
     private int currentQuest;
 
     [SerializeField] private List<ItemSO> weightItems;
+
+    private void Awake()
+    {
+        // landscape orientation 
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.orientation = ScreenOrientation.AutoRotation;
+    }
     private void Start()
     {
         dialog.DialogEndedEvent += DialogEnd;

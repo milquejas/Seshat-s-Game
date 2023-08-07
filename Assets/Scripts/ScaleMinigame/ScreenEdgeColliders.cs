@@ -16,7 +16,7 @@ namespace UnityLibrary
         [SerializeField] private float topExtraSpace;
         [SerializeField] private float bottomLessSpace;
 
-        void Awake()
+        void Start()
         {
             if (Camera.main == null) Debug.LogError("Camera.main not found, failed to create edge colliders");
             else cam = Camera.main;
@@ -28,6 +28,12 @@ namespace UnityLibrary
 
             edgePoints = new Vector2[5];
 
+            OrientationManager.OrientationChangedEvent += OrientationChange;
+            AddCollider();
+        }
+
+        void OrientationChange(ScreenOrientation orientation)
+        {
             AddCollider();
         }
 

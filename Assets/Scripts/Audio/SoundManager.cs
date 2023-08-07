@@ -13,14 +13,15 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private AudioSource _musicSource, _effectsSource;
+    [SerializeField] private float currentMusicVolume;
     //[SerializeField]
     //private AudioSource playOnClickSource;
 
     [SerializeField]
     List<AudioClip> audioClips = new();
 
-    public const string MUSIC_KEY = "musicVolume";
-    public const string SFX_KEY = "sfxVolume";
+    public const string MUSIC_KEY = "MusicVolume";
+    public const string SFX_KEY = "SFXVolume";
 
 
 
@@ -43,25 +44,27 @@ public class SoundManager : MonoBehaviour
     }
     private IEnumerator FadeMusic(float duration, AudioClip song)
     {
+        mixer.GetFloat("MusicVolume", out currentMusicVolume);
+        currentMusicVolume = Mathf.Pow(10, (currentMusicVolume / 20));
         StartCoroutine(FadeMixerGroup.StartFade(mixer, "MusicVolume", duration, 0));
         yield return new WaitForSeconds(duration);
         _musicSource.clip = song;
         _musicSource.Play();
-        StartCoroutine(FadeMixerGroup.StartFade(mixer, "MusicVolume", duration, 1));
+        StartCoroutine(FadeMixerGroup.StartFade(mixer, "MusicVolume", duration, currentMusicVolume));
     }
 
     public void ChangeMasterVolume(float value)
     {
-        AudioListener.volume = value;
+        //AudioListener.volume = value;
     }
 
     public void ToggleEffects()
     {
-        _effectsSource.mute = !_effectsSource.mute;
+        //_effectsSource.mute = !_effectsSource.mute;
     }
 
     public void ToggleMusic()
     {
-        _musicSource.mute = !_musicSource.mute;
+        //_musicSource.mute = !_musicSource.mute;
     }
 }

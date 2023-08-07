@@ -1558,6 +1558,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5148274484824747397, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.5400391
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148274484824747397, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 61.04492
+      objectReference: {fileID: 0}
     - target: {fileID: 5148274485402234081, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1606,14 +1614,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogUI
       objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234082, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 1729498137}
     - target: {fileID: 5148274485402234087, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: playerControls
       value: 
@@ -1624,30 +1624,26 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e3ae82e36f1eed14d82827f332c76e62, type: 2}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 952.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 651.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 476.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148274486352197731, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -325.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5148274486709773529, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2366,7 +2362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608128282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26000023, y: -1.23, z: 0}
+  m_LocalPosition: {x: 0.13, y: -1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2849,11 +2845,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701568428}
   m_CullTransparentMesh: 1
---- !u!1 &1729498137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5148274486709773529, guid: 4aa47ee91c55d3249a6706a0e9f97846, type: 3}
-  m_PrefabInstance: {fileID: 641127307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735597105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 434828560256970136, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 13.300049
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb625d56c63a6f2498d1ec076511c02c, type: 3}
 --- !u!1 &2076638016
@@ -3697,7 +3692,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0.75
+  m_Spacing: 0.7
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
