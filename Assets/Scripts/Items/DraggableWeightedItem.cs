@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static AntiqueScaleExtensions;
+using static UnityEditor.Progress;
 
 /*
  * IInteractable item that is moved through TouchAndMouseBehaiour script

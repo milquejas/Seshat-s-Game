@@ -27,27 +27,11 @@ public class ScaleQuestManager : MonoBehaviour
     [SerializeField] private ConversationSO ExitDialogue;
     [SerializeField] private TaskSO ScaleMinigameTask;
 
-    [SerializeField] private ConversationSO OneCupHelp;
-    [SerializeField] private ConversationSO ScaleIsNotBalanced;
-    [SerializeField] private ConversationSO UseMarkedWeightsOnly;
-    [SerializeField] private ConversationSO WrongAmountOfItems;
-
-
     // TODO: Quests could be pulled from game manager on scene load
     [SerializeField] private ScaleMinigameQuestSO[] questOrder;
     private int currentQuest;
 
     [SerializeField] private List<ItemSO> weightItems;
-
-    private void Awake()
-    {
-        // landscape orientation 
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.AutoRotation;
-    }
     private void Start()
     {
         dialog.DialogEndedEvent += DialogEnd;
@@ -73,7 +57,7 @@ public class ScaleQuestManager : MonoBehaviour
 
         itemPooler.InitializeScaleInventory(questOrder[currentQuest].QuestPlayerInventory);
 
-        if(questOrder[currentQuest].QuestStartDialogue != null)
+        if(questOrder[currentQuest].QuestStartDialogue is not null)
         {
             dialog.StartConversation(questOrder[currentQuest].QuestStartDialogue);
             questDescriptionContainer.SetActive(false);
@@ -98,21 +82,14 @@ public class ScaleQuestManager : MonoBehaviour
             ReadyFreeTradingQuest();
     }
 
-    private bool ListHasWeights(List<ItemSO> itemList)
+    private bool ListIsWeights(List<ItemSO> itemList)
     {
-        bool isWeights = false;
-        
         foreach (ItemSO item in itemList)
         {
-            if (item.ScaleWeight)
-            {
-                isWeights = true;
-                goto end;
-            }
-                
+            if (!item.ScaleWeight)
+                return false;
         }
-        end:
-            return isWeights;
+        return true;
     }
 
     private bool ListFitsQuest(List<ItemSO> itemList)
@@ -138,7 +115,7 @@ public class ScaleQuestManager : MonoBehaviour
 
         else
         {
-            dialog.StartConversation(OneCupHelp);
+            print("try again!?");
         }
     }
 
@@ -147,7 +124,7 @@ public class ScaleQuestManager : MonoBehaviour
     {
         if (!scaleBehaviour.ScaleIsBalanced())
         {
-            dialog.StartConversation(ScaleIsNotBalanced);
+            print("Scale is not balanced!");
             return;
         }
 
@@ -157,17 +134,16 @@ public class ScaleQuestManager : MonoBehaviour
         bool rightFitsQuest =
             ListFitsQuest(scaleBehaviour.rightCupItems);
 
-        if ((leftFitsQuest && !ListHasWeights(scaleBehaviour.rightCupItems)) ||
-            (rightFitsQuest && !ListHasWeights(scaleBehaviour.leftCupItems)) ||
-            ListHasWeights(scaleBehaviour.leftCupItems) && ListHasWeights(scaleBehaviour.rightCupItems))
+        if (!leftFitsQuest && !rightFitsQuest)
         {
-            dialog.StartConversation(UseMarkedWeightsOnly);
+            print("Place the right items in a cup");
             return;
         }
 
-        if (!leftFitsQuest && !rightFitsQuest)
+        if ((leftFitsQuest && !ListIsWeights(scaleBehaviour.rightCupItems)) || 
+            (rightFitsQuest && !ListIsWeights(scaleBehaviour.leftCupItems)))
         {
-            dialog.StartConversation(WrongAmountOfItems);
+            print("Use only marked weights to balance the scale");
             return;
         }
 

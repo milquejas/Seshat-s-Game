@@ -28,7 +28,7 @@ public class ScaleCupScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<ScaleMinigameInventoryItem>() != null) return;
+        if (collision.gameObject.GetComponent<ScaleMinigameInventoryItem>() is not null) return;
 
         float distance = collision.transform.position.x - transform.position.x;
         DraggableWeightedItem item = collision.gameObject.GetComponent<DraggableWeightedItem>();

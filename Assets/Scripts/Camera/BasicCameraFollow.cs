@@ -5,23 +5,14 @@ public class BasicCameraFollow : MonoBehaviour
 {
     [SerializeField] private LevelSpawnSO spawnPoint;
 
+
 	public Transform followTarget;
 	private Vector3 targetPos;
 	public float moveSpeed;
-
-    private void Awake()
-    {
-        // landscape orientation 
-        Screen.autorotateToPortrait = true;
-        Screen.autorotateToPortraitUpsideDown = true;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.AutoRotation;
-    }
-
-    void Start()
+	
+	void Start()
 	{
-        transform.position = spawnPoint.CurrentSpawnLocation - new Vector3(0,0, 10f);
+		transform.position = spawnPoint.CurrentSpawnLocation - new Vector3(0,0, 10f);
     }
 
 	void LateUpdate () 
