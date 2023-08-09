@@ -26,5 +26,5 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 34e9b5929305e544ca8756730077fb3e, type: 2}
     Position: 0
     LineType: 0
-    dialogueText: Well, mayby next time!
+    dialogueText: Well, maybe next time!
     LineAnswer: []

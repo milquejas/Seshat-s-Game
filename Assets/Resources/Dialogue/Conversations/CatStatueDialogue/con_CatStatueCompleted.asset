@@ -17,5 +17,5 @@ MonoBehaviour:
   - character: {fileID: 0}
     Position: 0
     LineType: 0
-    dialogueText: <color="red"> The statue almost seems to be smiling
+    dialogueText: <color="red"> The statue emits content aura
     LineAnswer: []

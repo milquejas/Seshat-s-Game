@@ -1263,10 +1263,10 @@ RectTransform:
   m_Father: {fileID: 1679649270}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 213.9, y: 188.7}
-  m_SizeDelta: {x: 412.2, y: 129.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 274, y: -66}
+  m_SizeDelta: {x: 524, y: 107.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547022150
 MonoBehaviour:
@@ -1281,8 +1281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.5372549}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.14150941, g: 0.04322831, b: 0.03137237, a: 0.5372549}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1733,8 +1733,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1982,10 +1982,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 44.8
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3128,10 +3128,10 @@ RectTransform:
   m_Father: {fileID: 1679649270}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 167, y: -76.431465}
-  m_SizeDelta: {x: 292.3209, y: 94.463}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150.4, y: -213}
+  m_SizeDelta: {x: 279.7, y: 174.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845620107
 MonoBehaviour:
@@ -3146,8 +3146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0.5372549}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.14150941, g: 0.04322831, b: 0.03137237, a: 0.5372549}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

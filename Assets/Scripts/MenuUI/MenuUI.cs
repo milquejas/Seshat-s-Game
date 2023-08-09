@@ -50,6 +50,11 @@ public class MenuUI : MonoBehaviour
         masterMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
     }
 
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
+
     public void ToggleMainMenu()
     {
         if (tasksMenuOpen)

@@ -47,9 +47,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 410
+  spritePixelsToUnits: 180
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,19 +113,43 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Overworld_Assets2_0
+      name: Spice_dryingRack
       rect:
         serializedVersion: 2
         x: 29
         y: 1120
         width: 342
         height: 348
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5177602, y: 0.25987998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,15 +162,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_1
+      name: Crate_watermelon
       rect:
         serializedVersion: 2
         x: 445
         y: 1240
         width: 206
         height: 217
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.50491273, y: 0.18654257}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,15 +183,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_2
+      name: Crate_closed
       rect:
         serializedVersion: 2
         x: 732
         y: 1239
         width: 208
         height: 228
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5048655, y: 0.19973594}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,15 +204,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_3
+      name: Spice_red
       rect:
         serializedVersion: 2
         x: 998
         y: 1338
         width: 131
         height: 136
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,15 +225,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_4
+      name: Spice_white
       rect:
         serializedVersion: 2
         x: 1164
         y: 1338
         width: 130
         height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.03170703}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,15 +246,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_5
+      name: Spice_yellow
       rect:
         serializedVersion: 2
         x: 1325
         y: 1334
         width: 130
         height: 107
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.064821616}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,15 +267,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_6
+      name: Chair
       rect:
         serializedVersion: 2
         x: 619
         y: 1016
         width: 174
         height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4997569, y: 0.24631307}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,15 +288,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_7
+      name: Basket_bread
       rect:
         serializedVersion: 2
         x: 988
         y: 1139
         width: 141
         height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.48594546, y: 0.08355536}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,15 +309,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_8
+      name: Vase1
       rect:
         serializedVersion: 2
         x: 1174
         y: 1130
         width: 117
         height: 171
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.053827297}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,15 +330,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_9
+      name: Vase2
       rect:
         serializedVersion: 2
-        x: 1334
-        y: 1146
+        x: 1332
+        y: 1148
         width: 127
         height: 131
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.046175193}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -327,15 +351,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_10
+      name: Bull
       rect:
         serializedVersion: 2
         x: 27
         y: 689
         width: 495
         height: 365
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.41592774, y: 0.068369076}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -348,15 +372,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_11
+      name: Sack
       rect:
         serializedVersion: 2
         x: 632
         y: 833
         width: 141
         height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.08242711}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -369,15 +393,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_12
+      name: Sack_big
       rect:
         serializedVersion: 2
         x: 937
         y: 834
         width: 168
         height: 221
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49410176, y: 0.04716775}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -390,15 +414,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_13
+      name: Sack_pile
       rect:
         serializedVersion: 2
         x: 1173
         y: 811
         width: 282
         height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45791084, y: 0.21264358}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -411,15 +435,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_14
+      name: Duck_green
       rect:
         serializedVersion: 2
         x: 552
         y: 617
         width: 123
         height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54027826, y: 0.0850811}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -432,15 +456,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_15
+      name: Duck_white
       rect:
         serializedVersion: 2
         x: 711
         y: 613
         width: 123
         height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.52416694, y: 0.10365982}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -453,15 +477,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_16
+      name: Crate1
       rect:
         serializedVersion: 2
         x: 889
         y: 491
         width: 206
         height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5147379, y: 0.21610324}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -474,15 +498,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_17
+      name: Obelisk
       rect:
         serializedVersion: 2
         x: 1202
         y: 68
         width: 221
         height: 697
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5002822, y: 0.06314323}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -495,15 +519,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_18
+      name: Duck_chickletWhite
       rect:
         serializedVersion: 2
         x: 634
         y: 511
         width: 60
         height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54954225, y: 0.1502874}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -516,15 +540,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_19
+      name: Duck_chicklet_yellow
       rect:
         serializedVersion: 2
         x: 730
         y: 509
         width: 60
         height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.54954225, y: 0.11781442}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -537,15 +561,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_20
+      name: ClothStack
       rect:
         serializedVersion: 2
         x: 594
         y: 259
         width: 204
         height: 174
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.46691746, y: 0.19886114}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -558,7 +582,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_21
+      name: Carpet_rectang_red
       rect:
         serializedVersion: 2
         x: 855
@@ -566,7 +590,7 @@ TextureImporter:
         width: 249
         height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -579,15 +603,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_22
+      name: Vase
       rect:
         serializedVersion: 2
         x: 453
         y: 37
         width: 128
         height: 179
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0405549}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -600,7 +624,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_23
+      name: Carpet_yellow
       rect:
         serializedVersion: 2
         x: 628
@@ -608,7 +632,7 @@ TextureImporter:
         width: 171
         height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -621,7 +645,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_Assets2_24
+      name: Carpet_green
       rect:
         serializedVersion: 2
         x: 830
@@ -629,7 +653,7 @@ TextureImporter:
         width: 328
         height: 167
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -652,31 +676,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Overworld_Assets2_0: -132454906
-      Overworld_Assets2_1: -9488558
-      Overworld_Assets2_10: 759348453
-      Overworld_Assets2_11: 1019625508
-      Overworld_Assets2_12: -1466430309
-      Overworld_Assets2_13: 431669362
-      Overworld_Assets2_14: -1152432828
-      Overworld_Assets2_15: -92234771
-      Overworld_Assets2_16: -1735784307
-      Overworld_Assets2_17: -2024434857
-      Overworld_Assets2_18: -549880587
-      Overworld_Assets2_19: 181488245
-      Overworld_Assets2_2: 1731613770
-      Overworld_Assets2_20: 2022680651
-      Overworld_Assets2_21: -986161717
-      Overworld_Assets2_22: 441643915
-      Overworld_Assets2_23: -1599413822
-      Overworld_Assets2_24: 2449625
-      Overworld_Assets2_3: -1142820592
-      Overworld_Assets2_4: 432342250
-      Overworld_Assets2_5: 421684284
-      Overworld_Assets2_6: 293114241
-      Overworld_Assets2_7: 204292288
-      Overworld_Assets2_8: -1239104052
-      Overworld_Assets2_9: 323936571
+      Basket_bread: 204292288
+      Bull: 759348453
+      Carpet_green: 2449625
+      Carpet_rectang_red: -986161717
+      Carpet_yellow: -1599413822
+      Chair: 293114241
+      ClothStack: 2022680651
+      Crate1: -1735784307
+      Crate_closed: 1731613770
+      Crate_watermelon: -9488558
+      Duck_chickletWhite: -549880587
+      Duck_chicklet_yellow: 181488245
+      Duck_green: -1152432828
+      Duck_white: -92234771
+      Obelisk: -2024434857
+      Sack: 1019625508
+      Sack_big: -1466430309
+      Sack_pile: 431669362
+      Spice_dryingRack: -132454906
+      Spice_red: -1142820592
+      Spice_white: 432342250
+      Spice_yellow: 421684284
+      Vase: 441643915
+      Vase1: -1239104052
+      Vase2: 323936571
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
