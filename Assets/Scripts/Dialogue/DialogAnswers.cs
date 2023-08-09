@@ -84,13 +84,27 @@ public class DialogAnswers : MonoBehaviour
             case "StartScaleAntiqueScene":
                 GameManager.GameManagerInstance.LoadScene("AntiqueScaleGame");
                 SoundManager.Instance.ChangeBackgroundSong(1.5f, 1);
-                // change sounds here or inside scene?
                 break;
 
             case "StartFruitBasketPuzzleScene":
                 GameManager.GameManagerInstance.LoadScene("FruitBasketGame");
                 SoundManager.Instance.ChangeBackgroundSong(1.5f, 2);
-                // change sounds here or inside scene?
+                break;
+
+            case "FQEasyDivision":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[3]);
+                break;
+            case "FQEasyMultiplication":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[4]);
+                break;
+            case "FQEasyPercentage":
+                dialog.ExitDialog(true);
+                FiveQuestionPuzzle.SetActive(true);
+                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[5]);
                 break;
 
             case "StartStatuePuzzle":

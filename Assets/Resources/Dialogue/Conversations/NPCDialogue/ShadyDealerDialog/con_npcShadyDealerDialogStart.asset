@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
+  m_Name: con_npcShadyDealerDialogStart
+  m_EditorClassIdentifier: 
+  ConversationName: FlourDialog
+  Lines:
+  - character: {fileID: 11400000, guid: 69069ec8dff2a9b42861f8bc7d84468c, type: 2}
+    Position: 0
+    LineType: 0
+    dialogueText: Why does no one want my jewelry? Do I really need to invest in
+      a proper shopfront?
+    LineAnswer: []

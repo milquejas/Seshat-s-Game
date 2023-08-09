@@ -45,8 +45,8 @@ SpriteAtlas:
   - {fileID: -1023675158, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
   - {fileID: -2136049208, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
   - {fileID: -2129948434, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
-  - {fileID: 1244789846, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
   - {fileID: -21269196, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
+  - {fileID: 1244789846, guid: 4560c4e114a3b6d4d84dfc430cb93fef, type: 3}
   - {fileID: 278733645657708584, guid: 80e12f948f54f6d4d88df0e25e0b9400, type: 3}
   - {fileID: -4478744557199881080, guid: 80e12f948f54f6d4d88df0e25e0b9400, type: 3}
   - {fileID: -6073259528332575582, guid: 80e12f948f54f6d4d88df0e25e0b9400, type: 3}
@@ -119,8 +119,8 @@ SpriteAtlas:
   - Shady_Dealer
   - Labourer
   - Manager
-  - Shopping_Woman
   - Carrier
+  - Shopping_Woman_Meritites
   - LegF
   - LegB
   - Head

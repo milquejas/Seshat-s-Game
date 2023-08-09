@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tsk_CatStatueTask
   m_EditorClassIdentifier: 
   Title: Statue Bread Mystery
-  Description: 'Someone has built statues around the town. This one has three hard
+  Description: 'Someone has built Monoliths around the town. This one has three hard
     bread based questions. '
   Progress: 0
   Completed: 0

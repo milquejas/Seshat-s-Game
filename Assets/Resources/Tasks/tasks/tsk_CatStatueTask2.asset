@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tsk_CatStatueTask2
   m_EditorClassIdentifier: 
   Title: Statue Weight Mystery
-  Description: 'Someone has built statues around the town. This statue has basic
+  Description: 'Someone has built Monoliths around the town. This statue has basic
     weight based questions. '
   Progress: 0
-  Completed: 0
+  Completed: 1

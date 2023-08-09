@@ -17,7 +17,8 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
     Position: 0
     LineType: 0
-    dialogueText: "Hello Sadiki. \nI have made some fun questions for you. "
+    dialogueText: "Hello Sadiki. \nI have made some fun, but challenging questions
+      for you. "
     LineAnswer: []
   - character: {fileID: 11400000, guid: 4e1e9db302565514c8548db5983f6a4d, type: 2}
     Position: 0

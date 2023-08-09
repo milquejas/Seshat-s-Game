@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0ae65b4f04cca43b34cc328a235d36, type: 3}
+  m_Name: FQEasyDivision
+  m_EditorClassIdentifier: 
+  question:
+  - question: An ancient Egyptian farmer has 24 watermelons and wants to distribute
+      them equally among 6 baskets. How many watermelons will be in each basket?
+    options:
+    - 4
+    - 6
+    - 3
+    correctOptionIndex: 0
+  - question: In an ancient Egyptian market, a trader has 15 pieces of jewelry and
+      wants to share them equally among 3 customers. How many pieces of jewelry will
+      each customer receive?
+    options:
+    - 5
+    - 3
+    - 15
+    correctOptionIndex: 0
+  - question: An archaeologist found 18 ancient coins and wants to display them equally
+      in 2 museum cases. How many coins will be in each museum case?
+    options:
+    - 9
+    - 8
+    - 2
+    correctOptionIndex: 0
+  - question: An ancient Egyptian pharaoh has 21 golden necklaces and wants to gift
+      them equally among 7 queens. How many necklaces will each queen receive?
+    options:
+    - 3
+    - 7
+    - 4
+    correctOptionIndex: 0
+  - question: In an ancient Egyptian school, 30 papyrus scrolls are to be shared
+      equally among 5 students. How many papyrus scrolls will each student get?
+    options:
+    - 6
+    - 5
+    - 3
+    correctOptionIndex: 0

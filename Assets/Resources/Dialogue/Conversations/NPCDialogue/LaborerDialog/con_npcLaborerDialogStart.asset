@@ -17,10 +17,5 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 1d6efc931070b5141948a02805d3295e, type: 2}
     Position: 0
     LineType: 0
-    dialogueText: Are you looking for flour Sadiki?
-    LineAnswer: []
-  - character: {fileID: 11400000, guid: 325e11c418e7e3f4ca5ce5d193cdb16e, type: 2}
-    Position: 0
-    LineType: 0
-    dialogueText: Sorry I'm not
+    dialogueText: Are you looking for flour Sadiki? Just go trade with Rameses
     LineAnswer: []

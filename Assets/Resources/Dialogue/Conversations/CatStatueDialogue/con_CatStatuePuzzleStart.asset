@@ -17,8 +17,8 @@ MonoBehaviour:
   - character: {fileID: 0}
     Position: 0
     LineType: 1
-    dialogueText: <color="red"> This statue seems to have an ominous puzzle in its
-      carvings
+    dialogueText: <color="red"> This monolith seems to have an ominous puzzle in
+      its carvings
     LineAnswer:
     - AnswerText: Investigate statue
       AnswerSwitchCase: StartStatuePuzzle

@@ -170,7 +170,7 @@ TextureImporter:
         width: 320
         height: 801
       alignment: 9
-      pivot: {x: 0.5, y: 0.18889295}
+      pivot: {x: 0.4947117, y: 0.15297554}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +191,7 @@ TextureImporter:
         width: 522
         height: 852
       alignment: 9
-      pivot: {x: 0.5498145, y: 0.2914459}
+      pivot: {x: 0.54657286, y: 0.23980165}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,7 +212,7 @@ TextureImporter:
         width: 401
         height: 796
       alignment: 9
-      pivot: {x: 0.5, y: 0.2549955}
+      pivot: {x: 0.4957805, y: 0.25499552}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shopping_Woman
+      name: Shopping_Woman_Meritites
       rect:
         serializedVersion: 2
         x: 2268
@@ -233,7 +233,7 @@ TextureImporter:
         width: 317
         height: 769
       alignment: 9
-      pivot: {x: 0.527343, y: 0.22103275}
+      pivot: {x: 0.5326825, y: 0.19902569}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,7 +260,7 @@ TextureImporter:
       Labourer: -2136049208
       Manager: -2129948434
       Shady_Dealer: -1023675158
-      Shopping_Woman: 1244789846
+      Shopping_Woman_Meritites: 1244789846
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

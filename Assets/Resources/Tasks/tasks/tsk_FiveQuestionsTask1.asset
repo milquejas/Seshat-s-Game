@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: tsk_FiveQuestionsTask1
   m_EditorClassIdentifier: 
   Title: Saleswoman Bahitis questions
-  Description: 'Bahiti has a list of questions. Try to answer 4/5 right. '
+  Description: 'Bahiti has an open list of questions. Try to answer 4/5 right. '
   Progress: 0
   Completed: 0
