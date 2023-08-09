@@ -75,21 +75,6 @@ public class DialogAnswers : MonoBehaviour
                 FiveQuestionPuzzle.SetActive(true);
                 FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[2]);
                 break;
-            case "FQEasyDivision":
-                dialog.ExitDialog(true);
-                FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[3]);
-                break;
-            case "FQEasyMultiplication":
-                dialog.ExitDialog(true);
-                FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[4]);
-                break;
-            case "FQEasyPercentage":
-                dialog.ExitDialog(true);
-                FiveQuestionPuzzle.SetActive(true);
-                FiveQuestionsPuzzleAnswers.StartFiveQuestionsPuzzle(FiveQuestionsPuzzleAnswers.AllPuzzles[5]);
-                break;
 
             case "StartTotemQuest":
                 dialog.ExitDialog(true);
