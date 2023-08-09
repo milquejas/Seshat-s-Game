@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6667c42f3fe9b3849b7981298f606955, type: 3}
   m_Name: spw_IsometricMainSpawns
   m_EditorClassIdentifier: 
-  CurrentSpawnLocation: {x: 10.86, y: -26.77, z: 0}
-  defaultSpawn: {x: 13.23, y: -27.13, z: 0}
+  CurrentSpawnLocation: {x: 33.43, y: -29.69, z: 0}
+  defaultSpawn: {x: 15.36, y: -21.23, z: 0}

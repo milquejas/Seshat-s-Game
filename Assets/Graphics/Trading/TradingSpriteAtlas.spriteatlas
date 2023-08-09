@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TradingSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: f1181a5b414be32489cb47f2d2788a06, type: 3}
+    - {fileID: 2800000, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
+    - {fileID: 2800000, guid: 71632dff18a88e643957eaa4969746f1, type: 3}
+    - {fileID: 2800000, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+    - {fileID: 2800000, guid: ec952c46c7689734ba3e0b91ea6cbec9, type: 3}
+    - {fileID: 2800000, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -962736627, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
+  - {fileID: -1612035141, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
+  - {fileID: -55728084, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
+  - {fileID: 931025283, guid: 96ad1772c2ddee04fa033665d6a7930c, type: 3}
+  - {fileID: 21300000, guid: ec952c46c7689734ba3e0b91ea6cbec9, type: 3}
+  - {fileID: 21300000, guid: f1181a5b414be32489cb47f2d2788a06, type: 3}
+  - {fileID: 697944213, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: 1082450846, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: 1693266465, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -1292960998, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: 658864684, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -197303383, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -1954698220, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -112510913, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: 1924432390, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -52406660, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: 89130544, guid: 24b8f93c25b3ad1489649357460e24b1, type: 3}
+  - {fileID: -1098820566, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: -10834866, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: -1796990452, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: 1311373562, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: -2122612238, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: 863071956, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: -251853661, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: 853164442, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: -685927742, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: 2146233846, guid: 47b5cd1f99198374e85ab7b7d568a88d, type: 3}
+  - {fileID: 21300000, guid: 71632dff18a88e643957eaa4969746f1, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - mathgame_scale_leftpan
+  - mathgame_scale_rightpan
+  - mathgame_scale_base
+  - mathgame_scale_beam
+  - Table
+  - Basket
+  - Produce_Cantaloupe
+  - Produce_Onion
+  - Produce_Pomegranate
+  - Produce_Grapes
+  - Produce_Apple
+  - Produce_Olives
+  - Produce_Watermelon
+  - Produce_Potato
+  - Produce_Citrus
+  - Produce_Herbs
+  - Produce_Orange
+  - Weight_500g
+  - Weight_5g
+  - Weight_10kg
+  - Weight_100g
+  - Weight_1g
+  - Weight_5kg
+  - Weight_50g
+  - Weight_20g
+  - Weight_10g
+  - Weight_1kg
+  - mathgame_scale
+  m_RenderDataMap: {}
+  m_Tag: TradingSpriteAtlas
+  m_IsVariant: 0

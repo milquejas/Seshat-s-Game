@@ -30,6 +30,16 @@ public class FruitBasketManager : MonoBehaviour
     [SerializeField] private ConversationSO tooLight;
     [SerializeField] private ConversationSO wayTooHeavy;
 
+    private void Awake()
+    {
+        // landscape orientation 
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.orientation = ScreenOrientation.AutoRotation;
+    }
+
     void Start()
     {
         ScaleMinigameInventoryItem.basketItemTouched += ShowTooltip;

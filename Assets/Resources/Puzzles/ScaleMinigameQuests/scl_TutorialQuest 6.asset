@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d8c095c524c104d93ed5edc380fa09, type: 3}
+  m_Name: scl_TutorialQuest 6
+  m_EditorClassIdentifier: 
+  QuestStartDialogue: {fileID: 11400000, guid: 13d9aaa9811d76f4781b7624b0487346, type: 2}
+  Description: 'Pomegranate is worth 5g of gold dust, a bundle of herbs is worth
+    2 and an apple is worth 1. Trade for 2 pomegranates without waste. '
+  QuestPlayerInventory:
+  - InventoryItemSO: {fileID: 11400000, guid: d2f2c9f53fc238b4991c8359857a8ab6, type: 2}
+    ItemAmount: 3
+  - InventoryItemSO: {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+    ItemAmount: 5
+  - InventoryItemSO: {fileID: 11400000, guid: eacfb3e36a59f5a40b859cd7d1856388, type: 2}
+    ItemAmount: 10
+  - InventoryItemSO: {fileID: 11400000, guid: a6ca07f0cc75ce042aa5fa9cef310575, type: 2}
+    ItemAmount: 2
+  QuestType: 1
+  LastQuestInRow: 1
+  PlaceTheseProduce:
+  - {fileID: 11400000, guid: d2f2c9f53fc238b4991c8359857a8ab6, type: 2}
+  - {fileID: 11400000, guid: d2f2c9f53fc238b4991c8359857a8ab6, type: 2}
+  - {fileID: 11400000, guid: d2f2c9f53fc238b4991c8359857a8ab6, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  - {fileID: 11400000, guid: 4d03126adb90d4e44afc38452012c3c1, type: 2}
+  MerchantTradeItem: {fileID: 0}
+  MerchantTradeRatios:
+  - Item: {fileID: 0}
+    Ratio: 0

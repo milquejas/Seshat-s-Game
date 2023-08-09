@@ -1,0 +1,709 @@
+fileFormatVersion: 2
+guid: 54fea92ac2996154ba18aaa491fde467
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 180
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spice_dryingRack
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1120
+        width: 342
+        height: 348
+      alignment: 9
+      pivot: {x: 0.5177602, y: 0.25987998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a674959b818e349809048cf3c03abf
+      internalID: -132454906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate_watermelon
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 1240
+        width: 206
+        height: 217
+      alignment: 9
+      pivot: {x: 0.50491273, y: 0.18654257}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b201ecaebb957a745b5543c4f26ab6fe
+      internalID: -9488558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate_closed
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 1239
+        width: 208
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5048655, y: 0.19973594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25070af8808c434092e32699b8065bd
+      internalID: 1731613770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spice_red
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1338
+        width: 131
+        height: 136
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b57be73c81f9f1428e519eb6646673d
+      internalID: -1142820592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spice_white
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1338
+        width: 130
+        height: 125
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.03170703}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf2df139a4e140041878653ead1a207d
+      internalID: 432342250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spice_yellow
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 1334
+        width: 130
+        height: 107
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.064821616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c6405a59f30014c9a8e79af1ed76b5
+      internalID: 421684284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chair
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 1016
+        width: 174
+        height: 177
+      alignment: 9
+      pivot: {x: 0.4997569, y: 0.24631307}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33cd0b4d09dab6448c721251885833d
+      internalID: 293114241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basket_bread
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 1139
+        width: 141
+        height: 138
+      alignment: 9
+      pivot: {x: 0.48594546, y: 0.08355536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0668564556b8d734e981a3eb31895418
+      internalID: 204292288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vase1
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 1130
+        width: 117
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5, y: 0.053827297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd6d313f170de049999742550503e67
+      internalID: -1239104052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vase2
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 1148
+        width: 127
+        height: 131
+      alignment: 9
+      pivot: {x: 0.49999905, y: 0.046175193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad5604a043948f46a18546a8d02809c
+      internalID: 323936571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bull
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 689
+        width: 495
+        height: 365
+      alignment: 9
+      pivot: {x: 0.41592774, y: 0.068369076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b50e325519110a4c86792f32a42b47a
+      internalID: 759348453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sack
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 833
+        width: 141
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.08242711}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b6a293f53d0924c88d9526aad52233
+      internalID: 1019625508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sack_big
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 834
+        width: 168
+        height: 221
+      alignment: 9
+      pivot: {x: 0.49410176, y: 0.04716775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4759bd33ca3e7ae46acfc7f5d2f3b274
+      internalID: -1466430309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sack_pile
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 811
+        width: 282
+        height: 252
+      alignment: 9
+      pivot: {x: 0.45791084, y: 0.21264358}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa5dffa1bb64134aa21f459e9324736
+      internalID: 431669362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duck_green
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 617
+        width: 123
+        height: 160
+      alignment: 9
+      pivot: {x: 0.54027826, y: 0.0850811}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e177d046a5d3e2842a9dc42627923f06
+      internalID: -1152432828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duck_white
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 613
+        width: 123
+        height: 160
+      alignment: 9
+      pivot: {x: 0.52416694, y: 0.10365982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a63f9aa21516f884a9a0f9ec4429ca89
+      internalID: -92234771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crate1
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 491
+        width: 206
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5147379, y: 0.21610324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf8c6aea8c74434ebd704330fecf890
+      internalID: -1735784307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obelisk
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 68
+        width: 221
+        height: 697
+      alignment: 9
+      pivot: {x: 0.5002822, y: 0.06314323}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c7290a62677bf4180dd27da059cef5
+      internalID: -2024434857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duck_chickletWhite
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 511
+        width: 60
+        height: 68
+      alignment: 9
+      pivot: {x: 0.54954225, y: 0.1502874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc75b44a65673a4baf96001b1815bca
+      internalID: -549880587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duck_chicklet_yellow
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 509
+        width: 60
+        height: 70
+      alignment: 9
+      pivot: {x: 0.54954225, y: 0.11781442}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2911eb5d7414a5f4b8f670ccf201041f
+      internalID: 181488245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClothStack
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 259
+        width: 204
+        height: 174
+      alignment: 9
+      pivot: {x: 0.46691746, y: 0.19886114}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e52501009080f84db444ae3e300ad39
+      internalID: 2022680651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carpet_rectang_red
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 294
+        width: 249
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe19536f7686ee4b920c2f72806c880
+      internalID: -986161717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vase
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 37
+        width: 128
+        height: 179
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0405549}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8dc891ca7dc9e44beeeeeba80a3637
+      internalID: 441643915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carpet_yellow
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 96
+        width: 171
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fed37c65aea95c409d643ad60192c2a
+      internalID: -1599413822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Carpet_green
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 55
+        width: 328
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b929c5cac98a20748ad064b7ad2d4574
+      internalID: 2449625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Basket_bread: 204292288
+      Bull: 759348453
+      Carpet_green: 2449625
+      Carpet_rectang_red: -986161717
+      Carpet_yellow: -1599413822
+      Chair: 293114241
+      ClothStack: 2022680651
+      Crate1: -1735784307
+      Crate_closed: 1731613770
+      Crate_watermelon: -9488558
+      Duck_chickletWhite: -549880587
+      Duck_chicklet_yellow: 181488245
+      Duck_green: -1152432828
+      Duck_white: -92234771
+      Obelisk: -2024434857
+      Sack: 1019625508
+      Sack_big: -1466430309
+      Sack_pile: 431669362
+      Spice_dryingRack: -132454906
+      Spice_red: -1142820592
+      Spice_white: 432342250
+      Spice_yellow: 421684284
+      Vase: 441643915
+      Vase1: -1239104052
+      Vase2: 323936571
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
@@ -49,6 +48,11 @@ public class MenuUI : MonoBehaviour
     public void SetMusicLevel(float sliderValue)
     {
         masterMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
     }
 
     public void ToggleMainMenu()
