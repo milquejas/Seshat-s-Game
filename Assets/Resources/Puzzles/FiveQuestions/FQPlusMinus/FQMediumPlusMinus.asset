@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0ae65b4f04cca43b34cc328a235d36, type: 3}
+  m_Name: FQMediumPlusMinus
+  m_EditorClassIdentifier: 
+  question:
+  - question: An ancient Egyptian caravan had 150 camels. During the journey, 38
+      camels were traded for spices. How many camels were left?
+    options:
+    - 112
+    - 122
+    - 188
+    correctOptionIndex: 0
+  - question: An archaeologist found an ancient treasure chest containing 480 gold
+      coins. After giving 130 coins to the local museum, how many coins does the
+      archaeologist have left?
+    options:
+    - 350
+    - 250
+    - 260
+    correctOptionIndex: 0
+  - question: An ancient Egyptian scribe wrote 385 papyrus scrolls in a year. If
+      98 scrolls were destroyed due to decay, how many scrolls are still readable?
+    options:
+    - 287
+    - 298
+    - 279
+    correctOptionIndex: 0
+  - question: An ancient farmer harvested 85 baskets of wheat from one field and
+      72 baskets from another field. How many baskets of wheat did the farmer harvest
+      in total?
+    options:
+    - 157
+    - 158
+    - 164
+    correctOptionIndex: 0
+  - question: "An ancient Egyptian merchant sold 156 pieces of jewelry in the morning
+      and 84 pieces in the afternoon. How many pieces of jewelry did the merchant
+      sell throughout the day?\r"
+    options:
+    - 240
+    - 260
+    - 244
+    correctOptionIndex: 0
