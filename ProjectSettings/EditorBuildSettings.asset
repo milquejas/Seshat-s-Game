@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/PracticeScenes/QuessAnswer.unity
     guid: c33e2556f29ad544e9c192e2b146651b
   - enabled: 0
-    path: Assets/Scenes/MainScenes/IsometricMain.unity
+    path: Assets/Scenes/IsometricMain.unity
     guid: 0582e6e33ee79854d80d342994de2e53
   m_configObjects: {}
