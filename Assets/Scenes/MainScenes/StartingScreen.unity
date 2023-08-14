@@ -192,7 +192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Math game WIP
+  m_text: Seshats Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5212e4d731a23a147a3ecd0936e4b35b, type: 2}
   m_sharedMaterial: {fileID: -1972625294658215929, guid: 5212e4d731a23a147a3ecd0936e4b35b, type: 2}
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: 18.8
+  m_wordSpacing: -11.45
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0

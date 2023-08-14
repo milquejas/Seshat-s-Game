@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e7ef2a00ffc711439c13088bff5fccf, type: 3}
-  m_Name: con_CatStatuePuzzleStart
+  m_Name: con_npcCeramicsExpertDialogStart
   m_EditorClassIdentifier: 
-  ConversationName: StatuePuzzleStart
+  ConversationName: Ceramics
   Lines:
-  - character: {fileID: 0}
+  - character: {fileID: 11400000, guid: 717a67fb8390f6d4ba1fd496bcdab908, type: 2}
     Position: 0
-    LineType: 1
-    dialogueText: <color="red"> This monolith seems to have an ominous puzzle in
-      its carvings
-    LineAnswer:
-    - AnswerText: Investigate statue
-      AnswerSwitchCase: StartStatuePuzzle
-    - AnswerText: Leave
-      AnswerSwitchCase: ExitCase
+    LineType: 0
+    dialogueText: Pottery is the supreme artform!
+    LineAnswer: []

@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e699eebeb643f458b23fe002db8de7, type: 3}
-  m_Name: tsk_CatStatueTask
+  m_Script: {fileID: 11500000, guid: 705a17e41c5a15c478b42573de255bcf, type: 3}
+  m_Name: chr_Meritites
   m_EditorClassIdentifier: 
-  Title: Statue Bread Mystery
-  Description: 'Someone has built Monoliths around the town. This one has three hard
-    bread based questions. '
-  Progress: 0
-  Completed: 0
+  CharacterName: Meritites
+  PortraitImage: {fileID: 0}
