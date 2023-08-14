@@ -17,5 +17,10 @@ MonoBehaviour:
   - character: {fileID: 0}
     Position: 0
     LineType: 0
+<<<<<<< HEAD
     dialogueText: 'The statue makes a click sound and locks up. You were succesful. '
+=======
+    dialogueText: 'The monolith makes a deep humming sound and locks up. You were
+      succesful. '
+>>>>>>> main
     LineAnswer: []

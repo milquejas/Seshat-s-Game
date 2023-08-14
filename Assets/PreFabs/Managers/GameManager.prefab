@@ -47,12 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ad29c1e9ad53d4aadd1b2ffdb1d8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   version: 0.0.1
+=======
+  CurrentPuzzleIndex: 0
+  version: 1.0.0
+>>>>>>> main
   fadeOut: {fileID: 434828560061253885}
   fadeTime: 0.7
   versionText: {fileID: 434828560256970137}
   spawnPoint: {fileID: 11400000, guid: bb84074d773cbaf47b2c43ce53fcbb0f, type: 2}
+<<<<<<< HEAD
   tasks: {fileID: 11400000, guid: 999b3c09a586a874bbbb5a7187e06818, type: 2}
+=======
+  currentTaskList: {fileID: 11400000, guid: 999b3c09a586a874bbbb5a7187e06818, type: 2}
+>>>>>>> main
 --- !u!114 &434828560061253885
 MonoBehaviour:
   m_ObjectHideFlags: 0
