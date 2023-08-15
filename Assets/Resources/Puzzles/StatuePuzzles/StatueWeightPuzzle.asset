@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb8683576c5974ca87c179b10803eb, type: 3}
   m_Name: StatueWeightPuzzle
   m_EditorClassIdentifier: 
-  HintMessage: Ancient Egyptians didn't use the metric system, but they should have
+  HintMessage: Ancient Egyptians didn't use the metric system
   CorrectAnswers: 000000000000000001000000
   Questions:
   - MultipickQuestionText: Carrot weight is about

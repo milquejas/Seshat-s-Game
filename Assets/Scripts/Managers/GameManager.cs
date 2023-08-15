@@ -35,11 +35,6 @@ public class GameManager : MonoBehaviour
         //CheckDevice();
         versionText.text = version;
 
-        Screen.autorotateToPortrait = true;
-        Screen.autorotateToPortraitUpsideDown = true;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 
     private void Awake()
